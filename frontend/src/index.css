@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  min-height: 100dvh;
+  font-family: Outfit;
+}
+:root {
+  /* bg colors */
+  --primary_color: #14967f;
+  --secondary_color: #095d7e;
+  --bg_color_1: #e2fcd6;
+  --bg_color_2: #c7c7c7;
+  --bg_color_3: #009464;
+  --bg_color_4: #ffffff;
+  --bg_color_5: #f3f3f3;
+  --bg_color_strong_1: #26633d;
+  --bg_color_strong_2: #2c3e50;
+  /* text colors */
+  --text_color_1: black;
+  --text_color_lite: #ffffff;
+  --text_color_highlight_1: #14967f;
+  --text_color_highlight_2: #095d7e;
+  --text_color_highlight_3: #2c3e50;
+  /* Border radius */
+  --border_radius_1: 10px;
+  --border_radius_2: 5px;
+  --border_radius_button: 3px;
+}

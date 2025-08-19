@@ -9,26 +9,95 @@
 body {
   min-height: 100dvh;
   font-family: Outfit;
+  background-color: var(--primary_color);
 }
 :root {
   /* bg colors */
-  --primary_color: #14967f;
-  --secondary_color: #095d7e;
-  --bg_color_1: #e2fcd6;
-  --bg_color_2: #c7c7c7;
-  --bg_color_3: #009464;
-  --bg_color_4: #ffffff;
-  --bg_color_5: #f3f3f3;
-  --bg_color_strong_1: #26633d;
-  --bg_color_strong_2: #2c3e50;
+  --primary_color: #070b1c;
+  --secondary_color: #0f1527;
+  --bg_color_1: #6d22b6;
+  --bg_color_2: #1a9362;
   /* text colors */
-  --text_color_1: black;
-  --text_color_lite: #ffffff;
-  --text_color_highlight_1: #14967f;
-  --text_color_highlight_2: #095d7e;
-  --text_color_highlight_3: #2c3e50;
+  --text_color_1: #ffffff;
+  --text_color_2: #7c7c7c;
+  --text_color_highlight_1: #f21f30;
+  --text_color_highlight_2: #1a9362;
   /* Border radius */
   --border_radius_1: 10px;
   --border_radius_2: 5px;
   --border_radius_button: 3px;
+}
+/* text universal styles */
+h1 {
+  font-size: 68px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 32px;
+  font-weight: 600;
+}
+h3 {
+  font-size: 24px;
+  font-weight: 500;
+}
+h4 {
+  font-size: 20px;
+  font-weight: 500;
+}
+h5 {
+  font-size: 18px;
+  font-weight: 500;
+}
+p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+@media (max-width: 768px) {
+  /* responsive */
+  h1 {
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 26px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 18px;
+  }
+  h5 {
+    font-size: 16px;
+  }
+  p {
+    font-size: 15px;
+  }
+}
+/* button universal styles */
+button {
+  font-size: 16px;
+  font-weight: 400;
+  height: 40px;
+  transition: 300ms ease-out;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+/* a universal styles */
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+/* scroller styles */
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--primary_color);
+}
+::-webkit-scrollbar-track {
+  background-color: var(--primary_color);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary_color);
 }

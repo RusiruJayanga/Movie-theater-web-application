@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
@@ -13,9 +11,9 @@ body {
 }
 :root {
   /* bg colors */
-  --primary_color: #070b1c;
-  --secondary_color: #0f1527;
-  --bg_color_1: #6d22b6;
+  --primary_color: #0c0c0c;
+  --secondary_color: #292929;
+  --bg_color_1: #f21f30;
   --bg_color_2: #1a9362;
   /* text colors */
   --text_color_1: #ffffff;
@@ -100,4 +98,8 @@ a {
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--secondary_color);
+}
+.active_nav {
+  border-bottom: solid #f21f30;
+  color: #f21f30;
 }

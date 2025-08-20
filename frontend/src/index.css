@@ -86,7 +86,6 @@ button {
 a {
   cursor: pointer;
   text-decoration: none;
-  color: inherit;
 }
 /* scroller styles */
 ::-webkit-scrollbar {

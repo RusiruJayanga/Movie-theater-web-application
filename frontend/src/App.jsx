@@ -4,7 +4,7 @@ import "./App.css";
 //scroll to top
 import ScrollToTop from "../src/config/ScrollToTop";
 //main components
-import Navigation_bar_head from "./components/user/Navigation_bar_head";
+import Navigation_bar_head from "./components/user/navigation/Navigation_bar_head";
 import Navigation_bar from "./components/user/navigation/Navigation_bar";
 //pages
 //user pages

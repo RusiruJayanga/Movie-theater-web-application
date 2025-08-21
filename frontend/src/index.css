@@ -96,7 +96,7 @@ a {
   background-color: var(--primary_color);
 }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--secondary_color);
+  background-color: var(--bg_color_1);
 }
 .active_nav {
   border-bottom: solid #f21f30;

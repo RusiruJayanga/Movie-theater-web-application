@@ -42,7 +42,7 @@ const Navigation_bar_head = () => {
       </div>
       {/* navigation ham */}
       <div
-        className={`mt-[-60px] z-[10100] w-[180px] h-[100vh] bg-[#202020] ml-auto p-[10px] relative transition-all duration-300 sm:hidden ${
+        className={`mt-[-60px] z-[10100] w-[180px] h-[100vh] bg-[#202020] right-0 p-[10px] absolute transition-all duration-300 sm:hidden ${
           menuOpen
             ? "block opacity-100 scale-100"
             : "hidden opacity-0 scale-95 pointer-events-none"

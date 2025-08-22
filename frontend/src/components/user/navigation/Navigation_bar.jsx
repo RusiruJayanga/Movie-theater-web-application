@@ -3,7 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Navigation_bar = () => {
   return (
-    <div className="hidden sm:flex z-[10000] sticky top-0 w-full h-[60px] bg-transparent items-center justify-center gap-[20px] capitalize font-light text-[#cecece]">
+    <div className="hidden sm:flex z-[10000] sticky top-0 w-full h-[60px] bg-transparent items-center justify-center gap-[20px] capitalize font-medium text-[#cecece]">
       <NavLink
         className={
           "w-[80px] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out active_nav"

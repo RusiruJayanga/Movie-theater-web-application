@@ -42,10 +42,8 @@ const Navigation_bar_head = () => {
       </div>
       {/* navigation ham */}
       <div
-        className={`mt-[-60px] z-[10100] w-[180px] h-[100vh] bg-[#202020] right-0 p-[10px] absolute transition-all duration-300 sm:hidden ${
-          menuOpen
-            ? "block opacity-100 scale-100"
-            : "hidden opacity-0 scale-95 pointer-events-none"
+        className={`mt-[-60px] z-[10100] w-[0px] h-[100vh] bg-[#202020] right-0 p-[10px] absolute transition-all duration-300 sm:hidden ${
+          menuOpen ? "block w-[180px]" : "hidden "
         }`}
       >
         <h4
@@ -80,7 +78,7 @@ const Navigation_bar_head = () => {
             contact us
           </NavLink>
         </div>
-        <div className="w-[90%] h-auto text-white font-light mx-auto flex flex-col items-start justify-center absolute bottom-[10px]">
+        <div className="w-[90%] h-auto text-white mx-auto flex flex-col items-start justify-center absolute bottom-[10px]">
           <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
             <i className="bi bi-ticket-perforated"></i>
           </h4>

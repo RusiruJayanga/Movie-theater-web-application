@@ -12,7 +12,7 @@ body {
 :root {
   /* bg colors */
   --primary_color: #0c0c0c;
-  --secondary_color: #292929;
+  --secondary_color: #202020;
   --bg_color_1: #f21f30;
   --bg_color_2: #1a9362;
   /* text colors */
@@ -28,23 +28,18 @@ body {
 /* text universal styles */
 h1 {
   font-size: 68px;
-  font-weight: 700;
 }
 h2 {
   font-size: 32px;
-  font-weight: 600;
 }
 h3 {
   font-size: 24px;
-  font-weight: 500;
 }
 h4 {
   font-size: 20px;
-  font-weight: 500;
 }
 h5 {
   font-size: 18px;
-  font-weight: 500;
 }
 p {
   font-size: 16px;

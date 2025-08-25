@@ -121,18 +121,94 @@ const Home = () => {
       </section>
 
       {/* now show card section */}
-      <section className="w-[95%] h-auto mx-auto mt-[50px] cursor-default bg-amber-50">
-        <div className="w-[190px] h-auto bg-amber-300 p-[5px] rounded-[5px] ">
+      <section className="w-[98%] h-auto mx-auto mt-[50px] grid [grid-template-columns:repeat(auto-fit,_190px)] gap-[10px] justify-center cursor-default xl:gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_500px)] xl:mt-[100px] ">
+        {/* repeat */}
+        <div className="w-[190px] h-auto bg-[#202020] p-[5px] rounded-[5px] xl:w-[500px] xl:p-[10px] xl:rounded-[10px] xl:flex xl:items-start xl:justify-between xl:gap-[10px]">
           <img
-            className="w-[100%] h-[150px] object-cover"
+            className="w-[100%] h-[200px] object-cover rounded-[3px] xl:w-[240px] xl:h-auto xl:rounded-[5px] "
             src="movies/1.jpg"
             alt="movie"
           />
-          <div>
-            <h4 className="text-black font-semibold">Movie Title</h4>
-            <p className="text-black">Movie Description</p>
+          <div className="w-[100%] h-auto mt-[5px] xl:w-[250px] xl:mt-[10px]">
+            <h4 className="text-white font-medium xl:font-extralight ">
+              Movie Title
+            </h4>
+            <p className="text-[#dadada] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
+              <span className="hidden xl:block text-[12px] text-[#aaaaaa] uppercase">
+                Duration -
+              </span>
+              1h 35min
+            </p>
+            <p className="text-[#dadada] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
+              <span className="hidden xl:block text-[12px] text-[#aaaaaa] uppercase">
+                Released -
+              </span>
+              2023-01-01
+            </p>
+            <button className="w-[100%] uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#202020] hover:text-[#f21f30] mt-[10px]">
+              Get Tickets
+            </button>
           </div>
         </div>
+        {/* repeat */}
+        {/* repeat */}
+        <div className="w-[190px] h-auto bg-[#202020] p-[5px] rounded-[5px] xl:w-[500px] xl:p-[10px] xl:rounded-[10px] xl:flex xl:items-start xl:justify-between xl:gap-[10px]">
+          <img
+            className="w-[100%] h-[200px] object-cover rounded-[3px] xl:w-[240px] xl:h-auto xl:rounded-[5px] "
+            src="movies/1.jpg"
+            alt="movie"
+          />
+          <div className="w-[100%] h-auto mt-[5px] xl:w-[250px] xl:mt-[10px]">
+            <h4 className="text-white font-medium xl:font-extralight ">
+              Movie Title
+            </h4>
+            <p className="text-[#dadada] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
+              <span className="hidden xl:block text-[12px] text-[#aaaaaa] uppercase">
+                Duration -
+              </span>
+              1h 35min
+            </p>
+            <p className="text-[#dadada] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
+              <span className="hidden xl:block text-[12px] text-[#aaaaaa] uppercase">
+                Released -
+              </span>
+              2023-01-01
+            </p>
+            <button className="w-[100%] uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#202020] hover:text-[#f21f30] mt-[10px]">
+              Get Tickets
+            </button>
+          </div>
+        </div>
+        {/* repeat */}
+        {/* repeat */}
+        <div className="w-[190px] h-auto bg-[#202020] p-[5px] rounded-[5px] xl:w-[500px] xl:p-[10px] xl:rounded-[10px] xl:flex xl:items-start xl:justify-between xl:gap-[10px]">
+          <img
+            className="w-[100%] h-[200px] object-cover rounded-[3px] xl:w-[240px] xl:h-auto xl:rounded-[5px] "
+            src="movies/1.jpg"
+            alt="movie"
+          />
+          <div className="w-[100%] h-auto mt-[5px] xl:w-[250px] xl:mt-[10px]">
+            <h4 className="text-white font-medium xl:font-extralight ">
+              Movie Title
+            </h4>
+            <p className="text-[#dadada] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
+              <span className="hidden xl:block text-[12px] text-[#aaaaaa] uppercase">
+                Duration -
+              </span>
+              1h 35min
+            </p>
+            <p className="text-[#dadada] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
+              <span className="hidden xl:block text-[12px] text-[#aaaaaa] uppercase">
+                Released -
+              </span>
+              2023-01-01
+            </p>
+            <button className="w-[100%] uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#202020] hover:text-[#f21f30] mt-[10px]">
+              Get Tickets
+            </button>
+          </div>
+        </div>
+        {/* repeat */}
       </section>
     </div>
   );

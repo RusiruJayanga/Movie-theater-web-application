@@ -17,7 +17,8 @@ body {
   --bg_color_2: #1a9362;
   /* text colors */
   --text_color_1: #ffffff;
-  --text_color_2: #7c7c7c;
+  --text_color_2: #eeeeee;
+  --text_color_3: #aaaaaa;
   --text_color_highlight_1: #f21f30;
   --text_color_highlight_2: #1a9362;
   /* Border radius */
@@ -73,7 +74,6 @@ button {
   font-weight: 400;
   height: 40px;
   transition: 300ms ease-out;
-  border: none;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -94,6 +94,6 @@ a {
   background-color: var(--bg_color_1);
 }
 .active_nav {
-  border-bottom: solid #f21f30;
-  color: #f21f30;
+  border-bottom: solid var(--bg_color_1);
+  color: var(--text_color_highlight_1);
 }

@@ -76,6 +76,8 @@ button {
   transition: 300ms ease-out;
   border-radius: 3px;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
 /* a universal styles */
 a {

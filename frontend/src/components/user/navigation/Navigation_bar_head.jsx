@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+//animation
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navigation_bar_head = () => {
   //responsive navigation
@@ -41,52 +43,57 @@ const Navigation_bar_head = () => {
         </h4>
       </div>
       {/* navigation ham */}
-      <div
-        className={`mt-[-60px] z-[10100] w-[0px] h-[100vh] bg-[#202020] right-0 p-[10px] absolute transition-all duration-300 sm:hidden ${
-          menuOpen ? "block w-[180px]" : "hidden "
-        }`}
-      >
-        <h4
-          className="w-[40px] h-[40px] flex items-center justify-center text-white cursor-pointer"
-          onClick={() => set_menu_open(!menuOpen)}
-        >
-          <i className="bi bi-x-lg"></i>
-        </h4>
-        <div className="w-[90%] h-auto mt-[50px] text-white capitalize font-light mx-auto flex flex-col items-center justify-center ">
-          <NavLink
-            className={
-              "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out active_nav"
-            }
-            to="/"
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: -5, width: 0 }}
+            animate={{ opacity: 1, x: 0, width: 180 }}
+            transition={{ duration: 0.3 }}
+            className="mt-[-60px] z-[10100] h-[100vh] bg-[#202020] right-0 p-[10px] absolute sm:hidden"
           >
-            home
-          </NavLink>
-          <NavLink
-            className={
-              "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out"
-            }
-            to="/upcoming"
-          >
-            upcoming
-          </NavLink>
-          <NavLink
-            className={
-              "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out"
-            }
-            to="/contact"
-          >
-            contact us
-          </NavLink>
-        </div>
-        <div className="w-[90%] h-auto text-white mx-auto flex flex-col items-start justify-center absolute bottom-[10px]">
-          <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
-            <i className="bi bi-ticket-perforated"></i>
-          </h4>
-          <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
-            <i className="bi bi-person"></i>
-          </h4>
-        </div>
-      </div>
+            <h4
+              className="w-[40px] h-[40px] flex items-center justify-center text-white cursor-pointer"
+              onClick={() => set_menu_open(!menuOpen)}
+            >
+              <i className="bi bi-x-lg"></i>
+            </h4>
+            <div className="w-[90%] h-auto mt-[50px] text-white capitalize font-light mx-auto flex flex-col items-center justify-center ">
+              <NavLink
+                className={
+                  "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out active_nav"
+                }
+                to="/"
+              >
+                home
+              </NavLink>
+              <NavLink
+                className={
+                  "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out"
+                }
+                to="/upcoming"
+              >
+                upcoming
+              </NavLink>
+              <NavLink
+                className={
+                  "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out"
+                }
+                to="/contact"
+              >
+                contact us
+              </NavLink>
+            </div>
+            <div className="w-[90%] h-auto text-white mx-auto flex flex-col items-start justify-center absolute bottom-[10px]">
+              <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
+                <i className="bi bi-ticket-perforated"></i>
+              </h4>
+              <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
+                <i className="bi bi-person"></i>
+              </h4>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

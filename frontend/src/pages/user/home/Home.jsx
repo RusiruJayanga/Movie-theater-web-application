@@ -3,6 +3,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+//animation
+import { motion, AnimatePresence } from "framer-motion";
 
 const Home = () => {
   //slick slider settings
@@ -77,13 +79,23 @@ const Home = () => {
             <source src="/main_video.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.4)_51%,rgba(0,0,0,0.7)_100%)]"></div>
-          <div className="relative z-10 flex items-center justify-center h-full">
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 70 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative z-10 flex items-center justify-center h-full"
+          >
             <img
               className="w-[600px] object-cover relative z-10"
               src="logo_text.png"
               alt="logo"
             />
-          </div>
+          </motion.div>
         </div>
         {/* main section responsive */}
         <div className="relative w-full h-[25vh] flex items-center justify-center bg-[url(/main_image.jpg)] bg-cover bg-center bg-no-repeat xl:hidden">
@@ -98,9 +110,12 @@ const Home = () => {
 
       {/* now show section */}
       <section className="w-[90%] h-auto mx-auto cursor-default xl:mt-[-11vh] xl:z-20 xl:relative ">
-        <h3 className="text-white font-extralight uppercase">
+        <h3 className="text-white font-extralight uppercase xl:hidden">
           Now Showing <i className="bi bi-chevron-right"></i>
         </h3>
+        <h2 className="hidden text-white font-extralight uppercase xl:block">
+          Now Showing <i className="bi bi-chevron-right"></i>
+        </h2>
         <div className="w-[85%] h-auto mx-auto mt-[30px] xl:w-[90%]">
           <Slider {...settings}>
             {/* repeat */}
@@ -121,93 +136,50 @@ const Home = () => {
       </section>
 
       {/* now show card section */}
-      <section className="w-[98%] h-auto mx-auto mt-[50px] grid [grid-template-columns:repeat(auto-fit,_190px)] gap-[10px] justify-center cursor-default xl:gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_500px)] xl:mt-[100px] ">
+      <section className="w-[98%] h-auto mx-auto mt-[50px] grid [grid-template-columns:repeat(auto-fit,_190px)] gap-[10px] justify-center cursor-default xl:gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_300px)] xl:mt-[100px] ">
         {/* repeat */}
-        <div className="w-[190px] h-auto bg-[#202020] p-[5px] rounded-[5px] xl:w-[500px] xl:p-[10px] xl:rounded-[10px] xl:flex xl:items-start xl:justify-between xl:gap-[10px]">
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 70 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="w-[190px] h-auto bg-[#202020] rounded-[10px] border-[1px] border-[#202020] hover:border-[#555555] transition duration-300 ease-out xl:w-[300px] xl:p-[10px] xl:rounded-[10px] xl: xl:items-start xl:justify-between xl:gap-[10px]"
+        >
           <img
-            className="w-[100%] h-[200px] object-cover rounded-[3px] xl:w-[240px] xl:h-auto xl:rounded-[5px] "
+            className="w-[100%] h-[200px] object-cover rounded-[5px] xl:h-[260px] xl:rounded-[5px] "
             src="movies/1.jpg"
             alt="movie"
           />
-          <div className="w-[100%] h-auto mt-[5px] xl:w-[250px] xl:mt-[10px]">
+          <div className="w-[100%] h-auto mt-[5px] xl:mt-[10px]">
             <h4 className="text-white font-medium xl:font-extralight ">
               Movie Title
             </h4>
-            <p className="text-[#dadada] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
-              <span className="hidden xl:block text-[12px] text-[#aaaaaa] uppercase">
-                Duration -
+            <p className="text-[#aaaaaa] opacity-[0.7] mt-[5px] xl:mt-[20px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
+              <span className="hidden xl:block text-[11px] uppercase">
+                <i className="bi bi-dot"></i> Duration -
               </span>
               1h 35min
             </p>
-            <p className="text-[#dadada] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
-              <span className="hidden xl:block text-[12px] text-[#aaaaaa] uppercase">
-                Released -
+            <p className="text-[#aaaaaa] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
+              <span className="hidden xl:block text-[11px] uppercase">
+                <i className="bi bi-dot"></i> Released -
               </span>
               2023-01-01
             </p>
-            <button className="w-[100%] uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#202020] hover:text-[#f21f30] mt-[10px]">
-              Get Tickets
-            </button>
+            <div className="w-[100%] h-[50px] flex items-center justify-center gap-[10px] mt-[10px]">
+              <button className="w-[100%] flex uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#202020] hover:text-[#f21f30] gap-[10px]">
+                <i className="bi bi-ticket-perforated"></i> Get Tickets
+              </button>
+              <button className="hidden xl:flex w-[100px] uppercase bg-[#202020] text-white border-[1px] border-white hover:bg-white hover:text-black">
+                More
+              </button>
+            </div>
           </div>
-        </div>
-        {/* repeat */}
-        {/* repeat */}
-        <div className="w-[190px] h-auto bg-[#202020] p-[5px] rounded-[5px] xl:w-[500px] xl:p-[10px] xl:rounded-[10px] xl:flex xl:items-start xl:justify-between xl:gap-[10px]">
-          <img
-            className="w-[100%] h-[200px] object-cover rounded-[3px] xl:w-[240px] xl:h-auto xl:rounded-[5px] "
-            src="movies/1.jpg"
-            alt="movie"
-          />
-          <div className="w-[100%] h-auto mt-[5px] xl:w-[250px] xl:mt-[10px]">
-            <h4 className="text-white font-medium xl:font-extralight ">
-              Movie Title
-            </h4>
-            <p className="text-[#dadada] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
-              <span className="hidden xl:block text-[12px] text-[#aaaaaa] uppercase">
-                Duration -
-              </span>
-              1h 35min
-            </p>
-            <p className="text-[#dadada] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
-              <span className="hidden xl:block text-[12px] text-[#aaaaaa] uppercase">
-                Released -
-              </span>
-              2023-01-01
-            </p>
-            <button className="w-[100%] uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#202020] hover:text-[#f21f30] mt-[10px]">
-              Get Tickets
-            </button>
-          </div>
-        </div>
-        {/* repeat */}
-        {/* repeat */}
-        <div className="w-[190px] h-auto bg-[#202020] p-[5px] rounded-[5px] xl:w-[500px] xl:p-[10px] xl:rounded-[10px] xl:flex xl:items-start xl:justify-between xl:gap-[10px]">
-          <img
-            className="w-[100%] h-[200px] object-cover rounded-[3px] xl:w-[240px] xl:h-auto xl:rounded-[5px] "
-            src="movies/1.jpg"
-            alt="movie"
-          />
-          <div className="w-[100%] h-auto mt-[5px] xl:w-[250px] xl:mt-[10px]">
-            <h4 className="text-white font-medium xl:font-extralight ">
-              Movie Title
-            </h4>
-            <p className="text-[#dadada] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
-              <span className="hidden xl:block text-[12px] text-[#aaaaaa] uppercase">
-                Duration -
-              </span>
-              1h 35min
-            </p>
-            <p className="text-[#dadada] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
-              <span className="hidden xl:block text-[12px] text-[#aaaaaa] uppercase">
-                Released -
-              </span>
-              2023-01-01
-            </p>
-            <button className="w-[100%] uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#202020] hover:text-[#f21f30] mt-[10px]">
-              Get Tickets
-            </button>
-          </div>
-        </div>
+        </motion.div>
         {/* repeat */}
       </section>
     </div>

@@ -64,6 +64,9 @@ const Home = () => {
     { id: 9, title: "Movie 9", image: "movies/9.jpg" },
   ];
 
+  //movies
+  const new_Movie = [1, 2, 3, 4, 5, 6, 7, 8];
+
   return (
     <div>
       {/* main section */}
@@ -121,7 +124,7 @@ const Home = () => {
             {/* repeat */}
             {movies.map((movie) => (
               <div key={movie.id} className="px-2">
-                <div className="w-auto h-[450px] bg-[#202020] rounded-[10px] border-[2px] border-solid border-[#202020]">
+                <div className="w-auto h-[450px] bg-[#242124] rounded-[10px]">
                   <img
                     className="w-full h-full object-cover opacity-[0.65] rounded-[10px] hover:opacity-[1] transition duration-300 ease-out"
                     src={movie.image}
@@ -136,51 +139,86 @@ const Home = () => {
       </section>
 
       {/* now show card section */}
-      <section className="w-[98%] h-auto mx-auto mt-[50px] grid [grid-template-columns:repeat(auto-fit,_190px)] gap-[10px] justify-center cursor-default xl:gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_300px)] xl:mt-[100px] ">
+      <section className="w-[98%] h-auto mx-auto mt-[50px] grid [grid-template-columns:repeat(auto-fit,_190px)] gap-[10px] justify-center cursor-default xl:gap-[30px] xl:[grid-template-columns:repeat(auto-fit,_300px)] xl:mt-[150px] ">
         {/* repeat */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 70 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="w-[190px] h-auto bg-[#202020] rounded-[10px] border-[1px] border-[#202020] hover:border-[#555555] transition duration-300 ease-out xl:w-[300px] xl:p-[10px] xl:rounded-[10px] xl: xl:items-start xl:justify-between xl:gap-[10px]"
-        >
-          <img
-            className="w-[100%] h-[200px] object-cover rounded-[5px] xl:h-[260px] xl:rounded-[5px] "
-            src="movies/1.jpg"
-            alt="movie"
-          />
-          <div className="w-[100%] h-auto mt-[5px] xl:mt-[10px]">
-            <h4 className="text-white font-medium xl:font-extralight ">
-              Movie Title
-            </h4>
-            <p className="text-[#aaaaaa] opacity-[0.7] mt-[5px] xl:mt-[20px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
-              <span className="hidden xl:block text-[11px] uppercase">
-                <i className="bi bi-dot"></i> Duration -
-              </span>
-              1h 35min
-            </p>
-            <p className="text-[#aaaaaa] opacity-[0.7] mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
-              <span className="hidden xl:block text-[11px] uppercase">
-                <i className="bi bi-dot"></i> Released -
-              </span>
-              2023-01-01
-            </p>
-            <div className="w-[100%] h-[50px] flex items-center justify-center gap-[10px] mt-[10px]">
-              <button className="w-[100%] flex uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#202020] hover:text-[#f21f30] gap-[10px]">
-                <i className="bi bi-ticket-perforated"></i> Get Tickets
-              </button>
-              <button className="hidden xl:flex w-[100px] uppercase bg-[#202020] text-white border-[1px] border-white hover:bg-white hover:text-black">
-                More
-              </button>
+        {new_Movie.map((new_movie) => (
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 70 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            key={new_movie}
+            className="w-[190px] h-auto bg-[#242124] p-[5px] rounded-[20px] border-[1px] hover:scale-102 transition duration-300 ease-out xl:w-[300px] xl:p-[10px] xl: xl:items-start xl:justify-between xl:gap-[10px]"
+          >
+            <img
+              className="w-[100%] h-[190px] object-cover rounded-[15px] xl:h-[260px]"
+              src="movies/1.jpg"
+              alt="movie"
+            />
+            <div className="w-[100%] h-auto mt-[5px] xl:mt-[10px]">
+              <h4 className="text-white font-medium xl:font-extralight ">
+                Movie Title
+              </h4>
+              <p className="text-[#aaaaaa] opacity-[0.7] mt-[5px] xl:mt-[20px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
+                <span className="hidden xl:block text-[11px] uppercase">
+                  <i className="bi bi-dot"></i> Duration -
+                </span>
+                1h 35min
+              </p>
+              <p className="hidden text-[#aaaaaa] opacity-[0.7] xl:mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
+                <span className="hidden xl:block text-[11px] uppercase">
+                  <i className="bi bi-dot"></i> Released -
+                </span>
+                2023-01-01
+              </p>
+              <div className="w-[100%] h-auto flex items-center justify-center mt-[5px] gap-[10px] xl:mt-[10px]">
+                <button className="w-[100%] flex uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30] xl:hidden">
+                  More
+                </button>
+                <button className="hidden xl:flex w-[100%]  uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30] gap-[10px]">
+                  <i className="bi bi-ticket-perforated"></i> Get Tickets
+                </button>
+                <button className="hidden xl:flex w-[100px] uppercase bg-[#242124] text-white border-[1px] border-white hover:bg-white hover:text-black">
+                  More
+                </button>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        ))}
         {/* repeat */}
+      </section>
+
+      {/* margin section */}
+      <section className="w-[100%] h-[60vh] mt-[200px] p-[20px] bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.5)_20%,rgba(0,0,0,0.5)_80%,rgba(12,12,12,1)_100%),url(/margin_image.jpg)] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center cursor-default md:flex-row md:justify-center md:gap-[50px] ">
+        <motion.img
+          initial={{ rotate: -10 }}
+          animate={{ rotate: [-10, 5, -10] }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "mirror",
+            ease: "easeInOut",
+          }}
+          className="w-[150px] sm:w-[100px] md:w-[280px] "
+          src="margin_png.png"
+          alt="image"
+        />
+        <div className="w-[90%] h-auto bg-black/80 p-[20px] rounded-[20px] md:w-[50%]">
+          <h2 className="text-white font-extralight uppercase">
+            upcoming movies
+            <i className="bi bi-chevron-right"></i>
+          </h2>
+          <p className="text-[#aaaaaa] font-extralight mt-[10px] ml-[20px]">
+            Stay ahead with the latest buzz from the world of cinema! In this
+            section, you’ll discover all the upcoming movie releases. Plan your
+            watchlist in advance and never miss the excitement of the big
+            screen!.
+          </p>
+        </div>
       </section>
     </div>
   );

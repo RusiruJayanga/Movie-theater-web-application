@@ -12,7 +12,7 @@ body {
 :root {
   /* bg colors */
   --primary_color: #0c0c0c;
-  --secondary_color: #202020;
+  --secondary_color: #242124;
   --bg_color_1: #f21f30;
   --bg_color_2: #1a9362;
   /* text colors */
@@ -74,7 +74,7 @@ button {
   font-weight: 400;
   height: 40px;
   transition: 300ms ease-out;
-  border-radius: 3px;
+  border-radius: 20px;
   cursor: pointer;
   align-items: center;
   justify-content: center;

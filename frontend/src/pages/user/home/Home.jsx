@@ -191,35 +191,6 @@ const Home = () => {
         ))}
         {/* repeat */}
       </section>
-
-      {/* margin section */}
-      <section className="w-[100%] h-[60vh] mt-[200px] p-[20px] bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.5)_20%,rgba(0,0,0,0.5)_80%,rgba(12,12,12,1)_100%),url(/margin_image.jpg)] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center cursor-default md:flex-row md:justify-center md:gap-[50px] ">
-        <motion.img
-          initial={{ rotate: -10 }}
-          animate={{ rotate: [-10, 5, -10] }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            repeatType: "mirror",
-            ease: "easeInOut",
-          }}
-          className="w-[150px] sm:w-[100px] md:w-[280px] "
-          src="margin_png.png"
-          alt="image"
-        />
-        <div className="w-[90%] h-auto bg-black/80 p-[20px] rounded-[20px] md:w-[50%]">
-          <h2 className="text-white font-extralight uppercase">
-            upcoming movies
-            <i className="bi bi-chevron-right"></i>
-          </h2>
-          <p className="text-[#aaaaaa] font-extralight mt-[10px] ml-[20px]">
-            Stay ahead with the latest buzz from the world of cinema! In this
-            section, you’ll discover all the upcoming movie releases. Plan your
-            watchlist in advance and never miss the excitement of the big
-            screen!.
-          </p>
-        </div>
-      </section>
     </div>
   );
 };

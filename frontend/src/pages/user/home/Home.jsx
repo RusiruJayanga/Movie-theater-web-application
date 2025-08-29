@@ -191,6 +191,56 @@ const Home = () => {
         ))}
         {/* repeat */}
       </section>
+      {/* margin section */}
+      <section className="w-[100%] h-[70vh] grid grid-flow-col grid-rows-3 gap-[10px] mt-[100px] p-[10px] cursor-default ">
+        <div className="bg-[#242124] rounded-[20px] p-[10px] flex flex-col items-center justify-center gap-[10px] row-span-2 ">
+          <img className="w-[110px] " src="ice_cream.png" alt="add" />
+          <div className="w-[200px] h-auto">
+            <h3 className="text-white font-medium">Sweet Treats</h3>
+            <p className="text-[#cccccc] font-extralight mt-[5px]">
+              Try our ice creams, chocolate bars, and desserts available at the
+              snack counter !
+            </p>
+            <h2 className="text-white font-extrabold w-[100%] h-[50px] bg-[#f21f30] mt-[20px] flex items-center justify-center rounded-[10px]">
+              Rs.700
+            </h2>
+          </div>
+        </div>
+        <div className="bg-[#242124] rounded-[20px] p-[10px] flex items-center justify-center gap-[10px] col-span-2 ">
+          <img className="w-[110px] " src="popcorn.png" alt="add" />
+          <div>
+            <h3 className="text-white font-medium">Popcorn Combo Deal</h3>
+            <p className="text-[#cccccc] font-extralight mt-[5px]">
+              Get a large popcorn + 2 drinks at a special combo price. Don’t
+              miss !
+            </p>
+            <h2 className="text-white font-extrabold w-[100%] h-[50px] bg-[#f21f30] mt-[20px] flex items-center justify-center rounded-[10px]">
+              Rs.2000
+            </h2>
+          </div>
+        </div>
+        <div className="bg-[#f21f30] rounded-[20px] p-[10px] flex items-center justify-center gap-[10px]  ">
+          <motion.img
+            initial={{ rotate: 0 }}
+            animate={{ rotate: [0, 10, 0] }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              repeatType: "mirror",
+              ease: "easeInOut",
+            }}
+            className="w-[200px] "
+            src="payment.png"
+            alt="payment"
+          />
+        </div>
+        <div className="bg-white rounded-[20px] p-[10px] flex items-center justify-center gap-[10px]  ">
+          <div>
+            <h3 className="font-light ">Card Payment</h3>
+            <h2 className="font-bold uppercase">available</h2>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

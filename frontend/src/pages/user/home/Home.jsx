@@ -191,55 +191,62 @@ const Home = () => {
         ))}
         {/* repeat */}
       </section>
-      {/* margin section */}
-      <section className="w-[100%] h-[70vh] grid grid-flow-col grid-rows-3 gap-[10px] mt-[100px] p-[10px] cursor-default ">
-        <div className="bg-[#242124] rounded-[20px] p-[10px] flex flex-col items-center justify-center gap-[10px] row-span-2 ">
-          <img className="w-[110px] " src="ice_cream.png" alt="add" />
-          <div className="w-[200px] h-auto">
-            <h3 className="text-white font-medium">Sweet Treats</h3>
-            <p className="text-[#cccccc] font-extralight mt-[5px]">
-              Try our ice creams, chocolate bars, and desserts available at the
-              snack counter !
-            </p>
-            <h2 className="text-white font-extrabold w-[100%] h-[50px] bg-[#f21f30] mt-[20px] flex items-center justify-center rounded-[10px]">
-              Rs.700
-            </h2>
-          </div>
-        </div>
-        <div className="bg-[#242124] rounded-[20px] p-[10px] flex items-center justify-center gap-[10px] col-span-2 ">
-          <img className="w-[110px] " src="popcorn.png" alt="add" />
-          <div>
-            <h3 className="text-white font-medium">Popcorn Combo Deal</h3>
-            <p className="text-[#cccccc] font-extralight mt-[5px]">
-              Get a large popcorn + 2 drinks at a special combo price. Don’t
-              miss !
-            </p>
-            <h2 className="text-white font-extrabold w-[100%] h-[50px] bg-[#f21f30] mt-[20px] flex items-center justify-center rounded-[10px]">
-              Rs.2000
-            </h2>
-          </div>
-        </div>
-        <div className="bg-[#f21f30] rounded-[20px] p-[10px] flex items-center justify-center gap-[10px]  ">
-          <motion.img
-            initial={{ rotate: 0 }}
-            animate={{ rotate: [0, 10, 0] }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              repeatType: "mirror",
-              ease: "easeInOut",
+      {/* upcoming card section */}
+      <section className="flex items-center justify-center w-[100%] h-[60vh] gap-[10px] mt-[100px] p-[10px] cursor-default bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.5)_20%,rgba(0,0,0,0.7)_80%,rgba(12,12,12,1)_100%),url(/margin_image.jpg)] bg-cover bg-center bg-no-repeat">
+        <h1 className="text-white font-light text-[30px]">Upcoming Movies</h1>
+        <img className="w-[300px] " src="margin_spi.png" alt="" />
+      </section>
+      <section className="w-[98%] h-auto mx-auto mt-[150px] grid [grid-template-columns:repeat(auto-fit,_190px)] gap-[10px] justify-center cursor-default xl:gap-[30px] xl:[grid-template-columns:repeat(auto-fit,_300px)] ">
+        {/* repeat */}
+        {new_Movie.map((new_movie) => (
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 70 },
+              visible: { opacity: 1, y: 0 },
             }}
-            className="w-[200px] "
-            src="payment.png"
-            alt="payment"
-          />
-        </div>
-        <div className="bg-white rounded-[20px] p-[10px] flex items-center justify-center gap-[10px]  ">
-          <div>
-            <h3 className="font-light ">Card Payment</h3>
-            <h2 className="font-bold uppercase">available</h2>
-          </div>
-        </div>
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            key={new_movie}
+            className="w-[190px] h-auto bg-[#242124] p-[5px] rounded-[20px] border-[1px] hover:scale-102 transition duration-300 ease-out xl:w-[300px] xl:p-[10px] xl: xl:items-start xl:justify-between xl:gap-[10px]"
+          >
+            <img
+              className="w-[100%] h-[190px] object-cover rounded-[15px] xl:h-[260px]"
+              src="movies/1.jpg"
+              alt="movie"
+            />
+            <div className="w-[100%] h-auto mt-[5px] xl:mt-[10px]">
+              <h4 className="text-white font-medium xl:font-extralight ">
+                Movie Title
+              </h4>
+              <p className="text-[#aaaaaa] opacity-[0.7] mt-[5px] xl:mt-[20px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
+                <span className="hidden xl:block text-[11px] uppercase">
+                  <i className="bi bi-dot"></i> Duration -
+                </span>
+                1h 35min
+              </p>
+              <p className="hidden text-[#aaaaaa] opacity-[0.7] xl:mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
+                <span className="hidden xl:block text-[11px] uppercase">
+                  <i className="bi bi-dot"></i> Released -
+                </span>
+                2023-01-01
+              </p>
+              <div className="w-[100%] h-auto flex items-center justify-center mt-[5px] gap-[10px] xl:mt-[10px]">
+                <button className="w-[100%] flex uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30] xl:hidden">
+                  More
+                </button>
+                <button className="hidden xl:flex w-[100%]  uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30] gap-[10px]">
+                  <i className="bi bi-ticket-perforated"></i> Get Tickets
+                </button>
+                <button className="hidden xl:flex w-[100px] uppercase bg-[#242124] text-white border-[1px] border-white hover:bg-white hover:text-black">
+                  More
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+        {/* repeat */}
       </section>
     </div>
   );

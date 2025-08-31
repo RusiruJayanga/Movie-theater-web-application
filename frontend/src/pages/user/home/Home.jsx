@@ -66,6 +66,7 @@ const Home = () => {
 
   //movies
   const new_Movie = [1, 2, 3, 4, 5, 6, 7, 8];
+  const upcome_movie = [1, 2, 3, 4, 5, 6];
 
   return (
     <div>
@@ -104,7 +105,7 @@ const Home = () => {
         <div className="relative w-full h-[25vh] flex items-center justify-center bg-[url(/main_image.jpg)] bg-cover bg-center bg-no-repeat xl:hidden">
           <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.4)_51%,rgba(0,0,0,0.4)_100%)]"></div>
           <img
-            className="w-[150px] object-cover relative z-10"
+            className="w-[250px] object-cover relative z-10"
             src="logo_text.png"
             alt="logo"
           />
@@ -126,7 +127,7 @@ const Home = () => {
               <div key={movie.id} className="px-2">
                 <div className="w-auto h-[450px] bg-[#242124] rounded-[10px]">
                   <img
-                    className="w-full h-full object-cover opacity-[0.65] rounded-[10px] hover:opacity-[1] transition duration-300 ease-out"
+                    className="w-full h-full object-cover opacity-[0.7] rounded-[10px] hover:opacity-[1] transition duration-300 ease-out"
                     src={movie.image}
                     alt="movie"
                   />
@@ -152,7 +153,7 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
             key={new_movie}
-            className="w-[190px] h-auto bg-[#242124] p-[5px] rounded-[20px] border-[1px] hover:scale-102 transition duration-300 ease-out xl:w-[300px] xl:p-[10px] xl: xl:items-start xl:justify-between xl:gap-[10px]"
+            className="w-[190px] h-auto bg-[#242124] p-[5px] rounded-[20px] border-[1px] hover:scale-102 transition duration-300 ease-out xl:w-[300px] xl:p-[10px] xl:items-start xl:justify-between xl:gap-[10px]"
           >
             <img
               className="w-[100%] h-[190px] object-cover rounded-[15px] xl:h-[260px]"
@@ -163,17 +164,21 @@ const Home = () => {
               <h4 className="text-white font-medium xl:font-extralight ">
                 Movie Title
               </h4>
-              <p className="text-[#aaaaaa] opacity-[0.7] mt-[5px] xl:mt-[20px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
-                <span className="hidden xl:block text-[11px] uppercase">
-                  <i className="bi bi-dot"></i> Duration -
+              <p className="text-[#bdbdbd] mt-[5px] flex items-center gap-[5px] xl:mt-[20px]">
+                <span className="hidden xl:block ml-[5px] text-[11px] uppercase">
+                  Duration -
                 </span>
                 1h 35min
-              </p>
-              <p className="hidden text-[#aaaaaa] opacity-[0.7] xl:mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
-                <span className="hidden xl:block text-[11px] uppercase">
-                  <i className="bi bi-dot"></i> Released -
+                <span className="ml-auto">
+                  3/5 &nbsp;
+                  <i className="bi bi-star-fill text-amber-400"></i>
                 </span>
-                2023-01-01
+              </p>
+              <p className="hidden text-[#bdbdbd] xl:mt-[5px] xl:flex xl:items-center xl:gap-[5px]">
+                <span className="hidden xl:block ml-[5px] text-[11px] uppercase">
+                  Director -
+                </span>
+                rusiru jayanga
               </p>
               <div className="w-[100%] h-auto flex items-center justify-center mt-[5px] gap-[10px] xl:mt-[10px]">
                 <button className="w-[100%] flex uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30] xl:hidden">
@@ -191,14 +196,35 @@ const Home = () => {
         ))}
         {/* repeat */}
       </section>
-      {/* upcoming card section */}
-      <section className="flex items-center justify-center w-[100%] h-[60vh] gap-[10px] mt-[100px] p-[10px] cursor-default bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.5)_20%,rgba(0,0,0,0.7)_80%,rgba(12,12,12,1)_100%),url(/margin_image.jpg)] bg-cover bg-center bg-no-repeat">
-        <h1 className="text-white font-light text-[30px]">Upcoming Movies</h1>
-        <img className="w-[300px] " src="margin_spi.png" alt="" />
+      {/* margin section */}
+      <section className="flex items-center justify-center w-[100%] h-[30vh] gap-[10px] mt-[150px] p-[10px] cursor-default bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.5)_20%,rgba(0,0,0,0.5)_80%,rgba(12,12,12,1)_100%),url(/margin_bg.jpg)] bg-cover bg-center bg-no-repeat xl:h-[70vh] xl:mt-[200px] ">
+        <motion.img
+          variants={{
+            hidden: { opacity: 0, y: 70 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="w-[280px] xl:w-[600px] "
+          src="margin_image.png"
+          alt="imax"
+        />
       </section>
-      <section className="w-[98%] h-auto mx-auto mt-[150px] grid [grid-template-columns:repeat(auto-fit,_190px)] gap-[10px] justify-center cursor-default xl:gap-[30px] xl:[grid-template-columns:repeat(auto-fit,_300px)] ">
+
+      {/* upcoming card section */}
+      <section className="w-[90%] h-auto mx-auto cursor-default xl:mt-[-11vh] xl:z-20 xl:relative ">
+        <h3 className="text-white font-extralight uppercase xl:hidden">
+          upcoming movies <i className="bi bi-chevron-right"></i>
+        </h3>
+        <h2 className="hidden text-white font-extralight uppercase xl:block">
+          upcoming movies <i className="bi bi-chevron-right"></i>
+        </h2>
+      </section>
+      <section className="w-[98%] h-auto mx-auto mt-[50px] p-[10px] grid [grid-template-columns:repeat(auto-fit,_350px)] gap-[10px] justify-center cursor-default md:[grid-template-columns:repeat(auto-fit,_400px)] xl:gap-[30px] xl:[grid-template-columns:repeat(auto-fit,_450px)] xl:mt-[30px] ">
         {/* repeat */}
-        {new_Movie.map((new_movie) => (
+        {upcome_movie.map((upcome_movie) => (
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 70 },
@@ -208,45 +234,57 @@ const Home = () => {
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            key={new_movie}
-            className="w-[190px] h-auto bg-[#242124] p-[5px] rounded-[20px] border-[1px] hover:scale-102 transition duration-300 ease-out xl:w-[300px] xl:p-[10px] xl: xl:items-start xl:justify-between xl:gap-[10px]"
+            key={upcome_movie}
+            className="w-[350px] h-auto bg-[#242124] flex items-start justify-center p-[5px] rounded-[20px] border-[1px] hover:scale-102 transition duration-300 ease-out md:w-[400px] xl:w-[450px]"
           >
             <img
-              className="w-[100%] h-[190px] object-cover rounded-[15px] xl:h-[260px]"
+              className="w-[150px] h-[200px] object-cover rounded-[15px] xl:h-[250px] xl:w-[200px]"
               src="movies/1.jpg"
               alt="movie"
             />
-            <div className="w-[100%] h-auto mt-[5px] xl:mt-[10px]">
+            <div className="w-[100%] h-auto p-[10px]">
               <h4 className="text-white font-medium xl:font-extralight ">
                 Movie Title
               </h4>
-              <p className="text-[#aaaaaa] opacity-[0.7] mt-[5px] xl:mt-[20px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
-                <span className="hidden xl:block text-[11px] uppercase">
-                  <i className="bi bi-dot"></i> Duration -
-                </span>
-                1h 35min
-              </p>
-              <p className="hidden text-[#aaaaaa] opacity-[0.7] xl:mt-[5px] xl:flex xl:items-center xl:gap-[5px] xl:opacity-[1]">
-                <span className="hidden xl:block text-[11px] uppercase">
-                  <i className="bi bi-dot"></i> Released -
+              <p className="text-[#bdbdbd]  mt-[20px] flex items-center gap-[5px]">
+                <span className="ml-[5px] text-[11px] uppercase">
+                  Released -
                 </span>
                 2023-01-01
+                <span className="hidden md:block ml-auto">
+                  3/5 &nbsp;
+                  <i className="bi bi-star-fill text-amber-400"></i>
+                </span>
               </p>
-              <div className="w-[100%] h-auto flex items-center justify-center mt-[5px] gap-[10px] xl:mt-[10px]">
-                <button className="w-[100%] flex uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30] xl:hidden">
+              <p className="text-[#bdbdbd]  mt-[5px] flex items-center gap-[5px]">
+                <span className="ml-[5px] text-[11px] uppercase">
+                  Director -
+                </span>
+                rusiru jayanga
+              </p>
+              <p className="text-[#bdbdbd]  mt-[5px] flex items-center gap-[5px]">
+                <span className="ml-[5px] text-[11px] uppercase">
+                  Age Rating -
+                </span>
+                16+
+              </p>
+              <div className="w-[100%] h-auto flex items-center justify-center mt-[20px] gap-[10px] xl:mt-[70px]">
+                <button className="w-[100%] flex uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]">
                   More
                 </button>
-                <button className="hidden xl:flex w-[100%]  uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30] gap-[10px]">
-                  <i className="bi bi-ticket-perforated"></i> Get Tickets
-                </button>
-                <button className="hidden xl:flex w-[100px] uppercase bg-[#242124] text-white border-[1px] border-white hover:bg-white hover:text-black">
-                  More
+                <button className="flex w-[50px] uppercase bg-[#242124] text-white border-[1px] border-white hover:bg-white hover:text-black">
+                  <i className="bi bi-heart-fill"></i>
                 </button>
               </div>
             </div>
           </motion.div>
         ))}
         {/* repeat */}
+      </section>
+
+      {/* about section */}
+      <section className="w-[80%] h-[60vh] mt-[200px] mx-auto bg-amber-50 ">
+        <div></div>
       </section>
     </div>
   );

@@ -5,6 +5,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 //animation
 import { motion, AnimatePresence } from "framer-motion";
+//countup
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 
 const Home = () => {
   //slick slider settings
@@ -67,6 +70,12 @@ const Home = () => {
   //movies
   const new_Movie = [1, 2, 3, 4, 5, 6, 7, 8];
   const upcome_movie = [1, 2, 3, 4, 5, 6];
+
+  //countup
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.7,
+  });
 
   return (
     <div>
@@ -174,11 +183,11 @@ const Home = () => {
                   <i className="bi bi-star-fill text-amber-400"></i>
                 </span>
               </p>
-              <p className="hidden text-[#bdbdbd] xl:mt-[5px] xl:flex xl:items-center xl:gap-[5px]">
+              <p className="hidden text-[#bdbdbd] mt-[5px] items-center gap-[5px] xl:flex ">
                 <span className="hidden xl:block ml-[5px] text-[11px] uppercase">
                   Director -
                 </span>
-                rusiru jayanga
+                Rusiru jayanga
               </p>
               <div className="w-[100%] h-auto flex items-center justify-center mt-[5px] gap-[10px] xl:mt-[10px]">
                 <button className="w-[100%] flex uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30] xl:hidden">
@@ -268,7 +277,7 @@ const Home = () => {
                 </span>
                 16+
               </p>
-              <div className="w-[100%] h-auto flex items-center justify-center mt-[20px] gap-[10px] xl:mt-[70px]">
+              <div className="w-[100%] h-auto flex items-center justify-center mt-[20px] gap-[10px] xl:mt-[60px]">
                 <button className="w-[100%] flex uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]">
                   More
                 </button>
@@ -283,8 +292,99 @@ const Home = () => {
       </section>
 
       {/* about section */}
-      <section className="w-[80%] h-[60vh] mt-[200px] mx-auto bg-amber-50 ">
-        <div></div>
+      <section className="w-[90%] h-auto mt-[150px] mx-auto p-[10px] cursor-default xl:w-[70%] xl:flex xl:items-center xl:justify-center xl:gap-[50px] xl:mt-[200px]  ">
+        <div className="w-[100%] h-auto ">
+          <div className="w-[100%] h-auto ">
+            <h2 className="text-[#f21f30] uppercase font-extralight ">
+              About Us
+            </h2>
+            <h4 className="text-white uppercase font-medium mt-[5px]">
+              We are a leading movie theater chain, dedicated to providing the
+              best cinematic experience to our audience.
+            </h4>
+          </div>
+          <img
+            className="w-[100%] h-[200px] object-cover mt-[20px] rounded-[20px] xl:h-[350px] "
+            src="about/1.jpg"
+            alt="about"
+          />
+        </div>
+        <div className="w-[100%] h-auto ">
+          <div className="md:flex flex-wrap flex-3 items-center gap-[20px] ">
+            <img
+              className="w-[100%] h-[200px] object-cover mt-[20px] rounded-[20px] md:flex-1  xl:hidden  "
+              src="about/2.jpg"
+              alt="about"
+            />
+            <img
+              className="w-[100%] h-[200px] object-cover mt-[20px] rounded-[20px] md:flex-1 xl:w-[200px] "
+              src="about/3.jpg"
+              alt="about"
+            />
+            <img
+              className="w-[100%] h-[200px] object-cover mt-[20px] rounded-[20px] md:flex-1 xl:w-[200px] "
+              src="about/4.jpg"
+              alt="about"
+            />
+          </div>
+          <div>
+            <p className="text-[#bdbdbd] font-medium mt-[20px] text-justify ">
+              At AMC Theaters, we believe that movies are more than just
+              entertainment – they’re an experience. Our mission is to bring
+              stories to life on the big screen with the best in picture, sound,
+              and comfort. From the latest blockbusters to timeless classics,
+              AMC is dedicated to creating unforgettable moments for movie
+              lovers of all ages. With state-of-the-art facilities, cozy
+              seating, and a wide selection of snacks and beverages, we make
+              sure every visit feels special. At AMC, it’s not just about
+              watching a movie – it’s about living it !
+            </p>
+            <div
+              className="w-[100%] h-[60px] flex items-center justify-between mt-[20px] md:w-[50%] md:mx-auto md:mt-[30px] xl:w-[70%] xl:h-[100px] "
+              ref={ref}
+            >
+              <div className="w-[100px] flex flex-col items-center ">
+                <h2 className="text-[#f21f30] font-bold ">
+                  {inView && <CountUp start={0} end={28} duration={3} />}
+                </h2>
+                <span className="text-white text-[12px] uppercase font-medium">
+                  years
+                </span>
+              </div>
+              <div className="w-[100px] flex flex-col items-center ">
+                <h2 className="text-[#f21f30] font-bold ">
+                  {inView && <CountUp start={200} end={600} duration={3} />}+
+                </h2>
+                <span className="text-white text-[12px] uppercase font-medium">
+                  clients
+                </span>
+              </div>
+              <div className="w-[100px] flex flex-col items-center ">
+                <h2 className="text-[#f21f30] font-bold ">
+                  {inView && <CountUp start={100} end={289} duration={3} />}+
+                </h2>
+                <span className="text-white text-[12px] uppercase font-medium">
+                  movies
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* contact section */}
+      <section className="w-[90%] h-auto mt-[150px] mx-auto p-[10px] cursor-default xl:w-[70%] xl:flex xl:items-center xl:justify-center xl:gap-[50px] xl:mt-[200px] ">
+        <div className="w-[100%] h-auto ">
+          <div className="w-[100%] h-auto ">
+            <h2 className="text-[#f21f30] uppercase font-extralight ">
+              Contact Us
+            </h2>
+            <h4 className="text-white uppercase font-medium mt-[5px]">
+              We would love to hear from you! Reach out to us through any of the
+              channels below.
+            </h4>
+          </div>
+        </div>
       </section>
     </div>
   );

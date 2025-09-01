@@ -59,13 +59,13 @@ const Navigation_bar_head = () => {
             </h4>
             <motion.div
               variants={{
-                hidden: { opacity: 0, y: 30 },
+                hidden: { opacity: 0, y: 10 },
                 visible: { opacity: 1, y: 0 },
               }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={{ duration: 0.3, delay: 0.3 }}
               className="w-[90%] h-auto mt-[50px] text-white capitalize font-light mx-auto flex flex-col items-center justify-center "
             >
               <NavLink

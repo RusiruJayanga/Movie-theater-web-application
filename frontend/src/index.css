@@ -99,3 +99,18 @@ a {
   border-bottom: solid var(--bg_color_1);
   color: var(--text_color_highlight_1);
 }
+/* navigation scroll */
+.nav-scroll {
+  animation: navAnimation linear forwards;
+  animation-timeline: view();
+  animation-range-start: 100vh;
+  animation-range-end: 101vh;
+}
+
+@keyframes navAnimation {
+  100% {
+    background-color: rgb(12, 12, 12, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  }
+}

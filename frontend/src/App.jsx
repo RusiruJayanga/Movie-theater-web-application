@@ -10,6 +10,7 @@ import Footer from "./components/user/footer/Footer";
 //pages
 //user pages
 import Home from "./pages/user/home/Home";
+import Details from "./pages/user/details/Details";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       {/* user pages */}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/details" element={<Details />} />
       </Routes>
       <Footer />
     </div>

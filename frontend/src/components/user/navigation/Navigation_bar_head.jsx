@@ -72,6 +72,7 @@ const Navigation_bar_head = () => {
                 className={
                   "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out active_nav"
                 }
+                onClick={() => set_menu_open(!menuOpen)}
                 to="/"
               >
                 home
@@ -80,6 +81,7 @@ const Navigation_bar_head = () => {
                 className={
                   "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out"
                 }
+                onClick={() => set_menu_open(!menuOpen)}
                 to="/upcoming"
               >
                 upcoming
@@ -88,6 +90,7 @@ const Navigation_bar_head = () => {
                 className={
                   "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out"
                 }
+                onClick={() => set_menu_open(!menuOpen)}
                 to="/contact"
               >
                 contact us

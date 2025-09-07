@@ -55,8 +55,8 @@ const Now_showing = () => {
               >
                 More
               </Link>
-              <Link className="hidden xl:flex items-center justify-center w-[100%] h-[40px] rounded-[20px] uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#242124] hover:text-[#f21f30] gap-[10px]">
-                <i className="bi bi-ticket-perforated"></i> Get Tickets
+              <Link className="hidden xl:flex items-center justify-center w-[100%] h-[40px] rounded-[20px] uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#242124] hover:text-[#f21f30]">
+                Get Tickets
               </Link>
               <Link
                 to="/details"

@@ -13,7 +13,7 @@ const Contact = () => {
       whileInView="visible"
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="w-[90%] mt-[150px] mx-auto p-[10px] cursor-default xl:w-[70%] md:flex md:items-start md:justify-center md:gap-[30px] xl:mt-[200px] "
+      className="w-[90%] mt-[150px] mx-auto p-[10px] cursor-default xl:w-[1075px] md:flex md:items-start md:justify-center md:gap-[30px] xl:mt-[200px] "
     >
       <div className="w-[100%] ">
         <h2 className="text-[#f21f30] uppercase font-extralight ">
@@ -25,19 +25,29 @@ const Contact = () => {
         </h4>
       </div>
       <form className="w-[100%] mt-[40px] md:mt-0 ">
-        <input
-          className="w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white border-1 border-[#f21f30] "
-          type="email"
-          placeholder="Your Email"
-          max={100}
-        />
-        <textarea
-          className="w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px] text-white border-1 border-[#f21f30] mt-[20px]"
-          placeholder="Content"
-          max={200}
-        ></textarea>
+        <div className="input-group">
+          <input
+            className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white font-medium"
+            type="email"
+            max={100}
+            required
+          />
+          <label className="label text-[16px] font-medium" htmlFor="email">
+            Your Email
+          </label>
+        </div>
+        <div className="input-group mt-[20px]">
+          <textarea
+            className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px] text-white font-medium "
+            max={200}
+            required
+          ></textarea>
+          <label className="label text-[16px] font-medium" htmlFor="email">
+            Content
+          </label>
+        </div>
         <button
-          className="w-[150px] mx-auto mt-[20px] flex uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
+          className="w-[150px] mx-auto mt-[20px] flex uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
           type="submit"
         >
           Send

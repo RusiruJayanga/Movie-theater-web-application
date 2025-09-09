@@ -21,7 +21,7 @@ const Now_showing = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
           key={new_movie}
-          className="w-[190px] bg-[#242124] p-[5px] rounded-[20px] border-[1px] hover:scale-102 transition duration-300 ease-out xl:w-[300px] xl:p-[10px] xl:items-start xl:justify-between xl:gap-[10px]"
+          className="w-[190px] bg-[#1a1a1a] p-[5px] rounded-[20px] border-[1px] hover:scale-102 transition duration-300 ease-out xl:w-[300px] xl:p-[10px] xl:items-start xl:justify-between xl:gap-[10px]"
         >
           <img
             className="w-[100%] h-[190px] object-cover rounded-[15px] xl:h-[260px]"
@@ -51,16 +51,16 @@ const Now_showing = () => {
             <div className="w-[100%] flex items-center justify-center mt-[5px] gap-[10px] xl:mt-[10px]">
               <Link
                 to="/details"
-                className="w-[100%] h-[40px] flex items-center justify-center rounded-[20px] uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#242124] hover:text-[#f21f30] xl:hidden"
+                className="w-[100%] h-[40px] flex items-center justify-center rounded-[20px] uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30] xl:hidden"
               >
                 More
               </Link>
-              <Link className="hidden xl:flex items-center justify-center w-[100%] h-[40px] rounded-[20px] uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#242124] hover:text-[#f21f30]">
+              <Link className="hidden xl:flex items-center justify-center w-[100%] h-[40px] rounded-[20px] uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]">
                 Get Tickets
               </Link>
               <Link
                 to="/details"
-                className="hidden xl:flex items-center justify-center w-[100px] h-[40px] rounded-[20px] uppercase bg-[#242124] text-white border-[1px] border-white transition-colors duration-300 ease-out hover:bg-white hover:text-black"
+                className="hidden xl:flex items-center justify-center w-[100px] h-[40px] rounded-[20px] uppercase text-white font-medium border-[1px] border-white transition-colors duration-300 ease-out hover:bg-white hover:text-black"
               >
                 More
               </Link>

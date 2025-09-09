@@ -20,7 +20,7 @@ const Upcoming = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
           key={upcome_movie}
-          className="w-[350px] bg-[#242124] flex items-start justify-center p-[5px] rounded-[20px] border-[1px] hover:scale-102 transition duration-300 ease-out md:w-[400px] xl:w-[450px]"
+          className="w-[350px] bg-[#1a1a1a] flex items-start justify-center p-[5px] rounded-[20px] border-[1px] hover:scale-102 transition duration-300 ease-out md:w-[400px] xl:w-[450px]"
         >
           <img
             className="w-[150px] h-[200px] object-cover rounded-[15px] xl:h-[250px] xl:w-[200px]"
@@ -49,14 +49,14 @@ const Upcoming = () => {
               </span>
               16+
             </p>
-            <div className="w-[100%] flex items-center justify-center mt-[20px] gap-[10px] xl:mt-[60px]">
+            <div className="w-[100%] flex items-center justify-center mt-[20px] gap-[10px] xl:mt-[60px] xl:w-[200px] xl:ml-auto">
               <Link
                 to="/details"
-                className="w-[100%] flex items-center justify-center h-[40px] rounded-[20px] uppercase bg-[#f21f30] text-white border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#242124] hover:text-[#f21f30]"
+                className="w-[100%] flex items-center justify-center h-[40px] rounded-[20px] uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]"
               >
                 More
               </Link>
-              <button className="flex w-[50px] uppercase bg-[#242124] text-white border-[1px] border-white hover:bg-white hover:text-black">
+              <button className="flex w-[50px] uppercase text-white border-[1px] border-white hover:bg-white hover:text-black xl:w-[55px]">
                 <i className="bi bi-heart-fill"></i>
               </button>
             </div>

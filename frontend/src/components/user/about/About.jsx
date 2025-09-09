@@ -11,7 +11,7 @@ const About = () => {
   });
 
   return (
-    <section className="w-[90%] mt-[150px] mx-auto p-[10px] cursor-default xl:w-[70%] xl:flex xl:items-center xl:justify-center xl:gap-[50px] xl:mt-[200px]  ">
+    <section className="w-[90%] mt-[150px] mx-auto p-[10px] cursor-default xl:w-[1075px] xl:flex xl:items-center xl:justify-center xl:gap-[50px] xl:mt-[200px]  ">
       <div className="w-[100%] ">
         <div className="w-[100%] ">
           <h2 className="text-[#f21f30] uppercase font-extralight ">
@@ -47,7 +47,7 @@ const About = () => {
           />
         </div>
         <div>
-          <p className="text-[#bdbdbd] font-medium mt-[20px] text-justify ">
+          <p className="text-white font-extralight mt-[20px] text-justify ">
             At AMC Theaters, we believe that movies are more than just
             entertainment – they’re an experience. Our mission is to bring
             stories to life on the big screen with the best in picture, sound,

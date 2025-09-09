@@ -70,7 +70,7 @@ const Slick_slider = () => {
       <h2 className="hidden text-white font-extralight uppercase xl:block">
         Now Showing <i className="bi bi-chevron-right"></i>
       </h2>
-      <div className="w-[85%] mx-auto mt-[30px] xl:w-[90%]">
+      <div className="w-[85%] mx-auto mt-[30px] xl:w-[1240px]">
         <Slider {...settings}>
           {/* repeat */}
           {movies.map((movie) => (

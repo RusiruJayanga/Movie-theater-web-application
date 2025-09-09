@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer className="w-[100%] bg-[#242124] relative bottom-0 mt-[250px] p-[10px] pt-[30px] text-amber-50 cursor-default ">
+      <footer className="w-[100%] bg-[#1a1a1a] relative bottom-0 mt-[250px] p-[10px] pt-[30px] text-amber-50 cursor-default ">
         <div className="w-[100%] flex flex-wrap justify-center gap-[20px] ">
           <img
             className="w-[100px] h-[100px] object-cover xl:w-[150px] xl:h-[150px] "
@@ -22,25 +22,25 @@ const Footer = () => {
           <div className="w-[100px] flex flex-col gap-[5px] md:w-[150px] xl:w-[200px]">
             <h5 className="font-bold text-[#f21f30] uppercase">Quick Links</h5>
             <a
-              className="text-[#bdbdbd] text-[13px] hover:text-white transition duration-300 ease-out mt-[5px]"
+              className="text-[#bdbdbd] text-[13px] font-medium hover:text-white transition duration-300 ease-out mt-[5px]"
               href="#home"
             >
               Home
             </a>
             <a
-              className="text-[#bdbdbd] text-[13px] hover:text-white transition duration-300 ease-out"
+              className="text-[#bdbdbd] text-[13px] font-medium hover:text-white transition duration-300 ease-out"
               href="#new"
             >
               New
             </a>
             <a
-              className="text-[#bdbdbd] text-[13px] hover:text-white transition duration-300 ease-out"
+              className="text-[#bdbdbd] text-[13px] font-medium hover:text-white transition duration-300 ease-out"
               href="#upcoming"
             >
               Upcoming
             </a>
             <a
-              className="text-[#bdbdbd] text-[13px] hover:text-white transition duration-300 ease-out"
+              className="text-[#bdbdbd] text-[13px] font-medium hover:text-white transition duration-300 ease-out"
               href="#contact"
             >
               Contact
@@ -49,13 +49,13 @@ const Footer = () => {
 
           <div className="xl:w-[300px] flex flex-col gap-[5px]">
             <h5 className="font-bold text-[#f21f30] uppercase">Contact us</h5>
-            <p className="text-[#bdbdbd] hover:text-white transition duration-300 ease-out ">
+            <p className="text-[#bdbdbd] font-medium hover:text-white transition duration-300 ease-out ">
               Gmail: amc@gmail.com
             </p>
-            <p className="text-[#bdbdbd] hover:text-white transition duration-300 ease-out ">
+            <p className="text-[#bdbdbd] font-medium hover:text-white transition duration-300 ease-out ">
               Phone: +94 776 679 711
             </p>
-            <p className="text-[#bdbdbd] hover:text-white transition duration-300 ease-out ">
+            <p className="text-[#bdbdbd] font-medium hover:text-white transition duration-300 ease-out ">
               Location: Matara, Sri Lanka
             </p>
             <ul className="flex gap-[10px] mt-[10px] xl:gap-[15px]">
@@ -76,7 +76,7 @@ const Footer = () => {
         </div>
         {/* footer bottem */}
         <div className="w-[80%] mx-auto h-[20vh] border-t border-t-white flex text-center justify-center items-start mt-[20px] md:h-[10vh] xl:h-[15vh] ">
-          <p className="text-white font-light mt-[20px]">
+          <p className="text-white font-extralight mt-[20px]">
             &copy; 2025 AMC theater. All rights reserved.
           </p>
         </div>

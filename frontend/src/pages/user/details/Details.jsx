@@ -51,7 +51,7 @@ const Details = () => {
               <i className="bi bi-heart-fill"></i>
             </button>
           </div>
-          <p className="text-white font-extralight mt-[40px] text-justify ">
+          <p className="text-white opacity-[0.8] font-extralight mt-[40px] text-justify ">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt
             nesciunt necessitatibus officiis praesentium enim ipsam autem.
             Aliquid, repellat similique eveniet ad harum corrupti voluptatem

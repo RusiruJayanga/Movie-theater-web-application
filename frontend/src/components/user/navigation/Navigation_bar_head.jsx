@@ -6,7 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 const Navigation_bar_head = () => {
   //responsive navigation
   const [menuOpen, set_menu_open] = useState(false);
-
+  //token
+  const token = "token";
   return (
     <div className="z-[10000]">
       <div className="w-[100%] h-[60px] bg-[#0c0c0c] flex items-center p-[10px] sm:h-[100px] ">
@@ -31,9 +32,20 @@ const Navigation_bar_head = () => {
           <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
             <i className="bi bi-ticket-perforated"></i>
           </h4>
-          <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
-            <i className="bi bi-person"></i>
-          </h4>
+          {/* account */}
+          {token ? (
+            <Link to="/login">
+              <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
+                <i className="bi bi-person"></i>
+              </h4>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
+                <i className="bi bi-person"></i>
+              </h4>
+            </Link>
+          )}
         </div>
         <h4
           className="w-[40px] h-[40px] flex items-center justify-center text-white cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out sm:hidden"
@@ -100,9 +112,20 @@ const Navigation_bar_head = () => {
               <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
                 <i className="bi bi-ticket-perforated"></i>
               </h4>
-              <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
-                <i className="bi bi-person"></i>
-              </h4>
+              {/* account */}
+              {token ? (
+                <Link onClick={() => set_menu_open(!menuOpen)} to="/login">
+                  <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
+                    <i className="bi bi-person"></i>
+                  </h4>
+                </Link>
+              ) : (
+                <Link onClick={() => set_menu_open(!menuOpen)} to="/login">
+                  <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
+                    <i className="bi bi-person"></i>
+                  </h4>
+                </Link>
+              )}
             </div>
           </motion.div>
         )}

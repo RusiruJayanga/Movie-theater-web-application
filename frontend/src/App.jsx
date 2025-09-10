@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 //scroll to top
 import ScrollToTop from "../src/config/ScrollToTop";
@@ -11,21 +11,27 @@ import Footer from "./components/user/footer/Footer";
 //user pages
 import Home from "./pages/user/home/Home";
 import Details from "./pages/user/details/Details";
+import Login from "./components/user/login/Login";
 
 function App() {
+  //hide footer and navigation
+  const location = useLocation();
+  const hideFooterPaths = ["/login", "/signup"];
   return (
     <div>
       <ScrollToTop />
       {/* navigation */}
-      <Navigation_bar_head />
-      <Navigation_bar />
+      {!hideFooterPaths.includes(location.pathname) && <Navigation_bar_head />}
+      {!hideFooterPaths.includes(location.pathname) && <Navigation_bar />}
       {/* pages */}
       {/* user pages */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/details" element={<Details />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
-      <Footer />
+      {/* footer */}
+      {!hideFooterPaths.includes(location.pathname) && <Footer />}
     </div>
   );
 }

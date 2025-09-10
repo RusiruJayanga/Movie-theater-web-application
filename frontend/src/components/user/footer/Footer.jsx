@@ -12,7 +12,7 @@ const Footer = () => {
           />
           <div className="w-[250px] xl:w-[300px]">
             <h5 className="font-bold text-[#f21f30] uppercase">us</h5>
-            <p className=" text-[#bdbdbd] font-medium hover:text-white transition duration-300 ease-out ">
+            <p className=" text-white opacity-[0.7] font-extralight hover:opacity-[1] transition duration-300 ease-out ">
               Our mission is to provide a seamless and efficient platform for
               movie enthusiasts to explore, book, and enjoy their favorite
               films.
@@ -22,25 +22,25 @@ const Footer = () => {
           <div className="w-[100px] flex flex-col gap-[5px] md:w-[150px] xl:w-[200px]">
             <h5 className="font-bold text-[#f21f30] uppercase">Quick Links</h5>
             <a
-              className="text-[#bdbdbd] text-[13px] font-medium hover:text-white transition duration-300 ease-out mt-[5px]"
+              className="text-[13px] text-white opacity-[0.8] font-extralight hover:opacity-[1] transition duration-300 ease-out mt-[5px]"
               href="#home"
             >
               Home
             </a>
             <a
-              className="text-[#bdbdbd] text-[13px] font-medium hover:text-white transition duration-300 ease-out"
+              className="text-[13px] text-white opacity-[0.8] font-extralight hover:opacity-[1] transition duration-300 ease-out"
               href="#new"
             >
               New
             </a>
             <a
-              className="text-[#bdbdbd] text-[13px] font-medium hover:text-white transition duration-300 ease-out"
+              className="text-[13px] text-white opacity-[0.8] font-extralight hover:opacity-[1] transition duration-300 ease-out"
               href="#upcoming"
             >
               Upcoming
             </a>
             <a
-              className="text-[#bdbdbd] text-[13px] font-medium hover:text-white transition duration-300 ease-out"
+              className="text-[13px] text-white opacity-[0.8] font-extralight hover:opacity-[1] transition duration-300 ease-out"
               href="#contact"
             >
               Contact
@@ -49,27 +49,27 @@ const Footer = () => {
 
           <div className="xl:w-[300px] flex flex-col gap-[5px]">
             <h5 className="font-bold text-[#f21f30] uppercase">Contact us</h5>
-            <p className="text-[#bdbdbd] font-medium hover:text-white transition duration-300 ease-out ">
+            <p className="text-white opacity-[0.8] font-extralight hover:opacity-[1] transition duration-300 ease-out ">
               Gmail: amc@gmail.com
             </p>
-            <p className="text-[#bdbdbd] font-medium hover:text-white transition duration-300 ease-out ">
+            <p className="text-white opacity-[0.8] font-extralight hover:opacity-[1] transition duration-300 ease-out ">
               Phone: +94 776 679 711
             </p>
-            <p className="text-[#bdbdbd] font-medium hover:text-white transition duration-300 ease-out ">
+            <p className="text-white opacity-[0.8] font-extralight hover:opacity-[1] transition duration-300 ease-out ">
               Location: Matara, Sri Lanka
             </p>
             <ul className="flex gap-[10px] mt-[10px] xl:gap-[15px]">
               <a href="#">
-                <i className="bi bi-facebook text-[#bdbdbd] hover:text-white transition duration-300 ease-out"></i>
+                <i className="bi bi-facebook text-white opacity-[0.7] hover:opacity-[1] transition duration-300 ease-out"></i>
               </a>
               <a href="#">
-                <i className="bi bi-instagram text-[#bdbdbd] hover:text-white transition duration-300 ease-out"></i>
+                <i className="bi bi-instagram text-white opacity-[0.7] hover:opacity-[1] transition duration-300 ease-out"></i>
               </a>
               <a href="#">
-                <i className="bi bi-twitter-x text-[#bdbdbd] hover:text-white transition duration-300 ease-out"></i>
+                <i className="bi bi-twitter-x text-white opacity-[0.7] hover:opacity-[1] transition duration-300 ease-out"></i>
               </a>
               <a href="#">
-                <i className="bi bi-linkedin text-[#bdbdbd] hover:text-white transition duration-300 ease-out"></i>
+                <i className="bi bi-linkedin text-white opacity-[0.7] hover:opacity-[1] transition duration-300 ease-out"></i>
               </a>
             </ul>
           </div>

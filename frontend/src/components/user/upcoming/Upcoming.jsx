@@ -28,10 +28,8 @@ const Upcoming = () => {
             alt="movie"
           />
           <div className="w-[100%] p-[10px]">
-            <h4 className="text-white font-medium xl:font-extralight ">
-              Movie Title
-            </h4>
-            <p className="text-[#bdbdbd] mt-[20px] flex items-center gap-[5px]">
+            <h4 className="text-white font-medium ">Movie Title</h4>
+            <p className="text-white opacity-[0.8] font-extralight mt-[20px] flex items-center gap-[5px]">
               <span className="ml-[5px] text-[11px] uppercase">Released -</span>
               2023-01-01
               <span className="hidden md:block ml-auto">
@@ -39,11 +37,11 @@ const Upcoming = () => {
                 <i className="bi bi-star-fill text-amber-400"></i>
               </span>
             </p>
-            <p className="text-[#bdbdbd] mt-[5px] flex items-center gap-[5px]">
+            <p className="text-white opacity-[0.8] font-extralight mt-[5px] flex items-center gap-[5px]">
               <span className="ml-[5px] text-[11px] uppercase">Director -</span>
               rusiru jayanga
             </p>
-            <p className="text-[#bdbdbd] mt-[5px] flex items-center gap-[5px]">
+            <p className="text-white opacity-[0.8] font-extralight mt-[5px] flex items-center gap-[5px]">
               <span className="ml-[5px] text-[11px] uppercase">
                 Age Rating -
               </span>

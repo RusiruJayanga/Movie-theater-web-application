@@ -29,10 +29,8 @@ const Now_showing = () => {
             alt="movie"
           />
           <div className="w-[100%] mt-[5px] xl:mt-[10px]">
-            <h4 className="text-white font-medium xl:font-extralight ">
-              Movie Title
-            </h4>
-            <p className="text-[#bdbdbd] mt-[5px] flex items-center gap-[5px] xl:mt-[20px]">
+            <h4 className="text-white font-medium ">Movie Title</h4>
+            <p className="text-white opacity-[0.8] font-extralight mt-[5px] flex items-center gap-[5px] xl:mt-[20px]">
               <span className="hidden xl:block ml-[5px] text-[11px] uppercase">
                 Duration -
               </span>
@@ -42,7 +40,7 @@ const Now_showing = () => {
                 <i className="bi bi-star-fill text-amber-400"></i>
               </span>
             </p>
-            <p className="hidden text-[#bdbdbd] mt-[5px] items-center gap-[5px] xl:flex ">
+            <p className="hidden text-white font-extralight opacity-[0.8] mt-[5px] items-center gap-[5px] xl:flex ">
               <span className="hidden xl:block ml-[5px] text-[11px] uppercase">
                 Director -
               </span>

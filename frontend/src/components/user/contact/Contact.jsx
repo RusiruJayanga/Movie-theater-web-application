@@ -24,30 +24,38 @@ const Contact = () => {
           channels below.
         </h4>
       </div>
-      <form className="w-[100%] mt-[40px] md:mt-0 ">
+      <form id="contact-form" className="w-[100%] mt-[40px] md:mt-0 ">
         <div className="input-group">
           <input
             className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white font-medium"
             type="email"
+            name="email"
             max={100}
             required
           />
           <label className="label text-[16px] font-medium" htmlFor="email">
             Your Email
           </label>
+          <p className="w-[100%] h-[30px] text-[#000000] font-light ml-[20px]">
+            console.error;
+          </p>
         </div>
-        <div className="input-group mt-[20px]">
+        <div className="input-group">
           <textarea
             className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px] text-white font-medium "
+            name="content"
             max={200}
             required
           ></textarea>
-          <label className="label text-[16px] font-medium" htmlFor="email">
+          <label className="label text-[16px] font-medium" htmlFor="content">
             Content
           </label>
+          <p className="w-[100%] h-[30px] text-[#000000] font-light ml-[20px]">
+            console.error;
+          </p>
         </div>
         <button
-          className="w-[150px] mx-auto mt-[20px] flex uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
+          className="w-[150px] mx-auto mt-[10px] flex uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
           type="submit"
         >
           Send

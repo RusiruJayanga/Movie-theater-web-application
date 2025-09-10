@@ -15,7 +15,7 @@ body {
   --secondary_color: #1a1a1a;
   --bg_color_1: #f21f30;
   --bg_color_2: #1a9362;
-  --bg_color_3: #ffffff;
+  --bg_color_3: #bdbdbd;
   /* text colors */
   --text_color_1: #ffffff;
   --text_color_2: #eeeeee;
@@ -133,11 +133,11 @@ a {
   color: var(--text_color_highlight_1);
 }
 .input-group :is(.input:focus, .input:valid) ~ .label {
-  transform: translateY(-80%) scale(0.9);
+  transform: translateY(-80%) scale(0.8);
   background-color: var(--primary_color);
   padding-left: 5px;
   padding-right: 5px;
-  color: var(--text_color_1);
+  color: var(--text_color_3);
 }
 .input-group :is(.input:focus, .input:valid) {
   border-color: var(--bg_color_3);

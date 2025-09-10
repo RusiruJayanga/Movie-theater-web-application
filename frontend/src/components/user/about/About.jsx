@@ -47,7 +47,7 @@ const About = () => {
           />
         </div>
         <div>
-          <p className="text-white font-extralight mt-[20px] text-justify ">
+          <p className="text-white opacity-[0.8] font-extralight mt-[20px] text-justify ">
             At AMC Theaters, we believe that movies are more than just
             entertainment – they’re an experience. Our mission is to bring
             stories to life on the big screen with the best in picture, sound,

@@ -27,13 +27,13 @@ const Contact = () => {
       <form id="contact-form" className="w-[100%] mt-[40px] md:mt-0 ">
         <div className="input-group">
           <input
-            className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white font-medium"
+            className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white font-light"
             type="email"
             name="email"
             max={100}
             required
           />
-          <label className="label text-[16px] font-medium" htmlFor="email">
+          <label className="label text-[16px] font-light" htmlFor="email">
             Your Email
           </label>
           <p className="w-[100%] h-[30px] text-[#000000] font-light ml-[20px]">
@@ -42,12 +42,12 @@ const Contact = () => {
         </div>
         <div className="input-group">
           <textarea
-            className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px] text-white font-medium "
+            className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px] text-white font-light"
             name="content"
             max={200}
             required
           ></textarea>
-          <label className="label text-[16px] font-medium" htmlFor="content">
+          <label className="label text-[16px] font-light" htmlFor="content">
             Content
           </label>
           <p className="w-[100%] h-[30px] text-[#000000] font-light ml-[20px]">

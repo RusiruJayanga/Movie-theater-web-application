@@ -29,7 +29,7 @@ const Now_showing = () => {
             alt="movie"
           />
           <div className="w-[100%] mt-[5px] xl:mt-[10px]">
-            <h4 className="text-white font-medium ">Movie Title</h4>
+            <h5 className="text-white uppercase font-light">Movie Title</h5>
             <p className="text-white opacity-[0.8] font-extralight mt-[5px] flex items-center gap-[5px] xl:mt-[20px]">
               <span className="hidden xl:block ml-[5px] text-[11px] uppercase">
                 Duration -
@@ -40,25 +40,25 @@ const Now_showing = () => {
                 <i className="bi bi-star-fill text-amber-400"></i>
               </span>
             </p>
-            <p className="hidden text-white font-extralight opacity-[0.8] mt-[5px] items-center gap-[5px] xl:flex ">
+            <p className="hidden text-white font-extralight opacity-[0.8] capitalize mt-[5px] items-center gap-[5px] xl:flex ">
               <span className="hidden xl:block ml-[5px] text-[11px] uppercase">
                 Director -
               </span>
               Rusiru jayanga
             </p>
-            <div className="w-[100%] flex items-center justify-center mt-[5px] gap-[10px] xl:mt-[10px]">
+            <div className="w-[100%] flex items-center justify-center mt-[5px] gap-[10px] text-white font-light xl:mt-[10px]">
               <Link
                 to="/details"
-                className="w-[100%] h-[40px] flex items-center justify-center rounded-[20px] uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30] xl:hidden"
+                className="w-[100%] h-[40px] flex items-center justify-center rounded-[20px] uppercase bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30] xl:hidden"
               >
                 More
               </Link>
-              <Link className="hidden xl:flex items-center justify-center w-[100%] h-[40px] rounded-[20px] uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]">
+              <Link className="hidden xl:flex items-center justify-center w-[100%] h-[40px] rounded-[20px] uppercase bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]">
                 Get Tickets
               </Link>
               <Link
                 to="/details"
-                className="hidden xl:flex items-center justify-center w-[100px] h-[40px] rounded-[20px] uppercase text-white font-medium border-[1px] border-white transition-colors duration-300 ease-out hover:bg-white hover:text-black"
+                className="hidden xl:flex items-center justify-center w-[100px] h-[40px] rounded-[20px] uppercase border-[1px] border-white transition-colors duration-300 ease-out hover:bg-white hover:text-black"
               >
                 More
               </Link>

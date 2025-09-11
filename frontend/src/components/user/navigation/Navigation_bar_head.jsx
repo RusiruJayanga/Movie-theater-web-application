@@ -34,7 +34,7 @@ const Navigation_bar_head = () => {
           </h4>
           {/* account */}
           {token ? (
-            <Link to="/login">
+            <Link to="/account">
               <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
                 <i className="bi bi-person"></i>
               </h4>
@@ -61,7 +61,7 @@ const Navigation_bar_head = () => {
             initial={{ opacity: 0, x: -5, width: 0 }}
             animate={{ opacity: 1, x: 0, width: 180 }}
             transition={{ duration: 0.3 }}
-            className="mt-[-60px] z-[10100] h-[100vh] bg-[#0c0c0c] right-0 p-[10px] absolute sm:hidden"
+            className="z-[10100] h-[100vh] bg-[#0c0c0c] right-0 absolute top-0 p-[10px] sm:hidden"
           >
             <h4
               className="w-[40px] h-[40px] flex items-center justify-center text-white cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out"
@@ -82,7 +82,7 @@ const Navigation_bar_head = () => {
             >
               <NavLink
                 className={
-                  "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out active_nav"
+                  "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent active_nav"
                 }
                 onClick={() => set_menu_open(!menuOpen)}
                 to="/"
@@ -91,7 +91,7 @@ const Navigation_bar_head = () => {
               </NavLink>
               <NavLink
                 className={
-                  "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out"
+                  "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent"
                 }
                 onClick={() => set_menu_open(!menuOpen)}
                 to="/upcoming"
@@ -100,7 +100,7 @@ const Navigation_bar_head = () => {
               </NavLink>
               <NavLink
                 className={
-                  "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out"
+                  "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent"
                 }
                 onClick={() => set_menu_open(!menuOpen)}
                 to="/contact"
@@ -109,19 +109,19 @@ const Navigation_bar_head = () => {
               </NavLink>
             </motion.div>
             <div className="w-[90%] h-auto text-white mx-auto flex flex-col items-start justify-center absolute bottom-[10px]">
-              <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
+              <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white cursor-pointer">
                 <i className="bi bi-ticket-perforated"></i>
               </h4>
               {/* account */}
               {token ? (
-                <Link onClick={() => set_menu_open(!menuOpen)} to="/login">
-                  <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
+                <Link onClick={() => set_menu_open(!menuOpen)} to="/account">
+                  <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white cursor-pointer">
                     <i className="bi bi-person"></i>
                   </h4>
                 </Link>
               ) : (
                 <Link onClick={() => set_menu_open(!menuOpen)} to="/login">
-                  <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
+                  <h4 className="w-[40px] h-[40px] flex items-center justify-center text-white cursor-pointer">
                     <i className="bi bi-person"></i>
                   </h4>
                 </Link>

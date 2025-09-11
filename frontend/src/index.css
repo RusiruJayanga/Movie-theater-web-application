@@ -121,6 +121,7 @@ a {
 .input-group .input {
   outline: none;
   border: 1px solid var(--bg_color_1);
+  text-transform: capitalize;
   background-color: transparent;
 }
 .input-group .label {

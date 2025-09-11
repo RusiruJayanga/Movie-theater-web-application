@@ -39,15 +39,15 @@ const Details = () => {
               src="movies/1.jpg"
               alt="movie"
             />
-            <h2 className="text-[#f21f30] font-medium uppercase ">
+            <h2 className="text-[#f21f30] font-light uppercase ">
               Lorem ipsum dolor, sit amet consectetur adipisicing
             </h2>
           </div>
-          <div className="w-[100%] flex justify-center gap-[10px] mt-[10px] md:w-[35%] xl:w-[280px] ">
-            <Link className="flex items-center justify-center w-[100%] h-[40px] rounded-[20px] uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]">
+          <div className="w-[100%] flex justify-center gap-[10px] mt-[10px] text-white font-light md:w-[35%] xl:w-[280px] ">
+            <Link className="flex items-center justify-center w-[100%] h-[40px] rounded-[20px] uppercase bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]">
               Get Tickets
             </Link>
-            <button className="flex w-[50px] uppercase text-white border-[1px] border-white hover:bg-white hover:text-black">
+            <button className="flex w-[50px] uppercase border-[1px] border-white hover:bg-white hover:text-black">
               <i className="bi bi-heart-fill"></i>
             </button>
           </div>
@@ -63,27 +63,27 @@ const Details = () => {
             corporis dolorem voluptatum? necessitatibus corporis dolorem
             voluptatum?
           </p>
-          <div className="w-[100%] mt-[10px] md:flex md:justify-between xl:mt-[20px]">
+          <div className="w-[100%] mt-[10px] text-white font-medium md:flex md:justify-between xl:mt-[20px]">
             <div>
-              <p className="text-white font-medium mt-[5px] flex items-center gap-[5px]">
+              <p className="mt-[5px] flex items-center gap-[5px]">
                 <span className="text-[11px] font-extralight uppercase">
                   Duration -
                 </span>
                 1h 35min
               </p>
-              <p className="text-white font-medium mt-[5px] flex items-center gap-[5px]">
+              <p className="mt-[5px] flex items-center gap-[5px]">
                 <span className="text-[11px] font-extralight uppercase">
                   Released -
                 </span>
                 2023-01-01
               </p>
-              <p className="text-white font-medium mt-[5px] flex items-center gap-[5px]">
+              <p className="mt-[5px] flex items-center gap-[5px]">
                 <span className="text-[11px] font-extralight uppercase">
                   Director -
                 </span>
                 rusiru jayanga
               </p>
-              <p className="text-white font-medium mt-[5px] flex items-center gap-[5px]">
+              <p className="mt-[5px] flex items-center gap-[5px]">
                 <span className="text-[11px] font-extralight uppercase">
                   Age Rating -
                 </span>

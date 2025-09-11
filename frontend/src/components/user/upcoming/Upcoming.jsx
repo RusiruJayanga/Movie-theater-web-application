@@ -28,7 +28,7 @@ const Upcoming = () => {
             alt="movie"
           />
           <div className="w-[100%] p-[10px]">
-            <h4 className="text-white font-medium ">Movie Title</h4>
+            <h5 className="text-white uppercase font-light">Movie Title</h5>
             <p className="text-white opacity-[0.8] font-extralight mt-[20px] flex items-center gap-[5px]">
               <span className="ml-[5px] text-[11px] uppercase">Released -</span>
               2023-01-01
@@ -37,7 +37,7 @@ const Upcoming = () => {
                 <i className="bi bi-star-fill text-amber-400"></i>
               </span>
             </p>
-            <p className="text-white opacity-[0.8] font-extralight mt-[5px] flex items-center gap-[5px]">
+            <p className="text-white opacity-[0.8] capitalize font-extralight mt-[5px] flex items-center gap-[5px]">
               <span className="ml-[5px] text-[11px] uppercase">Director -</span>
               rusiru jayanga
             </p>
@@ -47,14 +47,14 @@ const Upcoming = () => {
               </span>
               16+
             </p>
-            <div className="w-[100%] flex items-center justify-center mt-[20px] gap-[10px] xl:mt-[60px] xl:w-[200px] xl:ml-auto">
+            <div className="w-[100%] flex items-center justify-center mt-[20px] gap-[10px] text-white font-light xl:mt-[60px] xl:w-[200px] xl:ml-auto">
               <Link
                 to="/details"
-                className="w-[100%] flex items-center justify-center h-[40px] rounded-[20px] uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]"
+                className="w-[100%] flex items-center justify-center h-[40px] rounded-[20px] uppercase bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]"
               >
                 More
               </Link>
-              <button className="flex w-[50px] uppercase text-white border-[1px] border-white hover:bg-white hover:text-black xl:w-[55px]">
+              <button className="flex w-[50px] uppercase border-[1px] border-white hover:bg-white hover:text-black xl:w-[55px]">
                 <i className="bi bi-heart-fill"></i>
               </button>
             </div>

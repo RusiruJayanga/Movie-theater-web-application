@@ -39,15 +39,15 @@ const Details = () => {
               src="movies/1.jpg"
               alt="movie"
             />
-            <h2 className="text-[#f21f30] font-light uppercase ">
+            <h2 className="text-[#f21f30] font-light uppercase">
               Lorem ipsum dolor, sit amet consectetur adipisicing
             </h2>
           </div>
           <div className="w-[100%] flex justify-center gap-[10px] mt-[10px] text-white font-light md:w-[35%] xl:w-[280px] ">
-            <Link className="flex items-center justify-center w-[100%] h-[40px] rounded-[20px] uppercase bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]">
-              Get Tickets
+            <Link className="flex items-center justify-center w-[100%] h-[40px] rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]">
+              GET TICKETS
             </Link>
-            <button className="flex w-[50px] uppercase border-[1px] border-white hover:bg-white hover:text-black">
+            <button className="flex w-[50px] border-[1px] border-white hover:bg-white hover:text-black">
               <i className="bi bi-heart-fill"></i>
             </button>
           </div>
@@ -63,60 +63,37 @@ const Details = () => {
             corporis dolorem voluptatum? necessitatibus corporis dolorem
             voluptatum?
           </p>
-          <div className="w-[100%] mt-[10px] text-white font-medium md:flex md:justify-between xl:mt-[20px]">
-            <div>
-              <p className="mt-[5px] flex items-center gap-[5px]">
-                <span className="text-[11px] font-extralight uppercase">
-                  Duration -
-                </span>
-                1h 35min
-              </p>
-              <p className="mt-[5px] flex items-center gap-[5px]">
-                <span className="text-[11px] font-extralight uppercase">
-                  Released -
-                </span>
-                2023-01-01
-              </p>
-              <p className="mt-[5px] flex items-center gap-[5px]">
-                <span className="text-[11px] font-extralight uppercase">
-                  Director -
-                </span>
-                rusiru jayanga
-              </p>
-              <p className="mt-[5px] flex items-center gap-[5px]">
-                <span className="text-[11px] font-extralight uppercase">
-                  Age Rating -
-                </span>
-                16+
-              </p>
+          <div className="w-[100%] mt-[20px] text-white font-medium md:flex md:justify-between xl:mt-[30px]">
+            <div className="text-white font-light capitalize">
+              <p>1 h 35 min</p>
+              <p className="mt-[5px] text-[#f21f30] uppercase font-bold">PG</p>
+              <p className="mt-[5px]">Opening Sep 5,2025</p>
+              <p className="mt-[5px]">Closing Sep 5,2025</p>
+              <p className="mt-[5px]">Universal Pictures</p>
             </div>
-            <div className="hidden md:flex flex-col justify-between gap-[10px] mr-[30px] ">
-              <div className="w-[150px] flex items-center justify-center gap-[10px] md:justify-between md:w-[110px]">
-                <img className="w-[50px] " src="rating/imdb.png" alt="rating" />
-                <h4 className="text-[#f21f30] font-medium">7/10</h4>
+            <div className="hidden md:flex flex-col justify-between gap-[10px] mr-[30px] text-white font-medium">
+              <div className="w-[150px] flex items-center justify-center gap-[20px] md:justify-between md:w-[110px]">
+                <img className="w-[60px] " src="rating/imdb.png" alt="rating" />
+                <h4>7/10</h4>
               </div>
-              <div className="w-[150px] flex items-center justify-center gap-[10px] md:justify-between md:w-[110px]">
+              <div className="w-[150px] flex items-center justify-center gap-[20px] md:justify-between md:w-[110px]">
                 <img
-                  className="w-[30px] ml-[10px] "
-                  src="rating/roten-good.png"
+                  className="w-[55px] ml-[5px] "
+                  src="rating/roten.png"
                   alt="rating"
                 />
-                <h4 className="text-[#f21f30] font-medium">90%</h4>
+                <h4>90%</h4>
               </div>
             </div>
           </div>
-          <div className="w-[100%] flex justify-between md:w-[30%] md:hidden ">
+          <div className="w-[100%] mt-[10px] flex justify-between  text-white font-medium md:hidden">
             <div className="w-[150px] flex items-center justify-center gap-[10px] md:justify-between md:w-[110px]">
               <img className="w-[60px] " src="rating/imdb.png" alt="rating" />
-              <h4 className="text-[#f21f30] font-medium">7/10</h4>
+              <h4>7/10</h4>
             </div>
             <div className="w-[150px] flex items-center justify-center gap-[10px] md:justify-between md:w-[110px]">
-              <img
-                className="w-[40px] "
-                src="rating/roten-good.png"
-                alt="rating"
-              />
-              <h4 className="text-[#f21f30] font-medium">90%</h4>
+              <img className="w-[50px] " src="rating/roten.png" alt="rating" />
+              <h4>90%</h4>
             </div>
           </div>
         </div>

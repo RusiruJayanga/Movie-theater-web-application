@@ -64,11 +64,11 @@ const Slick_slider = () => {
 
   return (
     <section className="w-[90%] mx-auto cursor-default xl:mt-[-11vh] xl:z-20 xl:relative ">
-      <h3 className="text-white font-extralight uppercase xl:hidden">
-        Now Showing <i className="bi bi-chevron-right"></i>
+      <h3 className="text-white font-extralight xl:hidden">
+        NOW SHOWING <i className="bi bi-chevron-right"></i>
       </h3>
-      <h2 className="hidden text-white font-extralight uppercase xl:block">
-        Now Showing <i className="bi bi-chevron-right"></i>
+      <h2 className="hidden text-white font-extralight xl:block">
+        NOW SHOWING <i className="bi bi-chevron-right"></i>
       </h2>
       <div className="w-[85%] mx-auto mt-[30px] xl:w-[1240px]">
         <Slider {...settings}>

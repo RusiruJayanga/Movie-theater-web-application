@@ -30,37 +30,30 @@ const Now_showing = () => {
           />
           <div className="w-[100%] mt-[5px] xl:mt-[10px]">
             <h5 className="text-white uppercase font-light">Movie Title</h5>
-            <p className="text-white opacity-[0.8] font-extralight mt-[5px] flex items-center gap-[5px] xl:mt-[20px]">
-              <span className="hidden xl:block ml-[5px] text-[11px] uppercase">
-                Duration -
-              </span>
-              1h 35min
-              <span className="ml-auto">
-                3/10 &nbsp;
-                <i className="bi bi-star-fill text-amber-400"></i>
+            <p className="text-white opacity-[0.8] font-extralight capitalize mt-[5px] flex items-center xl:mt-[15px]">
+              1 h 35 min
+              <span className="ml-auto text-[#f21f30] uppercase mr-[10px] pl-[5px] pr-[5px] border-l-[1px] border-r-[1px] border-gray-600 font-bold xl:text-[17px] ">
+                PG
               </span>
             </p>
-            <p className="hidden text-white font-extralight opacity-[0.8] capitalize mt-[5px] items-center gap-[5px] xl:flex ">
-              <span className="hidden xl:block ml-[5px] text-[11px] uppercase">
-                Director -
-              </span>
-              Rusiru jayanga
+            <p className="hidden text-white font-extralight opacity-[0.8] capitalize mt-[5px] xl:block">
+              Released Sep 5,2025
             </p>
-            <div className="w-[100%] flex items-center justify-center mt-[5px] gap-[10px] text-white font-light xl:mt-[10px]">
+            <div className="w-[100%] flex items-center justify-center mt-[10px] gap-[10px] text-white font-light">
               <Link
                 to="/details"
-                className="w-[100%] h-[40px] flex items-center justify-center rounded-[20px] uppercase bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30] xl:hidden"
+                className="w-[100%] h-[40px] flex items-center justify-center rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30] xl:hidden"
               >
-                More
+                MORE
               </Link>
-              <Link className="hidden xl:flex items-center justify-center w-[100%] h-[40px] rounded-[20px] uppercase bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]">
-                Get Tickets
+              <Link className="hidden xl:flex items-center justify-center w-[100%] h-[40px] rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]">
+                GET TICKETS
               </Link>
               <Link
                 to="/details"
-                className="hidden xl:flex items-center justify-center w-[100px] h-[40px] rounded-[20px] uppercase border-[1px] border-white transition-colors duration-300 ease-out hover:bg-white hover:text-black"
+                className="hidden xl:flex items-center justify-center w-[100px] h-[40px] rounded-[20px] border-[1px] border-white transition-colors duration-300 ease-out hover:bg-white hover:text-black"
               >
-                More
+                MORE
               </Link>
             </div>
           </div>

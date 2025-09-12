@@ -80,11 +80,11 @@ const Home = () => {
 
       {/* upcoming card section */}
       <section className="w-[90%] mx-auto cursor-default xl:mt-[-11vh] xl:z-20 xl:relative ">
-        <h3 className="text-white font-extralight uppercase xl:hidden">
-          upcoming movies <i className="bi bi-chevron-right"></i>
+        <h3 className="text-white font-extralight xl:hidden">
+          UPCOMING MOVIES <i className="bi bi-chevron-right"></i>
         </h3>
-        <h2 className="hidden text-white font-extralight uppercase xl:block">
-          upcoming movies <i className="bi bi-chevron-right"></i>
+        <h2 className="hidden text-white font-extralight xl:block">
+          UPCOMING MOVIES <i className="bi bi-chevron-right"></i>
         </h2>
       </section>
       <Upcoming />

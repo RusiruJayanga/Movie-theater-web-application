@@ -14,12 +14,10 @@ const About = () => {
     <section className="w-[90%] mt-[150px] mx-auto p-[10px] cursor-default xl:w-[1075px] xl:flex xl:items-center xl:justify-center xl:gap-[50px] xl:mt-[200px]  ">
       <div className="w-[100%] ">
         <div className="w-[100%] ">
-          <h2 className="text-[#f21f30] uppercase font-extralight ">
-            About Us
-          </h2>
-          <h4 className="text-white uppercase font-medium mt-[5px]">
-            We are a leading movie theater chain, dedicated to providing the
-            best cinematic experience to our audience.
+          <h2 className="text-[#f21f30] font-extralight ">ABOUT US</h2>
+          <h4 className="text-white font-medium mt-[5px]">
+            WE ARE A LEADING MOVIE THEATER CHAIN, DEDICATED TO PROVIDING THE
+            BEST CINEMATIC EXPERIENCE TO OUR AUDIENCE.
           </h4>
         </div>
         <img
@@ -66,25 +64,19 @@ const About = () => {
               <h2 className="text-[#f21f30] font-bold ">
                 {inView && <CountUp start={0} end={28} duration={3} />}
               </h2>
-              <span className="text-white text-[12px] uppercase font-medium">
-                years
-              </span>
+              <p className="text-white font-light">YEARS</p>
             </div>
             <div className="w-[100px] flex flex-col items-center ">
               <h2 className="text-[#f21f30] font-bold ">
                 {inView && <CountUp start={200} end={600} duration={3} />}+
               </h2>
-              <span className="text-white text-[12px] uppercase font-medium">
-                clients
-              </span>
+              <p className="text-white font-light">CLIENTS</p>
             </div>
             <div className="w-[100px] flex flex-col items-center ">
               <h2 className="text-[#f21f30] font-bold ">
                 {inView && <CountUp start={100} end={289} duration={3} />}+
               </h2>
-              <span className="text-white text-[12px] uppercase font-medium">
-                movies
-              </span>
+              <p className="text-white font-light">MOVIES</p>
             </div>
           </div>
         </div>

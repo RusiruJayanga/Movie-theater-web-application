@@ -29,32 +29,26 @@ const Upcoming = () => {
           />
           <div className="w-[100%] p-[10px]">
             <h5 className="text-white uppercase font-light">Movie Title</h5>
-            <p className="text-white opacity-[0.8] font-extralight mt-[20px] flex items-center gap-[5px]">
-              <span className="ml-[5px] text-[11px] uppercase">Released -</span>
-              2023-01-01
-              <span className="hidden md:block ml-auto">
-                3/10 &nbsp;
-                <i className="bi bi-star-fill text-amber-400"></i>
+            <p className="text-white opacity-[0.8] font-extralight capitalize mt-[5px] flex items-center xl:mt-[15px]">
+              1 h 35 min
+              <span className="ml-auto text-[#f21f30] uppercase mr-[10px] pl-[5px] pr-[5px] border-l-[1px] border-r-[1px] border-gray-600 font-bold xl:text-[17px] ">
+                PG
               </span>
             </p>
-            <p className="text-white opacity-[0.8] capitalize font-extralight mt-[5px] flex items-center gap-[5px]">
-              <span className="ml-[5px] text-[11px] uppercase">Director -</span>
-              rusiru jayanga
+            <p className="text-white font-extralight opacity-[0.8] capitalize mt-[5px] xl:block">
+              Opening Sep 5,2025
             </p>
-            <p className="text-white opacity-[0.8] font-extralight mt-[5px] flex items-center gap-[5px]">
-              <span className="ml-[5px] text-[11px] uppercase">
-                Age Rating -
-              </span>
-              16+
+            <p className="hidden text-white font-extralight opacity-[0.8] capitalize mt-[5px] xl:block">
+              Universal Pictures
             </p>
-            <div className="w-[100%] flex items-center justify-center mt-[20px] gap-[10px] text-white font-light xl:mt-[60px] xl:w-[200px] xl:ml-auto">
+            <div className="w-[100%] flex items-center justify-center mt-[60px] gap-[10px] text-white font-light xl:w-[200px] xl:ml-auto">
               <Link
                 to="/details"
-                className="w-[100%] flex items-center justify-center h-[40px] rounded-[20px] uppercase bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]"
+                className="w-[100%] flex items-center justify-center h-[40px] rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]"
               >
-                More
+                MORE
               </Link>
-              <button className="flex w-[50px] uppercase border-[1px] border-white hover:bg-white hover:text-black xl:w-[55px]">
+              <button className="flex w-[50px] border-[1px] border-white hover:bg-white hover:text-black xl:w-[55px]">
                 <i className="bi bi-heart-fill"></i>
               </button>
             </div>

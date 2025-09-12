@@ -21,7 +21,7 @@ const Now_showing = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
           key={new_movie}
-          className="w-[190px] bg-[#1a1a1a] p-[5px] rounded-[20px] border-[1px] hover:scale-102 transition duration-300 ease-out xl:w-[300px] xl:p-[10px] xl:items-start xl:justify-between xl:gap-[10px]"
+          className="w-[190px] bg-[#1a1a1a] p-[5px] text-white  font-light rounded-[20px] hover:scale-102 transition duration-300 ease-out xl:w-[300px] xl:p-[10px] xl:items-start xl:justify-between xl:gap-[10px]"
         >
           <img
             className="w-[100%] h-[190px] object-cover rounded-[15px] xl:h-[260px]"
@@ -29,17 +29,17 @@ const Now_showing = () => {
             alt="movie"
           />
           <div className="w-[100%] mt-[5px] xl:mt-[10px]">
-            <h5 className="text-white uppercase font-light">Movie Title</h5>
-            <p className="text-white opacity-[0.8] font-extralight capitalize mt-[5px] flex items-center xl:mt-[15px]">
+            <h5 className="uppercase">Movie Title</h5>
+            <p className="opacity-[0.8] font-extralight capitalize mt-[5px] flex items-center xl:mt-[15px]">
               1 h 35 min
               <span className="ml-auto text-[#f21f30] uppercase mr-[10px] pl-[5px] pr-[5px] border-l-[1px] border-r-[1px] border-gray-600 font-bold xl:text-[17px] ">
                 PG
               </span>
             </p>
-            <p className="hidden text-white font-extralight opacity-[0.8] capitalize mt-[5px] xl:block">
+            <p className="hidden font-extralight opacity-[0.8] capitalize mt-[5px] xl:block">
               Released Sep 5,2025
             </p>
-            <div className="w-[100%] flex items-center justify-center mt-[10px] gap-[10px] text-white font-light">
+            <div className="w-[100%] flex items-center justify-center mt-[10px] gap-[10px]">
               <Link
                 to="/details"
                 className="w-[100%] h-[40px] flex items-center justify-center rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30] xl:hidden"

@@ -6,9 +6,9 @@ const Login = () => {
   const [form, setForm] = useState("login");
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(0deg,rgba(12,12,12,0.95)_0%,rgba(12,12,12,0.95)_100%),url(/auth_bg.jpg)] bg-no-repeat bg-cover bg-center flex items-center justify-center cursor-default ">
+    <div className="absolute text-white font-light top-0 left-0 w-full h-full bg-[linear-gradient(0deg,rgba(12,12,12,0.95)_0%,rgba(12,12,12,0.95)_100%),url(/auth_bg.jpg)] bg-no-repeat bg-cover bg-center flex items-center justify-center cursor-default ">
       <Link to="/">
-        <div className="w-[60px] h-[40px] bg-[#f21f30] text-white absolute top-[20px] left-[20px] rounded-[20px] flex items-center justify-center text-[20px] cursor-pointer transition-all duration-300 ease-out hover:w-[80px]">
+        <div className="w-[60px] h-[40px] bg-[#f21f30] absolute top-[20px] left-[20px] rounded-[20px] flex items-center justify-center text-[20px] cursor-pointer transition-all duration-300 ease-out hover:w-[80px]">
           <i className="bi bi-chevron-left"></i>
         </div>
       </Link>
@@ -18,13 +18,13 @@ const Login = () => {
           className="w-[350px] bg-[#1a1a1a] rounded-[20px] p-[20px] flex flex-col items-center justify-center "
           action=""
         >
-          <div className="flex flex-col text-white  items-center justify-center gap-[0px]  ">
+          <div className="flex flex-col items-center justify-center gap-[0px]  ">
             <h1 className="font-bold ">Login</h1>
             <p className="font-extralight opacity-[0.8]">Welcome Back !</p>
           </div>
           <div className="input-group w-[100%] mt-[30px] ">
             <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white font-light"
+              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
               type="email"
               name="email"
               max={100}
@@ -40,7 +40,7 @@ const Login = () => {
 
           <div className="input-group w-[100%] ">
             <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white font-medium"
+              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] font-medium"
               type="password"
               name="password"
               max={100}
@@ -54,12 +54,12 @@ const Login = () => {
             </p>
           </div>
           <button
-            className="w-[150px] mt-[20px] flex bg-[#f21f30] text-white font-light border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
+            className="w-[150px] mt-[20px] flex bg-[#f21f30] border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
             type="submit"
           >
             SUBMIT
           </button>
-          <span className="text-white font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
+          <span className="font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
             Don't have an account?{" "}
             <span
               onClick={() => setForm("signup")}
@@ -75,7 +75,7 @@ const Login = () => {
           className="w-[350px] bg-[#1a1a1a] rounded-[20px] p-[20px] flex flex-col items-center justify-center "
           action=""
         >
-          <div className="flex flex-col text-white items-center justify-center gap-[0px]  ">
+          <div className="flex flex-col items-center justify-center gap-[0px]  ">
             <h1 className="font-bold ">Sign Up</h1>
             <p className="font-extralight opacity-[0.8]">
               Create Your Account !
@@ -83,7 +83,7 @@ const Login = () => {
           </div>
           <div className="input-group w-[100%] mt-[30px] ">
             <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white font-light"
+              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
               type="name"
               name="name"
               max={100}
@@ -99,7 +99,7 @@ const Login = () => {
 
           <div className="input-group w-[100%] ">
             <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white font-light"
+              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
               type="email"
               name="email"
               max={100}
@@ -115,7 +115,7 @@ const Login = () => {
 
           <div className="input-group w-[100%]">
             <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white font-light"
+              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
               type="tel"
               name="mobile"
               max={100}
@@ -131,7 +131,7 @@ const Login = () => {
 
           <div className="input-group w-[100%] ">
             <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white font-medium"
+              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] font-medium"
               type="password"
               name="password"
               max={100}
@@ -145,12 +145,12 @@ const Login = () => {
             </p>
           </div>
           <button
-            className="w-[150px] mt-[20px] flex bg-[#f21f30] text-white font-light border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
+            className="w-[150px] mt-[20px] flex bg-[#f21f30] border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
             type="submit"
           >
             SUBMIT
           </button>
-          <span className="text-white font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
+          <span className="font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
             Already have an account?{" "}
             <span
               onClick={() => setForm("login")}

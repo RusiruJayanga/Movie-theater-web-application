@@ -20,7 +20,7 @@ const Navigation_bar_head = () => {
         <div className="hidden sm:flex w-auto h-[50px] items-center justify-around gap-[10px]">
           <div className="w-auto h-auto flex items-center justify-center gap-[5px]">
             <input
-              className=" w-[300px] h-[40px] bg-[#1d1d1d] rounded-[20px] pl-[15px] p-[10px] text-white border-1 border-gray-500"
+              className=" w-[300px] h-[40px] bg-[#1d1d1d] rounded-[20px] pl-[15px] p-[10px] text-white border-1 border-gray-600"
               type="text"
               placeholder="Search for movies"
               max={100}
@@ -78,7 +78,7 @@ const Navigation_bar_head = () => {
               whileInView="visible"
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.3 }}
-              className="w-[90%] h-auto mt-[50px] text-white capitalize font-light mx-auto flex flex-col items-center justify-center "
+              className="w-[90%] h-auto mt-[50px] text-white font-light mx-auto flex flex-col items-center justify-center "
             >
               <NavLink
                 className={
@@ -87,7 +87,7 @@ const Navigation_bar_head = () => {
                 onClick={() => set_menu_open(!menuOpen)}
                 to="/"
               >
-                home
+                Home
               </NavLink>
               <NavLink
                 className={
@@ -96,7 +96,7 @@ const Navigation_bar_head = () => {
                 onClick={() => set_menu_open(!menuOpen)}
                 to="/upcoming"
               >
-                upcoming
+                Upcoming
               </NavLink>
               <NavLink
                 className={
@@ -105,7 +105,7 @@ const Navigation_bar_head = () => {
                 onClick={() => set_menu_open(!menuOpen)}
                 to="/contact"
               >
-                contact us
+                Contact Us
               </NavLink>
             </motion.div>
             <div className="w-[90%] h-auto text-white mx-auto flex flex-col items-start justify-center absolute bottom-[10px]">

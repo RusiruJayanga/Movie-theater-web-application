@@ -18,11 +18,9 @@ const Login = () => {
           className="w-[350px] bg-[#1a1a1a] rounded-[20px] p-[20px] flex flex-col items-center justify-center "
           action=""
         >
-          <div className="flex flex-col items-center justify-center gap-[0px]  ">
-            <h1 className=" text-white font-bold ">Login</h1>
-            <p className="text-white font-extralight capitalize opacity-[0.8]">
-              Welcome back !
-            </p>
+          <div className="flex flex-col text-white  items-center justify-center gap-[0px]  ">
+            <h1 className="font-bold ">Login</h1>
+            <p className="font-extralight opacity-[0.8]">Welcome Back !</p>
           </div>
           <div className="input-group w-[100%] mt-[30px] ">
             <input
@@ -56,12 +54,12 @@ const Login = () => {
             </p>
           </div>
           <button
-            className="w-[150px] mt-[20px] flex uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
+            className="w-[150px] mt-[20px] flex bg-[#f21f30] text-white font-light border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
             type="submit"
           >
-            submit
+            SUBMIT
           </button>
-          <span className="text-white font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[11px] mt-[20px]">
+          <span className="text-white font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
             Don't have an account?{" "}
             <span
               onClick={() => setForm("signup")}
@@ -77,10 +75,10 @@ const Login = () => {
           className="w-[350px] bg-[#1a1a1a] rounded-[20px] p-[20px] flex flex-col items-center justify-center "
           action=""
         >
-          <div className="flex flex-col items-center justify-center gap-[0px]  ">
-            <h1 className=" text-white font-bold ">Sign Up</h1>
-            <p className="text-white font-extralight capitalize opacity-[0.8]">
-              Create your account
+          <div className="flex flex-col text-white items-center justify-center gap-[0px]  ">
+            <h1 className="font-bold ">Sign Up</h1>
+            <p className="font-extralight opacity-[0.8]">
+              Create Your Account !
             </p>
           </div>
           <div className="input-group w-[100%] mt-[30px] ">
@@ -133,7 +131,7 @@ const Login = () => {
 
           <div className="input-group w-[100%] ">
             <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white font-light"
+              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-white font-medium"
               type="password"
               name="password"
               max={100}
@@ -147,12 +145,12 @@ const Login = () => {
             </p>
           </div>
           <button
-            className="w-[150px] mt-[20px] flex uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
+            className="w-[150px] mt-[20px] flex bg-[#f21f30] text-white font-light border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
             type="submit"
           >
-            submit
+            SUBMIT
           </button>
-          <span className="text-white font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[11px] mt-[20px]">
+          <span className="text-white font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
             Already have an account?{" "}
             <span
               onClick={() => setForm("login")}

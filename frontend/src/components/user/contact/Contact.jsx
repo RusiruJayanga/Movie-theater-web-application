@@ -16,12 +16,10 @@ const Contact = () => {
       className="w-[90%] mt-[150px] mx-auto p-[10px] cursor-default xl:w-[1075px] md:flex md:items-start md:justify-center md:gap-[30px] xl:mt-[200px] "
     >
       <div className="w-[100%] ">
-        <h2 className="text-[#f21f30] uppercase font-extralight ">
-          Contact Us
-        </h2>
-        <h4 className="text-white uppercase font-medium mt-[5px]">
-          We would love to hear from you ! Reach out to us through any of the
-          channels below.
+        <h2 className="text-[#f21f30] font-extralight ">CONTACT US</h2>
+        <h4 className="text-white font-medium mt-[5px]">
+          WE WOULD LOVE TO HEAR FROM YOU ! REACH OUT TO US THROUGH ANY OF THE
+          CHANNELS BELOW.
         </h4>
       </div>
       <form id="contact-form" className="w-[100%] mt-[40px] md:mt-0 ">
@@ -36,7 +34,7 @@ const Contact = () => {
           <label className="label text-[16px] font-light" htmlFor="email">
             Your Email
           </label>
-          <p className="w-[100%] h-[30px] text-[#000000] font-light ml-[20px]">
+          <p className="w-[100%] lowercase h-[30px] text-[#000000] font-light ml-[20px]">
             console.error;
           </p>
         </div>
@@ -50,15 +48,15 @@ const Contact = () => {
           <label className="label text-[16px] font-light" htmlFor="content">
             Content
           </label>
-          <p className="w-[100%] h-[30px] text-[#000000] font-light ml-[20px]">
+          <p className="w-[100%] lowercase h-[30px] text-[#000000] font-light ml-[20px]">
             console.error;
           </p>
         </div>
         <button
-          className="w-[150px] mx-auto mt-[10px] flex uppercase bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
+          className="w-[150px] mx-auto mt-[10px] flex bg-[#f21f30] text-white font-medium border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
           type="submit"
         >
-          Send
+          SEND
         </button>
       </form>
     </motion.section>

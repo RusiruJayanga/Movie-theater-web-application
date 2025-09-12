@@ -11,11 +11,11 @@ const About = () => {
   });
 
   return (
-    <section className="w-[90%] mt-[150px] mx-auto p-[10px] cursor-default xl:w-[1075px] xl:flex xl:items-center xl:justify-center xl:gap-[50px] xl:mt-[200px]  ">
+    <section className="w-[90%] mt-[150px] mx-auto p-[10px] text-white font-light cursor-default xl:w-[1075px] xl:flex xl:items-center xl:justify-center xl:gap-[50px] xl:mt-[200px]  ">
       <div className="w-[100%] ">
         <div className="w-[100%] ">
           <h2 className="text-[#f21f30] font-extralight ">ABOUT US</h2>
-          <h4 className="text-white font-medium mt-[5px]">
+          <h4 className="font-medium mt-[5px]">
             WE ARE A LEADING MOVIE THEATER CHAIN, DEDICATED TO PROVIDING THE
             BEST CINEMATIC EXPERIENCE TO OUR AUDIENCE.
           </h4>
@@ -45,7 +45,7 @@ const About = () => {
           />
         </div>
         <div>
-          <p className="text-white opacity-[0.8] font-extralight mt-[20px] text-justify ">
+          <p className="opacity-[0.8] font-extralight mt-[20px] text-justify ">
             At AMC Theaters, we believe that movies are more than just
             entertainment – they’re an experience. Our mission is to bring
             stories to life on the big screen with the best in picture, sound,
@@ -64,19 +64,19 @@ const About = () => {
               <h2 className="text-[#f21f30] font-bold ">
                 {inView && <CountUp start={0} end={28} duration={3} />}
               </h2>
-              <p className="text-white font-light">YEARS</p>
+              <p>YEARS</p>
             </div>
             <div className="w-[100px] flex flex-col items-center ">
               <h2 className="text-[#f21f30] font-bold ">
                 {inView && <CountUp start={200} end={600} duration={3} />}+
               </h2>
-              <p className="text-white font-light">CLIENTS</p>
+              <p>CLIENTS</p>
             </div>
             <div className="w-[100px] flex flex-col items-center ">
               <h2 className="text-[#f21f30] font-bold ">
                 {inView && <CountUp start={100} end={289} duration={3} />}+
               </h2>
-              <p className="text-white font-light">MOVIES</p>
+              <p>MOVIES</p>
             </div>
           </div>
         </div>

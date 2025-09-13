@@ -9,6 +9,7 @@ const Navigation_bar = () => {
           "w-[80px] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out active_nav"
         }
         to="/"
+        onClick={() => set_active_nav(" ")}
       >
         Home
       </NavLink>
@@ -17,6 +18,7 @@ const Navigation_bar = () => {
           "w-[80px] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out"
         }
         to="/upcoming"
+        onClick={() => set_active_nav(" ")}
       >
         Upcoming
       </NavLink>
@@ -25,6 +27,7 @@ const Navigation_bar = () => {
           "w-[80px] h-[40px] flex items-center justify-center border-b-[2px] border-transparent hover:text-[#f21f30] transition-colors duration-300 ease-out"
         }
         to="/contact"
+        onClick={() => set_active_nav(" ")}
       >
         Contact Us
       </NavLink>

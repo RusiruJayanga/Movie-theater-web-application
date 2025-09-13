@@ -70,7 +70,7 @@ const Details = () => {
             <h5 className="mt-[5px]">Closing Sep 5,2025</h5>
             <h5 className="mt-[5px]">Universal Pictures</h5>
           </div>
-          <div className="hidden md:flex flex-col justify-between gap-[10px] mr-[30px] font-medium">
+          <div className="hidden md:flex flex-col justify-center gap-[10px] mr-[30px] font-medium">
             <div className="w-[150px] flex items-center justify-center gap-[20px] md:justify-between md:w-[110px]">
               <img className="w-[60px] " src="rating/imdb.png" alt="rating" />
               <h4>7/10</h4>

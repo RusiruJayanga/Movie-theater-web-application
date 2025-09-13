@@ -34,7 +34,7 @@ const Contact = () => {
           <label className="label text-[16px] font-light" htmlFor="email">
             Your Email
           </label>
-          <p className="w-[100%] lowercase h-[30px] text-[#000000] font-light ml-[20px]">
+          <p className="w-[100%] lowercase h-[30px] text-[#000000] font-extralight ml-[20px]">
             console.error;
           </p>
         </div>
@@ -48,7 +48,7 @@ const Contact = () => {
           <label className="label text-[16px] font-light" htmlFor="content">
             Content
           </label>
-          <p className="w-[100%] lowercase h-[30px] text-[#000000] font-light ml-[20px]">
+          <p className="w-[100%] lowercase h-[30px] text-[#000000] font-extralight ml-[20px]">
             console.error;
           </p>
         </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  // login signup toggle
+  //login signup toggle
   const [form, setForm] = useState("login");
 
   return (
@@ -33,7 +33,7 @@ const Login = () => {
             <label className="label text-[16px] font-light" htmlFor="email">
               Email
             </label>
-            <p className="w-[100%] h-[30px] text-[#000000] font-light ml-[20px]">
+            <p className="w-[100%] h-[30px] text-[#000000] font-extralight ml-[20px]">
               console.error;
             </p>
           </div>
@@ -49,7 +49,7 @@ const Login = () => {
             <label className="label text-[16px] font-light" htmlFor="email">
               Password
             </label>
-            <p className="w-[100%] h-[30px] text-[#000000] font-light ml-[20px]">
+            <p className="w-[100%] h-[30px] text-[#000000] font-extralight ml-[20px]">
               console.error;
             </p>
           </div>
@@ -92,7 +92,7 @@ const Login = () => {
             <label className="label text-[16px] font-light" htmlFor="name">
               Name
             </label>
-            <p className="w-[100%] h-[30px] text-[#000000] font-light ml-[20px]">
+            <p className="w-[100%] h-[30px] text-[#000000] font-extralight ml-[20px]">
               console.error;
             </p>
           </div>
@@ -108,7 +108,7 @@ const Login = () => {
             <label className="label text-[16px] font-light" htmlFor="email">
               Email
             </label>
-            <p className="w-[100%] h-[30px] text-[#000000] font-light ml-[20px]">
+            <p className="w-[100%] h-[30px] text-[#000000] font-extralight ml-[20px]">
               console.error;
             </p>
           </div>
@@ -124,7 +124,7 @@ const Login = () => {
             <label className="label text-[16px] font-light" htmlFor="mobile">
               Mobile Number
             </label>
-            <p className="w-[100%] h-[30px] text-[#000000] font-light ml-[20px]">
+            <p className="w-[100%] h-[30px] text-[#000000] font-extralight ml-[20px]">
               console.error;
             </p>
           </div>
@@ -140,7 +140,7 @@ const Login = () => {
             <label className="label text-[16px] font-light" htmlFor="password">
               Password
             </label>
-            <p className="w-[100%] h-[30px] text-[#000000] font-light ml-[20px]">
+            <p className="w-[100%] h-[30px] text-[#000000] font-extralight ml-[20px]">
               console.error;
             </p>
           </div>

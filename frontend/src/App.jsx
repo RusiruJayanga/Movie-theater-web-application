@@ -13,6 +13,7 @@ import Home from "./pages/user/home/Home";
 import Details from "./pages/user/details/Details";
 import Login from "./components/user/login/Login";
 import Account from "./pages/user/account/Account";
+import Ticket from "./pages/user/ticket/Ticket";
 
 function App() {
   //hide footer and navigation
@@ -31,6 +32,7 @@ function App() {
         <Route path="/details" element={<Details />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/ticket" element={<Ticket />} />
       </Routes>
       {/* footer */}
       {!hideFooterPaths.includes(location.pathname) && <Footer />}

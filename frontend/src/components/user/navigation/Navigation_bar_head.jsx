@@ -4,6 +4,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navigation_bar_head = () => {
+  //active navigation
+  const [activeNav, set_active_nav] = useState(" ");
   //responsive navigation
   const [menuOpen, set_menu_open] = useState(false);
   //token
@@ -29,19 +31,33 @@ const Navigation_bar_head = () => {
               <i className="bi bi-search"></i>
             </h4>
           </div>
-          <h4 className="w-[40px] h-[40px] flex items-center justify-center hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
-            <i className="bi bi-ticket-perforated"></i>
-          </h4>
+          <Link to="/ticket" onClick={() => set_active_nav("ticket")}>
+            <h4
+              className={`${
+                activeNav === "ticket" ? "text-[#f21f30]" : ""
+              } w-[40px] h-[40px] flex items-center justify-center hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer`}
+            >
+              <i className="bi bi-ticket-perforated"></i>
+            </h4>
+          </Link>
           {/* account */}
           {token ? (
-            <Link to="/account">
-              <h4 className="w-[40px] h-[40px] flex items-center justify-center hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
+            <Link to="/account" onClick={() => set_active_nav("account")}>
+              <h4
+                className={`${
+                  activeNav === "account" ? "text-[#f21f30]" : ""
+                } w-[40px] h-[40px] flex items-center justify-center hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer`}
+              >
                 <i className="bi bi-person"></i>
               </h4>
             </Link>
           ) : (
-            <Link to="/login">
-              <h4 className="w-[40px] h-[40px] flex items-center justify-center hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer">
+            <Link to="/login" onClick={() => set_active_nav("login")}>
+              <h4
+                className={`${
+                  activeNav === "login" ? "text-[#f21f30]" : ""
+                } w-[40px] h-[40px] flex items-center justify-center hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer`}
+              >
                 <i className="bi bi-person"></i>
               </h4>
             </Link>
@@ -109,9 +125,11 @@ const Navigation_bar_head = () => {
               </NavLink>
             </motion.div>
             <div className="w-[90%] h-auto mx-auto flex flex-col items-start justify-center absolute bottom-[10px]">
-              <h4 className="w-[40px] h-[40px] flex items-center justify-center cursor-pointer">
-                <i className="bi bi-ticket-perforated"></i>
-              </h4>
+              <Link to="/ticket">
+                <h4 className="w-[40px] h-[40px] flex items-center justify-center cursor-pointer">
+                  <i className="bi bi-ticket-perforated"></i>
+                </h4>
+              </Link>
               {/* account */}
               {token ? (
                 <Link onClick={() => set_menu_open(!menuOpen)} to="/account">

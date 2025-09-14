@@ -46,7 +46,10 @@ const Now_showing = () => {
               >
                 MORE
               </Link>
-              <Link className="hidden xl:flex items-center justify-center w-[100%] h-[40px] rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]">
+              <Link
+                className="hidden xl:flex items-center justify-center w-[100%] h-[40px] rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]"
+                to="/booking"
+              >
                 GET TICKETS
               </Link>
               <Link

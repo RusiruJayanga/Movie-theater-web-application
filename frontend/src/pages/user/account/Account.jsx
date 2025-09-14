@@ -7,7 +7,7 @@ const Account = () => {
   const [menuSettingsOpen, set_menu_Settings_open] = useState(false);
 
   return (
-    <div className="p-[10px] flex flex-col items-start text-white cursor-default mt-[40px] md:w-[80%] md:mx-auto xl:w-[60%] xl:mt-[20px] ">
+    <div className="p-[10px] flex flex-col items-start text-white cursor-default mt-[40px] md:w-[80%] md:mx-auto xl:w-[920px] xl:mt-[20px] ">
       <div className="w-[100%] flex items-center justify-between p-[20px] border-t-[1px] border-b-[1px] border-gray-600 ">
         <img
           className="w-[70px] h-[70px] rounded-full md:w-[90px] md:h-[90px]"

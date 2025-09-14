@@ -43,7 +43,10 @@ const Details = () => {
           </h2>
         </div>
         <div className="w-[100%] flex justify-center gap-[10px] mt-[10px] md:w-[35%] xl:w-[280px] ">
-          <Link className="flex items-center justify-center w-[100%] h-[40px] rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]">
+          <Link
+            className="flex items-center justify-center w-[100%] h-[40px] rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]"
+            to="/booking"
+          >
             GET TICKETS
           </Link>
           <button className="flex w-[50px] border-[1px] border-white hover:bg-white hover:text-black">

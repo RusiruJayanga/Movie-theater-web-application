@@ -40,7 +40,7 @@ const Account = () => {
             <i className="bi bi-heart"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">Interests</h5>
-          <span className="w-[30px] h-[30px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-gray-600 text-[13px] font-extralight ">
+          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-gray-600 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px]">
             10+
           </span>
           <h5
@@ -70,7 +70,7 @@ const Account = () => {
         <div
           className={`${
             menuInterestsOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-gray-800 opacity-[0.8] `}
+          } w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-gray-800 opacity-[0.8] `}
         >
           <p className="font-extralight ">no data to show</p>
         </div>
@@ -85,7 +85,7 @@ const Account = () => {
             <i className="bi bi-hourglass"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">History</h5>
-          <span className="w-[30px] h-[30px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-gray-600 text-[13px] font-extralight ">
+          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-gray-600 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px]">
             10+
           </span>
           <h5
@@ -115,7 +115,7 @@ const Account = () => {
         <div
           className={`${
             menuHistoryOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-gray-800 opacity-[0.8] `}
+          } w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-gray-800 opacity-[0.8] `}
         >
           <p className="font-extralight ">no data to show</p>
         </div>

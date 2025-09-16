@@ -64,25 +64,119 @@ const Booking = () => {
       </div>
 
       <div className="w-[100%] bg-[#1a1a1a] rounded-[20px] p-[10px] mt-[60px] md:items-start md:p-[20px] ">
-        <div>
-          <input
-            type="checkbox"
-            id="react-option"
-            value=""
-            class="hidden peer"
-            required=""
+        <div className="w-[100%] flex items-start justify-start gap-[20px] font-extralight ">
+          <img
+            className="w-[150px] h-[250px] object-cover rounded-[5px]"
+            src="movies/1.jpg"
+            alt="movie"
           />
-          <label
-            for="react-option"
-            class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 dark:peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
-          >
-            <div class="block">
-              <div class="w-full text-lg font-semibold">React Js</div>
-              <div class="w-full text-sm">
-                A JavaScript library for building user interfaces.
-              </div>
+          <div className="flex flex-col ">
+            <h5 className="w-[100%] font-light uppercase ">Movie Title</h5>
+            <p className="capitalize mt-[20px] opacity-[0.8]">1 h 35 min</p>
+            <h5 className="mt-[5px] text-[#f21f30] uppercase font-bold">PG</h5>
+          </div>
+        </div>
+        <div className="w-[100%] flex flex-col items-start justify-between mt-[20px] font-light">
+          <h5 className="text-[#f21f30]">Date And Time</h5>
+          {/* repeat */}
+          <div className="w-[100%] mt-[20px] ">
+            <div>
+              <input
+                type="checkbox"
+                id="date-option1"
+                value=""
+                class="hidden peer"
+                required=""
+              />
+              <label
+                for="date-option1"
+                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-gray-800 border-[1px] border-gray-800 rounded-[10px] cursor-pointer peer-checked:border-gray-400 hover:opacity-[1] peer-checked:opacity-[1]"
+              >
+                <h5>Tuesday 8.00 AM </h5>
+              </label>
             </div>
-          </label>
+          </div>
+          {/* repeat */}
+          <div className="w-[100%] mt-[20px]">
+            <div>
+              <input
+                type="checkbox"
+                id="date-option2"
+                value=""
+                class="hidden peer"
+                required=""
+              />
+              <label
+                for="date-option2"
+                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-gray-800 border-[1px] border-gray-800 rounded-[10px] cursor-pointer peer-checked:border-gray-400 hover:opacity-[1] peer-checked:opacity-[1]"
+              >
+                <h5>Tuesday 8.00 AM </h5>
+              </label>
+            </div>
+          </div>
+          {/* repeat */}
+          <div className="w-[100%] mt-[20px]">
+            <div>
+              <input
+                type="checkbox"
+                id="date-option3"
+                value=""
+                class="hidden peer"
+                required=""
+              />
+              <label
+                for="date-option3"
+                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-gray-800 border-[1px] border-gray-800 rounded-[10px] cursor-pointer peer-checked:border-gray-400 hover:opacity-[1] peer-checked:opacity-[1]"
+              >
+                <h5>Tuesday 8.00 AM </h5>
+              </label>
+            </div>
+          </div>
+          {/* repeat */}
+          <div className="w-[100%] mt-[20px]">
+            <div>
+              <input
+                type="checkbox"
+                id="date-option4"
+                value=""
+                class="hidden peer"
+                required=""
+              />
+              <label
+                for="date-option4"
+                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-gray-800 border-[1px] border-gray-800 rounded-[10px] cursor-pointer peer-checked:border-gray-400 hover:opacity-[1] peer-checked:opacity-[1]"
+              >
+                <h5>Tuesday 8.00 AM </h5>
+              </label>
+            </div>
+          </div>
+          {/* repeat */}
+          <div className="w-[100%] mt-[20px]">
+            <div>
+              <input
+                type="checkbox"
+                id="date-option5"
+                value=""
+                class="hidden peer"
+                required=""
+              />
+              <label
+                for="date-option5"
+                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-gray-800 border-[1px] border-gray-800 rounded-[10px] cursor-pointer peer-checked:border-gray-400 hover:opacity-[1] peer-checked:opacity-[1]"
+              >
+                <h5>Tuesday 8.00 AM </h5>
+              </label>
+            </div>
+          </div>
+          {/* repeat */}
+        </div>
+        <div className="w-[100%] flex flex-col items-start justify-between mt-[20px] font-light">
+          <h5 className="text-[#f21f30]">Your Selection</h5>
+          <h3 className="mt-[10px]">
+            Selected Seats{" "}
+            {selectedSeats.length > 0 ? selectedSeats.join(", ") : "None"}
+          </h3>
+          <h5 className="">Total Price Rs.{totalPrice}</h5>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ const Footer = () => {
           alt="logo"
         />
         <div className="w-[250px] xl:w-[300px]">
-          <h5 className="font-bold text-[#f21f30]">US</h5>
+          <h5 className="font-light text-[#f21f30]">US</h5>
           <p className="opacity-[0.7] hover:opacity-[1] transition duration-300 ease-out ">
             Our mission is to provide a seamless and efficient platform for
             movie enthusiasts to explore, book, and enjoy their favorite films.
@@ -18,35 +18,35 @@ const Footer = () => {
         </div>
 
         <div className="w-[100px] flex flex-col gap-[5px] md:w-[150px] xl:w-[200px]">
-          <h5 className="font-bold text-[#f21f30]">QUICK LINKS</h5>
-          <a
-            className="text-[13px] opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out mt-[5px]"
+          <h5 className="font-light text-[#f21f30]">QUICK LINKS</h5>
+          <p
+            className=" opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out mt-[5px]"
             href="#home"
           >
             Home
-          </a>
-          <a
-            className="text-[13px] opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out"
+          </p>
+          <p
+            className="opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out"
             href="#new"
           >
             New
-          </a>
-          <a
-            className="text-[13px] opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out"
+          </p>
+          <p
+            className="opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out"
             href="#upcoming"
           >
             Upcoming
-          </a>
-          <a
-            className="text-[13px] opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out"
+          </p>
+          <p
+            className="opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out"
             href="#contact"
           >
             Contact
-          </a>
+          </p>
         </div>
 
         <div className="xl:w-[300px] flex flex-col gap-[5px]">
-          <h5 className="font-bold text-[#f21f30]">CONTACT US</h5>
+          <h5 className="font-light text-[#f21f30]">CONTACT US</h5>
           <p className="opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out ">
             Gmail: amc@gmail.com
           </p>

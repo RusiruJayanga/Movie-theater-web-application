@@ -20,10 +20,10 @@ const Checkout = () => {
                 alt="movie"
               />
               <div className="flex flex-col ml-[20px]">
-                <h5 className="w-[100%] font-normal uppercase ">Movie Title</h5>
-                <p className="capitalize mt-[20px]">1 h 35 min</p>
-                <p className="mt-[5px]">Seat - 2/95</p>
-                <p className="mt-[5px]">Due - 2/9/2025</p>
+                <h5 className="w-[100%] font-light uppercase ">Movie Title</h5>
+                <p className="capitalize mt-[20px] opacity-[0.8]">1 h 35 min</p>
+                <p className="mt-[5px] opacity-[0.8]">Seat - 2/95</p>
+                <p className="mt-[5px] opacity-[0.8]">Due - 2/9/2025</p>
                 <h5 className="mt-[5px] text-[#f21f30] uppercase font-bold">
                   PG
                 </h5>
@@ -40,18 +40,18 @@ const Checkout = () => {
           <div className="w-[300px] ">
             <div className="w-[100%] bg-[#1a1a1a] rounded-[20px] p-[10px] pt-[20px] mt-[20px] ">
               <div className="w-[100%] flex items-center justify-start p-[20px] pl-[15px] border-t-[1px] border-b-[1px] border-gray-600">
-                <h4 className="text-[#f21f30] font-medium">ORDER SUMMARY</h4>
+                <h5 className="text-[#f21f30]">ORDER SUMMARY</h5>
               </div>
-              <div className="w-[100%] flex items-center justify-start p-[15px] border-t-[1px] border-b-[1px] border-gray-600">
-                <p className="">Subtotal</p>
+              <div className="w-[100%] flex items-center justify-start p-[15px] border-b-[1px] border-gray-600">
+                <p>Subtotal</p>
                 <p className="ml-auto">Rs.12.99</p>
               </div>
-              <div className="w-[100%] flex items-center justify-start p-[15px] border-t-[1px] border-b-[1px] border-gray-600">
-                <p className="">Vat</p>
-                <p className="ml-auto">Rs.12.99</p>
+              <div className="w-[100%] flex items-center justify-start p-[15px] border-b-[1px] border-gray-600">
+                <p className="opacity-[0.8]">Vat</p>
+                <p className="ml-auto opacity-[0.8]">Rs.12.99</p>
               </div>
               <div className="w-[100%] flex items-center justify-start p-[15px] border-t-[1px] border-b-[1px] border-gray-600 mt-[100px] ">
-                <h4 className="">TOTAL</h4>
+                <h4>TOTAL</h4>
                 <h4 className="ml-auto">Rs.12.99</h4>
               </div>
             </div>

@@ -70,7 +70,7 @@ const Account = () => {
         <div
           className={`${
             menuInterestsOpen ? "Flex" : "hidden"
-          } w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-gray-800 opacity-[0.8] `}
+          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-gray-800 opacity-[0.8] `}
         >
           <p className="font-extralight ">no data to show</p>
         </div>
@@ -110,12 +110,13 @@ const Account = () => {
           </p>
           <h5 className="ml-[40px] text-[#f21f30] uppercase font-bold">PG</h5>
           <p className="capitalize ml-auto">1 h 35 min</p>
+          <p className="hidden xl:block ml-auto">D2</p>
           <p className="hidden xl:block ml-auto">2/9/2025</p>
         </div>
         <div
           className={`${
             menuHistoryOpen ? "Flex" : "hidden"
-          } w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-gray-800 opacity-[0.8] `}
+          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-gray-800 opacity-[0.8] `}
         >
           <p className="font-extralight ">no data to show</p>
         </div>

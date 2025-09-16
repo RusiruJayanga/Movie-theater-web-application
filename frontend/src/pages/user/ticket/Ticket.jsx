@@ -43,7 +43,7 @@ const Ticket = () => {
             Movie Title
           </p>
           <p className="hidden xl:block capitalize ml-auto">1 h 35 min</p>
-          <p className="hidden xl:block ml-auto">Seat - 2/95</p>
+          <p className="hidden xl:block ml-auto">D4</p>
           <p className="ml-auto">Due - 2/9/2025</p>
         </div>
         <div
@@ -101,7 +101,7 @@ const Ticket = () => {
             Movie Title
           </p>
           <p className="hidden xl:block capitalize ml-auto">1 h 35 min</p>
-          <p className="hidden xl:block ml-auto">Seat - 2/95</p>
+          <p className="hidden xl:block ml-auto">D4</p>
           <p className="ml-auto">Due - 2/9/2025</p>
         </div>
         <div

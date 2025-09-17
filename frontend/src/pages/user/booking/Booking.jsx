@@ -28,7 +28,7 @@ const Booking = () => {
   return (
     <div className="w-[90%] mx-auto min-h-screen text-white flex flex-col items-center mt-[40px] cursor-default xl:mt-[20px] xl:w-[1240px] ">
       {/* screen */}
-      <div className="w-[100%] h-[10px] rounded-tl-[100%] rounded-tr-[100%] bg-gray-400 my-6 relative xl:w-[70%] "></div>
+      <div className="w-[100%] h-[10px] rounded-tl-[100%] rounded-tr-[100%] bg-[#bdbdbd] my-6 relative xl:w-[70%] "></div>
 
       {/* seat grid */}
       <div className="w-[100%] flex flex-col gap-[20px] mt-[20px] xl:mt-[60px]">
@@ -48,7 +48,7 @@ const Booking = () => {
                     ${
                       isSelected
                         ? "bg-[#f21f30] border-[#f21f30]"
-                        : "border-gray-600 "
+                        : "border-[#bdbdbd]/50 "
                     }
                     ${seatClass}`}
                 >
@@ -74,6 +74,14 @@ const Booking = () => {
             <h5 className="w-[100%] font-light uppercase ">Movie Title</h5>
             <p className="capitalize mt-[20px] opacity-[0.8]">1 h 35 min</p>
             <h5 className="mt-[5px] text-[#f21f30] uppercase font-bold">PG</h5>
+            <p className="opacity-[0.8] mt-[10px]">Selected Seats</p>
+            <h5 className="w-[100%] p-[5px] bg-[#303030] rounded-[5px] mt-[5px]">
+              {selectedSeats.length > 0 ? selectedSeats.join(", ") : "None"}
+            </h5>
+            <p className="opacity-[0.8] mt-[10px]">Total Price</p>
+            <h5 className="w-[100%] p-[5px] bg-[#303030] rounded-[5px] mt-[5px]">
+              Rs.{totalPrice}.00
+            </h5>
           </div>
         </div>
         <div className="w-[100%] flex flex-col items-start justify-between mt-[20px] font-light">
@@ -90,7 +98,7 @@ const Booking = () => {
               />
               <label
                 for="date-option1"
-                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-gray-800 border-[1px] border-gray-800 rounded-[10px] cursor-pointer peer-checked:border-gray-400 hover:opacity-[1] peer-checked:opacity-[1]"
+                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-[#303030] border-[1px] border-[#303030] rounded-[10px] cursor-pointer peer-checked:border-[#bdbdbd] hover:opacity-[1] peer-checked:opacity-[1]"
               >
                 <h5>Tuesday 8.00 AM </h5>
               </label>
@@ -108,7 +116,7 @@ const Booking = () => {
               />
               <label
                 for="date-option2"
-                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-gray-800 border-[1px] border-gray-800 rounded-[10px] cursor-pointer peer-checked:border-gray-400 hover:opacity-[1] peer-checked:opacity-[1]"
+                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-[#303030] border-[1px] border-[#303030] rounded-[10px] cursor-pointer peer-checked:border-[#bdbdbd] hover:opacity-[1] peer-checked:opacity-[1]"
               >
                 <h5>Tuesday 8.00 AM </h5>
               </label>
@@ -126,7 +134,7 @@ const Booking = () => {
               />
               <label
                 for="date-option3"
-                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-gray-800 border-[1px] border-gray-800 rounded-[10px] cursor-pointer peer-checked:border-gray-400 hover:opacity-[1] peer-checked:opacity-[1]"
+                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-[#303030] border-[1px] border-[#303030] rounded-[10px] cursor-pointer peer-checked:border-[#bdbdbd] hover:opacity-[1] peer-checked:opacity-[1]"
               >
                 <h5>Tuesday 8.00 AM </h5>
               </label>
@@ -144,7 +152,7 @@ const Booking = () => {
               />
               <label
                 for="date-option4"
-                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-gray-800 border-[1px] border-gray-800 rounded-[10px] cursor-pointer peer-checked:border-gray-400 hover:opacity-[1] peer-checked:opacity-[1]"
+                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-[#303030] border-[1px] border-[#303030] rounded-[10px] cursor-pointer peer-checked:border-[#bdbdbd] hover:opacity-[1] peer-checked:opacity-[1]"
               >
                 <h5>Tuesday 8.00 AM </h5>
               </label>
@@ -162,7 +170,7 @@ const Booking = () => {
               />
               <label
                 for="date-option5"
-                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-gray-800 border-[1px] border-gray-800 rounded-[10px] cursor-pointer peer-checked:border-gray-400 hover:opacity-[1] peer-checked:opacity-[1]"
+                class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-[#303030] border-[1px] border-[#303030] rounded-[10px] cursor-pointer peer-checked:border-[#bdbdbd] hover:opacity-[1] peer-checked:opacity-[1]"
               >
                 <h5>Tuesday 8.00 AM </h5>
               </label>
@@ -170,14 +178,7 @@ const Booking = () => {
           </div>
           {/* repeat */}
         </div>
-        <div className="w-[100%] flex flex-col items-start justify-between mt-[20px] font-light">
-          <h5 className="text-[#f21f30]">Your Selection</h5>
-          <h3 className="mt-[10px]">
-            Selected Seats{" "}
-            {selectedSeats.length > 0 ? selectedSeats.join(", ") : "None"}
-          </h3>
-          <h5 className="">Total Price Rs.{totalPrice}</h5>
-        </div>
+        <div className="w-[100%] flex flex-col items-start justify-between mt-[20px] font-light"></div>
       </div>
     </div>
   );

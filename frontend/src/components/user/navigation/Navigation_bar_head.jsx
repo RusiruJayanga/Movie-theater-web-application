@@ -22,7 +22,7 @@ const Navigation_bar_head = () => {
         <div className="hidden sm:flex w-auto h-[50px] items-center justify-around gap-[10px]">
           <div className="w-auto h-auto flex items-center justify-center gap-[5px]">
             <input
-              className=" w-[300px] h-[40px] bg-[#1d1d1d] rounded-[20px] pl-[15px] p-[10px] border-1 border-gray-600"
+              className=" w-[300px] h-[40px] bg-[#1d1d1d] rounded-[20px] pl-[15px] p-[10px] border-1 border-[#bdbdbd]/50"
               type="text"
               placeholder="Search for movies"
               max={100}

@@ -12,14 +12,16 @@ const Ticket = () => {
         {/* new tickets */}
         <div
           className={`${
-            menuNewOpen ? "border-gray-400" : "border-gray-600"
-          } w-[100%] flex items-center justify-between p-[20px] border-t-[1px] border-b-[1px] transition-colors duration-300 ease-out`}
+            menuNewOpen
+              ? "border-[#bdbdbd] border-b-[1px]"
+              : "border-[#bdbdbd]/50"
+          } w-[100%] flex items-center justify-between p-[20px] border-t-[1px] transition-colors duration-300 ease-out`}
         >
           <h5>
             <i className="bi bi-ticket-perforated"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">New Tickets</h5>
-          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-gray-600 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px]">
+          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px]">
             10+
           </span>
           <h5
@@ -37,7 +39,7 @@ const Ticket = () => {
         <div
           className={`${
             menuNewOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-gray-800 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
+          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
         >
           <p className="w-[150px] uppercase ml-[40px] md:w-[300px] ">
             Movie Title
@@ -52,7 +54,7 @@ const Ticket = () => {
           } w-[150px] ml-auto mt-[20px] mb-[20px]`}
         >
           <Link
-            className="flex items-center justify-center w-[100%] h-[40px] rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]"
+            className="flex items-center justify-center w-[100%] h-[40px] rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#0c0c0c] hover:text-[#f21f30]"
             to="/checkout"
           >
             CHECK OUT
@@ -61,7 +63,7 @@ const Ticket = () => {
         <div
           className={`${
             menuNewOpen ? "flex" : "hidden"
-          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-gray-800 opacity-[0.8] `}
+          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 opacity-[0.8] `}
         >
           <p className="font-extralight ">no data to show</p>
         </div>
@@ -70,14 +72,14 @@ const Ticket = () => {
         {/* due tickets */}
         <div
           className={`${
-            menuDueOpen ? "border-gray-400" : "border-gray-600"
+            menuDueOpen ? "border-[#bdbdbd] " : "border-[#bdbdbd]/50"
           } w-[100%] flex items-center justify-between p-[20px] border-t-[1px] border-b-[1px] transition-colors duration-300 ease-out`}
         >
           <h5>
             <i className="bi bi-ticket-perforated-fill"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">Due Tickets</h5>
-          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-gray-600 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px] ">
+          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px] ">
             10+
           </span>
           <h5
@@ -95,7 +97,7 @@ const Ticket = () => {
         <div
           className={`${
             menuDueOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-gray-800 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
+          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
         >
           <p className="w-[150px] uppercase ml-[40px] md:w-[300px] ">
             Movie Title
@@ -107,7 +109,7 @@ const Ticket = () => {
         <div
           className={`${
             menuDueOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-gray-800 opacity-[0.8] `}
+          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 opacity-[0.8] `}
         >
           <p className="font-extralight ">no data to show</p>
         </div>

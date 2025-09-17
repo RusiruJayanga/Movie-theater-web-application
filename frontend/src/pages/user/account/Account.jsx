@@ -8,7 +8,7 @@ const Account = () => {
 
   return (
     <div className="p-[10px] flex flex-col items-start text-white cursor-default mt-[40px] md:w-[80%] md:mx-auto xl:w-[920px] xl:mt-[20px] ">
-      <div className="w-[100%] flex items-center justify-between p-[20px] border-t-[1px] border-b-[1px] border-gray-600 ">
+      <div className="w-[100%] flex items-center justify-between p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/50 ">
         <img
           className="w-[70px] h-[70px] rounded-full md:w-[90px] md:h-[90px]"
           src="person.jpg"
@@ -33,14 +33,16 @@ const Account = () => {
       <div className="w-[100%] flex flex-col items-start mt-[100px] font-light ">
         <div
           className={`${
-            menuInterestsOpen ? "border-gray-400" : "border-gray-600"
-          } w-[100%] flex items-center justify-between p-[20px] border-t-[1px] border-b-[1px] transition-colors duration-300 ease-out`}
+            menuInterestsOpen
+              ? "border-[#bdbdbd] border-b-[1px]"
+              : "border-[#bdbdbd]/50"
+          } w-[100%] flex items-center justify-between p-[20px] border-t-[1px] transition-colors duration-300 ease-out`}
         >
           <h5>
             <i className="bi bi-heart"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">Interests</h5>
-          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-gray-600 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px]">
+          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px]">
             10+
           </span>
           <h5
@@ -58,7 +60,7 @@ const Account = () => {
         <div
           className={`${
             menuInterestsOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-gray-800 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
+          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
         >
           <p className="w-[150px] uppercase ml-[40px] md:w-[300px] ">
             Movie Title
@@ -70,7 +72,7 @@ const Account = () => {
         <div
           className={`${
             menuInterestsOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-gray-800 opacity-[0.8] `}
+          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 opacity-[0.8] `}
         >
           <p className="font-extralight ">no data to show</p>
         </div>
@@ -78,14 +80,16 @@ const Account = () => {
 
         <div
           className={`${
-            menuHistoryOpen ? "border-gray-400" : "border-gray-600"
-          } w-[100%] flex items-center justify-between p-[20px] border-t-[1px] border-b-[1px] transition-colors duration-300 ease-out`}
+            menuHistoryOpen
+              ? "border-[#bdbdbd] border-b-[1px]"
+              : "border-[#bdbdbd]/50"
+          } w-[100%] flex items-center justify-between p-[20px] border-t-[1px] transition-colors duration-300 ease-out`}
         >
           <h5>
             <i className="bi bi-hourglass"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">History</h5>
-          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-gray-600 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px]">
+          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px]">
             10+
           </span>
           <h5
@@ -103,7 +107,7 @@ const Account = () => {
         <div
           className={`${
             menuHistoryOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-gray-800 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
+          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
         >
           <p className="w-[150px] uppercase ml-[40px] md:w-[300px] ">
             Movie Title
@@ -116,7 +120,7 @@ const Account = () => {
         <div
           className={`${
             menuHistoryOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-gray-800 opacity-[0.8] `}
+          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 opacity-[0.8] `}
         >
           <p className="font-extralight ">no data to show</p>
         </div>
@@ -124,7 +128,7 @@ const Account = () => {
 
         <div
           className={`${
-            menuSettingsOpen ? "border-gray-400" : "border-gray-600"
+            menuSettingsOpen ? "border-[#bdbdbd] " : "border-[#bdbdbd]/50"
           } w-[100%] flex items-center justify-between p-[20px] border-t-[1px] border-b-[1px] transition-colors duration-300 ease-out`}
         >
           <h5>
@@ -146,7 +150,7 @@ const Account = () => {
         <div
           className={`${
             menuSettingsOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-gray-800 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
+          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
         >
           <p className="w-[150px] uppercase ml-[40px] md:w-[300px] ">
             Movie Title

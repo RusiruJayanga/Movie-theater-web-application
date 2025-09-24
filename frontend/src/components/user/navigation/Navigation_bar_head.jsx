@@ -42,7 +42,7 @@ const Navigation_bar_head = () => {
           </Link>
           {/* account */}
           {token ? (
-            <Link to="/account" onClick={() => set_active_nav("account")}>
+            <Link to="/login" onClick={() => set_active_nav("login")}>
               <h4
                 className={`${
                   activeNav === "account" ? "text-[#f21f30]" : ""

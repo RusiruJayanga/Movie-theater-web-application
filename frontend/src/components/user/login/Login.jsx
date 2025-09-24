@@ -1,5 +1,33 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+//validation
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+//alert
+import toast from "react-hot-toast";
+
+//validation schema
+const loginValidationSchema = Yup.object({
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+});
+
+const signupValidationSchema = Yup.object({
+  name: Yup.string().required("Name is required"),
+  mobile: Yup.string()
+    .matches(/^[0-9]{10}$/, "Mobile number must be 10 digits")
+    .required("Mobile number is required"),
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+});
 
 const Login = () => {
   //login signup toggle
@@ -13,153 +41,180 @@ const Login = () => {
         </div>
       </Link>
       {form === "login" ? (
-        <form
-          id="login"
-          className="w-[350px] bg-[#1a1a1a] rounded-[20px] p-[20px] flex flex-col items-center justify-center "
-          action=""
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validationSchema={loginValidationSchema}
+          onSubmit={(values, { resetForm }) => {
+            toast.success("Logged in successfully!");
+            resetForm({ values: { email: "", password: "" } });
+          }}
         >
-          <div className="flex flex-col items-center justify-center gap-[0px]  ">
-            <h1 className="font-bold ">Login</h1>
-            <p className="font-extralight opacity-[0.8]">Welcome Back !</p>
-          </div>
-          <div className="input-group w-[100%] mt-[30px] ">
-            <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
-              type="email"
-              name="email"
-              max={100}
-              required
-            />
-            <label className="label text-[16px] font-light" htmlFor="email">
-              Email
-            </label>
-            <p className="w-[100%] h-[30px] text-[#000000] font-extralight ml-[20px]">
-              console.error;
-            </p>
-          </div>
+          {({ isSubmitting }) => (
+            <Form className="w-[350px] bg-[#1a1a1a] rounded-[20px] p-[20px] flex flex-col items-center justify-center ">
+              <div className="flex flex-col items-center justify-center gap-[0px]  ">
+                <h1 className="font-bold ">Login</h1>
+                <p className="font-extralight opacity-[0.8]">Welcome Back !</p>
+              </div>
+              <div className="input-group w-[100%] mt-[30px] ">
+                <Field
+                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
+                  type="email"
+                  name="email"
+                  maxLength={100}
+                  required
+                />
+                <label className="label text-[16px] font-light" htmlFor="email">
+                  Email
+                </label>
+                <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                  <ErrorMessage name="email" component="p" />
+                </p>
+              </div>
 
-          <div className="input-group w-[100%] ">
-            <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] font-medium"
-              type="password"
-              name="password"
-              max={100}
-              required
-            />
-            <label className="label text-[16px] font-light" htmlFor="email">
-              Password
-            </label>
-            <p className="w-[100%] h-[30px] text-[#000000] font-extralight ml-[20px]">
-              console.error;
-            </p>
-          </div>
-          <button
-            className="w-[150px] mt-[20px] flex bg-[#f21f30] border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
-            type="submit"
-          >
-            SUBMIT
-          </button>
-          <span className="font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
-            Don't have an account?{" "}
-            <span
-              onClick={() => setForm("signup")}
-              className="underline cursor-pointer"
-            >
-              Sign Up
-            </span>
-          </span>
-        </form>
+              <div className="input-group w-[100%] ">
+                <Field
+                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] font-medium"
+                  type="password"
+                  name="password"
+                  maxLength={100}
+                  required
+                />
+                <label
+                  className="label text-[16px] font-light"
+                  htmlFor="password"
+                >
+                  Password
+                </label>
+                <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                  <ErrorMessage name="password" component="p" />
+                </p>
+              </div>
+              <button
+                className="w-[150px] mt-[20px] flex bg-[#f21f30] border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "LOADING..." : "SUBMIT"}
+              </button>
+              <span className="font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
+                Don't have an account?{" "}
+                <span
+                  onClick={() => setForm("signup")}
+                  className="underline cursor-pointer"
+                >
+                  Sign Up
+                </span>
+              </span>
+            </Form>
+          )}
+        </Formik>
       ) : (
-        <form
-          id="login"
-          className="w-[350px] bg-[#1a1a1a] rounded-[20px] p-[20px] flex flex-col items-center justify-center "
-          action=""
+        <Formik
+          initialValues={{ name: "", mobile: "", email: "", password: "" }}
+          validationSchema={signupValidationSchema}
+          onSubmit={(values, { resetForm }) => {
+            toast.success("Sign up successfully!");
+            resetForm({
+              values: { name: "", mobile: "", email: "", password: "" },
+            });
+          }}
         >
-          <div className="flex flex-col items-center justify-center gap-[0px]  ">
-            <h1 className="font-bold ">Sign Up</h1>
-            <p className="font-extralight opacity-[0.8]">
-              Create Your Account !
-            </p>
-          </div>
-          <div className="input-group w-[100%] mt-[30px] ">
-            <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
-              type="name"
-              name="name"
-              max={100}
-              required
-            />
-            <label className="label text-[16px] font-light" htmlFor="name">
-              Name
-            </label>
-            <p className="w-[100%] h-[30px] text-[#000000] font-extralight ml-[20px]">
-              console.error;
-            </p>
-          </div>
+          {({ isSubmitting }) => (
+            <Form className="w-[350px] bg-[#1a1a1a] rounded-[20px] p-[20px] flex flex-col items-center justify-center ">
+              <div className="flex flex-col items-center justify-center gap-[0px]  ">
+                <h1 className="font-bold ">Sign Up</h1>
+                <p className="font-extralight opacity-[0.8]">
+                  Create Your Account !
+                </p>
+              </div>
+              <div className="input-group w-[100%] mt-[30px] ">
+                <Field
+                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
+                  type="text"
+                  name="name"
+                  maxLength={100}
+                  required
+                />
+                <label className="label text-[16px] font-light" htmlFor="name">
+                  Name
+                </label>
+                <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                  <ErrorMessage name="name" component="p" />
+                </p>
+              </div>
 
-          <div className="input-group w-[100%] ">
-            <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
-              type="email"
-              name="email"
-              max={100}
-              required
-            />
-            <label className="label text-[16px] font-light" htmlFor="email">
-              Email
-            </label>
-            <p className="w-[100%] h-[30px] text-[#000000] font-extralight ml-[20px]">
-              console.error;
-            </p>
-          </div>
+              <div className="input-group w-[100%]">
+                <Field
+                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
+                  type="text"
+                  name="mobile"
+                  maxLength={100}
+                  required
+                />
+                <label
+                  className="label text-[16px] font-light"
+                  htmlFor="mobile"
+                >
+                  Mobile Number
+                </label>
+                <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                  <ErrorMessage name="mobile" component="p" />
+                </p>
+              </div>
 
-          <div className="input-group w-[100%]">
-            <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
-              type="tel"
-              name="mobile"
-              max={100}
-              required
-            />
-            <label className="label text-[16px] font-light" htmlFor="mobile">
-              Mobile Number
-            </label>
-            <p className="w-[100%] h-[30px] text-[#000000] font-extralight ml-[20px]">
-              console.error;
-            </p>
-          </div>
+              <div className="input-group w-[100%] ">
+                <Field
+                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
+                  type="email"
+                  name="email"
+                  maxLength={100}
+                  required
+                />
+                <label className="label text-[16px] font-light" htmlFor="email">
+                  Email
+                </label>
+                <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                  <ErrorMessage name="email" component="p" />
+                </p>
+              </div>
 
-          <div className="input-group w-[100%] ">
-            <input
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] font-medium"
-              type="password"
-              name="password"
-              max={100}
-              required
-            />
-            <label className="label text-[16px] font-light" htmlFor="password">
-              Password
-            </label>
-            <p className="w-[100%] h-[30px] text-[#000000] font-extralight ml-[20px]">
-              console.error;
-            </p>
-          </div>
-          <button
-            className="w-[150px] mt-[20px] flex bg-[#f21f30] border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
-            type="submit"
-          >
-            SUBMIT
-          </button>
-          <span className="font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
-            Already have an account?{" "}
-            <span
-              onClick={() => setForm("login")}
-              className="underline cursor-pointer"
-            >
-              Login
-            </span>
-          </span>
-        </form>
+              <div className="input-group w-[100%] ">
+                <Field
+                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] font-medium"
+                  type="password"
+                  name="password"
+                  maxLength={100}
+                  required
+                />
+                <label
+                  className="label text-[16px] font-light"
+                  htmlFor="password"
+                >
+                  Password
+                </label>
+                <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                  <ErrorMessage name="password" component="p" />
+                </p>
+              </div>
+              <button
+                className="w-[150px] mt-[20px] flex bg-[#f21f30] border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "LOADING..." : "SUBMIT"}
+              </button>
+              <span className="font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
+                Already have an account?{" "}
+                <span
+                  onClick={() => setForm("login")}
+                  className="underline cursor-pointer"
+                >
+                  Login
+                </span>
+              </span>
+            </Form>
+          )}
+        </Formik>
       )}
     </div>
   );

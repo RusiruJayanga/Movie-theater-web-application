@@ -3,6 +3,8 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 //scroll to top
 import ScrollToTop from "../src/config/ScrollToTop";
+//alert
+import { Toaster } from "react-hot-toast";
 //main components
 import Navigation_bar_head from "./components/user/navigation/Navigation_bar_head";
 import Navigation_bar from "./components/user/navigation/Navigation_bar";
@@ -24,6 +26,7 @@ function App() {
   return (
     <div>
       <ScrollToTop />
+      <Toaster position="top-center" reverseOrder={false} />
       {/* navigation */}
       {!hideFooterPaths.includes(location.pathname) && <Navigation_bar_head />}
       {!hideFooterPaths.includes(location.pathname) && <Navigation_bar />}

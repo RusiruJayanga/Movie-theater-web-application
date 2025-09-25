@@ -4,7 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 //alert
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 
 //validation schema
 const loginValidationSchema = Yup.object({
@@ -45,7 +45,7 @@ const Login = () => {
           initialValues={{ email: "", password: "" }}
           validationSchema={loginValidationSchema}
           onSubmit={(values, { resetForm }) => {
-            toast.success("Logged in successfully!");
+            toast.success("Logged in successfully !");
             resetForm({ values: { email: "", password: "" } });
           }}
         >
@@ -67,7 +67,11 @@ const Login = () => {
                   Email
                 </label>
                 <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                  <ErrorMessage name="email" component="p" />
+                  <ErrorMessage
+                    name="email"
+                    className="text-[13px]"
+                    component="span"
+                  />
                 </p>
               </div>
 
@@ -86,7 +90,11 @@ const Login = () => {
                   Password
                 </label>
                 <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                  <ErrorMessage name="password" component="p" />
+                  <ErrorMessage
+                    name="password"
+                    className="text-[13px]"
+                    component="span"
+                  />
                 </p>
               </div>
               <button
@@ -94,7 +102,7 @@ const Login = () => {
                 type="submit"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "LOADING..." : "SUBMIT"}
+                {isSubmitting ? "PROCESSING..." : "LOGIN"}
               </button>
               <span className="font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
                 Don't have an account?{" "}
@@ -113,7 +121,7 @@ const Login = () => {
           initialValues={{ name: "", mobile: "", email: "", password: "" }}
           validationSchema={signupValidationSchema}
           onSubmit={(values, { resetForm }) => {
-            toast.success("Sign up successfully!");
+            toast.success("Sign up successfully !");
             resetForm({
               values: { name: "", mobile: "", email: "", password: "" },
             });
@@ -139,7 +147,11 @@ const Login = () => {
                   Name
                 </label>
                 <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                  <ErrorMessage name="name" component="p" />
+                  <ErrorMessage
+                    name="name"
+                    className="text-[13px]"
+                    component="span"
+                  />
                 </p>
               </div>
 
@@ -158,7 +170,11 @@ const Login = () => {
                   Mobile Number
                 </label>
                 <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                  <ErrorMessage name="mobile" component="p" />
+                  <ErrorMessage
+                    name="mobile"
+                    className="text-[13px]"
+                    component="span"
+                  />
                 </p>
               </div>
 
@@ -174,7 +190,11 @@ const Login = () => {
                   Email
                 </label>
                 <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                  <ErrorMessage name="email" component="p" />
+                  <ErrorMessage
+                    name="email"
+                    className="text-[13px]"
+                    component="span"
+                  />
                 </p>
               </div>
 
@@ -193,7 +213,11 @@ const Login = () => {
                   Password
                 </label>
                 <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                  <ErrorMessage name="password" component="p" />
+                  <ErrorMessage
+                    name="password"
+                    className="text-[13px]"
+                    component="span"
+                  />
                 </p>
               </div>
               <button
@@ -201,7 +225,7 @@ const Login = () => {
                 type="submit"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "LOADING..." : "SUBMIT"}
+                {isSubmitting ? "PROCESSING..." : "SIGN UP"}
               </button>
               <span className="font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
                 Already have an account?{" "}

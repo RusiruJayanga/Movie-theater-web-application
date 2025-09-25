@@ -4,7 +4,8 @@ import "./App.css";
 //scroll to top
 import ScrollToTop from "../src/config/ScrollToTop";
 //alert
-import { Toaster } from "react-hot-toast";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 //main components
 import Navigation_bar_head from "./components/user/navigation/Navigation_bar_head";
 import Navigation_bar from "./components/user/navigation/Navigation_bar";
@@ -26,7 +27,12 @@ function App() {
   return (
     <div>
       <ScrollToTop />
-      <Toaster position="top-center" reverseOrder={false} />
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        theme="dark"
+        style={{ zIndex: 10200, cursor: "default" }}
+      />
       {/* navigation */}
       {!hideFooterPaths.includes(location.pathname) && <Navigation_bar_head />}
       {!hideFooterPaths.includes(location.pathname) && <Navigation_bar />}

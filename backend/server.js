@@ -2,19 +2,11 @@ import express from "express";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
 import dotenv from "dotenv";
-dotenv.config();
-import path from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-process.env.GOOGLE_APPLICATION_CREDENTIALS = path.resolve(
-  __dirname,
-  "config/vision-ocr-sa.json"
-);
+//user routes
+import userAuthRoutes from "./routes/user/Authentication.js";
 
 //app config
+dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -32,3 +24,7 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+//API routes
+//user routes
+app.use("/api/auth", userAuthRoutes);

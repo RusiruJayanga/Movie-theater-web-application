@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+//hooks
+import { logout } from "../../../hooks/Auth.jsx";
 
 const Account = () => {
   //manue open
   const [menuInterestsOpen, set_menu_Interests_open] = useState(false);
   const [menuHistoryOpen, set_menu_History_open] = useState(false);
   const [menuSettingsOpen, set_menu_Settings_open] = useState(false);
+
+  //logout
+  const handle_logout = () => {
+    logout();
+  };
 
   return (
     <div className="p-[10px] flex flex-col items-start text-white cursor-default mt-[40px] md:w-[80%] md:mx-auto xl:w-[920px] xl:mt-[20px] ">
@@ -26,7 +33,10 @@ const Account = () => {
             077 667 9711
           </p>
         </div>
-        <h4 className="w-[40px] h-[40px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out">
+        <h4
+          className="w-[40px] h-[40px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out"
+          onClick={handle_logout}
+        >
           <i className="bi bi-box-arrow-right"></i>
         </h4>
       </div>

@@ -58,7 +58,7 @@ const Contact = () => {
               <label className="label text-[16px] font-light" htmlFor="email">
                 Your Email
               </label>
-              <p className="w-[100%] lowercase h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+              <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
                   name="email"
                   className="text-[13px]"
@@ -76,7 +76,7 @@ const Contact = () => {
               <label className="label text-[16px] font-light" htmlFor="content">
                 Content
               </label>
-              <p className="w-[100%] lowercase h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+              <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
                   name="content"
                   className="text-[13px]"

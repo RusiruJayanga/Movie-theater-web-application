@@ -9,7 +9,8 @@ const Navigation_bar_head = () => {
   //responsive navigation
   const [menuOpen, set_menu_open] = useState(false);
   //token
-  const token = "token";
+  const token = localStorage.getItem("token");
+
   return (
     <div className="z-[10000] text-white">
       <div className="w-[100%] h-[60px] bg-[#0c0c0c] flex items-center p-[10px] sm:h-[100px] ">
@@ -42,7 +43,7 @@ const Navigation_bar_head = () => {
           </Link>
           {/* account */}
           {token ? (
-            <Link to="/login" onClick={() => set_active_nav("login")}>
+            <Link to="/account" onClick={() => set_active_nav("account")}>
               <h4
                 className={`${
                   activeNav === "account" ? "text-[#f21f30]" : ""

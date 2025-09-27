@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { data, Link, NavLink, useNavigate } from "react-router-dom";
 //validation
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 //alert
 import { toast } from "react-toastify";
+//hooks
+import { useSignup, useLogin } from "../../../hooks/Auth.jsx";
 
 //validation schema
 const loginValidationSchema = Yup.object({
@@ -33,6 +35,15 @@ const Login = () => {
   //login signup toggle
   const [form, setForm] = useState("login");
 
+  //signup function
+  const { mutate: signupUser } = useSignup((data) => {
+    localStorage.setItem("token", data.token);
+  });
+  //login function
+  const { mutate: loginUser } = useLogin((data) => {
+    localStorage.setItem("token", data.token);
+  });
+
   return (
     <div className="absolute text-white font-light top-0 left-0 w-full h-full bg-[linear-gradient(0deg,rgba(12,12,12,0.95)_0%,rgba(12,12,12,0.95)_100%),url(/auth_bg.jpg)] bg-no-repeat bg-cover bg-center flex items-center justify-center cursor-default ">
       <Link to="/">
@@ -45,8 +56,8 @@ const Login = () => {
           initialValues={{ email: "", password: "" }}
           validationSchema={loginValidationSchema}
           onSubmit={(values, { resetForm }) => {
-            toast.success("Logged in successfully !");
-            resetForm({ values: { email: "", password: "" } });
+            loginUser(values);
+            resetForm();
           }}
         >
           {({ isSubmitting }) => (
@@ -121,7 +132,7 @@ const Login = () => {
           initialValues={{ name: "", mobile: "", email: "", password: "" }}
           validationSchema={signupValidationSchema}
           onSubmit={(values, { resetForm }) => {
-            toast.success("Sign up successfully !");
+            signupUser(values);
             resetForm({
               values: { name: "", mobile: "", email: "", password: "" },
             });

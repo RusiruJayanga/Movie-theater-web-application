@@ -12,6 +12,7 @@ const movieSchema = new mongoose.Schema({
   trailerUrl: { type: String, required: true },
   mainImage: { type: String, required: true },
   galleryImages: [{ type: String }],
+  status: { type: String, required: true, default: "SHOWING" },
 });
 
 const Movie = mongoose.model("Movie", movieSchema);

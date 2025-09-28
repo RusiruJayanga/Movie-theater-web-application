@@ -6,6 +6,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 //alert
 import { toast } from "react-toastify";
+//hooks
+import { useContact } from "../../../hooks/Contact";
 
 //validation schema
 const contactValidationSchema = Yup.object({
@@ -18,6 +20,9 @@ const contactValidationSchema = Yup.object({
 });
 
 const Contact = () => {
+  //contact function
+  const { mutate: contactUser } = useContact((data) => {});
+
   return (
     <motion.section
       variants={{
@@ -41,7 +46,7 @@ const Contact = () => {
         initialValues={{ email: "", content: "" }}
         validationSchema={contactValidationSchema}
         onSubmit={(values, { resetForm }) => {
-          toast.success("Message sent successfully !");
+          contactUser(values);
           resetForm({ values: { email: "", content: "" } });
         }}
       >
@@ -52,7 +57,7 @@ const Contact = () => {
                 className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
                 type="email"
                 name="email"
-                max={100}
+                maxLength={100}
                 required
               />
               <label className="label text-[16px] font-light" htmlFor="email">
@@ -70,7 +75,7 @@ const Contact = () => {
               <Field
                 className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px]"
                 name="content"
-                max={200}
+                maxLength={200}
                 required
               ></Field>
               <label className="label text-[16px] font-light" htmlFor="content">

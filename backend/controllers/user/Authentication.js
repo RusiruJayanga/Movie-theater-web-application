@@ -22,15 +22,11 @@ export const signupUser = async (req, res) => {
       return res.status(400).json({ message: "User already exists !" });
     }
 
-    //hash password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-
     const user = await User.create({
       name,
       mobile,
       email,
-      password: hashedPassword,
+      password,
     });
 
     if (user) {
@@ -52,18 +48,20 @@ export const signupUser = async (req, res) => {
 //login
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
-  console.log(email);
+
   //validation
   try {
     if (!email || !password) {
       return res.status(400).json({ message: "Please fill all fields !" });
     }
 
+    //check user
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: "User not found !" });
     }
 
+    //password match
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid credentials !" });

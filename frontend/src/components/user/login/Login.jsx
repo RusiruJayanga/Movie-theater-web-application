@@ -11,24 +11,24 @@ import { useSignup, useLogin } from "../../../hooks/Auth.jsx";
 //validation schema
 const loginValidationSchema = Yup.object({
   email: Yup.string()
-    .email("Invalid email format")
-    .required("Email is required"),
+    .email("invalid email format")
+    .required("email is required"),
   password: Yup.string()
-    .min(6, "Password must be at least 6 characters")
-    .required("Password is required"),
+    .min(6, "password must be at least 6 characters")
+    .required("password is required"),
 });
 
 const signupValidationSchema = Yup.object({
-  name: Yup.string().required("Name is required"),
+  name: Yup.string().required("name is required"),
   mobile: Yup.string()
-    .matches(/^[0-9]{10}$/, "Mobile number must be 10 digits")
-    .required("Mobile number is required"),
+    .matches(/^[0-9]{10}$/, "mobile number must be 10 digits")
+    .required("mobile number is required"),
   email: Yup.string()
-    .email("Invalid email format")
-    .required("Email is required"),
+    .email("invalid email format")
+    .required("email is required"),
   password: Yup.string()
-    .min(6, "Password must be at least 6 characters")
-    .required("Password is required"),
+    .min(6, "password must be at least 6 characters")
+    .required("password is required"),
 });
 
 const Login = () => {
@@ -36,12 +36,15 @@ const Login = () => {
   const [form, setForm] = useState("login");
 
   //signup function
+  const navigate = useNavigate();
   const { mutate: signupUser } = useSignup((data) => {
     localStorage.setItem("token", data.token);
+    navigate("/");
   });
   //login function
   const { mutate: loginUser } = useLogin((data) => {
     localStorage.setItem("token", data.token);
+    navigate("/");
   });
 
   return (

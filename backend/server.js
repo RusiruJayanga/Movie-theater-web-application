@@ -4,6 +4,8 @@ import { connectDB } from "./config/db.js";
 import dotenv from "dotenv";
 //user routes
 import userAuthRoutes from "./routes/user/Authentication.js";
+import userContacRoutes from "./routes/common/Contact.js";
+import userAccountRoutes from "./routes/user/Account.js";
 
 //app config
 dotenv.config();
@@ -28,3 +30,5 @@ app.listen(PORT, () => {
 //API routes
 //user routes
 app.use("/api/auth", userAuthRoutes);
+app.use("/api/user", userContacRoutes);
+app.use("/api/user", userAccountRoutes);

@@ -35,5 +35,4 @@ export const useLogin = (onSuccessCallback) => {
 export const logout = () => {
   localStorage.removeItem("token");
   toast.success("Logged out successfully !");
-  window.location.href = "/";
 };

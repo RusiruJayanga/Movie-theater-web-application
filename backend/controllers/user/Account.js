@@ -28,6 +28,7 @@ export const protect = async (req, res, next) => {
   }
 };
 
+//fetch user
 export const getUserProfile = async (req, res) => {
   if (req.user) {
     res.json(req.user);

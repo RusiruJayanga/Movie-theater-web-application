@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 //hooks
 import { logout } from "../../../hooks/Auth.jsx";
+import { useUserProfile } from "../../../hooks/Account.jsx";
 
 const Account = () => {
   //manue open
@@ -8,9 +10,14 @@ const Account = () => {
   const [menuHistoryOpen, set_menu_History_open] = useState(false);
   const [menuSettingsOpen, set_menu_Settings_open] = useState(false);
 
+  //fetch account
+  const { data: user } = useUserProfile();
+
   //logout
+  const navigate = useNavigate();
   const handle_logout = () => {
     logout();
+    navigate("/");
   };
 
   return (
@@ -24,13 +31,11 @@ const Account = () => {
         <div className="mr-auto ml-[20px] md:ml-[40px]">
           <h4 className="font-medium mt-[5px]">WELLCOME !</h4>
           <h2 className="text-[#f21f30] uppercase font-extralight ">
-            Rusiru Jayanga
+            {user?.name}
           </h2>
-          <p className="font-extralight opacity-[0.8] ">
-            rusirujayanga@gmail.com
-          </p>
+          <p className="font-extralight opacity-[0.8] ">{user?.email}</p>
           <p className="mt-[5px] font-extralight opacity-[0.8] ">
-            077 667 9711
+            {user?.mobile}
           </p>
         </div>
         <h4

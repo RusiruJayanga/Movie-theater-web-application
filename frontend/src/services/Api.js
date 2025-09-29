@@ -38,6 +38,6 @@ API.interceptors.request.use((req) => {
 });
 //fetch
 export const fetchUserProfile = async () => {
-  const { data } = await API.get("/user/profile");
+  const { data } = await API.get("http://localhost:5000/api/user/profile");
   return data;
 };

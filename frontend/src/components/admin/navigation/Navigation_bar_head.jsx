@@ -12,7 +12,7 @@ const Navigation_bar_head = () => {
   const token = "token";
   return (
     <div className="z-[10000] text-white">
-      <div className="w-[100%] h-[60px] bg-[#0c0c0c] flex items-center p-[10px] sm:h-[100px] ">
+      <div className="w-[100%] h-[60px] bg-[#1a1a1a] flex items-center p-[10px] sm:h-[100px] ">
         <img
           className="h-[50px] object-cover mr-auto sm:h-[80px] "
           src="logo.png"
@@ -32,7 +32,7 @@ const Navigation_bar_head = () => {
             initial={{ opacity: 0, x: -5, width: 0 }}
             animate={{ opacity: 1, x: 0, width: 180 }}
             transition={{ duration: 0.3 }}
-            className="z-[10100] h-[100vh] bg-[#0c0c0c] right-0 absolute top-0 p-[10px] sm:hidden"
+            className="z-[10100] h-[100vh] bg-[#1a1a1a] right-0 absolute top-0 p-[10px] sm:hidden"
           >
             <h4
               className="w-[40px] h-[40px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out"
@@ -67,7 +67,16 @@ const Navigation_bar_head = () => {
                 onClick={() => set_menu_open(!menuOpen)}
                 to="/adminMovies"
               >
-                Movies
+                Now Showing
+              </NavLink>
+              <NavLink
+                className={
+                  "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent"
+                }
+                onClick={() => set_menu_open(!menuOpen)}
+                to="/adminMovies"
+              >
+                Upcoming
               </NavLink>
               <NavLink
                 className={
@@ -76,7 +85,7 @@ const Navigation_bar_head = () => {
                 onClick={() => set_menu_open(!menuOpen)}
                 to="/adminAddMovies"
               >
-                Add movies
+                Add Movies
               </NavLink>
               <NavLink
                 className={
@@ -94,7 +103,25 @@ const Navigation_bar_head = () => {
                 onClick={() => set_menu_open(!menuOpen)}
                 to="/adminContact"
               >
+                Bookings
+              </NavLink>
+              <NavLink
+                className={
+                  "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent"
+                }
+                onClick={() => set_menu_open(!menuOpen)}
+                to="/adminContact"
+              >
                 Contact
+              </NavLink>
+              <NavLink
+                className={
+                  "w-[100%] h-[40px] flex items-center justify-center border-b-[2px] border-transparent"
+                }
+                onClick={() => set_menu_open(!menuOpen)}
+                to="/adminUser"
+              >
+                Users
               </NavLink>
             </motion.div>
           </motion.div>

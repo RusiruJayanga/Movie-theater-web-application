@@ -13,7 +13,6 @@ import Navigation_bar from "./components/user/navigation/Navigation_bar";
 import Footer from "./components/user/footer/Footer";
 //admin components
 import Navigation_bar_head_admin from "./components/admin/navigation/Navigation_bar_head";
-import Navigation_bar_admin from "./components/admin/navigation/Navigation_bar";
 //pages
 //user pages
 import Home from "./pages/user/home/Home";
@@ -50,7 +49,6 @@ function App() {
       {showNavigation.includes(location.pathname) && (
         <Navigation_bar_head_admin />
       )}
-      {showNavigation.includes(location.pathname) && <Navigation_bar_admin />}
       {/* pages */}
       {/* user pages */}
       <Routes>

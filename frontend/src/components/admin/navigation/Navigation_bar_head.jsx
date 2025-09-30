@@ -11,7 +11,7 @@ const Navigation_bar_head = () => {
   //token
   const token = "token";
   return (
-    <div className="z-[10000] text-white">
+    <div className="z-[10000] text-white sticky top-0">
       <div className="w-[100%] h-[60px] bg-[#1a1a1a] flex items-center p-[10px] sm:h-[100px] ">
         <img
           className="h-[50px] object-cover mr-auto sm:h-[80px] "

@@ -1,6 +1,16 @@
 import React from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+//countup
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 
 const Home = () => {
+  //countup
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.7,
+  });
+
   return (
     <div className="text-white cursor-default flex flex-2 ">
       <div className="hidden md:block h-dvh w-[280px] bg-[#1a1a1a] sticky top-[100px] left-0 font-light ">
@@ -99,9 +109,57 @@ const Home = () => {
         </div>
       </div>
       {/* info section */}
-      <div className="h-[150vh] flex-1 p-[15px] md:p-[30px] ">
-        <div className="w-[100%] bg-[#1a1a1a] h-[100%] "></div>
+      <div className="h-[150vh] flex-1 p-[15px] md:p-[30px] font-light">
+        <div className="w-[100%] h-[100%] ">
+          <div className="rounded-[20px] bg-[#1a1a1a] p-[10px] " ref={ref}>
+            <h4 className="text-[#f21f30] ">Now Show</h4>
+            <p className="opacity-[0.8] ">
+              Movies curontly showing in theater.
+            </p>
+            <div className="w-[100%] flex justify-between ">
+              <div className="mt-[10px] ">
+                <span className="font-bold text-[60px] text-[#f21f30] ">
+                  {inView && <CountUp start={0} end={28} duration={3} />}
+                </span>
+                <Link
+                  to=""
+                  className="flex items-center justify-center w-[150px] h-[40px] rounded-[20px] border-[1px] border-white transition-colors duration-300 ease-out hover:bg-white hover:text-black"
+                >
+                  VIEW DETAILS
+                </Link>
+              </div>
+              <img
+                className="w-[150px] h-[150px] object-cover "
+                src="admin-now.png"
+                alt="now"
+              />
+            </div>
+          </div>
+          <div className="rounded-[20px] bg-[#1a1a1a] p-[10px] " ref={ref}>
+            <h4 className="text-[#f21f30] ">Users</h4>
+            <p className="opacity-[0.8] ">Right now page has</p>
+            <div className="w-[100%] flex justify-between ">
+              <img
+                className="w-[150px] h-[150px] object-cover "
+                src="admin-user.png"
+                alt="now"
+              />
+              <div className="mt-[10px] ">
+                <span className="font-bold text-[60px] text-[#f21f30] ">
+                  {inView && <CountUp start={0} end={208} duration={3} />}
+                </span>
+                <Link
+                  to=""
+                  className="flex items-center justify-center w-[150px] h-[40px] rounded-[20px] border-[1px] border-white transition-colors duration-300 ease-out hover:bg-white hover:text-black"
+                >
+                  VIEW DETAILS
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      {/* */}
     </div>
   );
 };

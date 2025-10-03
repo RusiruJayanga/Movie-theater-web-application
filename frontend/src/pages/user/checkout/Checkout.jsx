@@ -30,7 +30,7 @@ const Checkout = () => {
               </div>
               <div className="flex ml-auto items-center justify-center">
                 <h5 className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out ">
-                  <i className="bi bi-x-lg"></i>
+                  <i className="bi bi-trash3"></i>
                 </h5>
               </div>
             </div>

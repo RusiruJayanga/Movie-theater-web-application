@@ -143,3 +143,21 @@ a {
 .input-group :is(.input:focus, .input:valid) {
   border-color: var(--bg_color_3);
 }
+/* file upload styles */
+.custom-file-upload {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 13px;
+  border: 1px solid var(--bg_color_1);
+  color: var(--text_color_highlight_1);
+  transition: 300ms ease-out;
+  text-align: center;
+}
+.custom-file-upload:hover {
+  background-color: var(--secondary_color);
+}
+.custom-file-upload input[type="file"] {
+  display: none;
+}

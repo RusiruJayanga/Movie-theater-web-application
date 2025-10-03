@@ -33,7 +33,7 @@ const Contact = () => {
       whileInView="visible"
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="w-[90%] mt-[150px] mx-auto p-[10px] text-white font-light cursor-default xl:w-[1075px] md:flex md:items-start md:justify-center md:gap-[30px] xl:mt-[200px] "
+      className="w-[90%] mt-[150px] mx-auto p-[10px] text-white font-light cursor-default md:flex md:items-start md:justify-center md:gap-[30px] xl:w-[1075px] xl:mt-[200px] "
     >
       <div className="w-[100%] ">
         <h2 className="text-[#f21f30] font-extralight ">CONTACT US</h2>

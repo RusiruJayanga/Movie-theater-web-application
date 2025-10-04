@@ -71,13 +71,16 @@ const Login = () => {
               </div>
               <div className="input-group w-[100%] mt-[30px] ">
                 <Field
-                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
+                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#f21f30]"
                   type="email"
                   name="email"
                   maxLength={100}
                   required
                 />
-                <label className="label text-[16px] font-light" htmlFor="email">
+                <label
+                  className="label text-[16px] font-light text-[#f21f30]"
+                  htmlFor="email"
+                >
                   Email
                 </label>
                 <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
@@ -91,14 +94,14 @@ const Login = () => {
 
               <div className="input-group w-[100%] ">
                 <Field
-                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] font-medium"
+                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] font-medium text-[#f21f30]"
                   type="password"
                   name="password"
                   maxLength={100}
                   required
                 />
                 <label
-                  className="label text-[16px] font-light"
+                  className="label text-[16px] font-light text-[#f21f30]"
                   htmlFor="password"
                 >
                   Password
@@ -151,13 +154,16 @@ const Login = () => {
               </div>
               <div className="input-group w-[100%] mt-[30px] ">
                 <Field
-                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
+                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#f21f30]"
                   type="text"
                   name="name"
                   maxLength={100}
                   required
                 />
-                <label className="label text-[16px] font-light" htmlFor="name">
+                <label
+                  className="label text-[16px] font-light text-[#f21f30]"
+                  htmlFor="name"
+                >
                   Name
                 </label>
                 <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
@@ -171,14 +177,14 @@ const Login = () => {
 
               <div className="input-group w-[100%]">
                 <Field
-                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
+                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#f21f30]"
                   type="text"
                   name="mobile"
                   maxLength={100}
                   required
                 />
                 <label
-                  className="label text-[16px] font-light"
+                  className="label text-[16px] font-light text-[#f21f30]"
                   htmlFor="mobile"
                 >
                   Mobile Number
@@ -194,13 +200,16 @@ const Login = () => {
 
               <div className="input-group w-[100%] ">
                 <Field
-                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
+                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#f21f30]"
                   type="email"
                   name="email"
                   maxLength={100}
                   required
                 />
-                <label className="label text-[16px] font-light" htmlFor="email">
+                <label
+                  className="label text-[16px] font-light text-[#f21f30]"
+                  htmlFor="email"
+                >
                   Email
                 </label>
                 <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
@@ -214,14 +223,14 @@ const Login = () => {
 
               <div className="input-group w-[100%] ">
                 <Field
-                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] font-medium"
+                  className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] font-medium text-[#f21f30]"
                   type="password"
                   name="password"
                   maxLength={100}
                   required
                 />
                 <label
-                  className="label text-[16px] font-light"
+                  className="label text-[16px] font-light text-[#f21f30]"
                   htmlFor="password"
                 >
                   Password

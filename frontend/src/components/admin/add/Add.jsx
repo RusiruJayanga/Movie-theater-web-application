@@ -30,18 +30,21 @@ const Add = () => {
           <Form className="w-[100%] mt-[40px] md:mt-0 ">
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
-                type="email"
-                name="email"
-                max={100}
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd] "
+                type="text"
+                name="title"
+                maxLength={100}
                 required
               />
-              <label className="label text-[16px] font-light" htmlFor="email">
-                Your Email
+              <label
+                className="label text-[16px] font-light text-[#bdbdbd]"
+                htmlFor="text"
+              >
+                Movie Title
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
-                  name="email"
+                  name="title"
                   className="text-[13px]"
                   component="span"
                 />
@@ -49,18 +52,21 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
-                type="email"
-                name="email"
-                max={100}
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd] "
+                type="text"
+                name="status"
+                maxLength={100}
                 required
               />
-              <label className="label text-[16px] font-light" htmlFor="email">
-                Your Email
+              <label
+                className="label text-[16px] font-light text-[#bdbdbd]"
+                htmlFor="text"
+              >
+                Status
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
-                  name="email"
+                  name="status"
                   className="text-[13px]"
                   component="span"
                 />
@@ -68,18 +74,21 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
-                type="email"
-                name="email"
-                max={100}
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                type="text"
+                name="duration"
+                maxLength={100}
                 required
               />
-              <label className="label text-[16px] font-light" htmlFor="email">
-                Your Email
+              <label
+                className="label text-[16px] font-light text-[#bdbdbd]"
+                htmlFor="text"
+              >
+                Time Duration {"(min)"}
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
-                  name="email"
+                  name="duration"
                   className="text-[13px]"
                   component="span"
                 />
@@ -87,18 +96,20 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
-                type="email"
-                name="email"
-                max={100}
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                type="date"
+                name="releaseDate"
                 required
               />
-              <label className="label text-[16px] font-light" htmlFor="email">
-                Your Email
+              <label
+                className="label text-[16px] font-light text-[#bdbdbd] opacity-0"
+                htmlFor="date"
+              >
+                Release Date
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
-                  name="email"
+                  name="releaseDate"
                   className="text-[13px]"
                   component="span"
                 />
@@ -106,18 +117,20 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
-                type="email"
-                name="email"
-                max={100}
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                type="date"
+                name="closeDate"
                 required
               />
-              <label className="label text-[16px] font-light" htmlFor="email">
-                Your Email
+              <label
+                className="label text-[16px] font-light text-[#bdbdbd] opacity-0"
+                htmlFor="date"
+              >
+                Close Date
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
-                  name="email"
+                  name="closeDate"
                   className="text-[13px]"
                   component="span"
                 />
@@ -125,18 +138,21 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
-                type="email"
-                name="email"
-                max={100}
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                type="text"
+                name="ratingCategory"
+                maxLength={100}
                 required
               />
-              <label className="label text-[16px] font-light" htmlFor="email">
-                Your Email
+              <label
+                className="label text-[16px] font-light text-[#bdbdbd]"
+                htmlFor="ratingCategory"
+              >
+                Rating Category
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
-                  name="email"
+                  name="ratingCategory"
                   className="text-[13px]"
                   component="span"
                 />
@@ -144,18 +160,21 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
-                type="email"
-                name="email"
-                max={100}
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                type="text"
+                name="studio"
+                maxLength={100}
                 required
               />
-              <label className="label text-[16px] font-light" htmlFor="email">
-                Your Email
+              <label
+                className="label text-[16px] font-light text-[#bdbdbd]"
+                htmlFor="text"
+              >
+                Studio
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
-                  name="email"
+                  name="studio"
                   className="text-[13px]"
                   component="span"
                 />
@@ -163,18 +182,21 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
-                type="email"
-                name="email"
-                max={100}
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                type="text"
+                name="director"
+                maxLength={100}
                 required
               />
-              <label className="label text-[16px] font-light" htmlFor="email">
-                Your Email
+              <label
+                className="label text-[16px] font-light text-[#bdbdbd]"
+                htmlFor="text"
+              >
+                Director
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
-                  name="email"
+                  name="director"
                   className="text-[13px]"
                   component="span"
                 />
@@ -182,62 +204,96 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px]"
-                name="content"
-                max={200}
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                type="text"
+                name="trailerUrl"
+                maxLength={200}
+                required
+              />
+              <label
+                className="label text-[16px] font-light text-[#bdbdbd]"
+                htmlFor="text"
+              >
+                Trailer Url
+              </label>
+              <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                <ErrorMessage
+                  name="trailerUrl"
+                  className="text-[13px]"
+                  component="span"
+                />
+              </p>
+            </div>
+            <div className="input-group">
+              <Field
+                className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                name="description"
+                maxLength={500}
                 required
               ></Field>
-              <label className="label text-[16px] font-light" htmlFor="content">
-                Content
+              <label
+                className="label text-[16px] font-light text-[#bdbdbd]"
+                htmlFor="text"
+              >
+                Description
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
-                  name="content"
+                  name="description"
                   className="text-[13px]"
                   component="span"
                 />
               </p>
             </div>
             <div>
-              <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px]">
+              <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px] text-[#bdbdbd]">
                 <Field type="file" name="file" />
-                <h2 className="mt-[15px]">
+                <h2 className="flex flex-col items-center justify-center ">
                   <i className="bi bi-cloud-arrow-up-fill"></i>
+                  <span className="text-[16px] font-light text-[#bdbdbd]">
+                    Main Image
+                  </span>
                 </h2>
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
-                  name="content"
+                  name="mainImage"
                   className="text-[13px]"
                   component="span"
                 />
               </p>
             </div>
             <div>
-              <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px]">
+              <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px] text-[#bdbdbd]">
                 <Field type="file" name="file" />
-                <h2 className="mt-[15px]">
+                <h2 className="flex flex-col items-center justify-center ">
                   <i className="bi bi-cloud-arrow-up-fill"></i>
+                  <span className="text-[16px] font-light text-[#bdbdbd]">
+                    Poster
+                  </span>
                 </h2>
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
-                  name="content"
+                  name="poster"
                   className="text-[13px]"
                   component="span"
                 />
               </p>
             </div>
             <div>
-              <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px]">
+              <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px] text-[#bdbdbd]">
                 <Field type="file" name="file" />
-                <h2 className="mt-[15px]">
+                <h2 className="flex flex-col items-center justify-center ">
                   <i className="bi bi-cloud-arrow-up-fill"></i>
+                  <span className="text-[16px] font-light text-[#bdbdbd]">
+                    Gallery Images
+                  </span>
                 </h2>
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
-                  name="content"
+                  name="galleryImages"
                   className="text-[13px]"
                   component="span"
                 />

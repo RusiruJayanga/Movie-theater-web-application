@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Dashboard from "../../../components/admin/dashboard/Dashboard";
 import Now_showing from "../../../components/admin/now_showing/Now_showing";
 import Upcoming from "../../../components/admin/upcoming/Upcoming";
-import Add from "../../../components/add/Add";
+import Add from "../../../components/admin/add/Add";
 
 const Home = () => {
   //components

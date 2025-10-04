@@ -49,13 +49,16 @@ const Contact = () => {
           <Form className="w-[100%] mt-[40px] md:mt-0 ">
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#f21f30]"
                 type="email"
                 name="email"
                 max={100}
                 required
               />
-              <label className="label text-[16px] font-light" htmlFor="email">
+              <label
+                className="label text-[16px] font-light text-[#f21f30]"
+                htmlFor="email"
+              >
                 Your Email
               </label>
               <p className="w-[100%] lowercase h-[30px] text-[#f21f30] font-extralight ml-[20px]">
@@ -68,12 +71,15 @@ const Contact = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px]"
+                className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px] text-[#f21f30]"
                 name="content"
                 max={200}
                 required
               ></Field>
-              <label className="label text-[16px] font-light" htmlFor="content">
+              <label
+                className="label text-[16px] font-light text-[#f21f30]"
+                htmlFor="content"
+              >
                 Content
               </label>
               <p className="w-[100%] lowercase h-[30px] text-[#f21f30] font-extralight ml-[20px]">

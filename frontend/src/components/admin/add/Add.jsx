@@ -6,24 +6,81 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 
 //validation schema
-const contactValidationSchema = Yup.object({
-  email: Yup.string()
-    .email("invalid email format")
-    .required("email is required"),
-  content: Yup.string()
-    .max(200, "content must be at most 200 characters")
-    .required("content is required"),
+const addMovieValidationSchema = Yup.object({
+  title: Yup.string()
+    .max(100, "title must be at most 100 characters")
+    .required("movie title is required"),
+  status: Yup.string()
+    .max(50, "status must be at most 50 characters")
+    .required("status is required"),
+  duration: Yup.number()
+    .typeError("duration must be a number")
+    .positive("duration must be positive")
+    .integer("duration must be an integer")
+    .required("duration is required"),
+  releaseDate: Yup.date().required("release date is required"),
+  closeDate: Yup.date()
+    .min(Yup.ref("releaseDate"), "close date cannot be before release date")
+    .required("close date is required"),
+  ratingCategory: Yup.string()
+    .max(20, "rating category must be at most 20 characters")
+    .required("rating category is required"),
+  studio: Yup.string()
+    .max(100, "studio name too long")
+    .required("studio is required"),
+  director: Yup.string()
+    .max(100, "director name too long")
+    .required("director is required"),
+  trailerUrl: Yup.string()
+    .url("enter a valid URL")
+    .required("trailer URL is required"),
+  description: Yup.string()
+    .max(500, "description must be at most 500 characters")
+    .required("description is required"),
+  mainImage: Yup.mixed().required("main image is required"),
+  poster: Yup.mixed().required("poster image is required"),
+  galleryImages: Yup.mixed().required("gallery images are required"),
 });
 
 const Add = () => {
   return (
     <section className="w-[100%] mx-auto mt-[40px] md:w-[80%] xl:w-[600px] ">
       <Formik
-        initialValues={{ email: "", content: "" }}
-        validationSchema={contactValidationSchema}
+        initialValues={{
+          title: "",
+          status: "",
+          duration: "",
+          releaseDate: "",
+          closeDate: "",
+          ratingCategory: "",
+          studio: "",
+          director: "",
+          trailerUrl: "",
+          description: "",
+          mainImage: null,
+          poster: null,
+          galleryImages: null,
+        }}
+        validationSchema={addMovieValidationSchema}
         onSubmit={(values, { resetForm }) => {
-          toast.success("Message sent successfully !");
-          resetForm({ values: { email: "", content: "" } });
+          toast.success("Movie added successfully !");
+          resetForm({
+            values: {
+              title: "",
+              status: "",
+              duration: "",
+              releaseDate: "",
+              closeDate: "",
+              ratingCategory: "",
+              studio: "",
+              director: "",
+              trailerUrl: "",
+              description: "",
+              mainImage: null,
+              poster: null,
+              galleryImages: null,
+            },
+          });
         }}
       >
         {({ isSubmitting }) => (
@@ -53,17 +110,18 @@ const Add = () => {
             <div className="input-group">
               <Field
                 className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd] "
-                type="text"
+                as="select"
                 name="status"
-                maxLength={100}
                 required
-              />
+              >
+                <option value="">Select Status</option>
+                <option value="nowShowing">Now Showing</option>
+                <option value="upcoming">Upcoming</option>
+              </Field>
               <label
                 className="label text-[16px] font-light text-[#bdbdbd]"
                 htmlFor="text"
-              >
-                Status
-              </label>
+              ></label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
                   name="status"
@@ -139,17 +197,21 @@ const Add = () => {
             <div className="input-group">
               <Field
                 className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
-                type="text"
+                as="select"
                 name="ratingCategory"
-                maxLength={100}
                 required
-              />
+              >
+                <option value="">Select Rating</option>
+                <option value="G">G</option>
+                <option value="PG">PG</option>
+                <option value="PG-13">PG-13</option>
+                <option value="R">R</option>
+                <option value="NC-17">NC-17</option>
+              </Field>
               <label
                 className="label text-[16px] font-light text-[#bdbdbd]"
                 htmlFor="ratingCategory"
-              >
-                Rating Category
-              </label>
+              ></label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
                   name="ratingCategory"
@@ -247,7 +309,13 @@ const Add = () => {
             </div>
             <div>
               <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px] text-[#bdbdbd]">
-                <Field type="file" name="file" />
+                <Field
+                  type="file"
+                  name="mainImage"
+                  onChange={(event) =>
+                    setFieldValue("mainImage", event.currentTarget.files[0])
+                  }
+                />
                 <h2 className="flex flex-col items-center justify-center ">
                   <i className="bi bi-cloud-arrow-up-fill"></i>
                   <span className="text-[16px] font-light text-[#bdbdbd]">
@@ -265,7 +333,13 @@ const Add = () => {
             </div>
             <div>
               <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px] text-[#bdbdbd]">
-                <Field type="file" name="file" />
+                <Field
+                  type="file"
+                  name="poster"
+                  onChange={(event) =>
+                    setFieldValue("poster", event.currentTarget.files[0])
+                  }
+                />
                 <h2 className="flex flex-col items-center justify-center ">
                   <i className="bi bi-cloud-arrow-up-fill"></i>
                   <span className="text-[16px] font-light text-[#bdbdbd]">
@@ -283,7 +357,13 @@ const Add = () => {
             </div>
             <div>
               <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px] text-[#bdbdbd]">
-                <Field type="file" name="file" />
+                <Field
+                  type="file"
+                  name="galleryImages"
+                  onChange={(event) =>
+                    setFieldValue("galleryImages", event.currentTarget.files[0])
+                  }
+                />
                 <h2 className="flex flex-col items-center justify-center ">
                   <i className="bi bi-cloud-arrow-up-fill"></i>
                   <span className="text-[16px] font-light text-[#bdbdbd]">

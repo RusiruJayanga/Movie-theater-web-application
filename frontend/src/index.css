@@ -160,3 +160,10 @@ a {
 .custom-file-upload input[type="file"] {
   display: none;
 }
+/* select styles */
+select.input option {
+  background-color: var(--secondary_color);
+  border-radius: 20px;
+  color: var(--text_color_3);
+  cursor: pointer;
+}

@@ -4,6 +4,7 @@ import Dashboard from "../../../components/admin/dashboard/Dashboard";
 import Now_showing from "../../../components/admin/now_showing/Now_showing";
 import Upcoming from "../../../components/admin/upcoming/Upcoming";
 import Add from "../../../components/admin/add/Add";
+import Seat from "../../../components/admin/seat/Seat";
 
 const Home = () => {
   //components
@@ -172,6 +173,8 @@ const Home = () => {
           <Upcoming />
         ) : component === "add" ? (
           <Add />
+        ) : component === "seat" ? (
+          <Seat />
         ) : (
           <p className="font-extralight opacity-[0.8] ">no data to show</p>
         )}

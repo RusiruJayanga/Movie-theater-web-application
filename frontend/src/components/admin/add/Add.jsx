@@ -116,7 +116,7 @@ const Add = () => {
               >
                 <option value="">Select Status</option>
                 <option value="nowShowing">Now Showing</option>
-                <option value="upcoming">Upcoming</option>
+                <option value="upComing">Upcoming</option>
               </Field>
               <label
                 className="label text-[16px] font-light text-[#bdbdbd]"
@@ -263,6 +263,144 @@ const Add = () => {
                   component="span"
                 />
               </p>
+            </div>
+            <div className="flex items-center gap-[20px] ">
+              <div className="w-[50%] ">
+                <div className="input-group">
+                  <Field
+                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                    type="text"
+                    name="showDate1"
+                    maxLength={200}
+                    required
+                  />
+                  <label
+                    className="label text-[16px] font-light text-[#bdbdbd]"
+                    htmlFor="text"
+                  >
+                    Show Date 1
+                  </label>
+                  <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                    <ErrorMessage
+                      name="showDate1"
+                      className="text-[13px]"
+                      component="span"
+                    />
+                  </p>
+                </div>
+                <div className="input-group">
+                  <Field
+                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                    type="text"
+                    name="showDate2"
+                    maxLength={200}
+                    required
+                  />
+                  <label
+                    className="label text-[16px] font-light text-[#bdbdbd]"
+                    htmlFor="text"
+                  >
+                    Show Date 2
+                  </label>
+                  <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                    <ErrorMessage
+                      name="showDate2"
+                      className="text-[13px]"
+                      component="span"
+                    />
+                  </p>
+                </div>
+                <div className="input-group">
+                  <Field
+                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                    type="text"
+                    name="showDate3"
+                    maxLength={200}
+                    required
+                  />
+                  <label
+                    className="label text-[16px] font-light text-[#bdbdbd]"
+                    htmlFor="text"
+                  >
+                    Show Date 3
+                  </label>
+                  <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                    <ErrorMessage
+                      name="showDate3"
+                      className="text-[13px]"
+                      component="span"
+                    />
+                  </p>
+                </div>
+              </div>
+              <div className="w-[50%] ">
+                <div className="input-group">
+                  <Field
+                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                    type="text"
+                    name="showTime1"
+                    maxLength={200}
+                    required
+                  />
+                  <label
+                    className="label text-[16px] font-light text-[#bdbdbd]"
+                    htmlFor="text"
+                  >
+                    Show Time 1
+                  </label>
+                  <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                    <ErrorMessage
+                      name="showTime1"
+                      className="text-[13px]"
+                      component="span"
+                    />
+                  </p>
+                </div>
+                <div className="input-group">
+                  <Field
+                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                    type="text"
+                    name="showTime2"
+                    maxLength={200}
+                    required
+                  />
+                  <label
+                    className="label text-[16px] font-light text-[#bdbdbd]"
+                    htmlFor="text"
+                  >
+                    Show Time 2
+                  </label>
+                  <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                    <ErrorMessage
+                      name="showTime2"
+                      className="text-[13px]"
+                      component="span"
+                    />
+                  </p>
+                </div>
+                <div className="input-group">
+                  <Field
+                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                    type="text"
+                    name="showTime3"
+                    maxLength={200}
+                    required
+                  />
+                  <label
+                    className="label text-[16px] font-light text-[#bdbdbd]"
+                    htmlFor="text"
+                  >
+                    Show Time 3
+                  </label>
+                  <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                    <ErrorMessage
+                      name="showTime3"
+                      className="text-[13px]"
+                      component="span"
+                    />
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="input-group">
               <Field

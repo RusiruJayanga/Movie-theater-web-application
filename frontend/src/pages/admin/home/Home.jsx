@@ -5,6 +5,8 @@ import Now_showing from "../../../components/admin/now_showing/Now_showing";
 import Upcoming from "../../../components/admin/upcoming/Upcoming";
 import Add from "../../../components/admin/add/Add";
 import Seat from "../../../components/admin/seat/Seat";
+import Contact from "../../../components/admin/contact/Contact";
+import User from "../../../components/admin/user/User";
 
 const Home = () => {
   //components
@@ -175,6 +177,10 @@ const Home = () => {
           <Add />
         ) : component === "seat" ? (
           <Seat />
+        ) : component === "contact" ? (
+          <Contact />
+        ) : component === "user" ? (
+          <User />
         ) : (
           <p className="font-extralight opacity-[0.8] ">no data to show</p>
         )}

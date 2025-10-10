@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 //animation
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -33,12 +34,14 @@ const Seat = () => {
             </p>
             <p className="mt-[5px] opacity-[0.8]">Tuesday 8.00 AM</p>
             <p className="mt-[5px] opacity-[0.8]">Tuesday 8.00 AM</p>
+            <Link
+              to=""
+              className="flex items-center justify-center font-light w-[150px] mt-[10px] h-[40px] rounded-[20px] border-[1px] border-white transition-colors duration-300 ease-out hover:bg-white hover:text-black"
+            >
+              VIEW DETAILS
+            </Link>
           </div>
-          <div className="flex ml-auto items-center justify-center">
-            <h5 className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out ">
-              <i className="bi bi-trash3"></i>
-            </h5>
-          </div>
+          <div className="flex ml-auto items-center justify-center"></div>
         </motion.div>
       ))}
       {/* repeat */}

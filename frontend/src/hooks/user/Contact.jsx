@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { contact } from "../services/Api";
+import { contact } from "../../services/user/Api";
 import { toast } from "react-toastify";
 
 //contact hook

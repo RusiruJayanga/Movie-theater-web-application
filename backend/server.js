@@ -6,6 +6,9 @@ import dotenv from "dotenv";
 import userAuthRoutes from "./routes/user/Authentication.js";
 import userContacRoutes from "./routes/common/Contact.js";
 import userAccountRoutes from "./routes/user/Account.js";
+//admin routes
+import adminUserRoutes from "./routes/admin/User.js";
+import adminContactRoutes from "./routes/common/Contact.js";
 
 //app config
 dotenv.config();
@@ -32,3 +35,6 @@ app.listen(PORT, () => {
 app.use("/api/auth", userAuthRoutes);
 app.use("/api/user", userContacRoutes);
 app.use("/api/user", userAccountRoutes);
+//admin routes
+app.use("/api/users", adminUserRoutes);
+app.use("/api/users", adminContactRoutes);

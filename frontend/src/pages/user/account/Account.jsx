@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //hooks
-import { logout } from "../../../hooks/Auth.jsx";
-import { useUserProfile } from "../../../hooks/Account.jsx";
+import { logout } from "../../../hooks/user/Auth.jsx";
+import { useUserProfile } from "../../../hooks/user/Account.jsx";
 
 const Account = () => {
   //manue open

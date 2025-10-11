@@ -7,16 +7,16 @@ import * as Yup from "yup";
 //alert
 import { toast } from "react-toastify";
 //hooks
-import { useContact } from "../../../hooks/Contact";
+import { useContact } from "../../../hooks/user/Contact";
 
 //validation schema
 const contactValidationSchema = Yup.object({
   email: Yup.string()
-    .email("Invalid email format")
-    .required("Email is required"),
+    .email("invalid email format")
+    .required("email is required"),
   content: Yup.string()
-    .max(200, "Content must be at most 200 characters")
-    .required("Content is required"),
+    .max(200, "content must be at most 200 characters")
+    .required("content is required"),
 });
 
 const Contact = () => {

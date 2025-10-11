@@ -6,7 +6,7 @@ import * as Yup from "yup";
 //alert
 import { toast } from "react-toastify";
 //hooks
-import { useSignup, useLogin } from "../../../hooks/Auth.jsx";
+import { useSignup, useLogin } from "../../../hooks/user/Auth";
 
 //validation schema
 const loginValidationSchema = Yup.object({

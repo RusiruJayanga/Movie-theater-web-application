@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchUserProfile } from "../services/Api";
+import { fetchUserProfile } from "../../services/user/Api";
 
 //account hook
 export const useUserProfile = () => {

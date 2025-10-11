@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import { signup } from "../services/Api";
-import { login } from "../services/Api";
+import { signup } from "../../services/user/Api";
+import { login } from "../../services/user/Api";
 import { toast } from "react-toastify";
 
 //signup hook

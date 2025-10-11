@@ -1,15 +1,17 @@
 import React from "react";
 //animation
 import { motion, AnimatePresence } from "framer-motion";
+//hooks
+import { useUsers } from "../../../hooks/admin/User";
 
 const User = () => {
-  //user
-  const new_User = [1, 2, 3, 4, 5, 6, 7, 8];
+  //user function
+  const { data: users } = useUsers();
 
   return (
     <section className="w-[100%] grid gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_580px)] ">
       {/* repeat */}
-      {new_User.map((new_user) => (
+      {users?.map((user) => (
         <motion.div
           variants={{
             hidden: { opacity: 0, y: 60 },
@@ -20,6 +22,7 @@ const User = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex w-[100%] items-start justify-start p-[10px] font-extralight rounded-[20px] bg-[#1a1a1a] hover:scale-102 transition duration-300 ease-out "
+          key={user._id}
         >
           <img
             className="w-[70px] h-[70px] rounded-full md:w-[90px] md:h-[90px]"
@@ -28,13 +31,11 @@ const User = () => {
           />
           <div className="mr-auto ml-[20px] md:ml-[40px]">
             <h5 className="text-[#f21f30] uppercase font-extralight ">
-              Rusiru Jayanga
+              {user.name}
             </h5>
-            <p className="font-extralight opacity-[0.8] ">
-              rusirujayanga@gmail.com
-            </p>
+            <p className="font-extralight opacity-[0.8] ">{user.email}</p>
             <p className="mt-[5px] font-extralight opacity-[0.8] ">
-              077 667 9711
+              {user.mobile}
             </p>
           </div>
           <div className="flex ml-auto items-center justify-center">

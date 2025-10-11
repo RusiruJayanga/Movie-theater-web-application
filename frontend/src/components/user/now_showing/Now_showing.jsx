@@ -24,8 +24,8 @@ const Now_showing = () => {
           className="w-[190px] bg-[#1a1a1a] p-[5px] text-white  font-light rounded-[20px] hover:scale-102 transition duration-300 ease-out xl:w-[300px] xl:p-[10px] xl:items-start xl:justify-between xl:gap-[10px]"
         >
           <img
-            className="w-[100%] h-[190px] object-cover rounded-[15px] xl:h-[260px]"
-            src="movies/1.jpg"
+            className="w-[100%] h-[190px] object-cover rounded-[15px] xl:h-[260px] "
+            src="movies/6.jpg"
             alt="movie"
           />
           <div className="w-[100%] mt-[5px] xl:mt-[10px]">

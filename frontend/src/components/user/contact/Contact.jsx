@@ -33,7 +33,7 @@ const Contact = () => {
       whileInView="visible"
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="w-[90%] mt-[150px] mx-auto p-[10px] text-white font-light cursor-default xl:w-[1075px] md:flex md:items-start md:justify-center md:gap-[30px] xl:mt-[200px] "
+      className="w-[90%] mt-[150px] mx-auto p-[10px] text-white font-light cursor-default md:flex md:items-start md:justify-center md:gap-[30px] xl:w-[1075px] xl:mt-[200px] "
     >
       <div className="w-[100%] ">
         <h2 className="text-[#f21f30] font-extralight ">CONTACT US</h2>
@@ -54,13 +54,16 @@ const Contact = () => {
           <Form className="w-[100%] mt-[40px] md:mt-0 ">
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#f21f30]"
                 type="email"
                 name="email"
                 maxLength={100}
                 required
               />
-              <label className="label text-[16px] font-light" htmlFor="email">
+              <label
+                className="label text-[16px] font-light text-[#f21f30]"
+                htmlFor="email"
+              >
                 Your Email
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
@@ -73,12 +76,15 @@ const Contact = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px]"
+                className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px] text-[#f21f30]"
                 name="content"
                 maxLength={200}
                 required
               ></Field>
-              <label className="label text-[16px] font-light" htmlFor="content">
+              <label
+                className="label text-[16px] font-light text-[#f21f30]"
+                htmlFor="content"
+              >
                 Content
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">

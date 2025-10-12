@@ -4,6 +4,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 //alert
 import { toast } from "react-toastify";
+//hooks
+import { useAddMovie } from "../../../hooks/admin/Movie";
 
 //validation schema
 const addMovieValidationSchema = Yup.object({
@@ -19,9 +21,10 @@ const addMovieValidationSchema = Yup.object({
     .integer("duration must be an integer")
     .required("duration is required"),
   releaseDate: Yup.date().required("release date is required"),
-  closeDate: Yup.date()
-    .min(Yup.ref("releaseDate"), "close date cannot be before release date")
-    .required("close date is required"),
+  closeDate: Yup.date().min(
+    Yup.ref("releaseDate"),
+    "close date cannot be before release date"
+  ),
   ratingCategory: Yup.string()
     .max(20, "rating category must be at most 20 characters")
     .required("rating category is required"),
@@ -39,10 +42,30 @@ const addMovieValidationSchema = Yup.object({
     .required("description is required"),
   mainImage: Yup.mixed().required("main image is required"),
   poster: Yup.mixed().required("poster image is required"),
-  galleryImages: Yup.mixed().required("gallery images are required"),
+  galleryImages: Yup.mixed()
+    .required("gallery images are required")
+    .test(
+      "has-files",
+      "at least one gallery image required",
+      (value) => value && value.length > 0
+    )
+    .test(
+      "fileCount",
+      "only up to 2 images allowed",
+      (value) => value && value.length <= 2
+    ),
+  showDate1: Yup.string().max(50, "show date too long"),
+  showDate2: Yup.string().max(50, "show date too long"),
+  showDate3: Yup.string().max(50, "show date too long"),
+  showTime1: Yup.string().max(50, "show time too long"),
+  showTime2: Yup.string().max(50, "show time too long"),
+  showTime3: Yup.string().max(50, "show time too long"),
 });
 
 const Add = () => {
+  //add movie function
+  const { mutate, isPending: isAdding } = useAddMovie();
+
   return (
     <section className="w-[100%] mx-auto mt-[40px] md:w-[80%] xl:w-[600px] ">
       <Formik
@@ -55,6 +78,12 @@ const Add = () => {
           ratingCategory: "",
           studio: "",
           director: "",
+          showDate1: "",
+          showDate2: "",
+          showDate3: "",
+          showTime1: "",
+          showTime2: "",
+          showTime3: "",
           trailerUrl: "",
           description: "",
           mainImage: null,
@@ -62,28 +91,63 @@ const Add = () => {
           galleryImages: null,
         }}
         validationSchema={addMovieValidationSchema}
-        onSubmit={(values, { resetForm }) => {
-          toast.success("Movie added successfully !");
-          resetForm({
-            values: {
-              title: "",
-              status: "",
-              duration: "",
-              releaseDate: "",
-              closeDate: "",
-              ratingCategory: "",
-              studio: "",
-              director: "",
-              trailerUrl: "",
-              description: "",
-              mainImage: null,
-              poster: null,
-              galleryImages: null,
+        onSubmit={(values, { setSubmitting, resetForm }) => {
+          setSubmitting(true);
+          const time = [];
+          if (values.showDate1 && values.showTime1) {
+            time.push({
+              showDate: values.showDate1,
+              showTimes: values.showTime1,
+            });
+          }
+          if (values.showDate2 && values.showTime2) {
+            time.push({
+              showDate: values.showDate2,
+              showTimes: values.showTime2,
+            });
+          }
+          if (values.showDate3 && values.showTime3) {
+            time.push({
+              showDate: values.showDate3,
+              showTimes: values.showTime3,
+            });
+          }
+          const formData = new FormData();
+          formData.append("title", values.title);
+          formData.append("status", values.status);
+          formData.append("duration", values.duration);
+          formData.append("releaseDate", values.releaseDate);
+          formData.append("closeDate", values.closeDate);
+          formData.append("ratingCategory", values.ratingCategory);
+          formData.append("studio", values.studio);
+          formData.append("director", values.director);
+          formData.append("trailerUrl", values.trailerUrl);
+          formData.append("description", values.description);
+          formData.append("time", JSON.stringify(time));
+
+          if (values.mainImage) {
+            formData.append("mainImage", values.mainImage);
+          }
+          if (values.poster) {
+            formData.append("poster", values.poster);
+          }
+          if (values.galleryImages) {
+            Array.from(values.galleryImages).forEach((file) => {
+              formData.append("galleryImages", file);
+            });
+          }
+          mutate(formData, {
+            onSuccess: () => {
+              resetForm();
+              setSubmitting(false);
+            },
+            onError: () => {
+              setSubmitting(false);
             },
           });
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, setFieldValue }) => (
           <Form className="w-[100%] mt-[40px] md:mt-0 ">
             <div className="input-group">
               <Field
@@ -178,7 +242,6 @@ const Add = () => {
                 className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
                 type="date"
                 name="closeDate"
-                required
               />
               <label
                 className="label text-[16px] font-light text-[#bdbdbd] opacity-0"
@@ -271,8 +334,7 @@ const Add = () => {
                     className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
                     type="text"
                     name="showDate1"
-                    maxLength={200}
-                    required
+                    maxLength={50}
                   />
                   <label
                     className="label text-[16px] font-light text-[#bdbdbd]"
@@ -293,8 +355,7 @@ const Add = () => {
                     className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
                     type="text"
                     name="showDate2"
-                    maxLength={200}
-                    required
+                    maxLength={50}
                   />
                   <label
                     className="label text-[16px] font-light text-[#bdbdbd]"
@@ -315,8 +376,7 @@ const Add = () => {
                     className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
                     type="text"
                     name="showDate3"
-                    maxLength={200}
-                    required
+                    maxLength={50}
                   />
                   <label
                     className="label text-[16px] font-light text-[#bdbdbd]"
@@ -339,8 +399,7 @@ const Add = () => {
                     className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
                     type="text"
                     name="showTime1"
-                    maxLength={200}
-                    required
+                    maxLength={50}
                   />
                   <label
                     className="label text-[16px] font-light text-[#bdbdbd]"
@@ -361,8 +420,7 @@ const Add = () => {
                     className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
                     type="text"
                     name="showTime2"
-                    maxLength={200}
-                    required
+                    maxLength={50}
                   />
                   <label
                     className="label text-[16px] font-light text-[#bdbdbd]"
@@ -383,8 +441,7 @@ const Add = () => {
                     className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
                     type="text"
                     name="showTime3"
-                    maxLength={200}
-                    required
+                    maxLength={50}
                   />
                   <label
                     className="label text-[16px] font-light text-[#bdbdbd]"
@@ -447,9 +504,10 @@ const Add = () => {
             </div>
             <div>
               <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px] text-[#bdbdbd]">
-                <Field
+                <input
                   type="file"
                   name="mainImage"
+                  accept="image/*"
                   onChange={(event) =>
                     setFieldValue("mainImage", event.currentTarget.files[0])
                   }
@@ -471,9 +529,10 @@ const Add = () => {
             </div>
             <div>
               <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px] text-[#bdbdbd]">
-                <Field
+                <input
                   type="file"
                   name="poster"
+                  accept="image/*"
                   onChange={(event) =>
                     setFieldValue("poster", event.currentTarget.files[0])
                   }
@@ -495,17 +554,19 @@ const Add = () => {
             </div>
             <div>
               <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px] text-[#bdbdbd]">
-                <Field
+                <input
                   type="file"
                   name="galleryImages"
+                  accept="image/*"
+                  multiple
                   onChange={(event) =>
-                    setFieldValue("galleryImages", event.currentTarget.files[0])
+                    setFieldValue("galleryImages", event.currentTarget.files)
                   }
                 />
                 <h2 className="flex flex-col items-center justify-center ">
                   <i className="bi bi-cloud-arrow-up-fill"></i>
                   <span className="text-[16px] font-light text-[#bdbdbd]">
-                    Gallery Images
+                    Gallery Images (up to 2)
                   </span>
                 </h2>
               </label>
@@ -520,9 +581,9 @@ const Add = () => {
             <button
               className="w-[150px] mx-auto mt-[10px] flex bg-[#f21f30] font-medium border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || isAdding}
             >
-              {isSubmitting ? "PROCESSING..." : "SEND"}
+              {isSubmitting || isAdding ? "PROCESSING..." : "ADD MOVIE"}
             </button>
           </Form>
         )}

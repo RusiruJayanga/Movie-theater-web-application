@@ -3,10 +3,18 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 //hooks
 import { useUsers } from "../../../hooks/admin/User";
+import { useDeleteAccount } from "../../../hooks/admin/User";
 
 const User = () => {
   //user function
   const { data: users } = useUsers();
+  const { mutate: deleteUser, isPending } = useDeleteAccount();
+
+  const handleDelete = (id, name) => {
+    if (window.confirm(`Are you sure you want to delete ${name}?`)) {
+      deleteUser(id);
+    }
+  };
 
   return (
     <section className="w-[100%] grid gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_580px)] ">
@@ -39,7 +47,11 @@ const User = () => {
             </p>
           </div>
           <div className="flex ml-auto items-center justify-center">
-            <h5 className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out ">
+            <h5
+              className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out "
+              onClick={() => handleDelete(user._id, user.name)}
+              disabled={isPending}
+            >
               <i className="bi bi-trash3"></i>
             </h5>
           </div>

@@ -1,6 +1,6 @@
 import Contact from "../../models/common/Contact.js";
 
-//contact
+//add contact
 export const contactUser = async (req, res) => {
   const { email, content } = req.body;
 

@@ -3,8 +3,13 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+//hooks
+import { useMovies } from "../../../hooks/common/Movie";
 
 const Slick_slider = () => {
+  //movies
+  const { data: movies } = useMovies();
+
   //slick slider settings
   function SampleNextArrow(props) {
     const { onClick } = props;
@@ -50,17 +55,6 @@ const Slick_slider = () => {
       { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1 } },
     ],
   };
-  const movies = [
-    { id: 1, title: "Movie 1", image: "movies/1.jpg" },
-    { id: 2, title: "Movie 2", image: "movies/2.jpg" },
-    { id: 3, title: "Movie 3", image: "movies/3.jpg" },
-    { id: 4, title: "Movie 4", image: "movies/4.jpg" },
-    { id: 5, title: "Movie 5", image: "movies/5.jpg" },
-    { id: 6, title: "Movie 6", image: "movies/6.jpg" },
-    { id: 7, title: "Movie 7", image: "movies/7.jpg" },
-    { id: 8, title: "Movie 8", image: "movies/8.jpg" },
-    { id: 9, title: "Movie 9", image: "movies/9.jpg" },
-  ];
 
   return (
     <section className="w-[90%] text-white font-extralight mx-auto cursor-default xl:mt-[-11vh] xl:z-20 xl:relative ">
@@ -73,17 +67,19 @@ const Slick_slider = () => {
       <div className="w-[85%] mx-auto mt-[30px] xl:w-[1240px]">
         <Slider {...settings}>
           {/* repeat */}
-          {movies.map((movie) => (
-            <div key={movie.id} className="px-2">
-              <div className="w-auto h-[450px] bg-[#242124] rounded-[10px]">
-                <img
-                  className="w-full h-full object-cover opacity-[0.7] rounded-[10px] hover:opacity-[1] transition duration-300 ease-out"
-                  src={movie.image}
-                  alt="movie"
-                />
+          {movies
+            ?.filter((movie) => movie.status === "nowShowing")
+            .map((movie) => (
+              <div className="px-2" key={movie?._id}>
+                <div className="w-auto h-[450px] bg-[#242124] rounded-[10px]">
+                  <img
+                    className="w-full h-full object-cover opacity-[0.7] rounded-[10px] hover:opacity-[1] transition duration-300 ease-out"
+                    src={movie?.poster || "default_movie.jpg"}
+                    alt={movie?.title}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
           {/* repeat */}
         </Slider>
       </div>

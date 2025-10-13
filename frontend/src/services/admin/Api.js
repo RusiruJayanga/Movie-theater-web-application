@@ -31,7 +31,7 @@ export const addMovie = async (formData) => {
     },
   };
   const { data } = await axios.post(
-    "http://localhost:5000/api/movies/addmovie",
+    "http://localhost:5000/api/movies/add",
     formData,
     config
   );

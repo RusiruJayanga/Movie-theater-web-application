@@ -58,6 +58,9 @@ const User = () => {
         </motion.div>
       ))}
       {/* repeat */}
+      {users?.length === 0 && (
+        <p className="font-extralight opacity-[0.8] ">no data to show</p>
+      )}
     </section>
   );
 };

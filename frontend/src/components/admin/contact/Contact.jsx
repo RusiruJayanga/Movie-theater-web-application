@@ -22,6 +22,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="w-[100%] p-[10px] font-extralight rounded-[20px] bg-[#1a1a1a] hover:scale-102 transition duration-300 ease-out "
+          key={contact?._id}
         >
           <h5 className="w-[100%] font-light">{contact?.email}</h5>
           <p className="capitalize mt-[10px] opacity-[0.8]">
@@ -30,6 +31,9 @@ const Contact = () => {
         </motion.div>
       ))}
       {/* repeat */}
+      {contacts?.length === 0 && (
+        <p className="font-extralight opacity-[0.8] ">no data to show</p>
+      )}
     </section>
   );
 };

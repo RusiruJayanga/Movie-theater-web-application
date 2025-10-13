@@ -6,7 +6,7 @@ const router = express.Router();
 const upload = multer({ dest: "temp/" });
 
 router.post(
-  "/addmovie",
+  "/add",
   upload.fields([
     { name: "mainImage", maxCount: 1 },
     { name: "poster", maxCount: 1 },

@@ -41,3 +41,11 @@ export const fetchUserProfile = async () => {
   const { data } = await API.get("http://localhost:5000/api/user/profile");
   return data;
 };
+
+//movie details api call
+export const movieDetails = async (movieId) => {
+  const { data } = await axios.get(
+    `http://localhost:5000/api/movies/details/${movieId}`
+  );
+  return data;
+};

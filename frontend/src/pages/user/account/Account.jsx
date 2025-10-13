@@ -11,7 +11,7 @@ const Account = () => {
   const [menuSettingsOpen, set_menu_Settings_open] = useState(false);
 
   //fetch account
-  const { data: user } = useUserProfile();
+  const { data: userProfile } = useUserProfile();
 
   //logout
   const navigate = useNavigate();
@@ -31,11 +31,11 @@ const Account = () => {
         <div className="mr-auto ml-[20px] md:ml-[40px]">
           <h4 className="font-medium mt-[5px]">WELLCOME !</h4>
           <h2 className="text-[#f21f30] uppercase font-extralight ">
-            {user?.name}
+            {userProfile?.name}
           </h2>
-          <p className="font-extralight opacity-[0.8] ">{user?.email}</p>
+          <p className="font-extralight opacity-[0.8] ">{userProfile?.email}</p>
           <p className="mt-[5px] font-extralight opacity-[0.8] ">
-            {user?.mobile}
+            {userProfile?.mobile}
           </p>
         </div>
         <h4

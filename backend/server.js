@@ -6,10 +6,13 @@ import dotenv from "dotenv";
 import userAuthRoutes from "./routes/user/Authentication.js";
 import userContacRoutes from "./routes/common/Contact.js";
 import userAccountRoutes from "./routes/user/Account.js";
+import userMovieDetailsRoutes from "./routes/user/Movie.js";
 //admin routes
 import adminUserRoutes from "./routes/admin/User.js";
 import adminContactRoutes from "./routes/common/Contact.js";
 import adminMovieRoutes from "./routes/admin/Movie.js";
+//common routes
+import movieRoutes from "./routes/common/Movie.js";
 
 //app config
 dotenv.config();
@@ -36,7 +39,10 @@ app.listen(PORT, () => {
 app.use("/api/auth", userAuthRoutes);
 app.use("/api/user", userContacRoutes);
 app.use("/api/user", userAccountRoutes);
+app.use("/api/movies", userMovieDetailsRoutes);
 //admin routes
 app.use("/api/users", adminUserRoutes);
 app.use("/api/users", adminContactRoutes);
 app.use("/api/movies", adminMovieRoutes);
+//common routes
+app.use("/api/movies", movieRoutes);

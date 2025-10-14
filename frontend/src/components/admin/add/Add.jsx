@@ -15,33 +15,19 @@ const addMovieValidationSchema = Yup.object({
   status: Yup.string()
     .max(50, "status must be at most 50 characters")
     .required("status is required"),
-  duration: Yup.number()
-    .typeError("duration must be a number")
-    .positive("duration must be positive")
-    .integer("duration must be an integer")
-    .required("duration is required"),
-  releaseDate: Yup.date().required("release date is required"),
-  closeDate: Yup.date().min(
-    Yup.ref("releaseDate"),
-    "close date cannot be before release date"
-  ),
-  ratingCategory: Yup.string()
-    .max(20, "rating category must be at most 20 characters")
-    .required("rating category is required"),
+  closeDate: Yup.date().when("status", {
+    is: "nowShowing",
+    then: (schema) =>
+      schema.required("close date is required when movie is now showing"),
+    otherwise: (schema) => schema.notRequired(),
+  }),
   studio: Yup.string()
     .max(100, "studio name too long")
     .required("studio is required"),
-  director: Yup.string()
-    .max(100, "director name too long")
-    .required("director is required"),
   trailerUrl: Yup.string()
     .url("enter a valid URL")
     .required("trailer URL is required"),
-  description: Yup.string()
-    .max(500, "description must be at most 500 characters")
-    .required("description is required"),
   mainImage: Yup.mixed().required("main image is required"),
-  poster: Yup.mixed().required("poster image is required"),
   galleryImages: Yup.mixed()
     .required("gallery images are required")
     .test(
@@ -72,12 +58,8 @@ const Add = () => {
         initialValues={{
           title: "",
           status: "",
-          duration: "",
-          releaseDate: "",
           closeDate: "",
-          ratingCategory: "",
           studio: "",
-          director: "",
           showDate1: "",
           showDate2: "",
           showDate3: "",
@@ -85,9 +67,7 @@ const Add = () => {
           showTime2: "",
           showTime3: "",
           trailerUrl: "",
-          description: "",
           mainImage: null,
-          poster: null,
           galleryImages: null,
         }}
         validationSchema={addMovieValidationSchema}
@@ -115,21 +95,13 @@ const Add = () => {
           const formData = new FormData();
           formData.append("title", values.title);
           formData.append("status", values.status);
-          formData.append("duration", values.duration);
-          formData.append("releaseDate", values.releaseDate);
           formData.append("closeDate", values.closeDate);
-          formData.append("ratingCategory", values.ratingCategory);
           formData.append("studio", values.studio);
-          formData.append("director", values.director);
           formData.append("trailerUrl", values.trailerUrl);
-          formData.append("description", values.description);
           formData.append("time", JSON.stringify(time));
 
           if (values.mainImage) {
             formData.append("mainImage", values.mainImage);
-          }
-          if (values.poster) {
-            formData.append("poster", values.poster);
           }
           if (values.galleryImages) {
             Array.from(values.galleryImages).forEach((file) => {
@@ -197,49 +169,6 @@ const Add = () => {
             <div className="input-group">
               <Field
                 className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
-                type="text"
-                name="duration"
-                maxLength={100}
-                required
-              />
-              <label
-                className="label text-[16px] font-light text-[#bdbdbd]"
-                htmlFor="text"
-              >
-                Time Duration {"(min)"}
-              </label>
-              <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                <ErrorMessage
-                  name="duration"
-                  className="text-[13px]"
-                  component="span"
-                />
-              </p>
-            </div>
-            <div className="input-group">
-              <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
-                type="date"
-                name="releaseDate"
-                required
-              />
-              <label
-                className="label text-[16px] font-light text-[#bdbdbd] opacity-0"
-                htmlFor="date"
-              >
-                Release Date
-              </label>
-              <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                <ErrorMessage
-                  name="releaseDate"
-                  className="text-[13px]"
-                  component="span"
-                />
-              </p>
-            </div>
-            <div className="input-group">
-              <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
                 type="date"
                 name="closeDate"
               />
@@ -252,32 +181,6 @@ const Add = () => {
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
                   name="closeDate"
-                  className="text-[13px]"
-                  component="span"
-                />
-              </p>
-            </div>
-            <div className="input-group">
-              <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
-                as="select"
-                name="ratingCategory"
-                required
-              >
-                <option value="">Select Rating</option>
-                <option value="G">G</option>
-                <option value="PG">PG</option>
-                <option value="PG-13">PG-13</option>
-                <option value="R">R</option>
-                <option value="NC-17">NC-17</option>
-              </Field>
-              <label
-                className="label text-[16px] font-light text-[#bdbdbd]"
-                htmlFor="ratingCategory"
-              ></label>
-              <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                <ErrorMessage
-                  name="ratingCategory"
                   className="text-[13px]"
                   component="span"
                 />
@@ -300,28 +203,6 @@ const Add = () => {
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
                   name="studio"
-                  className="text-[13px]"
-                  component="span"
-                />
-              </p>
-            </div>
-            <div className="input-group">
-              <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
-                type="text"
-                name="director"
-                maxLength={100}
-                required
-              />
-              <label
-                className="label text-[16px] font-light text-[#bdbdbd]"
-                htmlFor="text"
-              >
-                Director
-              </label>
-              <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                <ErrorMessage
-                  name="director"
                   className="text-[13px]"
                   component="span"
                 />
@@ -481,27 +362,6 @@ const Add = () => {
                 />
               </p>
             </div>
-            <div className="input-group">
-              <Field
-                className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
-                name="description"
-                maxLength={500}
-                required
-              ></Field>
-              <label
-                className="label text-[16px] font-light text-[#bdbdbd]"
-                htmlFor="text"
-              >
-                Description
-              </label>
-              <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                <ErrorMessage
-                  name="description"
-                  className="text-[13px]"
-                  component="span"
-                />
-              </p>
-            </div>
             <div>
               <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px] text-[#bdbdbd]">
                 <input
@@ -522,31 +382,6 @@ const Add = () => {
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
                   name="mainImage"
-                  className="text-[13px]"
-                  component="span"
-                />
-              </p>
-            </div>
-            <div>
-              <label className="custom-file-upload w-[100%] h-[100px] rounded-[20px] p-[10px] text-[#bdbdbd]">
-                <input
-                  type="file"
-                  name="poster"
-                  accept="image/*"
-                  onChange={(event) =>
-                    setFieldValue("poster", event.currentTarget.files[0])
-                  }
-                />
-                <h2 className="flex flex-col items-center justify-center ">
-                  <i className="bi bi-cloud-arrow-up-fill"></i>
-                  <span className="text-[16px] font-light text-[#bdbdbd]">
-                    Poster
-                  </span>
-                </h2>
-              </label>
-              <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                <ErrorMessage
-                  name="poster"
                   className="text-[13px]"
                   component="span"
                 />

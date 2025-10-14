@@ -9,7 +9,6 @@ router.post(
   "/add",
   upload.fields([
     { name: "mainImage", maxCount: 1 },
-    { name: "poster", maxCount: 1 },
     { name: "galleryImages", maxCount: 2 },
   ]),
   addMovie

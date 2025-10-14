@@ -48,7 +48,7 @@ const Now_showing = () => {
             <div className="w-[100%] mt-[5px] xl:mt-[10px]">
               <h5 className="uppercase">{movie?.title}</h5>
               <p className="opacity-[0.8] font-extralight capitalize mt-[5px] flex items-center xl:mt-[15px]">
-                {formatDuration(movie?.duration)}
+                {formatDuration(movie?.runtime)}
                 <span className="ml-auto text-[#f21f30] uppercase mr-[10px] pl-[5px] pr-[5px] border-l-[1px] border-r-[1px] border-gray-600 font-bold xl:text-[17px] ">
                   {movie?.ratingCategory}
                 </span>

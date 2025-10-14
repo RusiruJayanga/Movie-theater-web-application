@@ -7,10 +7,10 @@ export const useAddMovie = () => {
   return useMutation({
     mutationFn: addMovie,
     onSuccess: () => {
-      toast.success("Movie added successfully!");
+      toast.success("Movie added successfully !");
     },
     onError: (error) => {
-      toast.error(error.response?.data?.message || "Upload failed!");
+      toast.error(error.response?.data?.message || "Upload failed !");
     },
   });
 };

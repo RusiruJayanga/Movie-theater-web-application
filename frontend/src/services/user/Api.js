@@ -49,3 +49,11 @@ export const movieDetails = async (movieId) => {
   );
   return data;
 };
+
+//movie ratings api call
+export const getMovieWithRatings = async (movieId) => {
+  const { data } = await axios.get(
+    `http://localhost:5000/api/movies/rating/${movieId}`
+  );
+  return data;
+};

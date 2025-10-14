@@ -48,13 +48,13 @@ const Upcoming = () => {
             <div className="w-[100%] p-[10px]">
               <h5 className="uppercase">{movie?.title}</h5>
               <p className="opacity-[0.8] font-extralight capitalize mt-[5px] flex items-center xl:mt-[15px]">
-                {formatDuration(movie?.duration)}
+                {formatDuration(movie?.runtime)}
                 <span className="ml-auto text-[#f21f30] uppercase mr-[10px] pl-[5px] pr-[5px] border-l-[1px] border-r-[1px] border-gray-600 font-bold xl:text-[17px] ">
                   {movie?.ratingCategory}
                 </span>
               </p>
               <p className="font-extralight opacity-[0.8] capitalize mt-[5px] xl:block">
-                Opening {new Date(movie?.releaseDate).toLocaleDateString()}
+                Release {new Date(movie?.releaseDate).toLocaleDateString()}
               </p>
               <p className="hidden font-extralight opacity-[0.8] capitalize mt-[5px] xl:block">
                 {movie?.studio}

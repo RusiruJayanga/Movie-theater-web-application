@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 //hooks
 import { useMovie } from "../../../hooks/user/Details";
+import { useMovieWithRatings } from "../../../hooks/user/Rating";
 
 const Details = () => {
   //movie id
@@ -10,6 +11,7 @@ const Details = () => {
 
   //movies
   const { data: movieDetails, isLoading, isError } = useMovie(movieId);
+  const { data: movieRatings } = useMovieWithRatings(movieId);
 
   //function to format duration
   const formatDuration = (minutes) => {
@@ -71,26 +73,35 @@ const Details = () => {
           </button>
         </div>
         <p className=" opacity-[0.8] font-extralight mt-[40px] text-justify ">
-          {movieDetails?.description}
+          {movieDetails?.plot}
         </p>
         <div className="w-[100%] mt-[20px] md:flex md:justify-between xl:mt-[30px]">
           <div className="capitalize">
             <h5 className="mt-[5px] text-[#f21f30] uppercase font-bold">
               {movieDetails?.ratingCategory}
             </h5>
-            <h5>{formatDuration(movieDetails?.duration)}</h5>
+            <h5>{formatDuration(movieDetails?.runtime)}</h5>
             <h5 className="mt-[5px]">
-              Opening {new Date(movieDetails?.releaseDate).toLocaleDateString()}
+              {movieDetails?.status === "nowShowing" ? "Released" : "Release"}{" "}
+              {new Date(movieDetails?.releaseDate).toLocaleDateString()}
             </h5>
-            <h5 className="mt-[5px]">
-              Closing {new Date(movieDetails?.closeDate).toLocaleDateString()}
-            </h5>
+            {movieDetails?.status === "nowShowing" && (
+              <h5 className="mt-[5px]">
+                Closing {new Date(movieDetails?.closeDate).toLocaleDateString()}
+              </h5>
+            )}
             <h5 className="mt-[5px]">{movieDetails?.studio}</h5>
+            <h5 className="mt-[5px]">{movieDetails?.director}</h5>
+            {movieDetails?.genre.map((genre) => (
+              <h5 className="mt-[5px]" key={genre}>
+                {genre}
+              </h5>
+            ))}
           </div>
           <div className="hidden md:flex flex-col justify-center gap-[10px] mr-[30px] font-medium">
             <div className="w-[150px] flex items-center justify-center gap-[20px] md:justify-between md:w-[110px]">
               <img className="w-[60px] " src="rating/imdb.png" alt="rating" />
-              <h4>7/10</h4>
+              <h4>{movieRatings?.imdbRating || "N/A"}</h4>
             </div>
             <div className="w-[150px] flex items-center justify-center gap-[20px] md:justify-between md:w-[110px]">
               <img
@@ -98,18 +109,18 @@ const Details = () => {
                 src="rating/roten.png"
                 alt="rating"
               />
-              <h4>90%</h4>
+              <h4>{movieRatings?.rottenTomatoes || "N/A"}</h4>
             </div>
           </div>
         </div>
         <div className="w-[100%] mt-[10px] flex justify-between  font-medium md:hidden">
           <div className="w-[150px] flex items-center justify-center gap-[10px] md:justify-between md:w-[110px]">
             <img className="w-[60px] " src="rating/imdb.png" alt="rating" />
-            <h4>7/10</h4>
+            <h4>{movieRatings?.imdbRating || "N/A"}</h4>
           </div>
           <div className="w-[150px] flex items-center justify-center gap-[10px] md:justify-between md:w-[110px]">
             <img className="w-[50px] " src="rating/roten.png" alt="rating" />
-            <h4>90%</h4>
+            <h4>{movieRatings?.rottenTomatoes || "N/A"}</h4>
           </div>
         </div>
       </div>

@@ -42,7 +42,7 @@ const Upcoming = () => {
               <h5 className="w-[100%] font-light uppercase ">{movie?.title}</h5>
               <p className="capitalize mt-[10px] opacity-[0.8]">
                 {" "}
-                {formatDuration(movie?.duration)}
+                {formatDuration(movie?.runtime)}
               </p>
               <p className="mt-[5px] opacity-[0.8]">
                 Release Date -{" "}

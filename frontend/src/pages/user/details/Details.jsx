@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 //hooks
 import { useMovie } from "../../../hooks/user/Details";
 import { useMovieWithRatings } from "../../../hooks/user/Rating";
+import { useAddUserInterests } from "../../../hooks/user/Interest";
 
 const Details = () => {
   //movie id
@@ -19,6 +20,9 @@ const Details = () => {
     const remainingMinutes = minutes % 60;
     return `${hours > 0 ? `${hours} h ` : ""}${remainingMinutes} min`;
   };
+
+  //interests function
+  const { mutate: handleAddInterest } = useAddUserInterests();
 
   return (
     <div className="w-[100%] p-[10px] mt-[10px] text-white font-light cursor-default md:mt-[40px] md:w-[95%] md:mx-auto xl:w-[1240px] ">
@@ -68,7 +72,10 @@ const Details = () => {
             </Link>
           )}
 
-          <button className="flex w-[50px] border-[1px] border-white hover:bg-white hover:text-black">
+          <button
+            className="flex w-[50px] border-[1px] border-white hover:bg-white hover:text-black"
+            onClick={() => handleAddInterest(movieDetails?._id)}
+          >
             <i className="bi bi-heart-fill"></i>
           </button>
         </div>
@@ -98,10 +105,11 @@ const Details = () => {
               </h5>
             ))}
           </div>
+          <h4>{movieRatings?.externalRatings?.imdbVotes || "N/A"}</h4>
           <div className="hidden md:flex flex-col justify-center gap-[10px] mr-[30px] font-medium">
             <div className="w-[150px] flex items-center justify-center gap-[20px] md:justify-between md:w-[110px]">
               <img className="w-[60px] " src="rating/imdb.png" alt="rating" />
-              <h4>{movieRatings?.imdbRating || "N/A"}</h4>
+              <h4>{movieRatings?.externalRatings?.imdb || "N/A"}/10</h4>
             </div>
             <div className="w-[150px] flex items-center justify-center gap-[20px] md:justify-between md:w-[110px]">
               <img
@@ -109,18 +117,18 @@ const Details = () => {
                 src="rating/roten.png"
                 alt="rating"
               />
-              <h4>{movieRatings?.rottenTomatoes || "N/A"}</h4>
+              <h4>{movieRatings?.externalRatings?.rottenTomatoes || "N/A"}</h4>
             </div>
           </div>
         </div>
         <div className="w-[100%] mt-[10px] flex justify-between  font-medium md:hidden">
           <div className="w-[150px] flex items-center justify-center gap-[10px] md:justify-between md:w-[110px]">
             <img className="w-[60px] " src="rating/imdb.png" alt="rating" />
-            <h4>{movieRatings?.imdbRating || "N/A"}</h4>
+            <h4>{movieRatings?.externalRatings?.imdb || "N/A"}/10</h4>
           </div>
           <div className="w-[150px] flex items-center justify-center gap-[10px] md:justify-between md:w-[110px]">
             <img className="w-[50px] " src="rating/roten.png" alt="rating" />
-            <h4>{movieRatings?.rottenTomatoes || "N/A"}</h4>
+            <h4>{movieRatings?.externalRatings?.rottenTomatoes || "N/A"}</h4>
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@ import Movie from "../../models/common/Movies.js";
 export const getMovieById = async (req, res) => {
   try {
     const { id } = req.params;
-
     const movie = await Movie.findById(id);
 
     if (!movie) {

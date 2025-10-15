@@ -4,6 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 //hooks
 import { useMovies } from "../../../hooks/common/Movie";
+import { useAddUserInterests } from "../../../hooks/user/Interest";
 
 const Upcoming = () => {
   //movies
@@ -21,6 +22,9 @@ const Upcoming = () => {
   const handleDetailsCardClick = (movieId) => {
     navigate(`/details`, { state: { movieId } });
   };
+
+  //interests function
+  const { mutate: handleAddInterest } = useAddUserInterests();
 
   return (
     <section className="w-[98%] mx-auto mt-[50px] p-[10px] grid [grid-template-columns:repeat(auto-fit,_350px)] gap-[10px] justify-center cursor-default md:[grid-template-columns:repeat(auto-fit,_400px)] xl:gap-[30px] xl:[grid-template-columns:repeat(auto-fit,_450px)] xl:mt-[30px] ">
@@ -66,7 +70,10 @@ const Upcoming = () => {
                 >
                   MORE
                 </button>
-                <button className="flex w-[50px] border-[1px] border-white hover:bg-white hover:text-black xl:w-[55px]">
+                <button
+                  className="flex w-[50px] border-[1px] border-white hover:bg-white hover:text-black xl:w-[55px]"
+                  onClick={() => handleAddInterest(movie?._id)}
+                >
                   <i className="bi bi-heart-fill"></i>
                 </button>
               </div>

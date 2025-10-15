@@ -1,5 +1,15 @@
 import axios from "axios";
 
+//token api call
+const API = axios.create({ baseURL: "http://localhost:5000/api/user/" });
+API.interceptors.request.use((req) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    req.headers.Authorization = `Bearer ${token}`;
+  }
+  return req;
+});
+
 //signup api call
 export const signup = async (userData) => {
   const response = await axios.post(
@@ -28,14 +38,6 @@ export const contact = async (userData) => {
 };
 
 //account api call
-const API = axios.create({ baseURL: "http://localhost:5000/api" });
-API.interceptors.request.use((req) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    req.headers.Authorization = `Bearer ${token}`;
-  }
-  return req;
-});
 //fetch
 export const fetchUserProfile = async () => {
   const { data } = await API.get("http://localhost:5000/api/user/profile");
@@ -54,6 +56,23 @@ export const movieDetails = async (movieId) => {
 export const getMovieWithRatings = async (movieId) => {
   const { data } = await axios.get(
     `http://localhost:5000/api/movies/rating/${movieId}`
+  );
+  return data;
+};
+
+//interest API call
+export const addUserInterests = async (interests) => {
+  const { data } = await API.post(
+    "http://localhost:5000/api/user/interestadd",
+    interests
+  );
+  return data;
+};
+//fetch
+export const getUserInterests = async () => {
+  const token = localStorage.getItem("token");
+  const { data } = await API.get(
+    `http://localhost:5000/api/user/interestfetch/${token}`
   );
   return data;
 };

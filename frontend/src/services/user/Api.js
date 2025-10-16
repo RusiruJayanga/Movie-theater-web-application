@@ -70,9 +70,8 @@ export const addUserInterests = async (interests) => {
 };
 //fetch
 export const getUserInterests = async () => {
-  const token = localStorage.getItem("token");
   const { data } = await API.get(
-    `http://localhost:5000/api/user/interestfetch/${token}`
+    `http://localhost:5000/api/user/interestfetch`
   );
   return data;
 };

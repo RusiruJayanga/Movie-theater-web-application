@@ -9,11 +9,11 @@ import { toast } from "react-toastify";
 //validation schema
 const loginValidationSchema = Yup.object({
   email: Yup.string()
-    .email("Invalid email format")
-    .required("Email is required"),
+    .email("invalid email format")
+    .required("email is required"),
   password: Yup.string()
-    .min(6, "Password must be at least 6 characters")
-    .required("Password is required"),
+    .min(6, "password must be at least 6 characters")
+    .required("password is required"),
 });
 
 const Login = () => {
@@ -48,13 +48,16 @@ const Login = () => {
           </div>
           <div className="input-group w-[100%] mt-[30px] ">
             <Field
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
+              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#f21f30]"
               type="email"
               name="email"
               maxLength={100}
               required
             />
-            <label className="label text-[16px] font-light" htmlFor="email">
+            <label
+              className="label text-[16px] font-light text-[#f21f30]"
+              htmlFor="email"
+            >
               Email
             </label>
             <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
@@ -68,13 +71,16 @@ const Login = () => {
 
           <div className="input-group w-[100%] ">
             <Field
-              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] font-medium"
+              className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] font-medium text-[#f21f30]"
               type="password"
               name="password"
               maxLength={100}
               required
             />
-            <label className="label text-[16px] font-light" htmlFor="password">
+            <label
+              className="label text-[16px] font-light text-[#f21f30]"
+              htmlFor="password"
+            >
               Password
             </label>
             <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">

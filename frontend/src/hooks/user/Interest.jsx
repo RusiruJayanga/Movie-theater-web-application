@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { addUserInterests } from "../../services/user/Api";
 import { getUserInterests } from "../../services/user/Api";
 import { toast } from "react-toastify";

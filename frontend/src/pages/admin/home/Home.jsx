@@ -7,10 +7,21 @@ import Add from "../../../components/admin/add/Add";
 import Seat from "../../../components/admin/seat/Seat";
 import Contact from "../../../components/admin/contact/Contact";
 import User from "../../../components/admin/user/User";
+//hooks
+import { useMovies } from "../../../hooks/common/Movie";
+import { useContact } from "../../../hooks/admin/Contact";
+import { useUsers } from "../../../hooks/admin/User";
 
 const Home = () => {
   //components
   const [component, setComponent] = useState("dashbord");
+
+  //movie function
+  const { data: movies } = useMovies();
+  //contact function
+  const { data: contacts } = useContact();
+  //user function
+  const { data: users } = useUsers();
 
   return (
     <div className="text-white cursor-default flex flex-2 ">
@@ -46,9 +57,16 @@ const Home = () => {
             <i className="bi bi-eye"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">Now Showing</h5>
-          <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[30px] h-[30px] text-[13px]">
-            10+
-          </span>
+          {movies?.filter((movie) => movie.status === "nowShowing").length >
+            0 && (
+            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[30px] h-[30px] text-[13px]">
+              {movies?.filter((movie) => movie.status === "nowShowing").length >
+              10
+                ? "10+"
+                : movies?.filter((movie) => movie.status === "nowShowing")
+                    .length}
+            </span>
+          )}
           <h5 className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out">
             <i className=" bi bi-chevron-right"></i>
           </h5>
@@ -65,9 +83,15 @@ const Home = () => {
             <i className="bi bi-eye-slash"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">Upcoming</h5>
-          <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[30px] h-[30px] text-[13px]">
-            10+
-          </span>
+          {movies?.filter((movie) => movie.status === "upComing").length >
+            0 && (
+            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[30px] h-[30px] text-[13px]">
+              {movies?.filter((movie) => movie.status === "upComing").length >
+              10
+                ? "10+"
+                : movies?.filter((movie) => movie.status === "upComing").length}
+            </span>
+          )}
           <h5 className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out">
             <i className=" bi bi-chevron-right"></i>
           </h5>
@@ -138,9 +162,11 @@ const Home = () => {
             <i className="bi bi-person-rolodex"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">Contact</h5>
-          <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[30px] h-[30px] text-[13px]">
-            10+
-          </span>
+          {contacts?.length > 0 && (
+            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[30px] h-[30px] text-[13px]">
+              {contacts?.length > 10 ? "10+" : contacts?.length}
+            </span>
+          )}
           <h5 className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out">
             <i className=" bi bi-chevron-right"></i>
           </h5>
@@ -157,9 +183,11 @@ const Home = () => {
             <i className="bi bi-person"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">Users</h5>
-          <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[30px] h-[30px] text-[13px]">
-            10+
-          </span>
+          {users?.length > 0 && (
+            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[30px] h-[30px] text-[13px]">
+              {users?.length > 10 ? "10+" : users?.length}
+            </span>
+          )}
           <h5 className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out">
             <i className=" bi bi-chevron-right"></i>
           </h5>

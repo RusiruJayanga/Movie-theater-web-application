@@ -7,6 +7,7 @@ const interestSchema = new mongoose.Schema({
     ref: "Movie",
     required: true,
   },
+  addedDate: { type: Date, default: Date.now },
 });
 
 const Interest = mongoose.model("Interest", interestSchema);

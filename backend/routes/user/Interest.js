@@ -7,6 +7,6 @@ import {
 const router = express.Router();
 
 router.post("/interestadd", addUserInterests);
-router.get("/interestfetch/:userId", getUserInterests);
+router.get("/interestfetch/", getUserInterests);
 
 export default router;

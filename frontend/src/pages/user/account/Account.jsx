@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 //hooks
 import { logout } from "../../../hooks/user/Auth.jsx";
 import { useUserProfile } from "../../../hooks/user/Account.jsx";
+import { useFetchUserInterests } from "../../../hooks/user/Interest.jsx";
 
 const Account = () => {
   //manue open
@@ -18,6 +19,22 @@ const Account = () => {
   const handle_logout = () => {
     logout();
     navigate("/");
+  };
+
+  //interest function
+  const { data: userInterests } = useFetchUserInterests();
+
+  //function to format duration
+  const formatDuration = (minutes) => {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return `${hours > 0 ? `${hours} h ` : ""}${remainingMinutes} min`;
+  };
+
+  //details page
+  const navigateDetails = useNavigate();
+  const handleDetailsCardClick = (movieId) => {
+    navigateDetails(`/details`, { state: { movieId } });
   };
 
   return (
@@ -57,9 +74,11 @@ const Account = () => {
             <i className="bi bi-heart"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">Interests</h5>
-          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px]">
-            10+
-          </span>
+          {userInterests?.length > 0 && (
+            <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px]">
+              {userInterests?.length > 10 ? "10+" : userInterests?.length}
+            </span>
+          )}
           <h5
             className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out"
             onClick={() => set_menu_Interests_open(!menuInterestsOpen)}
@@ -72,25 +91,37 @@ const Account = () => {
           </h5>
         </div>
         {/* repeat */}
-        <div
-          className={`${
-            menuInterestsOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
-        >
-          <p className="w-[150px] uppercase ml-[40px] md:w-[300px] ">
-            Movie Title
-          </p>
-          <h5 className="ml-[40px] text-[#f21f30] uppercase font-bold">PG</h5>
-          <p className="capitalize ml-auto">1 h 35 min</p>
-          <p className="hidden xl:block ml-auto">2/9/2025</p>
-        </div>
-        <div
-          className={`${
-            menuInterestsOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 opacity-[0.8] `}
-        >
-          <p className="font-extralight ">no data to show</p>
-        </div>
+        {userInterests?.map((interest) => (
+          <div
+            className={`${
+              menuInterestsOpen ? "Flex" : "hidden"
+            } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
+            key={interest?._id}
+            onClick={() => handleDetailsCardClick(interest?.movieId?._id)}
+          >
+            <p className="w-[150px] uppercase ml-[40px] md:w-[300px] ">
+              {interest?.movieId?.title}
+            </p>
+            <h5 className="ml-[40px] text-[#f21f30] uppercase font-bold">
+              {interest?.movieId?.ratingCategory}
+            </h5>
+            <p className="capitalize ml-auto">
+              {formatDuration(interest?.movieId?.runtime)}
+            </p>
+            <p className="hidden xl:block ml-auto">
+              {new Date(interest?.addedDate).toLocaleDateString()}
+            </p>
+          </div>
+        ))}
+        {userInterests?.length === 0 && (
+          <div
+            className={`${
+              menuInterestsOpen ? "Flex" : "hidden"
+            } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 opacity-[0.8] `}
+          >
+            <p className="font-extralight ">no data to show</p>
+          </div>
+        )}
         {/* repeat */}
 
         <div

@@ -8,7 +8,7 @@ const seatSchema = new mongoose.Schema({
   },
   showtime: { type: Date, required: true },
   emptySeats: [{ type: String, required: true }],
-  date: { type: Date, default: Date.now },
+  addedDate: { type: Date, default: Date.now },
 });
 
 const Seat = mongoose.model("Seat", seatSchema);

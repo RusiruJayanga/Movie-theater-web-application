@@ -16,6 +16,7 @@ const movieSchema = new mongoose.Schema({
   mainImage: { type: String, required: true },
   poster: { type: String, required: true },
   galleryImages: { type: [String], required: true },
+  addedDate: { type: Date, default: Date.now },
 });
 
 const Movie = mongoose.model("Movie", movieSchema);

@@ -10,7 +10,7 @@ const cartSchema = new mongoose.Schema({
   showtime: { type: Date, required: true },
   seats: [{ type: String, required: true }],
   totalAmount: { type: Number, required: true, min: 0 },
-  date: { type: Date, default: Date.now },
+  addedDate: { type: Date, default: Date.now },
 });
 
 const Cart = mongoose.model("Cart", cartSchema);

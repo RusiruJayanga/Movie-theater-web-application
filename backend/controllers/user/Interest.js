@@ -37,12 +37,23 @@ export const addUserInterests = async (req, res) => {
 
 //fetch interest
 export const getUserInterests = async (req, res) => {
-  try {
-    const { userId } = req.params;
-    const interests = await Interest.findAll({ where: { userId } });
-    res.status(200).json(interests);
-  } catch (error) {
-    console.error("Error fetching user interests:", error);
-    res.status(500).json({ message: "Internal server error !" });
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    try {
+      token = req.headers.authorization.split(" ")[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      const interest = await Interest.find({ userId: decoded.id })
+        .populate("movieId", "title ratingCategory runtime")
+        .exec();
+
+      res.status(200).json(interest);
+    } catch (error) {
+      console.error("Error fetching user interests:", error);
+      res.status(500).json({ message: "Internal server error !" });
+    }
   }
 };

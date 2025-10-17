@@ -5,17 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 //hooks
 import { useMovies } from "../../../hooks/common/Movie";
 import { useAddUserInterests } from "../../../hooks/user/Interest";
+import { formatDuration, formatDate } from "../../../hooks/common/Format";
 
 const Upcoming = () => {
   //movies
   const { data: movies } = useMovies();
-
-  //function to format duration
-  const formatDuration = (minutes) => {
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
-    return `${hours > 0 ? `${hours} h ` : ""}${remainingMinutes} min`;
-  };
 
   //details page
   const navigate = useNavigate();
@@ -58,7 +52,7 @@ const Upcoming = () => {
                 </span>
               </p>
               <p className="font-extralight opacity-[0.8] capitalize mt-[5px] xl:block">
-                Release {new Date(movie?.releaseDate).toLocaleDateString()}
+                Release {formatDate(movie?.releaseDate)}
               </p>
               <p className="hidden font-extralight opacity-[0.8] capitalize mt-[5px] xl:block">
                 {movie?.studio}

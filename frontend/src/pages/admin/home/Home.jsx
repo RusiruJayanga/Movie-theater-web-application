@@ -59,7 +59,7 @@ const Home = () => {
           <h5 className="mr-auto ml-[20px]">Now Showing</h5>
           {movies?.filter((movie) => movie.status === "nowShowing").length >
             0 && (
-            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[30px] h-[30px] text-[13px]">
+            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[25px] h-[25px] text-[13px]">
               {movies?.filter((movie) => movie.status === "nowShowing").length >
               10
                 ? "10+"
@@ -85,7 +85,7 @@ const Home = () => {
           <h5 className="mr-auto ml-[20px]">Upcoming</h5>
           {movies?.filter((movie) => movie.status === "upComing").length >
             0 && (
-            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[30px] h-[30px] text-[13px]">
+            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[25px] h-[25px] text-[13px]">
               {movies?.filter((movie) => movie.status === "upComing").length >
               10
                 ? "10+"
@@ -163,7 +163,7 @@ const Home = () => {
           </h5>
           <h5 className="mr-auto ml-[20px]">Contact</h5>
           {contacts?.length > 0 && (
-            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[30px] h-[30px] text-[13px]">
+            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[25px] h-[25px] text-[13px]">
               {contacts?.length > 10 ? "10+" : contacts?.length}
             </span>
           )}
@@ -184,7 +184,7 @@ const Home = () => {
           </h5>
           <h5 className="mr-auto ml-[20px]">Users</h5>
           {users?.length > 0 && (
-            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[30px] h-[30px] text-[13px]">
+            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[25px] h-[25px] text-[13px]">
               {users?.length > 10 ? "10+" : users?.length}
             </span>
           )}

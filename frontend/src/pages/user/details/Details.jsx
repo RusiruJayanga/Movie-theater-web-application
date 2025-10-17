@@ -4,6 +4,7 @@ import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useMovie } from "../../../hooks/user/Details";
 import { useMovieWithRatings } from "../../../hooks/user/Rating";
 import { useAddUserInterests } from "../../../hooks/user/Interest";
+import { formatDuration, formatDate } from "../../../hooks/common/Format";
 
 const Details = () => {
   //movie id
@@ -13,13 +14,6 @@ const Details = () => {
   //movies
   const { data: movieDetails, isLoading, isError } = useMovie(movieId);
   const { data: movieRatings } = useMovieWithRatings(movieId);
-
-  //function to format duration
-  const formatDuration = (minutes) => {
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
-    return `${hours > 0 ? `${hours} h ` : ""}${remainingMinutes} min`;
-  };
 
   //interests function
   const { mutate: handleAddInterest } = useAddUserInterests();
@@ -90,11 +84,11 @@ const Details = () => {
             <h5>{formatDuration(movieDetails?.runtime)}</h5>
             <h5 className="mt-[5px]">
               {movieDetails?.status === "nowShowing" ? "Released" : "Release"}{" "}
-              {new Date(movieDetails?.releaseDate).toLocaleDateString()}
+              {formatDate(movieDetails?.releaseDate)}
             </h5>
             {movieDetails?.status === "nowShowing" && (
               <h5 className="mt-[5px]">
-                Closing {new Date(movieDetails?.closeDate).toLocaleDateString()}
+                Closing {formatDate(movieDetails?.closeDate)}
               </h5>
             )}
             <h5 className="mt-[5px]">{movieDetails?.studio}</h5>

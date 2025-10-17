@@ -7,8 +7,16 @@ import { useInView } from "react-intersection-observer";
 import { LineChart } from "@mui/x-charts/LineChart";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { BarChart } from "@mui/x-charts/BarChart";
+//hooks
+import { useMovies } from "../../../hooks/common/Movie";
+import { useUsers } from "../../../hooks/admin/User";
 
 const Dashboard = () => {
+  //movie function
+  const { data: movies } = useMovies();
+  //user function
+  const { data: users } = useUsers();
+
   //countup
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -16,13 +24,25 @@ const Dashboard = () => {
   });
 
   //pie chart
-  const data = [
-    { label: "G", value: 400 },
-    { label: "PG-13", value: 300 },
-    { label: "PG", value: 300 },
-    { label: "R", value: 200 },
-    { label: "NC-17", value: 278 },
-  ];
+  const ratingCounts = {
+    G: 0,
+    PG: 0,
+    "PG-13": 0,
+    R: 0,
+    "NC-17": 0,
+  };
+  if (movies && Array.isArray(movies)) {
+    movies.forEach((movie) => {
+      const rating = movie?.ratingCategory;
+      if (rating && ratingCounts.hasOwnProperty(rating)) {
+        ratingCounts[rating]++;
+      }
+    });
+  }
+  const data = Object.entries(ratingCounts).map(([label, value]) => ({
+    label,
+    value,
+  }));
 
   //bar chart
   const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
@@ -45,14 +65,23 @@ const Dashboard = () => {
         <div className="w-[100%] flex justify-between xl:mt-[50px] ">
           <div className="mt-[10px] ">
             <span className="font-bold text-[60px] text-[#f21f30] ">
-              {inView && <CountUp start={0} end={28} duration={3} />}
+              {inView && (
+                <CountUp
+                  start={0}
+                  end={
+                    movies?.filter((movie) => movie.status === "nowShowing")
+                      .length
+                  }
+                  duration={3}
+                />
+              )}
             </span>
-            <Link
-              to=""
-              className="flex items-center justify-center w-[150px] h-[40px] rounded-[20px] border-[1px] border-white transition-colors duration-300 ease-out hover:bg-white hover:text-black"
+            <button
+              className="flex w-[150px] border-[1px] border-white hover:bg-white hover:text-black"
+              onClick={() => setComponent("now")}
             >
               VIEW DETAILS
-            </Link>
+            </button>
           </div>
           <img
             className="w-[150px] h-[150px] object-cover xl:w-[100px] xl:h-[100px] "
@@ -72,14 +101,14 @@ const Dashboard = () => {
           />
           <div className="mt-[10px] ">
             <span className="font-bold text-[60px] text-[#f21f30] ">
-              {inView && <CountUp start={0} end={208} duration={3} />}
+              {inView && <CountUp start={0} end={users?.length} duration={3} />}
             </span>
-            <Link
-              to=""
-              className="flex items-center justify-center w-[150px] h-[40px] rounded-[20px] border-[1px] border-white transition-colors duration-300 ease-out hover:bg-white hover:text-black"
+            <button
+              className="flex w-[150px] border-[1px] border-white hover:bg-white hover:text-black"
+              onClick={() => setComponent("user")}
             >
               VIEW DETAILS
-            </Link>
+            </button>
           </div>
           <img
             className="hidden xl:block xl:w-[100px] xl:h-[100px] "

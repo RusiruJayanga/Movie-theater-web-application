@@ -21,7 +21,7 @@ const Ticket = () => {
             <i className="bi bi-ticket-perforated"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">New Tickets</h5>
-          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px]">
+          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight text-[13px]">
             10+
           </span>
           <h5
@@ -79,7 +79,7 @@ const Ticket = () => {
             <i className="bi bi-ticket-perforated-fill"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">Due Tickets</h5>
-          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 text-[12px] font-extralight xl:w-[30px] xl:h-[30px] xl:text-[13px] ">
+          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight text-[13px] ">
             10+
           </span>
           <h5

@@ -3,17 +3,11 @@ import React from "react";
 import { motion, AnimatePresence, m } from "framer-motion";
 //hooks
 import { useMovies } from "../../../hooks/common/Movie";
+import { formatDuration, formatDate } from "../../../hooks/common/Format";
 
 const Now_showing = () => {
   //movies
   const { data: movies } = useMovies();
-
-  //function to format duration
-  const formatDuration = (minutes) => {
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
-    return `${hours > 0 ? `${hours} h ` : ""}${remainingMinutes} min`;
-  };
 
   return (
     <section className="w-[100%] grid gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_580px)] ">
@@ -44,11 +38,10 @@ const Now_showing = () => {
                 {formatDuration(movie?.runtime)}
               </p>
               <p className="mt-[5px] opacity-[0.8]">
-                Release Date -{" "}
-                {new Date(movie?.releaseDate).toLocaleDateString()}
+                Released Date - {formatDate(movie?.releaseDate)}
               </p>
               <p className="mt-[5px] opacity-[0.8]">
-                Close Date - {new Date(movie?.closeDate).toLocaleDateString()}
+                Close Date - {formatDate(movie?.closeDate)}
               </p>
               <h5 className="mt-[5px] text-[#f21f30] uppercase font-bold">
                 {movie?.ratingCategory}

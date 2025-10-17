@@ -4,17 +4,11 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 //hooks
 import { useMovies } from "../../../hooks/common/Movie";
+import { formatDuration, formatDate } from "../../../hooks/common/Format";
 
 const Now_showing = () => {
   //movies
   const { data: movies } = useMovies();
-
-  //function to format duration
-  const formatDuration = (minutes) => {
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
-    return `${hours > 0 ? `${hours} h ` : ""}${remainingMinutes} min`;
-  };
 
   //details page
   const navigate = useNavigate();
@@ -54,7 +48,7 @@ const Now_showing = () => {
                 </span>
               </p>
               <p className="hidden font-extralight opacity-[0.8] capitalize mt-[5px] xl:block">
-                Released {new Date(movie?.releaseDate).toLocaleDateString()}
+                Released {formatDate(movie?.releaseDate)}
               </p>
               <div className="w-[100%] flex items-center justify-center mt-[10px] gap-[10px]">
                 <Link className="w-[100%] h-[40px] flex items-center justify-center rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30] xl:hidden">

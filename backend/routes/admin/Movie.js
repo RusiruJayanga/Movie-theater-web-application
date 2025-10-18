@@ -1,6 +1,10 @@
 import express from "express";
 import multer from "multer";
-import { addMovie } from "../../controllers/admin/Movie.js";
+import {
+  addMovie,
+  updateMovie,
+  deleteMovie,
+} from "../../controllers/admin/Movie.js";
 
 const router = express.Router();
 const upload = multer({ dest: "temp/" });
@@ -13,5 +17,7 @@ router.post(
   ]),
   addMovie
 );
+router.put("/update", updateMovie);
+router.delete("/delete/:Id", deleteMovie);
 
 export default router;

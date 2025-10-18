@@ -37,3 +37,19 @@ export const addMovie = async (formData) => {
   );
   return data;
 };
+
+//movies update api call
+export const updateMovie = async (values) => {
+  const { data } = await axios.put(`http://localhost:5000/api/movies/update`, {
+    values,
+  });
+  return data;
+};
+
+//movies delete api call
+export const deleteMovie = async (movieId) => {
+  const { data } = await axios.delete(
+    `http://localhost:5000/api/movies/delete/${movieId}`
+  );
+  return data;
+};

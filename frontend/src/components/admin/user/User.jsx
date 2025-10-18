@@ -8,7 +8,7 @@ import { useDeleteAccount } from "../../../hooks/admin/User";
 const User = () => {
   //user function
   const { data: users } = useUsers();
-  const { mutate: deleteUser, isPending } = useDeleteAccount();
+  const { mutate: deleteUser, isPending: isDeleting } = useDeleteAccount();
 
   const handleDelete = (id, name) => {
     if (window.confirm(`Are you sure you want to delete ${name}?`)) {
@@ -50,7 +50,7 @@ const User = () => {
             <h5
               className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out "
               onClick={() => handleDelete(user._id, user.name)}
-              disabled={isPending}
+              disabled={isDeleting}
             >
               <i className="bi bi-trash3"></i>
             </h5>

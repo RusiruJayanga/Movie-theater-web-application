@@ -70,7 +70,7 @@ const Dashboard = () => {
                   start={0}
                   end={
                     movies?.filter((movie) => movie.status === "nowShowing")
-                      .length
+                      .length || 0
                   }
                   duration={3}
                 />
@@ -101,7 +101,9 @@ const Dashboard = () => {
           />
           <div className="mt-[10px] ">
             <span className="font-bold text-[60px] text-[#f21f30] ">
-              {inView && <CountUp start={0} end={users?.length} duration={3} />}
+              {inView && (
+                <CountUp start={0} end={users?.length || 0} duration={3} />
+              )}
             </span>
             <button
               className="flex w-[150px] border-[1px] border-white hover:bg-white hover:text-black"

@@ -4,6 +4,7 @@ import {
   uploadMultipleFilesToCloudinary,
 } from "../../config/Cloudinary.js";
 
+//add movie
 const OMDB_API_KEY = process.env.OMDB_API_KEY;
 
 export const addMovie = async (req, res) => {
@@ -77,5 +78,54 @@ export const addMovie = async (req, res) => {
   } catch (error) {
     console.error("Upload error:", error.message);
     res.status(500).json({ message: "Upload failed !" });
+  }
+};
+
+//update movie
+export const updateMovie = async (req, res) => {
+  try {
+    const { closeDate, movieId } = req.body.values;
+
+    //validation
+    if (!closeDate) {
+      return res.status(400).json({ message: "All fields are required !" });
+    }
+
+    const movie = await Movie.findByIdAndUpdate(
+      movieId,
+      { closeDate, status: "nowShowing" },
+      { new: true }
+    );
+    if (!movie) {
+      return res.status(404).json({ message: "Movie not found !" });
+    }
+
+    res.status(200).json({
+      message: "Movie updated successfully !",
+      movie,
+    });
+  } catch (error) {
+    console.error("Update error:", error.message);
+    res.status(500).json({ message: "Update failed !" });
+  }
+};
+
+//delete movie
+export const deleteMovie = async (req, res) => {
+  try {
+    const { Id } = req.params;
+    console.log(Id);
+    const movie = await Movie.findByIdAndDelete(Id);
+    if (!movie) {
+      return res.status(404).json({ message: "Movie not found !" });
+    }
+
+    res.status(200).json({
+      message: "Movie deleted successfully !",
+      movie,
+    });
+  } catch (error) {
+    console.error("Delete error:", error.message);
+    res.status(500).json({ message: "Delete failed !" });
   }
 };

@@ -21,7 +21,7 @@ const contactValidationSchema = Yup.object({
 
 const Contact = () => {
   //contact function
-  const { mutate: contactUser } = useContact((data) => {});
+  const { mutate: contactUser } = useContact();
 
   return (
     <motion.section

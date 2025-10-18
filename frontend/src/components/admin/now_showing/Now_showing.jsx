@@ -4,10 +4,19 @@ import { motion, AnimatePresence, m } from "framer-motion";
 //hooks
 import { useMovies } from "../../../hooks/common/Movie";
 import { formatDuration, formatDate } from "../../../hooks/common/Format";
+import { useDeleteMovie } from "../../../hooks/admin/Movie";
 
 const Now_showing = () => {
   //movies
   const { data: movies } = useMovies();
+  //delete movie function
+  const { mutate: deleteMovie } = useDeleteMovie();
+
+  const handleDelete = (id, name) => {
+    if (window.confirm(`Are you sure you want to delete ${name}?`)) {
+      deleteMovie(id);
+    }
+  };
 
   return (
     <section className="w-[100%] grid gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_580px)] ">
@@ -48,7 +57,10 @@ const Now_showing = () => {
               </h5>
             </div>
             <div className="flex ml-auto items-center justify-center">
-              <h5 className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out ">
+              <h5
+                className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out "
+                onClick={() => handleDelete(movie?._id, movie?.title)}
+              >
                 <i className="bi bi-trash3"></i>
               </h5>
             </div>

@@ -14,6 +14,7 @@ export const useUsers = () => {
 
 //account delete hook
 export const useDeleteAccount = () => {
+  //refreshing the data
   const queryClient = useQueryClient();
 
   return useMutation({

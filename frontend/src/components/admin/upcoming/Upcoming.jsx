@@ -1,12 +1,13 @@
 import React from "react";
 //animation
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, m } from "framer-motion";
 //validation
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 //hooks
 import { useMovies } from "../../../hooks/common/Movie";
-import { formatDuration, formatDate } from "../../../hooks/common/Format";
+import { formatDate } from "../../../hooks/common/Format";
+import { useUpdateMovie, useDeleteMovie } from "../../../hooks/admin/Movie";
 
 //validation schema
 const updateMovieValidationSchema = Yup.object({
@@ -14,8 +15,18 @@ const updateMovieValidationSchema = Yup.object({
 });
 
 const Upcoming = () => {
-  //movies
+  //movies function
   const { data: movies } = useMovies();
+  //update movie function
+  const { mutate: updateMovie } = useUpdateMovie();
+  //delete movie function
+  const { mutate: deleteMovie, isPending: isDeleting } = useDeleteMovie();
+
+  const handleDelete = (id, name) => {
+    if (window.confirm(`Are you sure you want to delete ${name}?`)) {
+      deleteMovie(id);
+    }
+  };
 
   return (
     <section className="w-[100%] grid gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_580px)] ">
@@ -49,43 +60,56 @@ const Upcoming = () => {
                 initialValues={{ closeDate: "" }}
                 validationSchema={updateMovieValidationSchema}
                 onSubmit={(values, { resetForm }) => {
+                  updateMovie({
+                    closeDate: values.closeDate,
+                    movieId: movie?._id,
+                  });
                   resetForm({ values: { closeDate: "" } });
                 }}
               >
-                <Form className="input-group mt-[20px] flex flex-col md:flex-row xl:gap-[10px] ">
-                  <div>
-                    <Field
-                      className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
-                      type="date"
-                      name="closeDate"
-                      required
-                    />
-                    <label
-                      className="label text-[16px] font-light text-[#bdbdbd] opacity-0"
-                      htmlFor="date"
-                    >
-                      Close Date
-                    </label>
-
-                    <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
-                      <ErrorMessage
+                {({ isSubmitting }) => (
+                  <Form className="input-group mt-[20px] flex flex-col md:flex-row xl:gap-[10px] ">
+                    <div>
+                      <Field
+                        className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                        type="date"
                         name="closeDate"
-                        className="text-[13px]"
-                        component="span"
+                        required
                       />
-                    </p>
-                  </div>
-                  <button
-                    type="submit"
-                    className="flex w-[150px] border-[1px] border-white hover:bg-white hover:text-black"
-                  >
-                    UPDATE
-                  </button>
-                </Form>
+                      <label
+                        className="label text-[16px] font-light text-[#bdbdbd] opacity-0"
+                        htmlFor="date"
+                      >
+                        Close Date
+                      </label>
+
+                      <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                        <ErrorMessage
+                          name="closeDate"
+                          className="text-[13px]"
+                          component="span"
+                        />
+                      </p>
+                    </div>
+                    <button
+                      type="submit"
+                      className="flex w-[150px] border-[1px] border-white hover:bg-white hover:text-black"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "PROCESSING..." : "UPDATE"}
+                    </button>
+                  </Form>
+                )}
               </Formik>
             </div>
-            <div className="flex ml-auto items-center justify-center">
-              <h5 className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out ">
+            <div
+              className="flex ml-auto items-center justify-center"
+              disabled={isDeleting}
+            >
+              <h5
+                className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out "
+                onClick={() => handleDelete(movie?._id, movie?.title)}
+              >
                 <i className="bi bi-trash3"></i>
               </h5>
             </div>

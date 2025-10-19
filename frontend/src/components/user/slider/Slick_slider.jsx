@@ -10,6 +10,12 @@ const Slick_slider = () => {
   //movies
   const { data: movies } = useMovies();
 
+  //filter movies
+  const nowShowing = movies?.filter(
+    (movie) =>
+      movie.status === "nowShowing" && new Date(movie.closeDate) >= new Date()
+  );
+
   //slick slider settings
   function SampleNextArrow(props) {
     const { onClick } = props;
@@ -67,21 +73,22 @@ const Slick_slider = () => {
       <div className="w-[85%] mx-auto mt-[30px] xl:w-[1240px]">
         <Slider {...settings}>
           {/* repeat */}
-          {movies
-            ?.filter((movie) => movie.status === "nowShowing")
-            .map((movie) => (
-              <div className="px-2" key={movie?._id}>
-                <div className="w-auto h-[450px] bg-[#242124] rounded-[10px]">
-                  <img
-                    className="w-full h-full object-cover opacity-[0.7] rounded-[10px] hover:opacity-[1] transition duration-300 ease-out"
-                    src={movie?.poster || "default_movie.jpg"}
-                    alt={movie?.title}
-                  />
-                </div>
+          {nowShowing?.map((movie) => (
+            <div className="px-2" key={movie?._id}>
+              <div className="w-auto h-[450px] bg-[#242124] rounded-[10px]">
+                <img
+                  className="w-full h-full object-cover opacity-[0.7] rounded-[10px] hover:opacity-[1] transition duration-300 ease-out"
+                  src={movie?.poster || "default_movie.jpg"}
+                  alt={movie?.title}
+                />
               </div>
-            ))}
+            </div>
+          ))}
           {/* repeat */}
         </Slider>
+        {nowShowing?.length === 0 && (
+          <p className="font-extralight opacity-[0.8]">no data to show</p>
+        )}
       </div>
     </section>
   );

@@ -6,7 +6,7 @@ const movieSchema = new mongoose.Schema({
   runtime: { type: Number, required: true, min: 0 },
   genre: { type: [String], required: true },
   releaseDate: { type: Date, required: true },
-  closeDate: { type: Date, required: true, default: Date.now },
+  closeDate: { type: Date, required: true },
   ratingCategory: { type: String, required: true, default: "NR" },
   studio: { type: String, required: true },
   director: { type: String, required: true },

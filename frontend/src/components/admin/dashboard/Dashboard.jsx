@@ -17,6 +17,12 @@ const Dashboard = () => {
   //user function
   const { data: users } = useUsers();
 
+  //filter movies
+  const nowShowing = movies?.filter(
+    (movie) =>
+      movie.status === "nowShowing" && new Date(movie.closeDate) >= new Date()
+  );
+
   //countup
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -66,14 +72,7 @@ const Dashboard = () => {
           <div className="mt-[10px] ">
             <span className="font-bold text-[60px] text-[#f21f30] ">
               {inView && (
-                <CountUp
-                  start={0}
-                  end={
-                    movies?.filter((movie) => movie.status === "nowShowing")
-                      .length || 0
-                  }
-                  duration={3}
-                />
+                <CountUp start={0} end={nowShowing?.length || 0} duration={3} />
               )}
             </span>
             <button

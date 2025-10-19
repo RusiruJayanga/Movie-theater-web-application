@@ -13,8 +13,12 @@ export const addMovie = async (req, res) => {
     const time = req.body.time ? JSON.parse(req.body.time) : [];
 
     //validation
-    if (!title || !status || !closeDate || !studio || !trailerUrl) {
+    if (!title || !status || !studio || !trailerUrl) {
       return res.status(400).json({ message: "All fields are required !" });
+    }
+
+    if (!closeDate) {
+      closeDate === Date.now();
     }
 
     //fetch data from OMDb

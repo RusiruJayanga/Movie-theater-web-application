@@ -110,7 +110,7 @@ const Add = () => {
           }
           mutate(formData, {
             onSuccess: () => {
-              resetForm();
+              resetForm({ values: { mainImage: null, galleryImages: null } });
               setSubmitting(false);
             },
             onError: () => {

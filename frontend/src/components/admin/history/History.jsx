@@ -6,7 +6,7 @@ import { useMovies } from "../../../hooks/common/Movie";
 import { formatDuration, formatDate } from "../../../hooks/common/Format";
 import { useDeleteMovie } from "../../../hooks/admin/Movie";
 
-const Now_showing = () => {
+const History = () => {
   //movies
   const { data: movies } = useMovies();
   //delete movie function
@@ -19,15 +19,15 @@ const Now_showing = () => {
   };
 
   //filter movies
-  const nowShowing = movies?.filter(
+  const history = movies?.filter(
     (movie) =>
-      movie.status === "nowShowing" && new Date(movie.closeDate) >= new Date()
+      movie.status === "nowShowing" && new Date(movie.closeDate) < new Date()
   );
 
   return (
     <section className="w-[100%] grid gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_580px)] ">
       {/* repeat */}
-      {nowShowing?.map((movie) => (
+      {history.map((movie) => (
         <motion.div
           variants={{
             hidden: { opacity: 0, y: 60 },
@@ -71,11 +71,11 @@ const Now_showing = () => {
         </motion.div>
       ))}
       {/* repeat */}
-      {nowShowing?.length === 0 && (
+      {history.length === 0 && (
         <p className="font-extralight opacity-[0.8] ">no data to show</p>
       )}
     </section>
   );
 };
 
-export default Now_showing;
+export default History;

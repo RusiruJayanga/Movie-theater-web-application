@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Dashboard from "../../../components/admin/dashboard/Dashboard";
 import Now_showing from "../../../components/admin/now_showing/Now_showing";
 import Upcoming from "../../../components/admin/upcoming/Upcoming";
+import History from "../../../components/admin/history/History";
 import Add from "../../../components/admin/add/Add";
 import Seat from "../../../components/admin/seat/Seat";
 import Contact from "../../../components/admin/contact/Contact";
@@ -22,6 +23,17 @@ const Home = () => {
   const { data: contacts } = useContact();
   //user function
   const { data: users } = useUsers();
+
+  //filter movies
+  const nowShowing = movies?.filter(
+    (movie) =>
+      movie.status === "nowShowing" && new Date(movie.closeDate) >= new Date()
+  );
+  const upcoming = movies?.filter((movie) => movie.status === "upComing");
+  const history = movies?.filter(
+    (movie) =>
+      movie.status === "nowShowing" && new Date(movie.closeDate) < new Date()
+  );
 
   return (
     <div className="text-white cursor-default flex flex-2 ">
@@ -57,14 +69,9 @@ const Home = () => {
             <i className="bi bi-eye"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">Now Showing</h5>
-          {movies?.filter((movie) => movie.status === "nowShowing").length >
-            0 && (
+          {nowShowing?.length > 0 && (
             <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[25px] h-[25px] text-[13px]">
-              {movies?.filter((movie) => movie.status === "nowShowing").length >
-              10
-                ? "10+"
-                : movies?.filter((movie) => movie.status === "nowShowing")
-                    .length}
+              {nowShowing?.length > 10 ? "10+" : nowShowing?.length}
             </span>
           )}
           <h5 className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out">
@@ -83,13 +90,30 @@ const Home = () => {
             <i className="bi bi-eye-slash"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">Upcoming</h5>
-          {movies?.filter((movie) => movie.status === "upComing").length >
-            0 && (
+          {upcoming?.length > 0 && (
             <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[25px] h-[25px] text-[13px]">
-              {movies?.filter((movie) => movie.status === "upComing").length >
-              10
-                ? "10+"
-                : movies?.filter((movie) => movie.status === "upComing").length}
+              {upcoming?.length > 10 ? "10+" : upcoming?.length}
+            </span>
+          )}
+          <h5 className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out">
+            <i className=" bi bi-chevron-right"></i>
+          </h5>
+        </div>
+        <div
+          className={`${
+            component === "history"
+              ? "bg-[#303030] opacity-[1]"
+              : "bg-[#1a1a1a] opacity-[0.8] font-extralight"
+          } w-[100%] flex items-center p-[20px] hover:opacity-[1] transition duration-300 ease-out cursor-pointer  `}
+          onClick={() => setComponent("history")}
+        >
+          <h5>
+            <i className="bi bi-clock-history"></i>
+          </h5>
+          <h5 className="mr-auto ml-[20px]">History</h5>
+          {history?.length > 0 && (
+            <span className="flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight w-[25px] h-[25px] text-[13px]">
+              {history?.length}
             </span>
           )}
           <h5 className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out">
@@ -201,6 +225,8 @@ const Home = () => {
           <Now_showing />
         ) : component === "upcoming" ? (
           <Upcoming />
+        ) : component === "history" ? (
+          <History />
         ) : component === "add" ? (
           <Add />
         ) : component === "seat" ? (

@@ -7,8 +7,12 @@ const bookingSchema = new mongoose.Schema({
     ref: "Movie",
     required: true,
   },
-  showtime: { type: Date, required: true },
-  seats: [{ type: String, required: true }],
+  showtimeId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Showtime",
+    required: true,
+  },
+  bookedSeats: [{ type: String, required: true }],
   totalAmount: { type: Number, required: true, min: 0 },
   addedDate: { type: Date, default: Date.now },
 });

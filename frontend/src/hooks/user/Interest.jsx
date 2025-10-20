@@ -21,7 +21,9 @@ export const useAddUserInterests = () => {
     },
     onError: (error) => {
       if (error.message !== "No token") {
-        toast.error("Failed to add interests !");
+        toast.warning(
+          error.response?.data?.message || "Failed to add interests !"
+        );
       }
     },
   });

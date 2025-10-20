@@ -2,6 +2,8 @@ import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 //animation
 import { motion, AnimatePresence } from "framer-motion";
+//alert
+import { toast } from "react-toastify";
 //hooks
 import { useMovies } from "../../../hooks/common/Movie";
 import { formatDuration, formatDate } from "../../../hooks/common/Format";
@@ -14,6 +16,15 @@ const Now_showing = () => {
   const navigate = useNavigate();
   const handleDetailsCardClick = (movieId) => {
     navigate(`/details`, { state: { movieId } });
+  };
+
+  //get tickets page
+  const handleGetTicketsClick = (movieId) => {
+    if (localStorage.getItem("token")) {
+      navigate(`/booking`, { state: { movieId } });
+    } else {
+      toast.warning("Please log in to book tickets !");
+    }
   };
 
   //filter movies
@@ -55,15 +66,18 @@ const Now_showing = () => {
               Released {formatDate(movie?.releaseDate)}
             </p>
             <div className="w-[100%] flex items-center justify-center mt-[10px] gap-[10px]">
-              <Link className="w-[100%] h-[40px] flex items-center justify-center rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30] xl:hidden">
+              <button
+                className="w-[100%] flex bg-[#f21f30] border-[1px] border-[#f21f30] hover:bg-[#1a1a1a] hover:text-[#f21f30] xl:hidden"
+                onClick={() => handleDetailsCardClick(movie?._id)}
+              >
                 MORE
-              </Link>
-              <Link
-                className="hidden xl:flex items-center justify-center w-[100%] h-[40px] rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]"
-                to="/booking"
+              </button>
+              <button
+                className="hidden xl:flex w-[100%] bg-[#f21f30] border-[1px] border-[#f21f30] hover:bg-[#1a1a1a] hover:text-[#f21f30]"
+                onClick={() => handleGetTicketsClick(movie?._id)}
               >
                 GET TICKETS
-              </Link>
+              </button>
               <button
                 className="hidden xl:flex w-[100px] border-[1px] border-white hover:bg-white hover:text-black"
                 onClick={() => handleDetailsCardClick(movie?._id)}

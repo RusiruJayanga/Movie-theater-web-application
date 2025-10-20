@@ -14,7 +14,8 @@ export const addUserInterests = async (req, res) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
       const existingInterests = await Interest.findOne({
-        where: { userId: decoded.id, movieId: movieId },
+        userId: decoded.id,
+        movieId: movieId,
       });
       if (existingInterests) {
         return res.status(400).json({ message: "Interests already exists !" });

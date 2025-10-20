@@ -10,7 +10,6 @@ const movieSchema = new mongoose.Schema({
   ratingCategory: { type: String, required: true, default: "NR" },
   studio: { type: String, required: true },
   director: { type: String, required: true },
-  time: [{ showDate: String, showTimes: String }],
   trailerUrl: { type: String, required: true },
   plot: { type: String, required: true },
   mainImage: { type: String, required: true },

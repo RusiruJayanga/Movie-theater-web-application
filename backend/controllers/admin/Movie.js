@@ -1,4 +1,5 @@
 import Movie from "../../models/common/Movies.js";
+import Showtime from "../../models/common/Showtime.js";
 import {
   uploadToCloudinary,
   uploadMultipleFilesToCloudinary,
@@ -67,13 +68,20 @@ export const addMovie = async (req, res) => {
       ratingCategory: omdbData.Rated,
       studio,
       director: omdbData.Director,
-      time,
       trailerUrl,
       plot: omdbData.Plot,
       mainImage: mainImageUrl,
       poster: omdbData.Poster,
       galleryImages: galleryImagesUrls,
     });
+
+    for (const element of time) {
+      await Showtime.create({
+        movieId: movie._id,
+        date: element.showDate,
+        time: element.showTimes,
+      });
+    }
 
     res.status(201).json({
       message: "Images uploaded successfully !",

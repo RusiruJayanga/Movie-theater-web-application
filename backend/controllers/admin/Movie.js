@@ -75,11 +75,25 @@ export const addMovie = async (req, res) => {
       galleryImages: galleryImagesUrls,
     });
 
+    //seat array
+    const rows = ["A", "B", "C", "D", "E", "F", "G"];
+    const seats = [];
+    rows.forEach((row) => {
+      for (let i = 1; i <= 10; i++) {
+        seats.push({
+          seatNumber: `${row}${i}`,
+          isBooked: false,
+          bookedBy: null,
+        });
+      }
+    });
+
     for (const element of time) {
       await Showtime.create({
         movieId: movie._id,
         date: element.showDate,
         time: element.showTimes,
+        seats: seats,
       });
     }
 

@@ -9,6 +9,7 @@ import userAccountRoutes from "./routes/user/Account.js";
 import userMovieDetailsRoutes from "./routes/user/Movie.js";
 import userRatingRoutes from "./routes/user/Rating.js";
 import userInterestRoutes from "./routes/user/Interest.js";
+import userShowTimeRoutes from "./routes/user/Showtime.js";
 //admin routes
 import adminUserRoutes from "./routes/admin/User.js";
 import adminContactRoutes from "./routes/common/Contact.js";
@@ -44,6 +45,7 @@ app.use("/api/user", userAccountRoutes);
 app.use("/api/movies", userMovieDetailsRoutes);
 app.use("/api/movies", userRatingRoutes);
 app.use("/api/user", userInterestRoutes);
+app.use("/api/movies", userShowTimeRoutes);
 //admin routes
 app.use("/api/users", adminUserRoutes);
 app.use("/api/users", adminContactRoutes);

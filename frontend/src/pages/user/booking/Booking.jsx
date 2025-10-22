@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 //hooks
 import { useMovie } from "../../../hooks/user/Details";
 import { formatDuration } from "../../../hooks/common/Format";
+import { useShowTime } from "../../../hooks/user/Showtime";
 
 //seat select
 const rows = [
@@ -22,7 +23,9 @@ const Booking = () => {
   const movieId = location.state?.movieId;
 
   //movies
-  const { data: movieDetails, isLoading, isError } = useMovie(movieId);
+  const { data: movieDetails } = useMovie(movieId);
+  //showtime
+  const { data: showTimeDetails } = useShowTime(movieId);
 
   //seats function
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -89,22 +92,22 @@ const Booking = () => {
         </div>
         <div className="w-[100%] flex flex-col items-start justify-between gap-[10px] mt-[20px] font-light md:mt-0 md:w-[350px] ">
           {/* repeat */}
-          {movieDetails?.time.map((object) => (
+          {showTimeDetails?.map((showtime) => (
             <div className="w-[100%] ">
               <div>
                 <input
                   type="checkbox"
-                  id={`date-${object.showDate}`}
+                  id={`date-${showtime?._id}`}
                   value=""
                   class="hidden peer"
                   required=""
                 />
                 <label
-                  for={`date-${object.showDate}`}
+                  for={`date-${showtime?._id}`}
                   class="flex items-center justify-center w-[100%] p-[10px] opacity-[0.8] bg-[#303030] border-[1px] border-[#303030] rounded-[10px] cursor-pointer peer-checked:border-[#bdbdbd] hover:opacity-[1] peer-checked:opacity-[1] transition-opacity duration-300 ease-out "
                 >
                   <h5>
-                    {object.showDate} {object.showTimes}{" "}
+                    {showtime?.date} {showtime?.time}{" "}
                   </h5>
                 </label>
               </div>

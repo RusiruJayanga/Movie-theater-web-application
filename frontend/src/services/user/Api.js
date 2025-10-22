@@ -60,7 +60,7 @@ export const getMovieWithRatings = async (movieId) => {
   return data;
 };
 
-//interest API call
+//interest api call
 export const addUserInterests = async (interests) => {
   const { data } = await API.post(
     "http://localhost:5000/api/user/interestadd",
@@ -72,6 +72,14 @@ export const addUserInterests = async (interests) => {
 export const getUserInterests = async () => {
   const { data } = await API.get(
     `http://localhost:5000/api/user/interestfetch`
+  );
+  return data;
+};
+
+//showtime api call
+export const showTimeDetails = async (movieId) => {
+  const { data } = await axios.get(
+    `http://localhost:5000/api/movies/showtimedetails/${movieId}`
   );
   return data;
 };

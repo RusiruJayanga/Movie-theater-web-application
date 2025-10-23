@@ -96,7 +96,7 @@ const Booking = () => {
             <div className="w-[100%] ">
               <div>
                 <input
-                  type="checkbox"
+                  type="radio"
                   id={`date-${showtime?._id}`}
                   value=""
                   class="hidden peer"

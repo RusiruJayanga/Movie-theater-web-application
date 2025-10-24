@@ -1,10 +1,14 @@
 import React from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 //slick slider
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+//animation
+import { motion, AnimatePresence } from "framer-motion";
 //hooks
 import { useMovies } from "../../../hooks/common/Movie";
+import { formatDuration, formatDate } from "../../../hooks/common/Format";
 
 const Slick_slider = () => {
   //movies
@@ -62,8 +66,24 @@ const Slick_slider = () => {
     ],
   };
 
+  //details page
+  const navigate = useNavigate();
+  const handleDetailsCardClick = (movieId) => {
+    navigate(`/details`, { state: { movieId } });
+  };
+
   return (
-    <section className="w-[90%] text-white font-extralight mx-auto cursor-default xl:mt-[-11vh] xl:z-20 xl:relative ">
+    <motion.section
+      variants={{
+        hidden: { opacity: 0, y: 60 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.3 }}
+      className="w-[90%] text-white font-light mx-auto cursor-default xl:mt-[0vh] xl:z-20 xl:relative "
+    >
       <h3 className="xl:hidden">
         NOW SHOWING <i className="bi bi-chevron-right"></i>
       </h3>
@@ -75,12 +95,34 @@ const Slick_slider = () => {
           {/* repeat */}
           {nowShowing?.map((movie) => (
             <div className="px-2" key={movie?._id}>
-              <div className="w-auto h-[450px] bg-[#242124] rounded-[10px]">
+              <div className="w-auto rounded-[10px]">
                 <img
-                  className="w-full h-full object-cover opacity-[0.7] rounded-[10px] hover:opacity-[1] transition duration-300 ease-out"
+                  className="w-full h-full object-cover opacity-[0.8] rounded-[10px] hover:opacity-[1] transition duration-300 ease-out"
                   src={movie?.poster || "default_movie.jpg"}
                   alt={movie?.title}
                 />
+                <div className="text-center mt-[5px] ">
+                  <h4 className="h-[40px] w-[100%] font-medium text-[#f21f30] uppercase ">
+                    {movie?.title}
+                  </h4>
+                  <p>
+                    <span className="capitalize text-[#eeeeee]">
+                      {formatDuration(movie?.runtime)}
+                    </span>
+                    <span className="ml-[10px] pl-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] opacity-[1] font-medium ">
+                      {movie?.ratingCategory}
+                    </span>
+                  </p>
+                  <p className="mt-[5px] text-[#eeeeee]">
+                    Released {formatDate(movie?.releaseDate)}
+                  </p>
+                  <button
+                    className="w-[200px] flex bg-[#f21f30] border-[1px] border-[#f21f30] mt-[10px] mx-auto hover:bg-[#0c0c0c] hover:text-[#f21f30]"
+                    onClick={() => handleDetailsCardClick(movie?._id)}
+                  >
+                    MORE
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -90,7 +132,7 @@ const Slick_slider = () => {
           <p className="font-extralight opacity-[0.8]">no data to show</p>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

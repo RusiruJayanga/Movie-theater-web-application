@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <div>
       {/* main section */}
-      <section className=" sm:mt-[-60px]  ">
+      <section className=" sm:mt-[-60px] xl:mt-[-160px] ">
         <div className="hidden xl:block relative w-full h-screen overflow-hidden">
           <video
             autoPlay
@@ -37,7 +37,7 @@ const Home = () => {
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative z-10 flex items-center justify-center h-full"
+            className="relative z-10 flex items-center justify-center h-full xl:mt-[50px]"
           >
             <img
               className="w-[600px] object-cover relative z-10"
@@ -59,10 +59,9 @@ const Home = () => {
 
       {/* now show section */}
       <Slick_slider />
-      <Now_showing />
 
       {/* margin section */}
-      <section className="flex items-center justify-center w-[100%] h-[30vh] gap-[10px] mt-[150px] p-[10px] cursor-default bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.5)_20%,rgba(0,0,0,0.5)_80%,rgba(12,12,12,1)_100%),url(/margin_bg.jpg)] bg-cover bg-center bg-no-repeat xl:h-[70vh] xl:mt-[200px] ">
+      <section className="flex items-center justify-center w-[100%] h-[30vh] gap-[10px] mt-[150px] p-[10px] cursor-default bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.5)_20%,rgba(0,0,0,0.5)_80%,rgba(12,12,12,1)_100%),url(/margin_bg.jpg)] bg-cover bg-center bg-no-repeat xl:h-[70vh] ">
         <motion.img
           variants={{
             hidden: { opacity: 0, y: 70 },

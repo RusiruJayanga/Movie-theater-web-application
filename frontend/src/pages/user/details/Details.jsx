@@ -19,111 +19,90 @@ const Details = () => {
   const { mutate: handleAddInterest } = useAddUserInterests();
 
   return (
-    <div className="w-[100%] p-[10px] mt-[10px] text-white font-light cursor-default md:mt-[40px] md:w-[95%] md:mx-auto xl:w-[1240px] ">
-      <div className="w-[100%] flex items-center justify-center gap-[20px] xl:gap-[10px] ">
+    <div className="w-[100%] text-[#eeeeee] font-light cursor-default ">
+      <div>
         <img
-          className="hidden w-[100%] h-[250px] object-cover rounded-[10px] md:block md:w-[250px] md:h-[370px] "
-          src={movieDetails?.poster || "default_movie.jpg"}
+          className="w-[100%] h-[30vh] object-cover absolute xl:h-[60vh]"
+          src={movieDetails?.mainImage || "default_movie.jpg"}
           alt={movieDetails?.title}
         />
-        <div className="w-[100%] h-[200px] object-cover rounded-[10px] md:h-[370px] xl:w-[60%] ">
-          <video controls className="w-full h-full rounded-[10px] ">
-            <source
-              src={movieDetails?.trailerUrl || "default_trailer.mp4"}
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <div className="hidden xl:flex flex-col flex-wrap items-center justify-center gap-[10px] ">
-          <img
-            className="w-[250px] h-[180px] object-cover rounded-[10px] "
-            src={movieDetails?.galleryImages[0] || "default_movie.jpg"}
-            alt={movieDetails?.title}
-          />
-          <img
-            className="w-[250px] h-[180px] object-cover rounded-[10px] "
-            src={movieDetails?.galleryImages[1] || "default_movie.jpg"}
-            alt={movieDetails?.title}
-          />
-        </div>
+        <div
+          className={`w-[100%] h-[30vh] relative top-0 bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.6)_30%,rgba(12,12,12,0.1)_100%)] xl:h-[60vh] xl:mt-[-160px] xl:bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.7)_30%,rgba(0,0,0,0.6)_80%,rgba(12,12,12,0.8)_100%)]`}
+        ></div>
       </div>
-      <div className="w-[100%] flex flex-col items-center justify-center bg-[#1a1a1a] rounded-[20px] p-[10px] mt-[20px] md:items-start md:p-[20px] ">
-        <div className="w-[100%] flex items-start justify-center gap-[15px] md:mt-[10px] md:justify-start ">
-          <img
-            className=" w-[150px] h-[220px] rounded-[20px] md:hidden "
-            src={movieDetails?.poster || "default_movie.jpg"}
-            alt={movieDetails?.title}
-          />
-          <h2 className="text-[#f21f30] uppercase">{movieDetails?.title}</h2>
-        </div>
-        <div className="w-[100%] flex justify-center gap-[10px] mt-[10px] md:w-[35%] xl:w-[280px] ">
-          {movieDetails?.status === "nowShowing" && (
-            <Link
-              className="flex items-center justify-center w-[100%] h-[40px] rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#1a1a1a] hover:text-[#f21f30]"
-              to="/booking"
-            >
-              GET TICKETS
-            </Link>
-          )}
-
+      <div className="w-[100%] p-[10px] mt-[-100px] relative xl:mt-[-200px] xl:w-[1240px] xl:mx-auto">
+        <h2 className="font-medium text-white uppercase ">
+          {movieDetails?.title}
+        </h2>
+        <div className="flex items-center justify-start mt-[10px] gap-[10px] ">
+          <button className="w-[200px] flex bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-transparent hover:text-[#f21f30]">
+            GET TICKETS
+          </button>
           <button
-            className="flex w-[50px] border-[1px] border-white hover:bg-white hover:text-black"
+            className="flex w-[40px] border-[1px] text-white pt-[3px] border-white hover:bg-white hover:text-black"
             onClick={() => handleAddInterest(movieDetails?._id)}
           >
             <i className="bi bi-heart-fill"></i>
           </button>
         </div>
-        <p className=" opacity-[0.8] font-extralight mt-[40px] text-justify ">
-          {movieDetails?.plot}
-        </p>
-        <div className="w-[100%] mt-[20px] md:flex md:justify-between xl:mt-[30px]">
-          <div className="capitalize">
-            <h5 className="mt-[5px] text-[#f21f30] uppercase font-bold">
-              {movieDetails?.ratingCategory}
-            </h5>
-            <h5>{formatDuration(movieDetails?.runtime)}</h5>
-            <h5 className="mt-[5px]">
-              {movieDetails?.status === "nowShowing" ? "Released" : "Release"}{" "}
-              {formatDate(movieDetails?.releaseDate)}
-            </h5>
-            {movieDetails?.status === "nowShowing" && (
-              <h5 className="mt-[5px]">
-                Closing {formatDate(movieDetails?.closeDate)}
-              </h5>
-            )}
-            <h5 className="mt-[5px]">{movieDetails?.studio}</h5>
-            <h5 className="mt-[5px]">{movieDetails?.director}</h5>
-            {movieDetails?.genre.map((genre) => (
-              <h5 className="mt-[5px]" key={genre}>
-                {genre}
-              </h5>
-            ))}
-          </div>
-          <h4>{movieRatings?.externalRatings?.imdbVotes || "N/A"}</h4>
-          <div className="hidden md:flex flex-col justify-center gap-[10px] mr-[30px] font-medium">
-            <div className="w-[150px] flex items-center justify-center gap-[20px] md:justify-between md:w-[110px]">
-              <img className="w-[60px] " src="rating/imdb.png" alt="rating" />
-              <h4>{movieRatings?.externalRatings?.imdb || "N/A"}/10</h4>
+        <div className="w-[100%] flex flex-col gap-[20px] mt-[60px] ">
+          <p className="text-[#bdbdbd] text-justify">
+            {movieDetails?.plot || "N/A"}
+          </p>
+          <div className="flex justify-between flex-wrap">
+            <div>
+              <p>
+                <span className="capitalize">
+                  {formatDuration(movieDetails?.runtime) || "N/A"}
+                </span>
+                <span className="ml-[10px] pl-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] opacity-[1] font-bold ">
+                  {movieDetails?.ratingCategory || "N/A"}
+                </span>
+              </p>
+              <p className="mt-[5px]">
+                {movieDetails?.status === "nowShowing" ? "Released" : "Release"}{" "}
+                {formatDate(movieDetails?.releaseDate) || "N/A"}
+              </p>
+              {movieDetails?.status === "nowShowing" && (
+                <p className="mt-[5px]">
+                  Closing {formatDate(movieDetails?.closeDate) || "N/A"}
+                </p>
+              )}
+              <p className="mt-[5px]">Studio {movieDetails?.studio || "N/A"}</p>
+              <p className="mt-[5px]">
+                Director {movieDetails?.director || "N/A"}
+              </p>
+              {movieDetails?.genre.map((genre) => (
+                <span
+                  className=" pl-[10px] pr-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] opacity-[1] mt-[5px]"
+                  key={genre}
+                >
+                  {genre}
+                </span>
+              ))}
             </div>
-            <div className="w-[150px] flex items-center justify-center gap-[20px] md:justify-between md:w-[110px]">
-              <img
-                className="w-[55px] ml-[5px] "
-                src="rating/roten.png"
-                alt="rating"
-              />
-              <h4>{movieRatings?.externalRatings?.rottenTomatoes || "N/A"}</h4>
+            <div>
+              <div className=" flex items-center justify-center gap-[10px]">
+                <img className="w-[60px] " src="rating/imdb.png" alt="rating" />
+                <h4>{movieRatings?.externalRatings?.imdb || "N/A"}/10</h4>
+              </div>
+              <div className=" flex items-center justify-center gap-[10px] md:justify-between md:w-[110px]">
+                <img
+                  className="w-[50px] mr-[15px]"
+                  src="rating/roten.png"
+                  alt="rating"
+                />
+                <h4>
+                  {movieRatings?.externalRatings?.rottenTomatoes || "N/A"}
+                </h4>
+              </div>
             </div>
           </div>
         </div>
-        <div className="w-[100%] mt-[10px] flex justify-between  font-medium md:hidden">
-          <div className="w-[150px] flex items-center justify-center gap-[10px] md:justify-between md:w-[110px]">
-            <img className="w-[60px] " src="rating/imdb.png" alt="rating" />
-            <h4>{movieRatings?.externalRatings?.imdb || "N/A"}/10</h4>
-          </div>
-          <div className="w-[150px] flex items-center justify-center gap-[10px] md:justify-between md:w-[110px]">
-            <img className="w-[50px] " src="rating/roten.png" alt="rating" />
-            <h4>{movieRatings?.externalRatings?.rottenTomatoes || "N/A"}</h4>
-          </div>
+        <div className="mt-[40px]">
+          <h4 className="text-white font-medium uppercase">
+            More Trailers and Images for {movieDetails?.title}
+          </h4>
         </div>
       </div>
     </div>

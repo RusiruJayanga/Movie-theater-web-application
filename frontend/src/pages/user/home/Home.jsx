@@ -61,7 +61,7 @@ const Home = () => {
       <Slick_slider />
 
       {/* margin section */}
-      <section className="flex items-center justify-center w-[100%] h-[30vh] gap-[10px] mt-[150px] p-[10px] cursor-default bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.5)_20%,rgba(0,0,0,0.5)_80%,rgba(12,12,12,1)_100%),url(/margin_bg.jpg)] bg-cover bg-center bg-no-repeat xl:h-[70vh] ">
+      <section className="flex items-center justify-center w-[100%] h-[30vh] gap-[10px] mt-[160px] p-[10px] cursor-default bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.5)_20%,rgba(0,0,0,0.5)_80%,rgba(12,12,12,1)_100%),url(/margin_bg.jpg)] bg-cover bg-center bg-no-repeat xl:h-[70vh] ">
         <motion.img
           variants={{
             hidden: { opacity: 0, y: 70 },
@@ -78,7 +78,7 @@ const Home = () => {
       </section>
 
       {/* upcoming card section */}
-      <section className="w-[90%] text-white font-extralight mx-auto cursor-default xl:mt-[-11vh] xl:z-20 xl:relative ">
+      <section className="w-[90%] text-white font-light mx-auto cursor-default xl:mt-[-11vh] xl:z-20 xl:relative ">
         <h3 className="xl:hidden">
           UPCOMING MOVIES <i className="bi bi-chevron-right"></i>
         </h3>

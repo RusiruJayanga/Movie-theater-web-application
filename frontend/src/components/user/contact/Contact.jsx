@@ -36,7 +36,7 @@ const Contact = () => {
       className="w-[90%] mt-[150px] mx-auto p-[10px] text-white font-light cursor-default md:flex md:items-start md:justify-center md:gap-[30px] xl:w-[1075px] xl:mt-[200px] "
     >
       <div className="w-[100%] ">
-        <h2 className="text-[#f21f30] font-extralight ">CONTACT US</h2>
+        <h2 className="text-[#f21f30] font-light ">CONTACT US</h2>
         <h4 className="font-medium mt-[5px]">
           WE WOULD LOVE TO HEAR FROM YOU ! REACH OUT TO US THROUGH ANY OF THE
           CHANNELS BELOW.
@@ -96,7 +96,7 @@ const Contact = () => {
               </p>
             </div>
             <button
-              className="w-[150px] mx-auto mt-[10px] flex bg-[#f21f30] font-medium border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
+              className="w-[150px] mx-auto mt-[10px] flex bg-[#f21f30] border-[1px] border-[#f21f30] hover:bg-[#0c0c0c] hover:text-[#f21f30]"
               type="submit"
               disabled={isSubmitting}
             >

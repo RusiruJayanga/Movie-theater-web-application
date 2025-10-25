@@ -14,7 +14,7 @@ const About = () => {
     <section className="w-[90%] mt-[150px] mx-auto p-[10px] text-white font-light cursor-default xl:w-[1075px] xl:flex xl:items-center xl:justify-center xl:gap-[50px] xl:mt-[200px]  ">
       <div className="w-[100%] ">
         <div className="w-[100%] ">
-          <h2 className="text-[#f21f30] font-extralight ">ABOUT US</h2>
+          <h2 className="text-[#f21f30] ">ABOUT US</h2>
           <h4 className="font-medium mt-[5px]">
             WE ARE A LEADING MOVIE THEATER CHAIN, DEDICATED TO PROVIDING THE
             BEST CINEMATIC EXPERIENCE TO OUR AUDIENCE.
@@ -45,7 +45,7 @@ const About = () => {
           />
         </div>
         <div>
-          <p className="opacity-[0.8] font-extralight mt-[20px] text-justify ">
+          <p className="text-[#bdbdbd] mt-[20px] text-justify ">
             At AMC Theaters, we believe that movies are more than just
             entertainment – they’re an experience. Our mission is to bring
             stories to life on the big screen with the best in picture, sound,

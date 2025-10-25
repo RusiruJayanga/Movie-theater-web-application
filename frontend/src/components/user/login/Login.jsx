@@ -67,7 +67,7 @@ const Login = () => {
             <Form className="w-[350px] bg-[#1a1a1a] rounded-[20px] p-[20px] flex flex-col items-center justify-center ">
               <div className="flex flex-col items-center justify-center gap-[0px]  ">
                 <h1 className="font-bold ">Login</h1>
-                <p className="font-extralight opacity-[0.8]">Welcome Back !</p>
+                <p className=" text-[#bdbdbd]">Welcome Back !</p>
               </div>
               <div className="input-group w-[100%] mt-[30px] ">
                 <Field
@@ -121,7 +121,7 @@ const Login = () => {
               >
                 {isSubmitting ? "PROCESSING..." : "LOGIN"}
               </button>
-              <span className="font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
+              <span className="font-extralight transition duration-300 ease-out text-[#bdbdbd] hover:text-white text-[13px] mt-[20px]">
                 Don't have an account?{" "}
                 <span
                   onClick={() => setForm("signup")}
@@ -148,9 +148,7 @@ const Login = () => {
             <Form className="w-[350px] bg-[#1a1a1a] rounded-[20px] p-[20px] flex flex-col items-center justify-center ">
               <div className="flex flex-col items-center justify-center gap-[0px]  ">
                 <h1 className="font-bold ">Sign Up</h1>
-                <p className="font-extralight opacity-[0.8]">
-                  Create Your Account !
-                </p>
+                <p className="text-[#bdbdbd]">Create Your Account !</p>
               </div>
               <div className="input-group w-[100%] mt-[30px] ">
                 <Field
@@ -250,7 +248,7 @@ const Login = () => {
               >
                 {isSubmitting ? "PROCESSING..." : "SIGN UP"}
               </button>
-              <span className="font-extralight transition duration-300 ease-out opacity-[0.8] hover:opacity-[1] text-[13px] mt-[20px]">
+              <span className="font-extralight transition duration-300 ease-out text-[#bdbdbd] hover:text-white text-[13px] mt-[20px]">
                 Already have an account?{" "}
                 <span
                   onClick={() => setForm("login")}

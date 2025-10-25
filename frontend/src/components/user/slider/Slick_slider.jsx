@@ -82,12 +82,12 @@ const Slick_slider = () => {
       whileInView="visible"
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="w-[90%] text-white font-light mx-auto cursor-default xl:mt-[0vh] xl:z-20 xl:relative "
+      className="w-[90%] text-[#eeeeee] font-light mx-auto cursor-default xl:mt-[0vh] xl:z-20 xl:relative "
     >
-      <h3 className="xl:hidden">
+      <h3 className="xl:hidden text-white">
         NOW SHOWING <i className="bi bi-chevron-right"></i>
       </h3>
-      <h2 className="hidden xl:block">
+      <h2 className="hidden xl:block text-white">
         NOW SHOWING <i className="bi bi-chevron-right"></i>
       </h2>
       <div className="w-[85%] mx-auto mt-[30px] xl:w-[1240px]">
@@ -97,7 +97,7 @@ const Slick_slider = () => {
             <div className="px-2" key={movie?._id}>
               <div className="w-auto rounded-[10px]">
                 <img
-                  className="w-full h-full object-cover opacity-[0.8] rounded-[10px] hover:opacity-[1] transition duration-300 ease-out"
+                  className="w-full h-full object-cover opacity-[0.8] rounded-[5px] hover:opacity-[1] transition duration-300 ease-out"
                   src={movie?.poster || "default_movie.jpg"}
                   alt={movie?.title}
                 />
@@ -106,18 +106,18 @@ const Slick_slider = () => {
                     {movie?.title}
                   </h4>
                   <p>
-                    <span className="capitalize text-[#eeeeee]">
-                      {formatDuration(movie?.runtime)}
+                    <span className="capitalize">
+                      {formatDuration(movie?.runtime) || "N/A"}
                     </span>
-                    <span className="ml-[10px] pl-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] opacity-[1] font-medium ">
-                      {movie?.ratingCategory}
+                    <span className="ml-[10px] pl-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] opacity-[1] font-bold ">
+                      {movie?.ratingCategory || "N/A"}
                     </span>
                   </p>
-                  <p className="mt-[5px] text-[#eeeeee]">
-                    Released {formatDate(movie?.releaseDate)}
+                  <p className="mt-[5px]">
+                    Released {formatDate(movie?.releaseDate) || "N/A"}
                   </p>
                   <button
-                    className="w-[200px] flex bg-[#f21f30] border-[1px] border-[#f21f30] mt-[10px] mx-auto hover:bg-[#0c0c0c] hover:text-[#f21f30]"
+                    className="w-[80%] flex bg-[#f21f30] border-[1px] text-white border-[#f21f30] mt-[10px] mx-auto hover:bg-[#0c0c0c] hover:text-[#f21f30] xl:w-[200px]"
                     onClick={() => handleDetailsCardClick(movie?._id)}
                   >
                     MORE

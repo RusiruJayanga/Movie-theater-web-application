@@ -47,11 +47,11 @@ const Account = () => {
         />
         <div className="mr-auto ml-[20px] md:ml-[40px]">
           <h4 className="font-medium mt-[5px]">WELLCOME !</h4>
-          <h2 className="text-[#f21f30] uppercase font-extralight ">
+          <h2 className="text-[#f21f30] uppercase font-light ">
             {userProfile?.name}
           </h2>
-          <p className="font-extralight opacity-[0.8] ">{userProfile?.email}</p>
-          <p className="mt-[5px] font-extralight opacity-[0.8] ">
+          <p className="font-light text-[#bdbdbd] ">{userProfile?.email}</p>
+          <p className="mt-[5px] font-light text-[#bdbdbd] ">
             {userProfile?.mobile}
           </p>
         </div>

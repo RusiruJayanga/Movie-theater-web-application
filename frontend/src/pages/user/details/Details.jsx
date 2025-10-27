@@ -1,5 +1,8 @@
 import React from "react";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+//video player
+import ReactPlayer from "react-player";
+
 //hooks
 import { useMovie } from "../../../hooks/user/Details";
 import { useMovieWithRatings } from "../../../hooks/user/Rating";
@@ -117,15 +120,20 @@ const Details = () => {
             More Trailers and Images for {movieDetails?.title}
           </h4>
           <div className="w-[100%] flex flex-col items-center justify-center gap-[20px] mt-[40px] md:flex-row xl:justify-start">
-            <video
-              controls
-              className="w-[350px] h-[200px] rounded-[5px] md:h-[220px] xl:h-[200px]"
-            >
-              <source
+            <div className="w-[350px] h-[200px] rounded-[5px] md:h-[220px] xl:h-[200px]">
+              <ReactPlayer
                 src={movieDetails?.trailerUrl || "default_trailer.mp4"}
-                type="video/mp4"
+                controls
+                width="100%"
+                height="100%"
+                playing={false}
+                config={{
+                  youtube: {
+                    playerVars: { showinfo: 0, modestbranding: 1 },
+                  },
+                }}
               />
-            </video>
+            </div>
             <div className="flex flex-col items-center justify-center gap-[20px] md:w-[220px] xl:w-auto xl:flex-row">
               <img
                 className="w-[350px] h-[200px] rounded-[5px] object-cover md:w-[200px] md:h-[100px] xl:w-[350px] xl:h-[200px] xl:opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out "

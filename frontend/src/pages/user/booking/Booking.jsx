@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+//loading
+import Loading from "../../../hooks/common/Loading";
+//error
+import Error from "../../../hooks/common/Error";
 //hooks
 import { useMovie } from "../../../hooks/user/Details";
 import { formatDuration } from "../../../hooks/common/Format";
@@ -23,7 +27,7 @@ const Booking = () => {
   const movieId = location.state?.movieId;
 
   //movies
-  const { data: movieDetails } = useMovie(movieId);
+  const { data: movieDetails, isLoading, isError } = useMovie(movieId);
   //showtime
   const { data: showTimeDetails } = useShowTime(movieId);
 
@@ -39,6 +43,15 @@ const Booking = () => {
   };
 
   const totalPrice = selectedSeats.length * seatPrice;
+
+  //loading
+  if (isLoading) {
+    return <Loading />;
+  }
+  //error
+  if (isError) {
+    return <Error />;
+  }
 
   return (
     <div className="w-[100%] p-[10px] text-[#eeeeee] font-light mt-[20px] cursor-default xl:mt-[20px] xl:w-[1240px] xl:mx-auto ">

@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+//loading
+import Loading from "../../../hooks/common/Loading";
+//error
+import { Box } from "@mui/material";
 //hooks
 import { logout } from "../../../hooks/user/Auth.jsx";
 import { useUserProfile } from "../../../hooks/user/Account.jsx";
@@ -12,11 +16,11 @@ const Account = () => {
   const [menuSettingsOpen, set_menu_Settings_open] = useState(false);
 
   //fetch account
-  const { data: userProfile } = useUserProfile();
+  const { data: userProfile, isLoading, isError } = useUserProfile();
 
   //logout
   const navigate = useNavigate();
-  const handle_logout = () => {
+  const handleLogout = () => {
     logout();
     navigate("/");
   };
@@ -36,6 +40,42 @@ const Account = () => {
   const handleDetailsCardClick = (movieId) => {
     navigateDetails(`/details`, { state: { movieId } });
   };
+
+  //loading
+  if (isLoading) {
+    return <Loading />;
+  }
+  //error
+  if (isError) {
+    return (
+      <Box
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background: "rgba(0, 0, 0, 1)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: "1000000",
+        }}
+      >
+        <div className="flex flex-col items-center justify-center gap-[20px] font-medium">
+          <h5 className="text-white font-light">
+            ❌ Your session has expired please login again !
+          </h5>
+          <button
+            className="w-[100px] flex bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-transparent hover:text-[#f21f30]"
+            onClick={handleLogout}
+          >
+            <i className="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
+      </Box>
+    );
+  }
 
   return (
     <div className="p-[10px] flex flex-col items-start text-white cursor-default mt-[40px] md:w-[80%] md:mx-auto xl:w-[920px] xl:mt-[20px] ">
@@ -57,7 +97,7 @@ const Account = () => {
         </div>
         <h4
           className="w-[40px] h-[40px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out"
-          onClick={handle_logout}
+          onClick={handleLogout}
         >
           <i className="bi bi-box-arrow-right"></i>
         </h4>

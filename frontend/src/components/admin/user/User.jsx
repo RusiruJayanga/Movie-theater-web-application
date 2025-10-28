@@ -1,4 +1,6 @@
 import React from "react";
+//loading
+import Loading from "../../../hooks/common/Loading";
 //animation
 import { motion, AnimatePresence } from "framer-motion";
 //hooks
@@ -7,7 +9,7 @@ import { useDeleteAccount } from "../../../hooks/admin/User";
 
 const User = () => {
   //user function
-  const { data: users } = useUsers();
+  const { data: users, isLoading } = useUsers();
   const { mutate: deleteUser, isPending: isDeleting } = useDeleteAccount();
 
   const handleDelete = (id, name) => {
@@ -15,6 +17,11 @@ const User = () => {
       deleteUser(id);
     }
   };
+
+  //loading
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <section className="w-[100%] grid gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_580px)] ">

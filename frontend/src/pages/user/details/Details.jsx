@@ -1,8 +1,11 @@
 import React from "react";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+//loading
+import Loading from "../../../hooks/common/Loading";
+//error
+import Error from "../../../hooks/common/Error";
 //video player
 import ReactPlayer from "react-player";
-
 //hooks
 import { useMovie } from "../../../hooks/user/Details";
 import { useMovieWithRatings } from "../../../hooks/user/Rating";
@@ -30,6 +33,15 @@ const Details = () => {
 
   //interests function
   const { mutate: handleAddInterest } = useAddUserInterests();
+
+  //loading
+  if (isLoading) {
+    return <Loading />;
+  }
+  //error
+  if (isError) {
+    return <Error />;
+  }
 
   return (
     <div className="w-[100%] text-[#eeeeee] font-light cursor-default ">
@@ -120,7 +132,7 @@ const Details = () => {
             More Trailers and Images for {movieDetails?.title}
           </h4>
           <div className="w-[100%] flex flex-col items-center justify-center gap-[20px] mt-[40px] md:flex-row xl:justify-start">
-            <div className="w-[350px] h-[200px] rounded-[5px] md:h-[220px] xl:h-[200px]">
+            <div className="w-[350px] h-[200px] border-1 border-[#bdbdbd]/50 md:h-[220px] xl:h-[200px]">
               <ReactPlayer
                 src={movieDetails?.trailerUrl || "default_trailer.mp4"}
                 controls

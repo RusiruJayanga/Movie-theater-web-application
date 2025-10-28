@@ -1,4 +1,8 @@
 import React from "react";
+//loading
+import Loading from "../../../hooks/common/Loading";
+//error
+import Error from "../../../hooks/common/Error";
 //animation
 import { motion, AnimatePresence } from "framer-motion";
 //slick slider
@@ -11,8 +15,22 @@ import Upcoming from "../../../components/user/upcoming/Upcoming";
 import About from "../../../components/user/about/About";
 //contact
 import Contact from "../../../components/user/contact/Contact";
+//hooks
+import { useMovies } from "../../../hooks/common/Movie";
 
 const Home = () => {
+  //movies
+  const { data: movies, isLoading, isError } = useMovies();
+
+  //loading
+  if (isLoading) {
+    return <Loading />;
+  }
+  //error
+  if (isError) {
+    return <Error />;
+  }
+
   return (
     <div>
       {/* main section */}

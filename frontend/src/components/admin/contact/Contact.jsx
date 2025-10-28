@@ -1,4 +1,6 @@
 import React from "react";
+//loading
+import Loading from "../../../hooks/common/Loading";
 //animation
 import { motion, AnimatePresence } from "framer-motion";
 //hooks
@@ -6,7 +8,12 @@ import { useContact } from "../../../hooks/admin/Contact";
 
 const Contact = () => {
   //contact function
-  const { data: contacts } = useContact();
+  const { data: contacts, isLoading } = useContact();
+
+  //loading
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <section className="w-[100%] grid gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_580px)] ">

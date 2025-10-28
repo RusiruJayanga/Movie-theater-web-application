@@ -1,4 +1,6 @@
 import React from "react";
+//loading
+import Loading from "../../../hooks/common/Loading";
 //animation
 import { motion, AnimatePresence, m } from "framer-motion";
 //hooks
@@ -8,7 +10,7 @@ import { useDeleteMovie } from "../../../hooks/admin/Movie";
 
 const Now_showing = () => {
   //movies
-  const { data: movies } = useMovies();
+  const { data: movies, isLoading } = useMovies();
   //delete movie function
   const { mutate: deleteMovie } = useDeleteMovie();
 
@@ -23,6 +25,11 @@ const Now_showing = () => {
     (movie) =>
       movie.status === "nowShowing" && new Date(movie.closeDate) >= new Date()
   );
+
+  //loading
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <section className="w-[100%] grid gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_580px)] ">

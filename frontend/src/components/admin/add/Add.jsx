@@ -1,4 +1,6 @@
 import React from "react";
+//loading
+import Loading from "../../../hooks/common/Loading";
 //validation
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -51,6 +53,11 @@ const addMovieValidationSchema = Yup.object({
 const Add = () => {
   //add movie function
   const { mutate, isPending: isAdding } = useAddMovie();
+
+  //loading
+  if (isAdding) {
+    return <Loading />;
+  }
 
   return (
     <section className="w-[100%] mx-auto mt-[40px] md:w-[80%] xl:w-[600px] ">

@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+//loading
+import Loading from "../../../hooks/common/Loading";
 //countup
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
@@ -13,7 +15,7 @@ import { useUsers } from "../../../hooks/admin/User";
 
 const Dashboard = () => {
   //movie function
-  const { data: movies } = useMovies();
+  const { data: movies, isLoading } = useMovies();
   //user function
   const { data: users } = useUsers();
 
@@ -62,6 +64,11 @@ const Dashboard = () => {
     "Page F",
     "Page G",
   ];
+
+  //loading
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="w-[100%] grid grid-cols-1 gap-[20px] xl:grid-cols-4 ">

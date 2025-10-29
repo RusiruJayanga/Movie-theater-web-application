@@ -16,8 +16,6 @@ const rows = [
   { row: "C", seats: 10 },
   { row: "D", seats: 10 },
   { row: "E", seats: 10 },
-  { row: "F", seats: 10 },
-  { row: "G", seats: 10 },
 ];
 const seatPrice = 1000;
 
@@ -30,6 +28,13 @@ const Booking = () => {
   const { data: movieDetails, isLoading, isError } = useMovie(movieId);
   //showtime
   const { data: showTimeDetails } = useShowTime(movieId);
+
+  //timw function
+  const [selectedTime, setSelectedTime] = useState(null);
+  //filter time
+  const selectSeat = showTimeDetails?.filter(
+    (showtime) => showtime._id === selectedTime
+  );
 
   //seats function
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -84,10 +89,15 @@ const Booking = () => {
             {/* repeat */}
             {showTimeDetails?.map((showtime) => (
               <label
-                className="w-[150px] h-[40px] rounded-[20px] border-[1px] cursor-pointer border-[#bdbdbd]/50 flex items-center justify-center transition-colors duration-300 ease-out"
+                className={`${
+                  selectedTime === showtime?._id
+                    ? "border-white bg-white text-black"
+                    : "border-[#bdbdbd]/50 bg-[#0c0c0c] text-[#bdbdbd]"
+                } w-[150px] h-[40px] rounded-[20px] border-[1px] cursor-pointer font-medium flex items-center justify-center transition-colors duration-300 ease-out`}
                 key={showtime?._id}
+                onClick={() => setSelectedTime(showtime?._id)}
               >
-                <p className="text-[#bdbdbd]">
+                <p>
                   {showtime?.date} {showtime?.time}
                 </p>
               </label>
@@ -122,34 +132,54 @@ const Booking = () => {
         <div className="w-[90%] mx-auto h-[10px] rounded-tl-[100%] rounded-tr-[100%] bg-[#bdbdbd] my-6 relative xl:w-[70%] "></div>
 
         {/* seat grid */}
-        <div className="w-[100%] flex flex-col gap-[20px] mt-[20px] xl:mt-[60px]">
-          {rows.map((row) => (
-            <div key={row.row} className="flex justify-center gap-[10px]">
-              {Array.from({ length: row.seats }).map((_, i) => {
-                const seatId = `${row.row}${i + 1}`;
-                const seatMargin = i === 4 ? "md:mr-[40px]" : "";
-                const isSelected = selectedSeats.includes(seatId);
-                const seatClass = `seat ${seatMargin}`;
+        {selectSeat?.map((seat) => (
+          <div
+            className=" mx-auto flex flex-wrap gap-[20px] mt-[20px] xl:mt-[60px]"
+            key={seat?._id}
+          >
+            {seat?.seats.map((seat) => {
+              const isSelected = selectedSeats.includes(seat?.seatNumber);
 
-                return (
-                  <div
-                    key={seatId}
-                    onClick={() => toggleSeat(seatId)}
-                    className={`w-[60px] h-[40px] border-[2px] rounded-[5px] text-[14px] flex items-center cursor-pointer font-extralight justify-center transition duration-300 ease-out hover:border-[#bdbdbd] md:rounded-tl-[40%] md:rounded-tr-[40%]
+              return (
+                <div
+                  key={seat?._id}
+                  onClick={() => toggleSeat(seat?.seatNumber)}
+                  className={`w-[60px] h-[40px] border-[2px] rounded-[5px] text-[14px] flex items-center cursor-pointer font-extralight justify-center transition duration-300 ease-out hover:border-[#bdbdbd] md:rounded-tl-[40%] md:rounded-tr-[40%]
                     ${
                       isSelected
                         ? "bg-[#f21f30] border-[#f21f30]"
                         : "border-[#bdbdbd]/50 "
                     }
-                    ${seatClass}`}
-                  >
-                    {seatId}
-                  </div>
-                );
-              })}
-            </div>
-          ))}
-        </div>
+`}
+                >
+                  {seat?.seatNumber}
+                </div>
+              );
+            })}
+          </div>
+        ))}
+
+        {selectSeat?.length === 0 && (
+          <div className="w-[100%] flex flex-col gap-[20px] mt-[20px] xl:mt-[60px]">
+            {rows.map((row) => (
+              <div key={row.row} className="flex justify-center gap-[10px]">
+                {Array.from({ length: row.seats }).map((_, i) => {
+                  const seatId = `${row.row}${i + 1}`;
+
+                  return (
+                    <div
+                      key={seatId}
+                      className={`w-[60px] h-[40px] border-[2px] rounded-[5px] text-[14px] flex items-center cursor-pointer font-extralight justify-center transition duration-300 ease-out hover:border-[#bdbdbd] md:rounded-tl-[40%] md:rounded-tr-[40%] border-[#bdbdbd]/50 
+                    `}
+                    >
+                      {seatId}
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       {/* summery */}
       <div className="w-[90%] mx-auto mt-[60px] md:hidden ">

@@ -8,7 +8,7 @@ const showtimeSchema = new mongoose.Schema({
   },
   date: { type: String, required: true },
   time: { type: String, required: true },
-  seatsAvailable: { type: Number, required: true, min: 0, default: 70 },
+  seatsAvailable: { type: Number, required: true, min: 0, default: 50 },
   seats: [
     {
       seatNumber: { type: String, required: true },

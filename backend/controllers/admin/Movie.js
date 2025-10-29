@@ -10,11 +10,11 @@ const OMDB_API_KEY = process.env.OMDB_API_KEY;
 
 export const addMovie = async (req, res) => {
   try {
-    const { title, status, closeDate, studio, trailerUrl } = req.body;
+    const { title, status, closeDate, studio, trailerUrl, plot } = req.body;
     const time = req.body.time ? JSON.parse(req.body.time) : [];
 
     //validation
-    if (!title || !status || !studio || !trailerUrl) {
+    if (!title || !status || !studio || !trailerUrl || !plot) {
       return res.status(400).json({ message: "All fields are required !" });
     }
 
@@ -69,14 +69,14 @@ export const addMovie = async (req, res) => {
       studio,
       director: omdbData.Director,
       trailerUrl,
-      plot: omdbData.Plot,
+      plot: plot,
       mainImage: mainImageUrl,
       poster: omdbData.Poster,
       galleryImages: galleryImagesUrls,
     });
 
     //seat array
-    const rows = ["A", "B", "C", "D", "E", "F", "G"];
+    const rows = ["A", "B", "C", "D", "E"];
     const seats = [];
     rows.forEach((row) => {
       for (let i = 1; i <= 10; i++) {

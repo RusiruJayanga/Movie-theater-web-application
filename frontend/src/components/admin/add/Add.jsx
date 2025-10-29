@@ -29,6 +29,9 @@ const addMovieValidationSchema = Yup.object({
   trailerUrl: Yup.string()
     .url("enter a valid URL")
     .required("trailer URL is required"),
+  plot: Yup.string()
+    .max(500, "plot must be at most 500 characters")
+    .required("plot is required"),
   mainImage: Yup.mixed().required("main image is required"),
   galleryImages: Yup.mixed()
     .required("gallery images are required")
@@ -74,6 +77,7 @@ const Add = () => {
           showTime2: "",
           showTime3: "",
           trailerUrl: "",
+          plot: "",
           mainImage: null,
           galleryImages: null,
         }}
@@ -105,6 +109,7 @@ const Add = () => {
           formData.append("closeDate", values.closeDate);
           formData.append("studio", values.studio);
           formData.append("trailerUrl", values.trailerUrl);
+          formData.append("plot", values.plot);
           formData.append("time", JSON.stringify(time));
 
           if (values.mainImage) {
@@ -117,7 +122,24 @@ const Add = () => {
           }
           mutate(formData, {
             onSuccess: () => {
-              resetForm({ values: { mainImage: null, galleryImages: null } });
+              resetForm({
+                values: {
+                  title: "",
+                  status: "",
+                  closeDate: "",
+                  studio: "",
+                  showDate1: "",
+                  showDate2: "",
+                  showDate3: "",
+                  showTime1: "",
+                  showTime2: "",
+                  showTime3: "",
+                  trailerUrl: "",
+                  plot: "",
+                  mainImage: null,
+                  galleryImages: null,
+                },
+              });
               setSubmitting(false);
             },
             onError: () => {
@@ -364,6 +386,27 @@ const Add = () => {
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
                 <ErrorMessage
                   name="trailerUrl"
+                  className="text-[13px]"
+                  component="span"
+                />
+              </p>
+            </div>
+            <div className="input-group">
+              <Field
+                className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                name="plot"
+                maxLength={500}
+                required
+              ></Field>
+              <label
+                className="label text-[16px] font-light text-[#bdbdbd]"
+                htmlFor="text"
+              >
+                Plot
+              </label>
+              <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
+                <ErrorMessage
+                  name="plot"
                   className="text-[13px]"
                   component="span"
                 />

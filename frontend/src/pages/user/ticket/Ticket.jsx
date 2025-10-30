@@ -9,7 +9,7 @@ const Ticket = () => {
   return (
     <div className="p-[10px] flex flex-col items-start text-white cursor-default mt-[40px] md:w-[80%] md:mx-auto xl:w-[920px] xl:mt-[20px] ">
       <div className="w-[100%] flex flex-col items-start font-light ">
-        {/* new tickets */}
+        {/* new ticket */}
         <div
           className={`${
             menuNewOpen

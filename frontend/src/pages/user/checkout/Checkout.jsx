@@ -36,7 +36,7 @@ const Checkout = () => {
             </div>
             {/* repeat */}
           </div>
-
+          {/* summary */}
           <div className="w-[300px] ">
             <div className="w-[100%] bg-[#1a1a1a] rounded-[20px] p-[10px] pt-[20px] mt-[20px] ">
               <div className="w-[100%] flex items-center justify-start p-[20px] pl-[15px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/50">

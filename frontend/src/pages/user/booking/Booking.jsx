@@ -158,7 +158,7 @@ const Booking = () => {
             })}
           </div>
         ))}
-
+        {/* seat grid */}
         {selectSeat?.length === 0 && (
           <div className="w-[100%] flex flex-col gap-[20px] mt-[20px] xl:mt-[60px]">
             {rows.map((row) => (

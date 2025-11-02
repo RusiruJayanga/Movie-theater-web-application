@@ -119,7 +119,16 @@ const Details = () => {
                 </h4>
               </div>
               <div className=" flex items-center justify-center gap-[5px]">
-                <img className="w-[60px]" src="rating/roten.png" alt="rating" />
+                <img
+                  className="w-[60px]"
+                  src={
+                    parseInt(movieRatings?.externalRatings?.rottenTomatoes) >=
+                    60
+                      ? "rating/fresh.png"
+                      : "rating/rotten.png" || "roten.png"
+                  }
+                  alt="rating"
+                />
                 <h4 className="w-[60px]">
                   {movieRatings?.externalRatings?.rottenTomatoes || "N/A"}
                 </h4>

@@ -117,7 +117,7 @@ const Slick_slider = () => {
                     Released {formatDate(movie?.releaseDate) || "N/A"}
                   </p>
                   <button
-                    className="w-[80%] flex bg-[#f21f30] border-[1px] text-white border-[#f21f30] mt-[10px] mx-auto hover:bg-[#0c0c0c] hover:text-[#f21f30] xl:w-[200px]"
+                    className="w-[80%] flex bg-[#f21f30] border-[1px] text-white border-[#f21f30] mt-[10px] mx-auto hover:bg-[#0c0c0c] hover:text-[#f21f30] xl:w-[150px]"
                     onClick={() => handleDetailsCardClick(movie?._id)}
                   >
                     MORE

@@ -10,13 +10,7 @@ import { formatDuration } from "../../../hooks/common/Format";
 import { useShowTime } from "../../../hooks/user/Showtime";
 
 //seat select
-const rows = [
-  { row: "A", seats: 10 },
-  { row: "B", seats: 10 },
-  { row: "C", seats: 10 },
-  { row: "D", seats: 10 },
-  { row: "E", seats: 10 },
-];
+const rows = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const seatPrice = 1000;
 
 const Booking = () => {
@@ -38,7 +32,6 @@ const Booking = () => {
 
   //seats function
   const [selectedSeats, setSelectedSeats] = useState([]);
-
   const toggleSeat = (seatId) => {
     setSelectedSeats((prev) =>
       prev.includes(seatId)
@@ -47,7 +40,30 @@ const Booking = () => {
     );
   };
 
+  //checkout
+  const [error, setError] = useState("");
+  const bookedSeats = [];
+  bookedSeats.push(...selectedSeats);
   const totalPrice = selectedSeats.length * seatPrice;
+  const handleCheckout = () => {
+    if (!selectedTime) {
+      setError("Please select a showtime.");
+      return;
+    } else if (selectedSeats.length === 0) {
+      setError("Please select at least one seat.");
+      return;
+    }
+    setError("");
+
+    const bookingData = {
+      movieId: movieId,
+      showtimeId: selectedTime,
+      bookedSeats: bookedSeats,
+      totalAmount: totalPrice,
+    };
+
+    console.log(bookingData);
+  };
 
   //loading
   if (isLoading) {
@@ -64,7 +80,7 @@ const Booking = () => {
         <div>
           <div className="flex gap-[20px] ">
             <img
-              className="w-[70px] h-[70px] rounded-full md:w-[90px] md:h-[90px] "
+              className="w-[70px] h-[70px] object-cover rounded-full md:w-[90px] md:h-[90px] "
               src={movieDetails?.poster || "default_movie.jpg"}
               alt={movieDetails?.title}
             />
@@ -83,8 +99,9 @@ const Booking = () => {
             </div>
           </div>
           <h4 className="text-white font-medium mt-[40px]">
-            <i className="bi bi-geo-alt"></i> AMC MATARA PORT
+            <i className="bi bi-geo-alt"></i> AMC PORT, MATARA
           </h4>
+          <p className="text-[#bdbdbd]">Select Showtime</p>
           <div className="w-[320px] mt-[20px] flex flex-wrap gap-[10px] mx-auto md:w-[100%] ">
             {/* repeat */}
             {showTimeDetails?.map((showtime) => (
@@ -116,71 +133,171 @@ const Booking = () => {
           <h5 className="w-[100%] p-[5px] font-light border-t-[1px] border-b-[1px] border-[#bdbdbd]/50 mt-[5px]">
             Rs.{totalPrice}.00
           </h5>
-          <p className="w-[100%] lowercase h-[30px] text-[#000000] font-extralight">
-            console.error;
+          <p className="w-[100%] lowercase h-[30px] text-[#f21f30] font-extralight">
+            {error}
           </p>
           <button
-            className="flex w-[150px] bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#1a1a1a] hover:text-[#f21f30]"
-            to="/booking"
+            className="flex w-[200px] bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#0c0c0c] hover:text-[#f21f30]"
+            onClick={handleCheckout}
           >
-            BOOK
+            CHECK OUT
           </button>
-        </div>{" "}
+        </div>
       </div>
       <div className="mt-[60px]">
         {/* screen */}
         <div className="w-[90%] mx-auto h-[10px] rounded-tl-[100%] rounded-tr-[100%] bg-[#bdbdbd] my-6 relative xl:w-[70%] "></div>
 
         {/* seat grid */}
-        {selectSeat?.map((seat) => (
-          <div
-            className=" mx-auto flex flex-wrap gap-[20px] mt-[20px] xl:mt-[60px]"
-            key={seat?._id}
-          >
-            {seat?.seats.map((seat) => {
-              const isSelected = selectedSeats.includes(seat?.seatNumber);
-
+        <div className="w-[100%] flex flex-col gap-[20px] mt-[20px] xl:mt-[100px]">
+          <div className="flex justify-center gap-[10px]">
+            {rows.map((row) => {
+              const isSelected = selectedSeats.includes(`A${row + 1}`);
+              const margin = row === 5 ? "xl:ml-[20px]" : "";
               return (
                 <div
-                  key={seat?._id}
-                  onClick={() => toggleSeat(seat?.seatNumber)}
-                  className={`w-[60px] h-[40px] border-[2px] rounded-[5px] text-[14px] flex items-center cursor-pointer font-extralight justify-center transition duration-300 ease-out hover:border-[#bdbdbd] md:rounded-tl-[40%] md:rounded-tr-[40%]
-                    ${
-                      isSelected
-                        ? "bg-[#f21f30] border-[#f21f30]"
-                        : "border-[#bdbdbd]/50 "
-                    }
-`}
+                  onClick={
+                    selectSeat?.length === 0 ||
+                    selectSeat?.[0]?.seats?.[row]?.isBooked === true
+                      ? null
+                      : () => toggleSeat(`A${row + 1}`)
+                  }
+                  className={` ${
+                    selectSeat?.[0]?.seats?.[row]?.isBooked === true &&
+                    "bg-[#1a9362] border-[#1a9362]"
+                  } ${
+                    isSelected
+                      ? "bg-[#f21f30] border-[#f21f30]"
+                      : "border-[#bdbdbd]/50 "
+                  } ${margin}
+                      w-[60px] h-[40px] border-[2px] rounded-[5px] text-[14px] flex items-center cursor-pointer font-extralight justify-center transition duration-300 ease-out hover:border-[#bdbdbd] md:rounded-tl-[40%] md:rounded-tr-[40%] border-[#bdbdbd]/50 
+                    `}
+                  key={`A${row + 1}`}
                 >
-                  {seat?.seatNumber}
+                  A{row + 1}
                 </div>
               );
             })}
           </div>
-        ))}
-        {/* seat grid */}
-        {selectSeat?.length === 0 && (
-          <div className="w-[100%] flex flex-col gap-[20px] mt-[20px] xl:mt-[60px]">
-            {rows.map((row) => (
-              <div key={row.row} className="flex justify-center gap-[10px]">
-                {Array.from({ length: row.seats }).map((_, i) => {
-                  const seatId = `${row.row}${i + 1}`;
-
-                  return (
-                    <div
-                      key={seatId}
-                      className={`w-[60px] h-[40px] border-[2px] rounded-[5px] text-[14px] flex items-center cursor-pointer font-extralight justify-center transition duration-300 ease-out hover:border-[#bdbdbd] md:rounded-tl-[40%] md:rounded-tr-[40%] border-[#bdbdbd]/50 
+          <div className="flex justify-center gap-[10px]">
+            {rows.map((row) => {
+              const isSelected = selectedSeats.includes(`B${row + 1}`);
+              const margin = row === 5 ? "xl:ml-[20px]" : "";
+              return (
+                <div
+                  onClick={
+                    selectSeat?.length === 0 ||
+                    selectSeat?.[0]?.seats?.[row + 10]?.isBooked === true
+                      ? null
+                      : () => toggleSeat(`B${row + 1}`)
+                  }
+                  className={` ${
+                    selectSeat?.[0]?.seats?.[row + 10]?.isBooked === true &&
+                    "bg-[#1a9362] border-[#1a9362]"
+                  } ${
+                    isSelected
+                      ? "bg-[#f21f30] border-[#f21f30]"
+                      : "border-[#bdbdbd]/50 "
+                  } ${margin} xl:ml-[3px]
+                      w-[60px] h-[40px] border-[2px] rounded-[5px] text-[14px] flex items-center cursor-pointer font-extralight justify-center transition duration-300 ease-out hover:border-[#bdbdbd] md:rounded-tl-[40%] md:rounded-tr-[40%] border-[#bdbdbd]/50 
                     `}
-                    >
-                      {seatId}
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
+                  key={`B${row + 1}`}
+                >
+                  B{row + 1}
+                </div>
+              );
+            })}
           </div>
-        )}
+          <div className="flex justify-center gap-[10px]">
+            {rows.map((row) => {
+              const isSelected = selectedSeats.includes(`C${row + 1}`);
+              const margin = row === 5 ? "xl:ml-[20px]" : "";
+              return (
+                <div
+                  onClick={
+                    selectSeat?.length === 0 ||
+                    selectSeat?.[0]?.seats?.[row + 20]?.isBooked === true
+                      ? null
+                      : () => toggleSeat(`C${row + 1}`)
+                  }
+                  className={` ${
+                    selectSeat?.[0]?.seats?.[row + 20]?.isBooked === true &&
+                    "bg-[#1a9362] border-[#1a9362]"
+                  } ${
+                    isSelected
+                      ? "bg-[#f21f30] border-[#f21f30]"
+                      : "border-[#bdbdbd]/50 "
+                  } ${margin} xl:ml-[6px]
+                      w-[60px] h-[40px] border-[2px] rounded-[5px] text-[14px] flex items-center cursor-pointer font-extralight justify-center transition duration-300 ease-out hover:border-[#bdbdbd] md:rounded-tl-[40%] md:rounded-tr-[40%] border-[#bdbdbd]/50 
+                    `}
+                  key={`C${row + 1}`}
+                >
+                  C{row + 1}
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex justify-center gap-[10px]">
+            {rows.map((row) => {
+              const isSelected = selectedSeats.includes(`D${row + 1}`);
+              const margin = row === 5 ? "xl:ml-[20px]" : "";
+              return (
+                <div
+                  onClick={
+                    selectSeat?.length === 0 ||
+                    selectSeat?.[0]?.seats?.[row + 30]?.isBooked === true
+                      ? null
+                      : () => toggleSeat(`D${row + 1}`)
+                  }
+                  className={` ${
+                    selectSeat?.[0]?.seats?.[row + 30]?.isBooked === true &&
+                    "bg-[#1a9362] border-[#1a9362]"
+                  } ${
+                    isSelected
+                      ? "bg-[#f21f30] border-[#f21f30]"
+                      : "border-[#bdbdbd]/50 "
+                  } ${margin} xl:ml-[8px]
+                      w-[60px] h-[40px] border-[2px] rounded-[5px] text-[14px] flex items-center cursor-pointer font-extralight justify-center transition duration-300 ease-out hover:border-[#bdbdbd] md:rounded-tl-[40%] md:rounded-tr-[40%] border-[#bdbdbd]/50 
+                    `}
+                  key={`D${row + 1}`}
+                >
+                  D{row + 1}
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex justify-center gap-[10px]">
+            {rows.map((row) => {
+              const isSelected = selectedSeats.includes(`E${row + 1}`);
+              const margin = row === 5 ? "xl:ml-[20px]" : "";
+              return (
+                <div
+                  onClick={
+                    selectSeat?.length === 0 ||
+                    selectSeat?.[0]?.seats?.[row + 40]?.isBooked === true
+                      ? null
+                      : () => toggleSeat(`E${row + 1}`)
+                  }
+                  className={` ${
+                    selectSeat?.[0]?.seats?.[row + 40]?.isBooked === true &&
+                    "bg-[#1a9362] border-[#1a9362]"
+                  } ${
+                    isSelected
+                      ? "bg-[#f21f30] border-[#f21f30]"
+                      : "border-[#bdbdbd]/50 "
+                  } ${margin} xl:ml-[10px]
+                      w-[60px] h-[40px] border-[2px] rounded-[5px] text-[14px] flex items-center cursor-pointer font-extralight justify-center transition duration-300 ease-out hover:border-[#bdbdbd] md:rounded-tl-[40%] md:rounded-tr-[40%] border-[#bdbdbd]/50 
+                    `}
+                  key={`E${row + 1}`}
+                >
+                  E{row + 1}
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
+
       {/* summery */}
       <div className="w-[90%] mx-auto mt-[60px] md:hidden ">
         <h4 className="text-white font-medium">SUMMARY</h4>

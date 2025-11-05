@@ -83,3 +83,12 @@ export const showTimeDetails = async (movieId) => {
   );
   return data;
 };
+
+//booking api call
+export const addBooking = async (bookingDetails) => {
+  const { data } = await API.post(
+    "http://localhost:5000/api/user/bookingadd",
+    bookingDetails
+  );
+  return data;
+};

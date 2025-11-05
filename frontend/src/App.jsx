@@ -22,6 +22,7 @@ import Account from "./pages/user/account/Account";
 import Ticket from "./pages/user/ticket/Ticket";
 import Checkout from "./pages/user/checkout/Checkout";
 import Booking from "./pages/user/booking/Booking";
+import Thank from "./pages/user/thank/Thank";
 //admin pages
 import Login_admin from "./components/admin/login/Login";
 import Home_admin from "./pages/admin/home/Home";
@@ -29,7 +30,13 @@ import Home_admin from "./pages/admin/home/Home";
 function App() {
   //hide footer and navigation
   const location = useLocation();
-  const hideFooterPaths = ["/login", "/signup", "/adminLogin", "/adminHome"];
+  const hideFooterPaths = [
+    "/login",
+    "/signup",
+    "/thank",
+    "/adminLogin",
+    "/adminHome",
+  ];
   //show admin navigation
   const showNavigation = ["/adminHome"];
   return (
@@ -59,6 +66,7 @@ function App() {
         <Route path="/ticket" element={<Ticket />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/thank" element={<Thank />} />
       </Routes>
       {/* admin pages */}
       <Routes>

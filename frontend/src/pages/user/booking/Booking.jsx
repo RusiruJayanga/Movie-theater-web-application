@@ -8,10 +8,14 @@ import Error from "../../../hooks/common/Error";
 import { useMovie } from "../../../hooks/user/Details";
 import { formatDuration } from "../../../hooks/common/Format";
 import { useShowTime } from "../../../hooks/user/Showtime";
+import { useAddBooking } from "../../../hooks/user/Booking";
+//payPal
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { toast } from "react-toastify";
 
 //seat select
 const rows = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const seatPrice = 1000;
+const seatPrice = 1;
 
 const Booking = () => {
   //movie id
@@ -22,6 +26,8 @@ const Booking = () => {
   const { data: movieDetails, isLoading, isError } = useMovie(movieId);
   //showtime
   const { data: showTimeDetails } = useShowTime(movieId);
+  //add booking
+  const { mutate: addBooking } = useAddBooking();
 
   //timw function
   const [selectedTime, setSelectedTime] = useState(null);
@@ -41,10 +47,15 @@ const Booking = () => {
   };
 
   //checkout
+  const navigate = useNavigate();
   const [error, setError] = useState("");
+  const [showPaypal, setShowPaypal] = useState(false);
+  const [paymentProcessing, setPaymentProcessing] = useState(false);
+
   const bookedSeats = [];
   bookedSeats.push(...selectedSeats);
   const totalPrice = selectedSeats.length * seatPrice;
+
   const handleCheckout = () => {
     if (!selectedTime) {
       setError("Please select a showtime.");
@@ -54,16 +65,16 @@ const Booking = () => {
       return;
     }
     setError("");
-
-    const bookingData = {
-      movieId: movieId,
-      showtimeId: selectedTime,
-      bookedSeats: bookedSeats,
-      totalAmount: totalPrice,
-    };
-
-    console.log(bookingData);
+    setShowPaypal(true);
   };
+
+  const buildBookingData = (paymentInfo) => ({
+    movieId,
+    showtimeId: selectedTime,
+    bookedSeats,
+    totalAmount: totalPrice,
+    payment: paymentInfo,
+  });
 
   //loading
   if (isLoading) {
@@ -76,7 +87,7 @@ const Booking = () => {
 
   return (
     <div className="w-[100%] p-[10px] text-[#eeeeee] font-light mt-[20px] cursor-default xl:mt-[20px] xl:w-[1240px] xl:mx-auto ">
-      <div className="md:flex gap-[20px] ">
+      <div className="flex flex-wrap items-center justify-center gap-[20px] ">
         <div>
           <div className="flex gap-[20px] ">
             <img
@@ -123,7 +134,7 @@ const Booking = () => {
           </div>
         </div>
         {/* summery */}
-        <div className=" hidden md:block w-[300px] xl:ml-auto xl:w-[400px] ">
+        <div className="w-[90%] block md:w-[300px] mt-[30px] xl:ml-auto xl:w-[400px] ">
           <h4 className="text-white font-medium">SUMMARY</h4>
           <p className="text-[#bdbdbd] mt-[10px]">Selected Seats</p>
           <h5 className="w-[100%] font-light p-[5px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/50 mt-[5px]">
@@ -131,17 +142,99 @@ const Booking = () => {
           </h5>
           <p className="text-[#bdbdbd] mt-[10px]">Total Price</p>
           <h5 className="w-[100%] p-[5px] font-light border-t-[1px] border-b-[1px] border-[#bdbdbd]/50 mt-[5px]">
-            Rs.{totalPrice}.00
+            $.{totalPrice}.00
           </h5>
           <p className="w-[100%] lowercase h-[30px] text-[#f21f30] font-extralight">
             {error}
           </p>
-          <button
-            className="flex w-[200px] bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#0c0c0c] hover:text-[#f21f30]"
-            onClick={handleCheckout}
-          >
-            CHECK OUT
-          </button>
+          {/* paypal */}
+          {!showPaypal ? (
+            <button
+              className="flex w-[200px] bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#0c0c0c] hover:text-[#f21f30]"
+              onClick={handleCheckout}
+            >
+              CHECK OUT
+            </button>
+          ) : (
+            <div className="w-[200px]">
+              <PayPalScriptProvider
+                options={{
+                  "client-id":
+                    "ASUsq6Nhh-mX4v3WU5vNc7cLHGZWGNPxJclU53zxypB1UNcYpsXLkkCwLzBODLZPwT2cTR61EMW4_Lrn",
+                  currency: "USD",
+                  intent: "capture",
+                }}
+              >
+                <PayPalButtons
+                  style={{ layout: "vertical" }}
+                  forceReRender={[totalPrice, "USD"]}
+                  createOrder={(data, actions) => {
+                    setPaymentProcessing(true);
+
+                    const amountStr = Number(totalPrice).toFixed(2);
+
+                    return actions.order.create({
+                      purchase_units: [
+                        {
+                          amount: {
+                            value: amountStr,
+                            currency_code: "USD",
+                          },
+                          description: `Booking for ${
+                            movieDetails?.title
+                          } - seats: ${bookedSeats.join(", ")}`,
+                        },
+                      ],
+                      application_context: {
+                        shipping_preference: "NO_SHIPPING",
+                      },
+                    });
+                  }}
+                  onApprove={async (data, actions) => {
+                    try {
+                      const capture = await actions.order.capture();
+                      const bookingData = buildBookingData({
+                        id: capture.id,
+                        status: capture.status,
+                        payer: capture.payer,
+                        purchase_units: capture.purchase_units,
+                      });
+                      addBooking(bookingData, {
+                        onSuccess: () => {
+                          setPaymentProcessing(false);
+                          navigate("/thank");
+                        },
+                        onError: (err) => {
+                          setPaymentProcessing(false);
+                          toast.error(
+                            "Booking save failed. Please contact support !"
+                          );
+                          console.error("addBooking error:", err);
+                        },
+                      });
+                    } catch (err) {
+                    } finally {
+                      setPaymentProcessing(false);
+                    }
+                  }}
+                  onError={(err) => {
+                    console.error("PayPal error:", err);
+                    setPaymentProcessing(false);
+                    toast.error(
+                      "Payment could not be processed. Try again later !"
+                    );
+                  }}
+                  onCancel={() => {
+                    setPaymentProcessing(false);
+                    toast.info("Payment cancelled !");
+                  }}
+                />
+              </PayPalScriptProvider>
+              {paymentProcessing && (
+                <p className="mt-2">Processing payment...</p>
+              )}
+            </div>
+          )}
         </div>
       </div>
       <div className="mt-[60px]">
@@ -149,7 +242,7 @@ const Booking = () => {
         <div className="w-[90%] mx-auto h-[10px] rounded-tl-[100%] rounded-tr-[100%] bg-[#bdbdbd] my-6 relative xl:w-[70%] "></div>
 
         {/* seat grid */}
-        <div className="w-[100%] flex flex-col gap-[20px] mt-[20px] xl:mt-[100px]">
+        <div className="w-[100%] flex flex-col gap-[20px] mt-[60px] xl:mt-[100px]">
           <div className="flex justify-center gap-[10px]">
             {rows.map((row) => {
               const isSelected = selectedSeats.includes(`A${row + 1}`);
@@ -296,28 +389,6 @@ const Booking = () => {
             })}
           </div>
         </div>
-      </div>
-
-      {/* summery */}
-      <div className="w-[90%] mx-auto mt-[60px] md:hidden ">
-        <h4 className="text-white font-medium">SUMMARY</h4>
-        <p className="text-[#bdbdbd] mt-[10px]">Selected Seats</p>
-        <h5 className="w-[100%] font-light p-[5px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 mt-[5px]">
-          {selectedSeats.length > 0 ? selectedSeats.join(", ") : "None"}
-        </h5>
-        <p className="text-[#bdbdbd] mt-[10px]">Total Price</p>
-        <h5 className="w-[100%] p-[5px] font-light border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 mt-[5px]">
-          Rs.{totalPrice}.00
-        </h5>
-        <p className="w-[100%] lowercase h-[30px] text-[#000000] font-extralight">
-          console.error;
-        </p>
-        <button
-          className="flex w-[150px] bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#1a1a1a] hover:text-[#f21f30]"
-          to="/booking"
-        >
-          BOOK
-        </button>
       </div>
     </div>
   );

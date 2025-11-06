@@ -36,11 +36,11 @@ const Upcoming = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="w-[350px] font-light flex items-start justify-center p-[5px] rounded-[20px] hover:scale-102 transition duration-300 ease-out md:w-[400px] xl:w-[450px]"
+          className="w-[350px] font-light flex items-start justify-center p-[5px] rounded-[20px] md:w-[400px] xl:w-[450px]"
           key={movie?._id}
         >
           <img
-            className="w-[180px] object-cover rounded-[5px] xl:w-[250px]"
+            className="w-[180px] object-cover rounded-[5px] xl:w-[250px] xl:opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out"
             src={movie?.poster || "default_movie.jpg"}
             alt={movie?.title}
           />

@@ -135,14 +135,14 @@ const Account = () => {
           <div
             className={`${
               menuInterestsOpen ? "Flex" : "hidden"
-            } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
+            } flex w-[100%] items-center justify-start p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 cursor-pointer text-[#bdbdbd] font-light `}
             key={interest?._id}
             onClick={() => handleDetailsCardClick(interest?.movieId?._id)}
           >
             <p className="w-[150px] uppercase ml-[40px] md:w-[300px] ">
               {interest?.movieId?.title}
             </p>
-            <h5 className="ml-[40px] text-[#f21f30] uppercase font-bold">
+            <h5 className="ml-[40px] text-[#f21f30] font-bold">
               {interest?.movieId?.ratingCategory}
             </h5>
             <p className="capitalize ml-auto">
@@ -157,9 +157,9 @@ const Account = () => {
           <div
             className={`${
               menuInterestsOpen ? "Flex" : "hidden"
-            } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 opacity-[0.8] `}
+            } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 `}
           >
-            <p className="font-extralight ">no data to show</p>
+            <p className="font-extralight text-[#bdbdbd]">no data to show</p>
           </div>
         )}
         {/* repeat */}
@@ -206,9 +206,9 @@ const Account = () => {
         <div
           className={`${
             menuHistoryOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 opacity-[0.8] `}
+          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 `}
         >
-          <p className="font-extralight ">no data to show</p>
+          <p className="font-extralight text-[#bdbdbd]">no data to show</p>
         </div>
         {/* repeat */}
 

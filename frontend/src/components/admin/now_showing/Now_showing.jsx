@@ -10,7 +10,7 @@ import { useDeleteMovie } from "../../../hooks/admin/Movie";
 
 const Now_showing = () => {
   //movies
-  const { data: movies, isLoading } = useMovies();
+  const { data: movies, isLoading, isError } = useMovies();
   //delete movie function
   const { mutate: deleteMovie } = useDeleteMovie();
 
@@ -30,6 +30,10 @@ const Now_showing = () => {
   if (isLoading) {
     return <Loading />;
   }
+  //error
+  if (isError) {
+    return <p className="font-extralight text-[#bdbdbd]">no data to show</p>;
+  }
 
   return (
     <section className="w-[100%] grid gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_580px)] ">
@@ -44,7 +48,7 @@ const Now_showing = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex w-[100%] items-start justify-start p-[10px] font-extralight rounded-[20px] bg-[#1a1a1a] hover:scale-102 transition duration-300 ease-out "
+          className="flex w-[100%] items-start justify-start p-[10px] font-light rounded-[20px] bg-[#1a1a1a] text-[#bdbdbd] hover:scale-102 transition duration-300 ease-out "
           key={movie?._id}
         >
           <img
@@ -53,19 +57,17 @@ const Now_showing = () => {
             alt={movie?.title}
           />
           <div className="flex flex-col ml-[20px]">
-            <h5 className="w-[100%] font-light uppercase ">{movie?.title}</h5>
-            <p className="capitalize mt-[10px] opacity-[0.8]">
+            <h4 className="w-[100%] font-medium text-white uppercase">
+              {movie?.title}
+            </h4>
+            <p className="capitalize mt-[5px]">
               {formatDuration(movie?.runtime)}
             </p>
-            <p className="mt-[5px] opacity-[0.8]">
-              Released Date - {formatDate(movie?.releaseDate)}
-            </p>
-            <p className="mt-[5px] opacity-[0.8]">
-              Close Date - {formatDate(movie?.closeDate)}
-            </p>
-            <h5 className="mt-[5px] text-[#f21f30] uppercase font-bold">
+            <p>Released Date - {formatDate(movie?.releaseDate)}</p>
+            <p>Close Date - {formatDate(movie?.closeDate)}</p>
+            <p className="mt-[5px] text-[#f21f30] font-bold">
               {movie?.ratingCategory}
-            </h5>
+            </p>
           </div>
           <div className="flex ml-auto items-center justify-center">
             <h5
@@ -79,7 +81,7 @@ const Now_showing = () => {
       ))}
       {/* repeat */}
       {nowShowing?.length === 0 && (
-        <p className="font-extralight opacity-[0.8] ">no data to show</p>
+        <p className="font-extralight text-[#bdbdbd]">no data to show</p>
       )}
     </section>
   );

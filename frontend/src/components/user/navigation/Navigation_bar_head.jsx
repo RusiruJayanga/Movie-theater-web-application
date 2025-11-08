@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 //animation
 import { motion, AnimatePresence } from "framer-motion";
+//alert
+import { toast } from "react-toastify";
 
 const Navigation_bar_head = () => {
   //active navigation
@@ -10,6 +12,11 @@ const Navigation_bar_head = () => {
   const [menuOpen, set_menu_open] = useState(false);
   //token
   const token = localStorage.getItem("token");
+
+  //ticket error
+  const errorTicket = () => {
+    toast.warning("Please log in to book tickets !");
+  };
 
   return (
     <div className="z-[10000] text-white xl:relative">
@@ -32,15 +39,26 @@ const Navigation_bar_head = () => {
               <i className="bi bi-search"></i>
             </h4>
           </div>
-          <Link to="/ticket" onClick={() => set_active_nav("ticket")}>
-            <h4
-              className={`${
-                activeNav === "ticket" ? "text-[#f21f30]" : ""
-              } w-[40px] h-[40px] flex items-center justify-center hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer`}
-            >
-              <i className="bi bi-ticket-perforated"></i>
-            </h4>
-          </Link>
+          {token ? (
+            <Link to="/ticket" onClick={() => set_active_nav("ticket")}>
+              <h4
+                className={`${
+                  activeNav === "ticket" ? "text-[#f21f30]" : ""
+                } w-[40px] h-[40px] flex items-center justify-center hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer`}
+              >
+                <i className="bi bi-ticket-perforated"></i>
+              </h4>
+            </Link>
+          ) : (
+            <Link onClick={() => errorTicket()}>
+              <h4
+                className={` w-[40px] h-[40px] flex items-center justify-center hover:text-[#f21f30] transition-colors duration-300 ease-out cursor-pointer`}
+              >
+                <i className="bi bi-ticket-perforated"></i>
+              </h4>
+            </Link>
+          )}
+
           {/* account */}
           {token ? (
             <Link to="/account" onClick={() => set_active_nav("account")}>

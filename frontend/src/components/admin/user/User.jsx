@@ -9,7 +9,7 @@ import { useDeleteAccount } from "../../../hooks/admin/User";
 
 const User = () => {
   //user function
-  const { data: users, isLoading } = useUsers();
+  const { data: users, isLoading, isError } = useUsers();
   const { mutate: deleteUser, isPending: isDeleting } = useDeleteAccount();
 
   const handleDelete = (id, name) => {
@@ -21,6 +21,10 @@ const User = () => {
   //loading
   if (isLoading) {
     return <Loading />;
+  }
+  //error
+  if (isError) {
+    return <p className="font-extralight text-[#bdbdbd]">no data to show</p>;
   }
 
   return (
@@ -36,7 +40,7 @@ const User = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex w-[100%] items-start justify-start p-[10px] font-extralight rounded-[20px] bg-[#1a1a1a] hover:scale-102 transition duration-300 ease-out "
+          className="flex w-[100%] items-start justify-start p-[10px] font-light rounded-[20px] bg-[#1a1a1a] text-[#bdbdbd] hover:scale-102 transition duration-300 ease-out "
           key={user._id}
         >
           <img
@@ -45,13 +49,11 @@ const User = () => {
             alt="person"
           />
           <div className="mr-auto ml-[20px] md:ml-[40px]">
-            <h5 className="text-[#f21f30] uppercase font-extralight ">
+            <h4 className="w-[100%] font-medium text-white uppercase">
               {user.name}
-            </h5>
-            <p className="font-extralight opacity-[0.8] ">{user.email}</p>
-            <p className="mt-[5px] font-extralight opacity-[0.8] ">
-              {user.mobile}
-            </p>
+            </h4>
+            <p className="mt-[5px]">{user.email}</p>
+            <p>{user.mobile}</p>
           </div>
           <div className="flex ml-auto items-center justify-center">
             <h5
@@ -66,7 +68,7 @@ const User = () => {
       ))}
       {/* repeat */}
       {users?.length === 0 && (
-        <p className="font-extralight opacity-[0.8] ">no data to show</p>
+        <p className="font-extralight text-[#bdbdbd]">no data to show</p>
       )}
     </section>
   );

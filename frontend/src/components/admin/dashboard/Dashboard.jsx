@@ -15,7 +15,7 @@ import { useUsers } from "../../../hooks/admin/User";
 
 const Dashboard = () => {
   //movie function
-  const { data: movies, isLoading } = useMovies();
+  const { data: movies, isLoading, isError } = useMovies();
   //user function
   const { data: users } = useUsers();
 
@@ -68,6 +68,10 @@ const Dashboard = () => {
   //loading
   if (isLoading) {
     return <Loading />;
+  }
+  //error
+  if (isError) {
+    return <p className="font-extralight text-[#bdbdbd]">no data to show</p>;
   }
 
   return (

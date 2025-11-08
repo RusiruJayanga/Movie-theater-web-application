@@ -11,6 +11,8 @@ import { useMovie } from "../../../hooks/user/Details";
 import { useMovieWithRatings } from "../../../hooks/user/Rating";
 import { useAddUserInterests } from "../../../hooks/user/Interest";
 import { formatDuration, formatDate } from "../../../hooks/common/Format";
+//alert
+import { toast } from "react-toastify";
 
 const Details = () => {
   //movie id
@@ -85,7 +87,7 @@ const Details = () => {
                 <span className="capitalize">
                   {formatDuration(movieDetails?.runtime) || "N/A"}
                 </span>
-                <span className="ml-[10px] pl-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] opacity-[1] font-bold ">
+                <span className="ml-[10px] pl-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] font-bold ">
                   {movieDetails?.ratingCategory || "N/A"}
                 </span>
               </p>
@@ -104,7 +106,7 @@ const Details = () => {
               </p>
               {movieDetails?.genre.map((genre) => (
                 <span
-                  className=" pl-[10px] pr-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] opacity-[1] mt-[5px]"
+                  className=" pl-[10px] pr-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] mt-[5px]"
                   key={genre}
                 >
                   {genre}
@@ -114,7 +116,7 @@ const Details = () => {
             <div>
               <div className=" flex items-center justify-center gap-[5px]">
                 <img className="w-[60px] " src="rating/imdb.png" alt="rating" />
-                <h4 className="w-[60px]">
+                <h4 className="w-[60px] font-medium">
                   {movieRatings?.externalRatings?.imdb || "N/A"}/10
                 </h4>
               </div>
@@ -129,7 +131,7 @@ const Details = () => {
                   }
                   alt="rating"
                 />
-                <h4 className="w-[60px]">
+                <h4 className="w-[60px] font-medium">
                   {movieRatings?.externalRatings?.rottenTomatoes || "N/A"}
                 </h4>
               </div>

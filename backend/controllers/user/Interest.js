@@ -48,7 +48,7 @@ export const getUserInterests = async (req, res) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
       const interest = await Interest.find({ userId: decoded.id })
-        .populate("movieId", "title ratingCategory runtime")
+        .populate("movieId", "title ratingCategory runtime poster")
         .exec();
 
       res.status(200).json(interest);

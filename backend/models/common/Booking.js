@@ -14,6 +14,9 @@ const bookingSchema = new mongoose.Schema({
   },
   bookedSeats: [{ type: String, required: true }],
   totalAmount: { type: Number, required: true, min: 0 },
+  weekRange: { type: String, required: true },
+  paypalId: { type: String, required: true },
+  paymentStatus: { type: String, required: true },
   addedDate: { type: Date, default: Date.now },
 });
 

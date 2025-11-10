@@ -1,5 +1,5 @@
 import React from "react";
-import { CircularProgress, Box, Typography } from "@mui/material";
+import { CircularProgress, Box } from "@mui/material";
 
 //loading screen
 const Loading = () => {
@@ -15,11 +15,12 @@ const Loading = () => {
           background: "rgba(0, 0, 0, 0.6)",
           display: "flex",
           alignItems: "center",
+          color: "#f21f30",
           justifyContent: "center",
           zIndex: "1000000",
         }}
       >
-        <CircularProgress size={60} thickness={3} color="red" />
+        <CircularProgress size={70} thickness={3} color="inherit" />
       </Box>
     </div>
   );

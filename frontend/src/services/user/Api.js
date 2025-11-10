@@ -92,3 +92,8 @@ export const addBooking = async (bookingDetails) => {
   );
   return data;
 };
+//fetch
+export const getUserTickets = async () => {
+  const { data } = await API.get(`http://localhost:5000/api/user/ticketfetch`);
+  return data;
+};

@@ -20,6 +20,7 @@ const Login = () => {
   //navigate
   const navigate = useNavigate();
   const navigateTo = () => {
+    localStorage.setItem("admin", true);
     navigate("/adminHome");
   };
 

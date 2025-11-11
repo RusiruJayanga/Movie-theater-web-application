@@ -2,14 +2,22 @@ import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 //animation
 import { motion, AnimatePresence } from "framer-motion";
+//hooks
+import { logout } from "../../../hooks/admin/Auth.jsx";
 
 const Navigation_bar_head = () => {
   //active navigation
   const [activeNav, set_active_nav] = useState(" ");
   //responsive navigation
   const [menuOpen, set_menu_open] = useState(false);
-  //token
-  const token = "token";
+
+  //logout
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logout();
+    navigate("/adminLogin");
+  };
+
   return (
     <div className="z-[10000] text-white sticky top-0">
       <div className="w-[100%] h-[60px] bg-[#1a1a1a] flex items-center p-[10px] sm:h-[100px] ">
@@ -18,6 +26,12 @@ const Navigation_bar_head = () => {
           src="logo.png"
           alt="logo"
         />
+        <h4
+          className="hidden md:flex w-[40px] h-[40px] items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out"
+          onClick={handleLogout}
+        >
+          <i className="bi bi-box-arrow-right"></i>
+        </h4>
         <h4
           className="w-[40px] h-[40px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out sm:hidden"
           onClick={() => set_menu_open(!menuOpen)}

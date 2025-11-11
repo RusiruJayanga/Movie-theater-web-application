@@ -142,6 +142,7 @@ a {
 }
 .input-group :is(.input:focus, .input:valid) {
   border-color: var(--bg_color_3);
+  color: var(--text_color_1);
 }
 /* file upload styles */
 .custom-file-upload {

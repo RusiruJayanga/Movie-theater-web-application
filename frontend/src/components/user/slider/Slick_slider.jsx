@@ -97,7 +97,7 @@ const Slick_slider = () => {
             <div className="px-2" key={movie?._id}>
               <div className="w-auto rounded-[10px]">
                 <img
-                  className="w-full h-full object-cover rounded-[5px] xl:opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out"
+                  className="w-full h-full object-cover rounded-[5px] xl:opacity-[0.88] hover:opacity-[1] transition duration-300 ease-out"
                   src={movie?.poster || "default_movie.jpg"}
                   alt={movie?.title}
                 />
@@ -117,7 +117,7 @@ const Slick_slider = () => {
                     Released {formatDate(movie?.releaseDate) || "N/A"}
                   </p>
                   <button
-                    className="w-[80%] flex bg-[#f21f30] border-[1px] text-white border-[#f21f30] mt-[10px] mx-auto hover:bg-[#0c0c0c] hover:text-[#f21f30] xl:w-[150px]"
+                    className="w-[150px] flex bg-[#f21f30] border-[1px] text-white border-[#f21f30] mt-[10px] mx-auto hover:bg-[#0c0c0c] hover:text-[#f21f30]"
                     onClick={() => handleDetailsCardClick(movie?._id)}
                   >
                     MORE

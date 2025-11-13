@@ -64,7 +64,12 @@ const History = () => {
               {formatDuration(movie?.runtime)}
             </p>
             <p>Released Date - {formatDate(movie?.releaseDate)}</p>
-            <p>Close Date - {formatDate(movie?.closeDate)}</p>
+            <p>
+              Close Date -{" "}
+              <span className="text-[#f21f30]">
+                {formatDate(movie?.closeDate)}
+              </span>
+            </p>
             <p className="mt-[5px] text-[#f21f30] font-bold">
               {movie?.ratingCategory}
             </p>

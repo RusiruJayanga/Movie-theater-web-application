@@ -40,7 +40,7 @@ const Upcoming = () => {
           key={movie?._id}
         >
           <img
-            className="w-[180px] object-cover rounded-[5px] xl:w-[250px] xl:opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out"
+            className="w-[180px] object-cover rounded-[5px] xl:w-[250px] xl:opacity-[0.88] hover:opacity-[1] transition duration-300 ease-out"
             src={movie?.poster || "default_movie.jpg"}
             alt={movie?.title}
           />

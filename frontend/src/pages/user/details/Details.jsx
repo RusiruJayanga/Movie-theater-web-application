@@ -35,6 +35,13 @@ const Details = () => {
 
   //interests function
   const { mutate: handleAddInterest } = useAddUserInterests();
+  const handleAddInterestClick = (movieId) => {
+    if (localStorage.getItem("token")) {
+      handleAddInterest(movieId);
+    } else {
+      toast.warning("Please log in to add interests !");
+    }
+  };
 
   //loading
   if (isLoading) {
@@ -72,7 +79,7 @@ const Details = () => {
           )}
           <button
             className="flex w-[40px] border-[1px] text-white pt-[3px] border-white hover:bg-white hover:text-black"
-            onClick={() => handleAddInterest(movieDetails?._id)}
+            onClick={() => handleAddInterestClick(movieDetails?._id)}
           >
             <i className="bi bi-heart-fill"></i>
           </button>

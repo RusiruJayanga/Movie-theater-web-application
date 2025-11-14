@@ -12,7 +12,8 @@ export const getUserTickets = async (req, res) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
       const booking = await Booking.find({ userId: decoded.id })
-        .populate("movieId", "title")
+        .populate("movieId", "title runtime poster")
+        .populate("showtimeId", "date time")
         .exec();
 
       res.status(200).json(booking);

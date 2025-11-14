@@ -145,6 +145,8 @@ export const deleteMovie = async (req, res) => {
       return res.status(404).json({ message: "Movie not found !" });
     }
 
+    await Showtime.deleteMany({ movieId: Id });
+
     res.status(200).json({
       message: "Movie deleted successfully !",
       movie,

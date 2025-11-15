@@ -149,10 +149,10 @@ const Add = () => {
         }}
       >
         {({ isSubmitting, setFieldValue }) => (
-          <Form className="w-[100%] mt-[40px] md:mt-0 ">
+          <Form className="w-[100%] mt-[40px] md:mt-0 text-[#bdbdbd]">
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd] "
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]  "
                 type="text"
                 name="title"
                 maxLength={100}
@@ -174,7 +174,7 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd] "
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] "
                 as="select"
                 name="status"
                 required
@@ -197,7 +197,7 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
                 type="date"
                 name="closeDate"
               />
@@ -217,7 +217,7 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
                 type="text"
                 name="studio"
                 maxLength={100}
@@ -241,7 +241,7 @@ const Add = () => {
               <div className="w-[50%] ">
                 <div className="input-group">
                   <Field
-                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
                     type="text"
                     name="showDate1"
                     maxLength={50}
@@ -262,7 +262,7 @@ const Add = () => {
                 </div>
                 <div className="input-group">
                   <Field
-                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
                     type="text"
                     name="showDate2"
                     maxLength={50}
@@ -283,7 +283,7 @@ const Add = () => {
                 </div>
                 <div className="input-group">
                   <Field
-                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] "
                     type="text"
                     name="showDate3"
                     maxLength={50}
@@ -306,7 +306,7 @@ const Add = () => {
               <div className="w-[50%] ">
                 <div className="input-group">
                   <Field
-                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
                     type="text"
                     name="showTime1"
                     maxLength={50}
@@ -327,7 +327,7 @@ const Add = () => {
                 </div>
                 <div className="input-group">
                   <Field
-                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
                     type="text"
                     name="showTime2"
                     maxLength={50}
@@ -348,7 +348,7 @@ const Add = () => {
                 </div>
                 <div className="input-group">
                   <Field
-                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                    className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] "
                     type="text"
                     name="showTime3"
                     maxLength={50}
@@ -371,7 +371,7 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] "
                 type="text"
                 name="trailerUrl"
                 maxLength={200}
@@ -393,7 +393,7 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
+                className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px]"
                 name="plot"
                 maxLength={500}
                 required
@@ -424,9 +424,7 @@ const Add = () => {
                 />
                 <h2 className="flex flex-col items-center justify-center ">
                   <i className="bi bi-cloud-arrow-up-fill"></i>
-                  <span className="text-[16px] font-light text-[#bdbdbd]">
-                    Main Image
-                  </span>
+                  <span className="text-[16px] font-light">Main Image</span>
                 </h2>
               </label>
               <p className="w-[100%] h-[30px] text-[#f21f30] font-extralight ml-[20px]">
@@ -450,7 +448,7 @@ const Add = () => {
                 />
                 <h2 className="flex flex-col items-center justify-center ">
                   <i className="bi bi-cloud-arrow-up-fill"></i>
-                  <span className="text-[16px] font-light text-[#bdbdbd]">
+                  <span className="text-[16px] font-light">
                     Gallery Images (up to 2)
                   </span>
                 </h2>

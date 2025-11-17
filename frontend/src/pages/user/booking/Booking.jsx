@@ -35,6 +35,82 @@ const Booking = () => {
   const selectSeat = showTimeDetails?.filter(
     (showtime) => showtime._id === selectedTime
   );
+  //week day calculate
+  const normalize = (d) => {
+    const x = new Date(d);
+    x.setHours(0, 0, 0, 0);
+    return x;
+  };
+
+  const startOfWeek = (date, weekStartsOn = 1) => {
+    const d = normalize(date);
+    const diff = (d.getDay() - weekStartsOn + 7) % 7;
+    d.setDate(d.getDate() - diff);
+    return normalize(d);
+  };
+
+  const getWeekRangeFor = (date = new Date(), weekStartsOn = 1) => {
+    const start = startOfWeek(date, weekStartsOn);
+    const end = new Date(start);
+    end.setDate(start.getDate() + 6);
+    return { start: normalize(start), end: normalize(end) };
+  };
+
+  const fmt = (d) => {
+    const x = normalize(d);
+    return `${String(x.getMonth() + 1).padStart(2, "0")}/${String(
+      x.getDate()
+    ).padStart(2, "0")}/${x.getFullYear()}`;
+  };
+
+  const getCurrentWeekRange = (weekStartsOn = 1) => {
+    const today = new Date();
+    const jsTodayIdx = today.getDay();
+    const weekEndIdx = (weekStartsOn + 6) % 7;
+    const baseDate =
+      jsTodayIdx === weekEndIdx
+        ? new Date(today.setDate(today.getDate() + 1))
+        : today;
+    const { start, end } = getWeekRangeFor(baseDate, weekStartsOn);
+    return `${fmt(start)} - ${fmt(end)}`;
+  };
+
+  //date calculate
+  const today = new Date().getDay();
+  let isDayPassed = false;
+  if (today === 0) {
+    isDayPassed = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ];
+  } else if (today === 1) {
+    isDayPassed = [
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ];
+  } else if (today === 2) {
+    isDayPassed = ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  } else if (today === 3) {
+    isDayPassed = ["Thursday", "Friday", "Saturday", "Sunday"];
+  } else if (today === 4) {
+    isDayPassed = ["Friday", "Saturday", "Sunday"];
+  } else if (today === 5) {
+    isDayPassed = ["Saturday", "Sunday"];
+  } else if (today === 6) {
+    isDayPassed = ["Sunday"];
+  }
+  const isDayPassedOrToday = (dayString) => {
+    return isDayPassed.includes(dayString);
+  };
 
   //seats function
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -73,6 +149,7 @@ const Booking = () => {
     showtimeId: selectedTime,
     bookedSeats,
     totalAmount: totalPrice,
+    weekRange: getCurrentWeekRange(),
     payment: paymentInfo,
   });
 
@@ -86,7 +163,7 @@ const Booking = () => {
   }
 
   return (
-    <div className="w-[100%] p-[10px] text-[#eeeeee] font-light mt-[20px] cursor-default xl:mt-[20px] xl:w-[1240px] xl:mx-auto ">
+    <div className="w-[100%] p-[10px] text-[#eeeeee] font-light mt-[20px] cursor-default xl:w-[1240px] xl:mx-auto ">
       <div className="flex flex-wrap items-center justify-center gap-[20px] ">
         <div>
           <div className="flex gap-[20px] ">
@@ -112,20 +189,31 @@ const Booking = () => {
           <h4 className="text-white font-medium mt-[40px]">
             <i className="bi bi-geo-alt"></i> AMC PORT, MATARA
           </h4>
-          <p className="text-[#bdbdbd]">Select Showtime</p>
+          <p className="text-[#bdbdbd]">
+            Select Showtime for{" "}
+            <span className="text-white">{getCurrentWeekRange()}</span>
+          </p>
           <div className="w-[320px] mt-[20px] flex flex-wrap gap-[10px] mx-auto md:w-[100%] ">
             {/* repeat */}
             {showTimeDetails?.map((showtime) => (
               <label
                 className={`${
                   selectedTime === showtime?._id
-                    ? "border-white bg-white text-black"
-                    : "border-[#bdbdbd]/50 bg-[#0c0c0c] text-[#bdbdbd]"
-                } w-[150px] h-[40px] rounded-[20px] border-[1px] cursor-pointer font-medium flex items-center justify-center transition-colors duration-300 ease-out`}
+                    ? "border-white bg-white text-black font-medium"
+                    : "border-[#bdbdbd]/50 bg-[#0c0c0c] text-[#eeeeee]"
+                } ${
+                  isDayPassedOrToday(showtime?.date)
+                    ? "cursor-pointer hover:border-[#bdbdbd]"
+                    : "opacity-[0.6] cursor-not-allowed"
+                } w-[200px] h-[40px] rounded-[20px] border-[1px] flex items-center justify-center transition-colors duration-300 ease-out`}
                 key={showtime?._id}
-                onClick={() => setSelectedTime(showtime?._id)}
+                onClick={() => {
+                  if (isDayPassedOrToday(showtime?.date)) {
+                    setSelectedTime(showtime?._id);
+                  }
+                }}
               >
-                <p>
+                <p className="capitalize">
                   {showtime?.date} {showtime?.time}
                 </p>
               </label>

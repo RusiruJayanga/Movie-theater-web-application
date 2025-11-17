@@ -53,3 +53,8 @@ export const deleteMovie = async (movieId) => {
   );
   return data;
 };
+//bookings api call
+export const fetchBookings = async () => {
+  const { data } = await axios.get("http://localhost:5000/api/bookings/fetch");
+  return data;
+};

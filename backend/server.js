@@ -10,10 +10,12 @@ import userMovieDetailsRoutes from "./routes/user/Movie.js";
 import userRatingRoutes from "./routes/user/Rating.js";
 import userInterestRoutes from "./routes/user/Interest.js";
 import userShowTimeRoutes from "./routes/user/Showtime.js";
+import userBookingRoutes from "./routes/user/Booking.js";
 //admin routes
 import adminUserRoutes from "./routes/admin/User.js";
 import adminContactRoutes from "./routes/common/Contact.js";
 import adminMovieRoutes from "./routes/admin/Movie.js";
+import adminBookingRoutes from "./routes/admin/Booking.js";
 //common routes
 import movieRoutes from "./routes/common/Movie.js";
 
@@ -46,9 +48,11 @@ app.use("/api/movies", userMovieDetailsRoutes);
 app.use("/api/movies", userRatingRoutes);
 app.use("/api/user", userInterestRoutes);
 app.use("/api/movies", userShowTimeRoutes);
+app.use("/api/user", userBookingRoutes);
 //admin routes
 app.use("/api/users", adminUserRoutes);
 app.use("/api/users", adminContactRoutes);
 app.use("/api/movies", adminMovieRoutes);
+app.use("/api/bookings", adminBookingRoutes);
 //common routes
 app.use("/api/movies", movieRoutes);

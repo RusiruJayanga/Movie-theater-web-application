@@ -16,13 +16,14 @@ import Navigation_bar_head_admin from "./components/admin/navigation/Navigation_
 //pages
 //user pages
 import Home from "./pages/user/home/Home";
+import Showtime from "./pages/user/showtime/Showtime";
 import Details from "./pages/user/details/Details";
 import Login from "./components/user/login/Login";
 import Account from "./pages/user/account/Account";
 import Ticket from "./pages/user/ticket/Ticket";
 import Checkout from "./pages/user/checkout/Checkout";
 import Booking from "./pages/user/booking/Booking";
-import Thank from "./pages/user/thank/Thank";
+import Contact from "./components/user/contact/Contact";
 //admin pages
 import Login_admin from "./components/admin/login/Login";
 import Home_admin from "./pages/admin/home/Home";
@@ -30,13 +31,7 @@ import Home_admin from "./pages/admin/home/Home";
 function App() {
   //hide footer and navigation
   const location = useLocation();
-  const hideFooterPaths = [
-    "/login",
-    "/signup",
-    "/thank",
-    "/adminLogin",
-    "/adminHome",
-  ];
+  const hideFooterPaths = ["/login", "/signup", "/adminLogin", "/adminHome"];
   //show admin navigation
   const showNavigation = ["/adminHome"];
   return (
@@ -60,13 +55,14 @@ function App() {
       {/* user pages */}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/showtime" element={<Showtime />} />
         <Route path="/details" element={<Details />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<Account />} />
         <Route path="/ticket" element={<Ticket />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/booking" element={<Booking />} />
-        <Route path="/thank" element={<Thank />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       {/* admin pages */}
       <Routes>

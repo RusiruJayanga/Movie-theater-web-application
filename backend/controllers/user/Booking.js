@@ -34,7 +34,7 @@ export const addBooking = async (req, res) => {
       //validate seats
       const showtime = await Showtime.findById(showtimeId);
       if (!showtime) {
-        return res.status(404).json({ message: "Showtime not found." });
+        return res.status(404).json({ message: "Showtime not found !" });
       }
 
       //collect errors
@@ -52,14 +52,14 @@ export const addBooking = async (req, res) => {
 
       if (notFoundSeats.length > 0) {
         return res.status(400).json({
-          message: "Some seat numbers are invalid.",
+          message: "Some seat numbers are invalid !",
           invalidSeats: notFoundSeats,
         });
       }
 
       if (alreadyBookedSeats.length > 0) {
         return res.status(409).json({
-          message: "Some seats are already booked.",
+          message: "Some seats are already booked !",
           seats: alreadyBookedSeats,
         });
       }
@@ -110,7 +110,7 @@ export const addBooking = async (req, res) => {
         session.endSession();
 
         return res.status(201).json({
-          message: "Booking added and seats updated successfully!",
+          message: "Booking added and seats updated successfully",
           booking: bookingDoc[0],
         });
       } catch (txErr) {
@@ -121,7 +121,7 @@ export const addBooking = async (req, res) => {
         throw txErr;
       }
     } catch (error) {
-      console.error("Error adding booking / updating seats:", error);
+      console.error("Error adding booking / updating seats !:", error.message);
 
       if (
         error.name === "MongoError" &&
@@ -129,13 +129,13 @@ export const addBooking = async (req, res) => {
       ) {
         return res.status(409).json({
           message:
-            "Booking conflict — one or more seats were just booked by someone else. Try again.",
+            "Booking conflict — one or more seats were just booked by someone else. Try again !",
         });
       }
 
       return res.status(500).json({ message: "Internal server error !" });
     }
   } else {
-    return res.status(401).json({ message: "Authorization token missing." });
+    return res.status(401).json({ message: "Authorization token missing !" });
   }
 };

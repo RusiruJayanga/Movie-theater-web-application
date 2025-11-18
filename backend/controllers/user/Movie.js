@@ -11,7 +11,7 @@ export const getMovieById = async (req, res) => {
 
     res.status(200).json(movie);
   } catch (error) {
-    console.error("Error fetching movie:", error.message);
-    res.status(500).json({ message: "Server error" });
+    console.error("Movie fetching failed !:", error.message);
+    res.status(500).json({ message: "Movie fetching failed !" });
   }
 };

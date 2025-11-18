@@ -17,8 +17,15 @@ export const signupUser = async (req, res) => {
       return res.status(400).json({ message: "Please fill all fields !" });
     }
 
+    //check user
     const userExists = await User.findOne({ email });
     if (userExists) {
+      if (userExists.status === "banned") {
+        return res
+          .status(400)
+          .json({ message: "Your account has been banned !" });
+      }
+
       return res.status(400).json({ message: "User already exists !" });
     }
 
@@ -41,7 +48,8 @@ export const signupUser = async (req, res) => {
       res.status(400).json({ message: "Invalid user data" });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("Signup failed !:", error.message);
+    res.status(500).json({ message: "Signup failed !" });
   }
 };
 
@@ -57,6 +65,13 @@ export const loginUser = async (req, res) => {
 
     //check user
     const user = await User.findOne({ email });
+    if (user) {
+      if (user.status === "banned") {
+        return res
+          .status(400)
+          .json({ message: "Your account has been banned !" });
+      }
+    }
     if (!user) {
       return res.status(400).json({ message: "User not found !" });
     }
@@ -75,6 +90,7 @@ export const loginUser = async (req, res) => {
       token: generateToken(user.id),
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("Login failed !:", error.message);
+    res.status(500).json({ message: "Login failed !" });
   }
 };

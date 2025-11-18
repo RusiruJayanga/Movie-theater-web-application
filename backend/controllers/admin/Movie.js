@@ -102,7 +102,7 @@ export const addMovie = async (req, res) => {
       movie,
     });
   } catch (error) {
-    console.error("Upload error:", error.message);
+    console.error("Upload failed !:", error.message);
     res.status(500).json({ message: "Upload failed !" });
   }
 };
@@ -127,11 +127,11 @@ export const updateMovie = async (req, res) => {
     }
 
     res.status(200).json({
-      message: "Movie updated successfully !",
+      message: "Movie updated successfully",
       movie,
     });
   } catch (error) {
-    console.error("Update error:", error.message);
+    console.error("Update failed !:", error.message);
     res.status(500).json({ message: "Update failed !" });
   }
 };
@@ -148,11 +148,11 @@ export const deleteMovie = async (req, res) => {
     await Showtime.deleteMany({ movieId: Id });
 
     res.status(200).json({
-      message: "Movie deleted successfully !",
+      message: "Movie deleted successfully",
       movie,
     });
   } catch (error) {
-    console.error("Delete error:", error.message);
+    console.error("Delete failed !:", error.message);
     res.status(500).json({ message: "Delete failed !" });
   }
 };

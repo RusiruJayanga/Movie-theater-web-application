@@ -10,7 +10,7 @@ export const getAllBookings = async (req, res) => {
       .exec();
     res.status(200).json(bookings);
   } catch (error) {
-    console.error("Error fetching bookings:", error);
-    res.status(500).json({ message: error.message });
+    console.error("Bookings fetching failed !:", error.message);
+    res.status(500).json({ message: "Bookings fetching failed !" });
   }
 };

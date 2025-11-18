@@ -22,8 +22,8 @@ export const getUserTickets = async (req, res) => {
 
       res.status(200).json(booking);
     } catch (error) {
-      console.error("Error fetching user tickets:", error);
-      res.status(500).json({ message: "Internal server error !" });
+      console.error("Tickets fetching failed !:", error.message);
+      res.status(500).json({ message: "Tickets fetching failed !" });
     }
   }
 };

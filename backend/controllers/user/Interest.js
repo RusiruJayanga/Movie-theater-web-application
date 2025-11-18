@@ -28,10 +28,10 @@ export const addUserInterests = async (req, res) => {
 
       res
         .status(201)
-        .json({ message: "User interests added successfully !", interest });
+        .json({ message: "User interests added successfully", interest });
     } catch (error) {
-      console.error("Error adding user interests:", error);
-      res.status(500).json({ message: "Internal server error !" });
+      console.error("Interests adding failed !:", error.message);
+      res.status(500).json({ message: "Interests adding failed !" });
     }
   }
 };
@@ -57,8 +57,8 @@ export const getUserInterests = async (req, res) => {
 
       res.status(200).json(interest);
     } catch (error) {
-      console.error("Error fetching user interests:", error);
-      res.status(500).json({ message: "Internal server error !" });
+      console.error("Interests fetching failed !:", error.message);
+      res.status(500).json({ message: "Interests fetching failed !" });
     }
   }
 };

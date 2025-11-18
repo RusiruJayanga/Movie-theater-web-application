@@ -26,10 +26,6 @@ export const protect = async (req, res, next) => {
         .json({ message: "Not authorized, token failed !" });
     }
   }
-
-  if (!token) {
-    return res.status(401).json({ message: "Not authorized, no token !" });
-  }
 };
 
 //fetch user
@@ -37,6 +33,7 @@ export const getUserProfile = async (req, res) => {
   if (req.user) {
     res.json(req.user);
   } else {
-    res.status(404).json({ message: "User not found" });
+    console.log("User not found !", error.message);
+    res.status(404).json({ message: "User not found !" });
   }
 };

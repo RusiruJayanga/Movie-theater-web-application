@@ -17,7 +17,8 @@ export const contactUser = async (req, res) => {
 
     res.status(201).json(contact);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("Contact failed !:", error.message);
+    res.status(500).json({ message: "Contact failed !" });
   }
 };
 
@@ -27,7 +28,7 @@ export const getAllContacts = async (req, res) => {
     const contacts = await Contact.find();
     res.status(200).json(contacts);
   } catch (error) {
-    console.error("Error fetching contacts:", error);
-    res.status(500).json({ message: error.message });
+    console.error("Contacts fetching failed !:", error.message);
+    res.status(500).json({ message: "Contacts fetching failed !" });
   }
 };

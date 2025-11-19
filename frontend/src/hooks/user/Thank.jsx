@@ -1,9 +1,9 @@
 import React from "react";
-import { CircularProgress, Box } from "@mui/material";
-import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Box } from "@mui/material";
 
 const Thank = () => {
-  //navigate
+  //navigate to home
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/");

@@ -1,10 +1,51 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+//loading
+import Loading from "../../../hooks/common/Loading";
+//error
+import Error from "../../../hooks/common/Error";
+//qr code
+import QRCode from "react-qr-code";
+//hooks
+import { useFetchUserTickets } from "../../../hooks/user/Ticket.jsx";
+import { formatDuration } from "../../../hooks/common/Format";
 
 const Ticket = () => {
   //manue open
   const [menuNewOpen, set_menu_New_open] = useState(false);
   const [menuDueOpen, set_menu_Due_open] = useState(false);
+
+  //ticket function
+  const { data: userTickets, isLoading, isError } = useFetchUserTickets();
+
+  //filter time
+  const newTickets = userTickets?.filter(
+    (newticket) =>
+      new Date(newticket.addedDate).toDateString() === new Date().toDateString()
+  );
+
+  const startOfWeek = new Date();
+  const day = startOfWeek.getDay();
+  startOfWeek.setDate(startOfWeek.getDate() - day);
+  startOfWeek.setHours(0, 0, 0, 0);
+
+  const endOfWeek = new Date(startOfWeek);
+  endOfWeek.setDate(startOfWeek.getDate() + 6);
+  endOfWeek.setHours(23, 59, 59, 999);
+
+  const dueTickets = userTickets?.filter((ticket) => {
+    const added = new Date(ticket.addedDate);
+    return added >= startOfWeek && added <= endOfWeek;
+  });
+
+  //loading
+  if (isLoading) {
+    return <Loading />;
+  }
+  //error
+  if (isError) {
+    return <Error />;
+  }
 
   return (
     <div className="p-[10px] flex flex-col items-start text-white cursor-default mt-[40px] md:w-[80%] md:mx-auto xl:w-[920px] xl:mt-[20px] ">
@@ -21,9 +62,11 @@ const Ticket = () => {
             <i className="bi bi-ticket-perforated"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">New Tickets</h5>
-          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight text-[13px]">
-            10+
-          </span>
+          {newTickets?.length > 0 && (
+            <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight text-[13px]">
+              {newTickets?.length > 10 ? "10+" : newTickets?.length}
+            </span>
+          )}
           <h5
             className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out"
             onClick={() => set_menu_New_open(!menuNewOpen)}
@@ -36,37 +79,59 @@ const Ticket = () => {
           </h5>
         </div>
         {/* repeat */}
-        <div
-          className={`${
-            menuNewOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
-        >
-          <p className="w-[150px] uppercase ml-[40px] md:w-[300px] ">
-            Movie Title
-          </p>
-          <p className="hidden xl:block capitalize ml-auto">1 h 35 min</p>
-          <p className="hidden xl:block ml-auto">D4</p>
-          <p className="ml-auto">Due - 2/9/2025</p>
-        </div>
-        <div
-          className={`${
-            menuNewOpen ? "block" : "hidden"
-          } w-[150px] ml-auto mt-[20px] mb-[20px]`}
-        >
-          <Link
-            className="flex items-center justify-center w-[100%] h-[40px] rounded-[20px] bg-[#f21f30] border-[1px] border-[#f21f30] transition-colors duration-300 ease-out hover:bg-[#0c0c0c] hover:text-[#f21f30]"
-            to="/checkout"
+        {newTickets?.map((newticket) => (
+          <div
+            className={`${
+              menuNewOpen ? "Flex" : "hidden"
+            } flex w-[100%] items-center justify-start p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 text-[#bdbdbd] font-light`}
+            key={newticket?._id}
           >
-            CHECK OUT
-          </Link>
-        </div>
-        <div
-          className={`${
-            menuNewOpen ? "flex" : "hidden"
-          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 opacity-[0.8] `}
-        >
-          <p className="font-extralight ">no data to show</p>
-        </div>
+            <div
+              className="w-[100px] h-[100px] rounded-[5px]"
+              style={{
+                background: "white",
+                padding: "4px",
+              }}
+            >
+              <QRCode
+                size={256}
+                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                value={JSON.stringify(newticket?._id)}
+                viewBox={`0 0 256 256`}
+              />
+            </div>
+            <div className="ml-[20px]">
+              <h4 className="font-medium text-white uppercase">
+                {newticket?.movieId?.title}
+              </h4>
+              <p className="mt-[5px] capitalize">
+                {formatDuration(newticket?.movieId?.runtime)}
+              </p>
+              <p className="capitalize">
+                This {newticket?.showtimeId?.date} {newticket?.showtimeId?.time}
+              </p>
+              <p>
+                {newticket?.bookedSeats.map((seat) => (
+                  <span
+                    className=" pl-[10px] pr-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] mt-[5px]"
+                    key={seat}
+                  >
+                    {seat}
+                  </span>
+                ))}
+              </p>
+            </div>
+          </div>
+        ))}
+        {newTickets?.length === 0 && (
+          <div
+            className={`${
+              menuNewOpen ? "flex" : "hidden"
+            } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 `}
+          >
+            <p className="font-extralight text-[#bdbdbd]">no data to show</p>
+          </div>
+        )}
         {/* repeat */}
 
         {/* due tickets */}
@@ -79,9 +144,11 @@ const Ticket = () => {
             <i className="bi bi-ticket-perforated-fill"></i>
           </h5>
           <h5 className="mr-auto ml-[20px]">Due Tickets</h5>
-          <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight text-[13px] ">
-            10+
-          </span>
+          {dueTickets?.length > 0 && (
+            <span className="w-[25px] h-[25px] flex items-center justify-center rounded-full mr-[20px] opacity-[0.8] bg-[#bdbdbd]/30 font-extralight text-[13px]">
+              {dueTickets?.length > 10 ? "10+" : dueTickets?.length}
+            </span>
+          )}
           <h5
             className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out"
             onClick={() => set_menu_Due_open(!menuDueOpen)}
@@ -94,25 +161,59 @@ const Ticket = () => {
           </h5>
         </div>
         {/* repeat */}
-        <div
-          className={`${
-            menuDueOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-start p-[20px] font-extralight border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 cursor-pointer opacity-[0.8] hover:opacity-[1] transition-opacity duration-300 ease-out `}
-        >
-          <p className="w-[150px] uppercase ml-[40px] md:w-[300px] ">
-            Movie Title
-          </p>
-          <p className="hidden xl:block capitalize ml-auto">1 h 35 min</p>
-          <p className="hidden xl:block ml-auto">D4</p>
-          <p className="ml-auto">Due - 2/9/2025</p>
-        </div>
-        <div
-          className={`${
-            menuDueOpen ? "Flex" : "hidden"
-          } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 opacity-[0.8] `}
-        >
-          <p className="font-extralight ">no data to show</p>
-        </div>
+        {dueTickets?.map((dueticket) => (
+          <div
+            className={`${
+              menuDueOpen ? "Flex" : "hidden"
+            } flex w-[100%] items-center justify-start p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 text-[#bdbdbd] font-light`}
+            key={dueticket?._id}
+          >
+            <div
+              className="w-[100px] h-[100px] rounded-[5px]"
+              style={{
+                background: "white",
+                padding: "4px",
+              }}
+            >
+              <QRCode
+                size={256}
+                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                value={JSON.stringify(dueticket?._id)}
+                viewBox={`0 0 256 256`}
+              />
+            </div>
+            <div className="ml-[20px]">
+              <h4 className="font-medium text-white uppercase">
+                {dueticket?.movieId?.title}
+              </h4>
+              <p className="mt-[5px] capitalize">
+                {formatDuration(dueticket?.movieId?.runtime)}
+              </p>
+              <p className="capitalize">
+                This {dueticket?.showtimeId?.date} {dueticket?.showtimeId?.time}
+              </p>
+              <p>
+                {dueticket?.bookedSeats.map((seat) => (
+                  <span
+                    className=" pl-[10px] pr-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] mt-[5px]"
+                    key={seat}
+                  >
+                    {seat}
+                  </span>
+                ))}
+              </p>
+            </div>
+          </div>
+        ))}
+        {dueTickets?.length === 0 && (
+          <div
+            className={`${
+              menuDueOpen ? "Flex" : "hidden"
+            } flex w-[100%] items-center justify-center p-[20px] border-t-[1px] border-b-[1px] border-[#bdbdbd]/30 `}
+          >
+            <p className="font-extralight text-[#bdbdbd]">no data to show</p>
+          </div>
+        )}
         {/* repeat */}
       </div>
     </div>

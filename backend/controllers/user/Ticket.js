@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
 import Booking from "../../models/common/Booking.js";
 
+//fetch tickets
+//--
 export const getUserTickets = async (req, res) => {
   let token;
   if (
@@ -8,6 +10,7 @@ export const getUserTickets = async (req, res) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     try {
+      //token decode
       token = req.headers.authorization.split(" ")[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 

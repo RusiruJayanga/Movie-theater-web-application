@@ -1,7 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { showTimeDetails } from "../../services/user/Api";
+import { getShowTime, showTimeDetails } from "../../services/user/Api";
 
-//details hook
+//fetch showtimes hook
+export const useShowTimeList = () => {
+  return useQuery({
+    queryKey: ["showTimes"],
+    queryFn: getShowTime,
+    retry: false,
+  });
+};
+
+//fetch showtime details hook
 export const useShowTime = (movieId) => {
   return useQuery({
     queryKey: ["showTimeDetails", movieId],

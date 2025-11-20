@@ -1,6 +1,7 @@
 import axios from "axios";
 
-//users api call
+//fetch all users api call
+//--
 export const fetchUserProfile = async () => {
   const { data } = await axios.get(
     "http://localhost:5000/api/users/profileinfo"
@@ -15,7 +16,8 @@ export const deleteUsersProfile = async (userId) => {
   return data;
 };
 
-//contact api call
+//fetch all contact api call
+//--
 export const fetchContact = async () => {
   const { data } = await axios.get(
     "http://localhost:5000/api/users/contactinfo"
@@ -23,7 +25,8 @@ export const fetchContact = async () => {
   return data;
 };
 
-//movies api call
+//add movie api call
+//--
 export const addMovie = async (formData) => {
   const config = {
     headers: {
@@ -37,23 +40,44 @@ export const addMovie = async (formData) => {
   );
   return data;
 };
-
-//movies update api call
+//update movie api call
 export const updateMovie = async (values) => {
   const { data } = await axios.put(`http://localhost:5000/api/movies/update`, {
     values,
   });
   return data;
 };
-
-//movies delete api call
+//delete movie api call
 export const deleteMovie = async (movieId) => {
   const { data } = await axios.delete(
     `http://localhost:5000/api/movies/delete/${movieId}`
   );
   return data;
 };
-//bookings api call
+
+//fetch all sessions api call
+//--
+export const fetchSessions = async () => {
+  const { data } = await axios.get("http://localhost:5000/api/sessions/fetch");
+  return data;
+};
+//reset session api call
+export const resetSession = async (sessionId) => {
+  const { data } = await axios.put(
+    `http://localhost:5000/api/sessions/reset/${sessionId}`
+  );
+  return data;
+};
+//delete session api call
+export const deleteSession = async (sessionId) => {
+  const { data } = await axios.delete(
+    `http://localhost:5000/api/sessions/delete/${sessionId}`
+  );
+  return data;
+};
+
+//fetch all bookings api call
+//--
 export const fetchBookings = async () => {
   const { data } = await axios.get("http://localhost:5000/api/bookings/fetch");
   return data;

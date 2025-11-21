@@ -1,6 +1,7 @@
 import Movies from "../../models/common/Movies.js";
 
 //fetch all movies
+//--
 export const getAllMovies = async (req, res) => {
   try {
     const movies = await Movies.find();

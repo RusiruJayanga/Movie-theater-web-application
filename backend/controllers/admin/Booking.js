@@ -1,6 +1,7 @@
 import Booking from "../../models/common/Booking.js";
 
 //fetch all bookings
+//--
 export const getAllBookings = async (req, res) => {
   try {
     const bookings = await Booking.find()

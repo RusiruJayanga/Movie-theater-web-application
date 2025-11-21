@@ -1,15 +1,17 @@
 import Contact from "../../models/common/Contact.js";
 
 //add contact
+//--
 export const contactUser = async (req, res) => {
   const { email, content } = req.body;
 
   //validation
   try {
     if (!email || !content) {
-      return res.status(400).json({ message: "Please fill all fields !" });
+      return res.status(400).json({ message: "All fields are required !" });
     }
 
+    //create contact
     const contact = await Contact.create({
       email,
       content,
@@ -17,12 +19,13 @@ export const contactUser = async (req, res) => {
 
     res.status(201).json(contact);
   } catch (error) {
-    console.error("Contact failed !:", error.message);
-    res.status(500).json({ message: "Contact failed !" });
+    console.error("Contact add failed !:", error.message);
+    res.status(500).json({ message: "Contact add failed !" });
   }
 };
 
-//fetch contact
+//fetch all contact
+//--
 export const getAllContacts = async (req, res) => {
   try {
     const contacts = await Contact.find();

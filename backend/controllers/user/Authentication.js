@@ -2,19 +2,20 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../../models/user/Authentication.js";
 
-//jwt token
+//jwt token generate
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "7d" });
 };
 
-//signup
+//signup user
+//--
 export const signupUser = async (req, res) => {
   const { name, mobile, email, password } = req.body;
 
   //validation
   try {
     if (!name || !mobile || !email || !password) {
-      return res.status(400).json({ message: "Please fill all fields !" });
+      return res.status(400).json({ message: "All fields are required !" });
     }
 
     //check user
@@ -45,22 +46,23 @@ export const signupUser = async (req, res) => {
         token: generateToken(user.id),
       });
     } else {
-      res.status(400).json({ message: "Invalid user data" });
+      res.status(400).json({ message: "Invalid user data !" });
     }
   } catch (error) {
-    console.error("Signup failed !:", error.message);
-    res.status(500).json({ message: "Signup failed !" });
+    console.error("User signup failed !:", error.message);
+    res.status(500).json({ message: "User signup failed !" });
   }
 };
 
 //login
+//--
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   //validation
   try {
     if (!email || !password) {
-      return res.status(400).json({ message: "Please fill all fields !" });
+      return res.status(400).json({ message: "All fields are required !" });
     }
 
     //check user
@@ -90,7 +92,7 @@ export const loginUser = async (req, res) => {
       token: generateToken(user.id),
     });
   } catch (error) {
-    console.error("Login failed !:", error.message);
-    res.status(500).json({ message: "Login failed !" });
+    console.error("User login failed !:", error.message);
+    res.status(500).json({ message: "User login failed !" });
   }
 };

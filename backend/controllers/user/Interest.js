@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
 import Interest from "../../models/user/Interests.js";
 
+//add interest
+//--
 export const addUserInterests = async (req, res) => {
   let token;
   if (
@@ -10,8 +12,18 @@ export const addUserInterests = async (req, res) => {
     try {
       const { movieId } = req.body;
 
+      //validation
+      if (!movieId) {
+        return res.status(400).json({ message: "Id not provided !" });
+      }
+
+      //token decode
       token = req.headers.authorization.split(" ")[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      if (!decoded.id) {
+        return res.status(401).json({ message: "Not authorized, no token !" });
+      }
 
       const existingInterests = await Interest.findOne({
         userId: decoded.id,
@@ -21,6 +33,7 @@ export const addUserInterests = async (req, res) => {
         return res.status(400).json({ message: "Interests already exists !" });
       }
 
+      //create interest
       const interest = await Interest.create({
         userId: decoded.id,
         movieId: movieId,
@@ -37,6 +50,7 @@ export const addUserInterests = async (req, res) => {
 };
 
 //fetch interest
+//--
 export const getUserInterests = async (req, res) => {
   let token;
   if (
@@ -44,6 +58,7 @@ export const getUserInterests = async (req, res) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     try {
+      //token decode
       token = req.headers.authorization.split(" ")[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 

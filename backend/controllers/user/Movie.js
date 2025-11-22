@@ -1,8 +1,16 @@
 import Movie from "../../models/common/Movies.js";
 
+//fetch movie details
+//--
 export const getMovieById = async (req, res) => {
   try {
     const { id } = req.params;
+
+    //validation
+    if (!id) {
+      return res.status(400).json({ message: "Id not provided !" });
+    }
+
     const movie = await Movie.findById(id);
 
     if (!movie) {

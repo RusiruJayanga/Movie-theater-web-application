@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import Booking from "../../models/common/Booking.js";
 import Showtime from "../../models/common/Showtime.js";
 
+//add booking
+//--
 export const addBooking = async (req, res) => {
   let token;
   if (
@@ -19,6 +21,19 @@ export const addBooking = async (req, res) => {
         payment,
       } = req.body;
 
+      //validation
+      if (
+        !movieId ||
+        !showtimeId ||
+        !bookedSeats ||
+        !totalAmount ||
+        !weekRange ||
+        !payment
+      ) {
+        return res.status(400).json({ message: "All fields are required !" });
+      }
+
+      //token decode
       token = req.headers.authorization.split(" ")[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
@@ -26,12 +41,11 @@ export const addBooking = async (req, res) => {
         return res.status(401).json({ message: "Not authorized, no token !" });
       }
 
-      //normalize seats
+      //format seats
       const seatsToBook = Array.isArray(bookedSeats)
         ? bookedSeats.map((s) => String(s).trim())
         : [String(bookedSeats).trim()];
 
-      //validate seats
       const showtime = await Showtime.findById(showtimeId);
       if (!showtime) {
         return res.status(404).json({ message: "Showtime not found !" });
@@ -64,7 +78,7 @@ export const addBooking = async (req, res) => {
         });
       }
 
-      //create booking + update showtime atomically
+      //create booking + update showtime
       const session = await mongoose.startSession();
       let bookingDoc;
       try {
@@ -87,7 +101,7 @@ export const addBooking = async (req, res) => {
           { session }
         );
 
-        //update the seats
+        //update seats
         let newlyBookedCount = 0;
         for (const seatNum of seatsToBook) {
           const seat = showtime.seats.find((s) => s.seatNumber === seatNum);

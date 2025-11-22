@@ -4,8 +4,6 @@ import Loading from "../../../hooks/common/Loading";
 //validation
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-//alert
-import { toast } from "react-toastify";
 //hooks
 import { useAddMovie } from "../../../hooks/admin/Movie";
 
@@ -197,7 +195,7 @@ const Add = () => {
             </div>
             <div className="input-group">
               <Field
-                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px]"
+                className="input w-[100%] h-[40px] rounded-[20px] pl-[15px] p-[10px] text-[#bdbdbd]"
                 type="date"
                 name="closeDate"
               />

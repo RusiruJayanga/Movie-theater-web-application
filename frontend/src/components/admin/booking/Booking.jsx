@@ -2,7 +2,7 @@ import React, { useState } from "react";
 //loading
 import Loading from "../../../hooks/common/Loading";
 //animation
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 //hooks
 import { useBookings } from "../../../hooks/admin/Booking";
 import { formatDate } from "../../../hooks/common/Format";
@@ -11,7 +11,7 @@ const Booking = () => {
   //booking toggle
   const [selectedBooking, setSelectedBooking] = useState("due");
 
-  //session function
+  //fetch session function
   const { data: bookings, isLoading, isError } = useBookings();
 
   //filter time
@@ -78,25 +78,26 @@ const Booking = () => {
               <img
                 className="w-[100px] h-[150px] object-cover rounded-[5px]"
                 src={booking?.movieId?.poster || "default_movie.jpg"}
-                alt={booking?.movieId?.title}
+                alt={booking?.movieId?.title || "movie"}
               />
               <div className="flex flex-col ml-[20px]">
                 <h4 className="w-[100%] font-medium text-white uppercase">
-                  {booking?.movieId?.title}
+                  {booking?.movieId?.title || "N/A"}
                 </h4>
                 <p className="capitalize mt-[5px]">
                   User Name -{" "}
                   <span className="ml-[10px] text-white font-medium ">
-                    {booking?.userId?.name}
+                    {booking?.userId?.name || "N/A"}
                   </span>
                 </p>
-                <p>User Email - {booking?.userId?.email}</p>
-                <p>User Mobile - {booking?.userId?.mobile}</p>
+                <p>User Email - {booking?.userId?.email || "N/A"}</p>
+                <p>User Mobile - {booking?.userId?.mobile || "N/A"}</p>
                 <p className="capitalize">
-                  {booking?.showtimeId?.date} {booking?.showtimeId?.time}
+                  {booking?.showtimeId?.date || "N/A"}{" "}
+                  {booking?.showtimeId?.time || "N/A"}
                 </p>
                 <p>Week Range - {booking?.weekRange || "N/A"}</p>
-                <p>Added Date - {formatDate(booking?.addedDate)}</p>
+                <p>Added Date - {formatDate(booking?.addedDate) || "N/A"}</p>
                 <p>Total Amount - ${booking?.totalAmount || "N/A"}</p>
                 <p className="capitalize"></p>
                 <p className="capitalize">
@@ -111,7 +112,7 @@ const Booking = () => {
                       className=" pl-[10px] pr-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] mt-[5px]"
                       key={seat}
                     >
-                      {seat}
+                      {seat || "N/A"}
                     </span>
                   ))}
                 </p>
@@ -139,25 +140,26 @@ const Booking = () => {
               <img
                 className="w-[100px] h-[150px] object-cover rounded-[5px]"
                 src={booking?.movieId?.poster || "default_movie.jpg"}
-                alt={booking?.movieId?.title}
+                alt={booking?.movieId?.title || "movie"}
               />
               <div className="flex flex-col ml-[20px]">
                 <h4 className="w-[100%] font-medium text-white uppercase">
-                  {booking?.movieId?.title}
+                  {booking?.movieId?.title || "N/A"}
                 </h4>
                 <p className="capitalize mt-[5px]">
                   User Name -{" "}
                   <span className="ml-[10px] text-white font-medium ">
-                    {booking?.userId?.name}
+                    {booking?.userId?.name || "N/A"}
                   </span>
                 </p>
-                <p>User Email - {booking?.userId?.email}</p>
-                <p>User Mobile - {booking?.userId?.mobile}</p>
+                <p>User Email - {booking?.userId?.email || "N/A"}</p>
+                <p>User Mobile - {booking?.userId?.mobile || "N/A"}</p>
                 <p className="capitalize">
-                  {booking?.showtimeId?.date} {booking?.showtimeId?.time}
+                  {booking?.showtimeId?.date || "N/A"}{" "}
+                  {booking?.showtimeId?.time || "N/A"}
                 </p>
                 <p>Week Range - {booking?.weekRange || "N/A"}</p>
-                <p>Added Date - {formatDate(booking?.addedDate)}</p>
+                <p>Added Date - {formatDate(booking?.addedDate) || "N/A"}</p>
                 <p>Total Amount - ${booking?.totalAmount || "N/A"}</p>
                 <p className="capitalize"></p>
                 <p className="capitalize">
@@ -172,7 +174,7 @@ const Booking = () => {
                       className=" pl-[10px] pr-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] mt-[5px]"
                       key={seat}
                     >
-                      {seat}
+                      {seat || "N/A"}
                     </span>
                   ))}
                 </p>

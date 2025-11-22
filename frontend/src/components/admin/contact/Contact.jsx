@@ -2,12 +2,12 @@ import React from "react";
 //loading
 import Loading from "../../../hooks/common/Loading";
 //animation
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 //hooks
 import { useContact } from "../../../hooks/admin/Contact";
 
 const Contact = () => {
-  //contact function
+  //fetch contacts function
   const { data: contacts, isLoading, isError } = useContact();
 
   //loading
@@ -35,8 +35,10 @@ const Contact = () => {
           className="w-[100%] p-[10px] font-light rounded-[20px] bg-[#1a1a1a] text-[#bdbdbd] hover:scale-102 transition duration-300 ease-out "
           key={contact?._id}
         >
-          <h4 className="w-[100%] font-medium text-white">{contact?.email}</h4>
-          <p className="mt-[5px]">{contact?.content}</p>
+          <h4 className="w-[100%] font-medium text-white">
+            {contact?.email || "N/A"}
+          </h4>
+          <p className="mt-[5px]">{contact?.content || "N/A"}</p>
         </motion.div>
       ))}
       {/* repeat */}

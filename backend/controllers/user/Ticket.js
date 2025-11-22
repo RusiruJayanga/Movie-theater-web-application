@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import Booking from "../../models/common/Booking.js";
 
-//fetch tickets
+//fetch ticket
 //--
 export const getUserTickets = async (req, res) => {
   let token;

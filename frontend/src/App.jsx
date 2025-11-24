@@ -3,9 +3,6 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 //scroll to top
 import ScrollToTop from "../src/config/ScrollToTop";
-//alert
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 //main components
 //user components
 import Navigation_bar_head from "./components/user/navigation/Navigation_bar_head";
@@ -21,12 +18,14 @@ import Details from "./pages/user/details/Details";
 import Login from "./components/user/login/Login";
 import Account from "./pages/user/account/Account";
 import Ticket from "./pages/user/ticket/Ticket";
-import Checkout from "./pages/user/checkout/Checkout";
 import Booking from "./pages/user/booking/Booking";
 import Contact from "./components/user/contact/Contact";
 //admin pages
 import Login_admin from "./components/admin/login/Login";
 import Home_admin from "./pages/admin/home/Home";
+//alert
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   //hide footer and navigation
@@ -60,7 +59,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<Account />} />
         <Route path="/ticket" element={<Ticket />} />
-        <Route path="/checkout" element={<Checkout />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>

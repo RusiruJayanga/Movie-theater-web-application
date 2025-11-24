@@ -1,11 +1,9 @@
 import React from "react";
 //animation
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 //validation
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-//alert
-import { toast } from "react-toastify";
 //hooks
 import { useContact } from "../../../hooks/user/Contact";
 
@@ -20,7 +18,7 @@ const contactValidationSchema = Yup.object({
 });
 
 const Contact = () => {
-  //contact function
+  //add contact function
   const { mutate: contactUser } = useContact();
 
   return (

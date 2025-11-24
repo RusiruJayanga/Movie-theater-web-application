@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { data, Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 //validation
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-//alert
-import { toast } from "react-toastify";
 //hooks
 import { useSignup, useLogin } from "../../../hooks/user/Auth";
 
@@ -32,7 +30,7 @@ const signupValidationSchema = Yup.object({
 });
 
 const Login = () => {
-  //login signup toggle
+  //login/signup toggle
   const [form, setForm] = useState("login");
 
   //signup function
@@ -41,6 +39,7 @@ const Login = () => {
     localStorage.setItem("token", data.token);
     navigate("/");
   });
+
   //login function
   const { mutate: loginUser } = useLogin((data) => {
     localStorage.setItem("token", data.token);

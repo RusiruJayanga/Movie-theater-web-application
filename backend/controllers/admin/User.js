@@ -1,31 +1,74 @@
 import User from "../../models/user/Authentication.js";
 
-//fetch user
+//fetch all users
+//--
 export const getAllUsers = async (req, res) => {
   try {
     const users = await User.find({}, { password: 0 });
     res.status(200).json(users);
   } catch (error) {
-    console.error("Error fetching users:", error);
-    res.status(500).json({ message: error.message });
+    console.error("Users fetching failed !:", error.message);
+    res.status(500).json({ message: "Users fetching failed !" });
   }
 };
 
-//delete user
-export const deleteUser = async (req, res) => {
+//ban user
+//--
+export const banUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await User.findByIdAndDelete(id);
+
+    //validation
+    if (!id) {
+      return res.status(400).json({ message: "Id not provided !" });
+    }
+
+    const user = await User.findByIdAndUpdate(
+      id,
+      { status: "banned" },
+      { new: true }
+    );
+
     if (!user) {
       return res.status(404).json({ message: "User not found !" });
     }
 
     res.status(200).json({
-      message: "User deleted successfully !",
+      message: "User banned successfully",
       user,
     });
   } catch (error) {
-    console.error("Error deleting user:", error);
-    res.status(500).json({ message: error.message });
+    console.error("User banning failed !:", error.message);
+    res.status(500).json({ message: "User banning failed !" });
+  }
+};
+
+//active user
+export const activateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    //validation
+    if (!id) {
+      return res.status(400).json({ message: "Id not provided !" });
+    }
+
+    const user = await User.findByIdAndUpdate(
+      id,
+      { status: "active" },
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found !" });
+    }
+
+    res.status(200).json({
+      message: "User activated successfully",
+      user,
+    });
+  } catch (error) {
+    console.error("User activation failed !:", error.message);
+    res.status(500).json({ message: "User activation failed !" });
   }
 };

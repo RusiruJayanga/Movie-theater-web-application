@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
 //loading
 import Loading from "../../../hooks/common/Loading";
 //countup
@@ -12,18 +11,55 @@ import { BarChart } from "@mui/x-charts/BarChart";
 //hooks
 import { useMovies } from "../../../hooks/common/Movie";
 import { useUsers } from "../../../hooks/admin/User";
+import { useBookings } from "../../../hooks/admin/Booking";
 
 const Dashboard = () => {
-  //movie function
+  //fetch movies function
   const { data: movies, isLoading, isError } = useMovies();
-  //user function
-  const { data: users } = useUsers();
-
   //filter movies
   const nowShowing = movies?.filter(
     (movie) =>
       movie.status === "nowShowing" && new Date(movie.closeDate) >= new Date()
   );
+
+  //fetch users function
+  const { data: users } = useUsers();
+  //filter users
+  const filterUsers = users?.filter((user) => user?.status === "active");
+  //line chart
+  //12 months
+  const monthlyCountsLine = Array(12).fill(0);
+  //users added per month
+  filterUsers?.forEach((user) => {
+    const monthIndex = new Date(user.addedDate).getMonth();
+    if (monthIndex === 0) {
+      monthlyCountsLine[0] += 1;
+    } else if (monthIndex === 1) {
+      monthlyCountsLine[1] += 1;
+    } else if (monthIndex === 2) {
+      monthlyCountsLine[2] += 1;
+    } else if (monthIndex === 3) {
+      monthlyCountsLine[3] += 1;
+    } else if (monthIndex === 4) {
+      monthlyCountsLine[4] += 1;
+    } else if (monthIndex === 5) {
+      monthlyCountsLine[5] += 1;
+    } else if (monthIndex === 6) {
+      monthlyCountsLine[6] += 1;
+    } else if (monthIndex === 7) {
+      monthlyCountsLine[7] += 1;
+    } else if (monthIndex === 8) {
+      monthlyCountsLine[8] += 1;
+    } else if (monthIndex === 9) {
+      monthlyCountsLine[9] += 1;
+    } else if (monthIndex === 10) {
+      monthlyCountsLine[10] += 1;
+    } else if (monthIndex === 11) {
+      monthlyCountsLine[11] += 1;
+    } else {
+      return;
+    }
+  });
 
   //countup
   const { ref, inView } = useInView({
@@ -52,18 +88,42 @@ const Dashboard = () => {
     value,
   }));
 
+  //fetch session function
+  const { data: bookings } = useBookings();
   //bar chart
-  const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
-  const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
-  const xLabels = [
-    "Page A",
-    "Page B",
-    "Page C",
-    "Page D",
-    "Page E",
-    "Page F",
-    "Page G",
-  ];
+  //12 months
+  const monthlyCountsBar = Array(12).fill(0);
+  //users added per month
+  filterUsers?.forEach((user) => {
+    const monthIndex = new Date(user.addedDate).getMonth();
+    if (monthIndex === 0) {
+      monthlyCountsBar[0] += 1;
+    } else if (monthIndex === 1) {
+      monthlyCountsBar[1] += 1;
+    } else if (monthIndex === 2) {
+      monthlyCountsBar[2] += 1;
+    } else if (monthIndex === 3) {
+      monthlyCountsBar[3] += 1;
+    } else if (monthIndex === 4) {
+      monthlyCountsBar[4] += 1;
+    } else if (monthIndex === 5) {
+      monthlyCountsBar[5] += 1;
+    } else if (monthIndex === 6) {
+      monthlyCountsBar[6] += 1;
+    } else if (monthIndex === 7) {
+      monthlyCountsBar[7] += 1;
+    } else if (monthIndex === 8) {
+      monthlyCountsBar[8] += 1;
+    } else if (monthIndex === 9) {
+      monthlyCountsBar[9] += 1;
+    } else if (monthIndex === 10) {
+      monthlyCountsBar[10] += 1;
+    } else if (monthIndex === 11) {
+      monthlyCountsBar[11] += 1;
+    } else {
+      return;
+    }
+  });
 
   //loading
   if (isLoading) {
@@ -75,24 +135,16 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="w-[100%] grid grid-cols-1 gap-[20px] xl:grid-cols-4 ">
+    <div className="w-[100%] grid grid-cols-1 gap-[20px] xl:grid-cols-4 font-light ">
       <div className="rounded-[20px] bg-[#1a1a1a] p-[10px] " ref={ref}>
-        <h4 className="text-[#f21f30] ">Now Show</h4>
-        <p className="opacity-[0.8] ">Movies curontly showing in theater.</p>
-        <div className="w-[100%] flex justify-between xl:mt-[50px] ">
-          <div className="mt-[10px] ">
-            <span className="font-bold text-[60px] text-[#f21f30] ">
-              {inView && (
-                <CountUp start={0} end={nowShowing?.length || 0} duration={3} />
-              )}
-            </span>
-            <button
-              className="flex w-[150px] border-[1px] border-white hover:bg-white hover:text-black"
-              onClick={() => setComponent("now")}
-            >
-              VIEW DETAILS
-            </button>
-          </div>
+        <h4 className="text-[#f21f30] font-medium ">NOW SHOWING</h4>
+        <p className="text-[#bdbdbd]">Movies curontly showing in theater.</p>
+        <div className="w-[100%] flex items-center justify-around xl:mt-[50px] ">
+          <span className="w-[150px] font-bold text-[110px] text-[#f21f30] ">
+            {inView && (
+              <CountUp start={0} end={nowShowing?.length || 0} duration={3} />
+            )}
+          </span>
           <img
             className="w-[150px] h-[150px] object-cover xl:w-[100px] xl:h-[100px] "
             src="admin-now.png"
@@ -101,27 +153,19 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="rounded-[20px] bg-[#1a1a1a] p-[10px] " ref={ref}>
-        <h4 className="text-[#f21f30] ">Users</h4>
-        <p className="opacity-[0.8] ">Right now page has,</p>
-        <div className="w-[100%] flex justify-between xl:mt-[50px]">
+        <h4 className="text-[#f21f30] font-medium  ">USERS </h4>
+        <p className="text-[#bdbdbd]">Now we have active users of,</p>
+        <div className="w-[100%] flex items-center justify-around xl:mt-[50px] ">
           <img
             className="w-[150px] h-[150px] object-cover xl:hidden "
             src="admin-user.png"
             alt="now"
           />
-          <div className="mt-[10px] ">
-            <span className="font-bold text-[60px] text-[#f21f30] ">
-              {inView && (
-                <CountUp start={0} end={users?.length || 0} duration={3} />
-              )}
-            </span>
-            <button
-              className="flex w-[150px] border-[1px] border-white hover:bg-white hover:text-black"
-              onClick={() => setComponent("user")}
-            >
-              VIEW DETAILS
-            </button>
-          </div>
+          <span className="w-[150px] font-bold text-[110px] text-[#f21f30]">
+            {inView && (
+              <CountUp start={0} end={filterUsers?.length || 0} duration={3} />
+            )}
+          </span>
           <img
             className="hidden xl:block xl:w-[100px] xl:h-[100px] "
             src="admin-user.png"
@@ -130,14 +174,14 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="rounded-[20px] bg-[#1a1a1a] p-[10px] xl:col-span-2 ">
-        <h4 className="text-[#f21f30] ">User Engagement</h4>
-        <p className="opacity-[0.8] ">Monthly user engagement.</p>
+        <h4 className="text-[#f21f30] font-medium">USER ENGAGEMENT</h4>
+        <p className="text-[#bdbdbd]">Monthly user engagement.</p>
         <div className="mt-[20px] h-[250px] xl:h-[200px] ">
           <LineChart
-            xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+            xAxis={[{ data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }]}
             series={[
               {
-                data: [2, 5.5, 2, 8.5, 1.5, 5],
+                data: monthlyCountsLine,
                 color: "#f21f30",
               },
             ]}
@@ -163,8 +207,8 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="rounded-[20px] bg-[#1a1a1a] p-[10px] ">
-        <h4 className="text-[#f21f30] ">Film Rating</h4>
-        <p className="opacity-[0.8] ">Now showing movies classify by age.</p>
+        <h4 className="text-[#f21f30] font-medium">MOVIE RATING</h4>
+        <p className="text-[#bdbdbd]">Movies classify by age.</p>
         <div className="mt-[20px] xl:mt-[50px] ">
           <PieChart
             colors={["#f21f30", "#ffa953", "#00ffac", "#8016ff", "#00c7e8"]}
@@ -190,15 +234,12 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="rounded-[20px] bg-[#1a1a1a] p-[10px] xl:col-span-3 ">
-        <h4 className="text-[#f21f30] ">Income</h4>
-        <p className="opacity-[0.8] ">Monthly income statement.</p>
+        <h4 className="text-[#f21f30] font-medium">INCOME</h4>
+        <p className="text-[#bdbdbd]">Monthly income statement.</p>
         <div className="mt-[20px] ">
           <BarChart
-            series={[
-              { data: pData, label: "pv", id: "pvId", color: "#f21f30" },
-              { data: uData, label: "uv", id: "uvId" },
-            ]}
-            xAxis={[{ data: xLabels }]}
+            series={[{ data: monthlyCountsBar, color: "#f21f30" }]}
+            xAxis={[{ data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }]}
             yAxis={[{ width: 50 }]}
             height={250}
             sx={{

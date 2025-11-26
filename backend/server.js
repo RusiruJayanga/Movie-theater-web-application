@@ -16,6 +16,7 @@ import userTicketRoutes from "./routes/user/Ticket.js";
 import adminUserRoutes from "./routes/admin/User.js";
 import adminContactRoutes from "./routes/common/Contact.js";
 import adminMovieRoutes from "./routes/admin/Movie.js";
+import adminSeatRoutes from "./routes/admin/Session.js";
 import adminBookingRoutes from "./routes/admin/Booking.js";
 //common routes
 import movieRoutes from "./routes/common/Movie.js";
@@ -55,6 +56,7 @@ app.use("/api/user", userTicketRoutes);
 app.use("/api/users", adminUserRoutes);
 app.use("/api/users", adminContactRoutes);
 app.use("/api/movies", adminMovieRoutes);
+app.use("/api/sessions", adminSeatRoutes);
 app.use("/api/bookings", adminBookingRoutes);
 //common routes
 app.use("/api/movies", movieRoutes);

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
 //loading
 import Loading from "../../../hooks/common/Loading";
 //error
@@ -11,13 +10,13 @@ import { useFetchUserTickets } from "../../../hooks/user/Ticket.jsx";
 import { formatDuration } from "../../../hooks/common/Format";
 
 const Ticket = () => {
-  //manue open
+  //manue toggle
   const [menuNewOpen, set_menu_New_open] = useState(false);
   const [menuDueOpen, set_menu_Due_open] = useState(false);
 
-  //ticket function
+  //fetch ticket function
   const { data: userTickets, isLoading, isError } = useFetchUserTickets();
-
+  //filter tickets
   //filter time
   const newTickets = userTickets?.filter(
     (newticket) =>
@@ -102,13 +101,14 @@ const Ticket = () => {
             </div>
             <div className="ml-[20px]">
               <h4 className="font-medium text-white uppercase">
-                {newticket?.movieId?.title}
+                {newticket?.movieId?.title || "N/A"}
               </h4>
               <p className="mt-[5px] capitalize">
-                {formatDuration(newticket?.movieId?.runtime)}
+                {formatDuration(newticket?.movieId?.runtime) || "N/A"}
               </p>
               <p className="capitalize">
-                This {newticket?.showtimeId?.date} {newticket?.showtimeId?.time}
+                This {newticket?.showtimeId?.date || "N/A"}{" "}
+                {newticket?.showtimeId?.time || "N/A"}
               </p>
               <p>
                 {newticket?.bookedSeats.map((seat) => (
@@ -116,7 +116,7 @@ const Ticket = () => {
                     className=" pl-[10px] pr-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] mt-[5px]"
                     key={seat}
                   >
-                    {seat}
+                    {seat || "N/A"}
                   </span>
                 ))}
               </p>
@@ -184,13 +184,14 @@ const Ticket = () => {
             </div>
             <div className="ml-[20px]">
               <h4 className="font-medium text-white uppercase">
-                {dueticket?.movieId?.title}
+                {dueticket?.movieId?.title || "N/A"}
               </h4>
               <p className="mt-[5px] capitalize">
-                {formatDuration(dueticket?.movieId?.runtime)}
+                {formatDuration(dueticket?.movieId?.runtime) || "N/A"}
               </p>
               <p className="capitalize">
-                This {dueticket?.showtimeId?.date} {dueticket?.showtimeId?.time}
+                This {dueticket?.showtimeId?.date || "N/A"}{" "}
+                {dueticket?.showtimeId?.time || "N/A"}
               </p>
               <p>
                 {dueticket?.bookedSeats.map((seat) => (
@@ -198,7 +199,7 @@ const Ticket = () => {
                     className=" pl-[10px] pr-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] mt-[5px]"
                     key={seat}
                   >
-                    {seat}
+                    {seat || "N/A"}
                   </span>
                 ))}
               </p>

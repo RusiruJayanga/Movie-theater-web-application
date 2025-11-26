@@ -4,8 +4,9 @@ import { addUserInterests } from "../../services/user/Api";
 import { getUserInterests } from "../../services/user/Api";
 import { toast } from "react-toastify";
 
-//interest add hook
+//add interest hook
 export const useAddUserInterests = () => {
+  //get token
   const token = localStorage.getItem("token");
 
   return useMutation({
@@ -17,19 +18,17 @@ export const useAddUserInterests = () => {
       return addUserInterests({ movieId });
     },
     onSuccess: () => {
-      toast.success("Interests added successfully !");
+      toast.success("Interests added successfully");
     },
     onError: (error) => {
       if (error.message !== "No token") {
-        toast.warning(
-          error.response?.data?.message || "Failed to add interests !"
-        );
+        toast.warning(error.response?.data?.message || "Add failed !");
       }
     },
   });
 };
 
-//interest fetch hook
+//fetch interests hook
 export const useFetchUserInterests = () => {
   return useQuery({
     queryKey: ["userInterests"],

@@ -8,11 +8,11 @@ export const useSignup = (onSuccessCallback) => {
   return useMutation({
     mutationFn: signup,
     onSuccess: (data) => {
-      toast.success("Signup successful !");
+      toast.success("Signup successful");
       if (onSuccessCallback) onSuccessCallback(data);
     },
     onError: (error) => {
-      toast.error(error.response?.data?.message || "Something went wrong !");
+      toast.error(error.response?.data?.message || "Signup failed !");
     },
   });
 };
@@ -22,11 +22,11 @@ export const useLogin = (onSuccessCallback) => {
   return useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      toast.success("Login successful !");
+      toast.success("Login successful");
       if (onSuccessCallback) onSuccessCallback(data);
     },
     onError: (error) => {
-      toast.error(error.response?.data?.message || "Something went wrong !");
+      toast.error(error.response?.data?.message || "Login failed !");
     },
   });
 };
@@ -34,5 +34,5 @@ export const useLogin = (onSuccessCallback) => {
 //logout function
 export const logout = () => {
   localStorage.removeItem("token");
-  toast.success("Logged out successfully !");
+  toast.success("Logged out successfully");
 };

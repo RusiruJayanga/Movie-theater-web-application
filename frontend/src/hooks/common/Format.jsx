@@ -1,4 +1,4 @@
-//function to format duration
+//format duration
 const formatDuration = (minutes) => {
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
@@ -6,7 +6,7 @@ const formatDuration = (minutes) => {
 };
 export { formatDuration };
 
-//function to format date
+//format date
 function formatDate(dateString) {
   const date = new Date(dateString);
   const day = String(date.getDate()).padStart(2, "0");

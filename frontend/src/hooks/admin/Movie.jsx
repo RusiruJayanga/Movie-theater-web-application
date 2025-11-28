@@ -7,7 +7,7 @@ export const useAddMovie = () => {
   return useMutation({
     mutationFn: addMovie,
     onSuccess: () => {
-      toast.success("Movie added successfully !");
+      toast.success("Movie added successfully");
     },
     onError: (error) => {
       toast.error(error.response?.data?.message || "Upload failed !");
@@ -17,12 +17,13 @@ export const useAddMovie = () => {
 
 //update movie hook
 export const useUpdateMovie = () => {
+  //refreshing the data
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: updateMovie,
     onSuccess: () => {
-      toast.success("Movie updated successfully !");
+      toast.success("Movie updated successfully");
       queryClient.invalidateQueries(["movies"]);
     },
     onError: (error) => {
@@ -33,12 +34,13 @@ export const useUpdateMovie = () => {
 
 //delete movie hook
 export const useDeleteMovie = () => {
+  //refreshing the data
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: deleteMovie,
     onSuccess: () => {
-      toast.success("Movie deleted successfully !");
+      toast.success("Movie deleted successfully");
       queryClient.invalidateQueries(["movies"]);
     },
     onError: (error) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 //loading
 import Loading from "../../../hooks/common/Loading";
 //error
@@ -15,15 +15,17 @@ import { formatDuration, formatDate } from "../../../hooks/common/Format";
 import { toast } from "react-toastify";
 
 const Details = () => {
-  //movie id
+  //get movie id from location
   const location = useLocation();
   const movieId = location.state?.movieId;
 
-  //movies
+  //fetch movie details function
   const { data: movieDetails, isLoading, isError } = useMovie(movieId);
+
+  //fetch movie ratings
   const { data: movieRatings } = useMovieWithRatings(movieId);
 
-  //get tickets page
+  //navigate to tickets page
   const navigate = useNavigate();
   const handleGetTickets = (movieId) => {
     if (localStorage.getItem("token")) {
@@ -33,7 +35,7 @@ const Details = () => {
     }
   };
 
-  //interests function
+  //add interest function
   const { mutate: handleAddInterest } = useAddUserInterests();
   const handleAddInterestClick = (movieId) => {
     if (localStorage.getItem("token")) {
@@ -58,7 +60,7 @@ const Details = () => {
         <img
           className="w-[100%] h-[30vh] object-cover absolute xl:h-[60vh]"
           src={movieDetails?.mainImage || "default_movie.jpg"}
-          alt={movieDetails?.title}
+          alt={movieDetails?.title || "movie"}
         />
         <div
           className={`w-[100%] h-[30vh] relative top-0 bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.6)_30%,rgba(12,12,12,0.1)_100%)] xl:h-[60vh] xl:mt-[-160px] xl:bg-[linear-gradient(0deg,rgba(12,12,12,1)_0%,rgba(0,0,0,0.7)_30%,rgba(0,0,0,0.6)_80%,rgba(12,12,12,0.8)_100%)]`}
@@ -66,7 +68,7 @@ const Details = () => {
       </div>
       <div className="w-[100%] p-[10px] mt-[-100px] relative xl:mt-[-200px] xl:w-[1240px] xl:mx-auto">
         <h2 className="font-medium text-white uppercase ">
-          {movieDetails?.title}
+          {movieDetails?.title || "N/A"}
         </h2>
         <div className="flex items-center justify-start mt-[10px] gap-[10px] ">
           {movieDetails?.status === "nowShowing" && (
@@ -116,7 +118,7 @@ const Details = () => {
                   className=" pl-[10px] pr-[10px] border-l-[2px] border-[#bdbdbd] text-[#f21f30] mt-[5px]"
                   key={genre}
                 >
-                  {genre}
+                  {genre || "N/A"}
                 </span>
               ))}
             </div>
@@ -134,7 +136,7 @@ const Details = () => {
                     parseInt(movieRatings?.externalRatings?.rottenTomatoes) >=
                     60
                       ? "rating/fresh.png"
-                      : "rating/rotten.png" || "roten.png"
+                      : "rating/rotten.png"
                   }
                   alt="rating"
                 />
@@ -147,7 +149,7 @@ const Details = () => {
         </div>
         <div className="mt-[40px]">
           <h4 className="text-white font-medium uppercase">
-            More Trailers and Images for {movieDetails?.title}
+            More Trailers and Images for {movieDetails?.title || "N/A"}
           </h4>
           <div className="w-[100%] flex flex-col items-center justify-center gap-[20px] mt-[40px] md:flex-row xl:justify-start">
             <div className="w-[350px] h-[200px] border-1 border-[#bdbdbd]/50 md:h-[220px] xl:h-[200px]">
@@ -168,12 +170,12 @@ const Details = () => {
               <img
                 className="w-[350px] h-[200px] rounded-[5px] object-cover md:w-[200px] md:h-[100px] xl:w-[350px] xl:h-[200px] xl:opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out "
                 src={movieDetails?.galleryImages[0] || "default_movie.jpg"}
-                alt={movieDetails?.title}
+                alt={movieDetails?.title || "N/A"}
               />
               <img
                 className="w-[350px] h-[200px] rounded-[5px] object-cover md:w-[200px] md:h-[100px] xl:w-[350px] xl:h-[200px] xl:opacity-[0.8] hover:opacity-[1] transition duration-300 ease-out "
                 src={movieDetails?.galleryImages[1] || "default_movie.jpg"}
-                alt={movieDetails?.title}
+                alt={movieDetails?.title || "N/A"}
               />
             </div>
           </div>

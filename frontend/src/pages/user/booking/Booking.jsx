@@ -1,37 +1,41 @@
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 //loading
 import Loading from "../../../hooks/common/Loading";
 //error
 import Error from "../../../hooks/common/Error";
+//thank
+import Thank from "../../../hooks/user/Thank";
+//payPal
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { toast } from "react-toastify";
 //hooks
 import { useMovie } from "../../../hooks/user/Details";
 import { formatDuration } from "../../../hooks/common/Format";
 import { useShowTime } from "../../../hooks/user/Showtime";
 import { useAddBooking } from "../../../hooks/user/Booking";
-//payPal
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { toast } from "react-toastify";
 
-//seat select
+//seat array
 const rows = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const seatPrice = 1;
 
 const Booking = () => {
-  //movie id
+  //thank function
+  const [showThankYou, setShowThankYou] = useState(false);
+
+  //get movie id from location
   const location = useLocation();
   const movieId = location.state?.movieId;
 
-  //movies
+  //fetch movie details function
   const { data: movieDetails, isLoading, isError } = useMovie(movieId);
-  //showtime
+
+  //fetch showtime details function
   const { data: showTimeDetails } = useShowTime(movieId);
-  //add booking
-  const { mutate: addBooking } = useAddBooking();
 
   //timw function
-  const [selectedTime, setSelectedTime] = useState(null);
   //filter time
+  const [selectedTime, setSelectedTime] = useState(null);
   const selectSeat = showTimeDetails?.filter(
     (showtime) => showtime._id === selectedTime
   );
@@ -41,21 +45,18 @@ const Booking = () => {
     x.setHours(0, 0, 0, 0);
     return x;
   };
-
   const startOfWeek = (date, weekStartsOn = 1) => {
     const d = normalize(date);
     const diff = (d.getDay() - weekStartsOn + 7) % 7;
     d.setDate(d.getDate() - diff);
     return normalize(d);
   };
-
   const getWeekRangeFor = (date = new Date(), weekStartsOn = 1) => {
     const start = startOfWeek(date, weekStartsOn);
     const end = new Date(start);
     end.setDate(start.getDate() + 6);
     return { start: normalize(start), end: normalize(end) };
   };
-
   const fmt = (d) => {
     const x = normalize(d);
     return `${String(x.getMonth() + 1).padStart(2, "0")}/${String(
@@ -63,6 +64,7 @@ const Booking = () => {
     ).padStart(2, "0")}/${x.getFullYear()}`;
   };
 
+  //current week
   const getCurrentWeekRange = (weekStartsOn = 1) => {
     const today = new Date();
     const jsTodayIdx = today.getDay();
@@ -122,8 +124,7 @@ const Booking = () => {
     );
   };
 
-  //checkout
-  const navigate = useNavigate();
+  //checkout function
   const [error, setError] = useState("");
   const [showPaypal, setShowPaypal] = useState(false);
   const [paymentProcessing, setPaymentProcessing] = useState(false);
@@ -144,6 +145,8 @@ const Booking = () => {
     setShowPaypal(true);
   };
 
+  //add booking function
+  const { mutate: addBooking } = useAddBooking();
   const buildBookingData = (paymentInfo) => ({
     movieId,
     showtimeId: selectedTime,
@@ -164,17 +167,18 @@ const Booking = () => {
 
   return (
     <div className="w-[100%] p-[10px] text-[#eeeeee] font-light mt-[20px] cursor-default xl:w-[1240px] xl:mx-auto ">
+      {showThankYou && <Thank />}
       <div className="flex flex-wrap items-center justify-center gap-[20px] ">
         <div>
           <div className="flex gap-[20px] ">
             <img
               className="w-[70px] h-[70px] object-cover rounded-full md:w-[90px] md:h-[90px] "
               src={movieDetails?.poster || "default_movie.jpg"}
-              alt={movieDetails?.title}
+              alt={movieDetails?.title || "movie"}
             />
             <div>
               <h2 className="font-medium text-white uppercase ">
-                {movieDetails?.title}
+                {movieDetails?.title || "N/A"}
               </h2>
               <p>
                 <span className="capitalize">
@@ -214,7 +218,7 @@ const Booking = () => {
                 }}
               >
                 <p className="capitalize">
-                  {showtime?.date} {showtime?.time}
+                  {showtime?.date || "N/A"} {showtime?.time || "N/A"}
                 </p>
               </label>
             ))}
@@ -238,7 +242,7 @@ const Booking = () => {
           {/* paypal */}
           {!showPaypal ? (
             <button
-              className="flex w-[200px] bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-[#0c0c0c] hover:text-[#f21f30]"
+              className="flex w-[200px] bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-transparent hover:text-[#f21f30]"
               onClick={handleCheckout}
             >
               CHECK OUT
@@ -290,7 +294,9 @@ const Booking = () => {
                       addBooking(bookingData, {
                         onSuccess: () => {
                           setPaymentProcessing(false);
-                          navigate("/thank");
+                          {
+                            setShowThankYou(true);
+                          }
                         },
                         onError: (err) => {
                           setPaymentProcessing(false);

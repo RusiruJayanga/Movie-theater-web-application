@@ -1,19 +1,18 @@
 import React from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 //slick slider
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 //animation
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 //hooks
 import { useMovies } from "../../../hooks/common/Movie";
 import { formatDuration, formatDate } from "../../../hooks/common/Format";
 
 const Slick_slider = () => {
-  //movies
+  //fetch movies function
   const { data: movies } = useMovies();
-
   //filter movies
   const nowShowing = movies?.filter(
     (movie) =>
@@ -66,7 +65,7 @@ const Slick_slider = () => {
     ],
   };
 
-  //details page
+  //navigate to details page
   const navigate = useNavigate();
   const handleDetailsCardClick = (movieId) => {
     navigate(`/details`, { state: { movieId } });
@@ -84,10 +83,7 @@ const Slick_slider = () => {
       transition={{ duration: 0.5, delay: 0.3 }}
       className="w-[90%] text-[#eeeeee] font-light mx-auto cursor-default xl:mt-[0vh] xl:z-20 xl:relative "
     >
-      <h3 className="xl:hidden text-white">
-        NOW SHOWING <i className="bi bi-chevron-right"></i>
-      </h3>
-      <h2 className="hidden xl:block text-white">
+      <h2 className=" text-white">
         NOW SHOWING <i className="bi bi-chevron-right"></i>
       </h2>
       <div className="w-[85%] mx-auto mt-[30px] xl:w-[1240px]">
@@ -99,11 +95,11 @@ const Slick_slider = () => {
                 <img
                   className="w-full h-full object-cover rounded-[5px] xl:opacity-[0.88] hover:opacity-[1] transition duration-300 ease-out"
                   src={movie?.poster || "default_movie.jpg"}
-                  alt={movie?.title}
+                  alt={movie?.title || "movie"}
                 />
                 <div className="text-center mt-[5px] ">
                   <h4 className="h-[40px] w-[100%] font-medium text-[#f21f30] uppercase ">
-                    {movie?.title}
+                    {movie?.title || "N/A"}
                   </h4>
                   <p>
                     <span className="capitalize">
@@ -117,7 +113,7 @@ const Slick_slider = () => {
                     Released {formatDate(movie?.releaseDate) || "N/A"}
                   </p>
                   <button
-                    className="w-[150px] flex bg-[#f21f30] border-[1px] text-white border-[#f21f30] mt-[10px] mx-auto hover:bg-[#0c0c0c] hover:text-[#f21f30]"
+                    className="w-[150px] flex bg-[#f21f30] border-[1px] text-white border-[#f21f30] mt-[10px] mx-auto hover:bg-transparent hover:text-[#f21f30]"
                     onClick={() => handleDetailsCardClick(movie?._id)}
                   >
                     MORE

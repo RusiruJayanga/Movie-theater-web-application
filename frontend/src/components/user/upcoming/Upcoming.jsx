@@ -1,27 +1,26 @@
 import React from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 //animation
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 //hooks
 import { useMovies } from "../../../hooks/common/Movie";
 import { useAddUserInterests } from "../../../hooks/user/Interest";
 import { formatDuration, formatDate } from "../../../hooks/common/Format";
 
 const Upcoming = () => {
-  //movies
+  //fetch movies function
   const { data: movies } = useMovies();
+  //filter movies
+  const upcoming = movies?.filter((movie) => movie.status === "upComing");
 
-  //details page
+  //navigate to details page
   const navigate = useNavigate();
   const handleDetailsCardClick = (movieId) => {
     navigate(`/details`, { state: { movieId } });
   };
 
-  //interests function
+  //add interests function
   const { mutate: handleAddInterest } = useAddUserInterests();
-
-  //filter movies
-  const upcoming = movies?.filter((movie) => movie.status === "upComing");
 
   return (
     <section className="w-[98%] mx-auto mt-[50px] p-[10px] text-[#eeeeee] grid [grid-template-columns:repeat(auto-fit,_350px)] gap-[10px] justify-center cursor-default md:[grid-template-columns:repeat(auto-fit,_400px)] xl:gap-[30px] xl:[grid-template-columns:repeat(auto-fit,_450px)] xl:mt-[30px] ">
@@ -42,11 +41,11 @@ const Upcoming = () => {
           <img
             className="w-[180px] object-cover rounded-[5px] xl:w-[250px] xl:opacity-[0.88] hover:opacity-[1] transition duration-300 ease-out"
             src={movie?.poster || "default_movie.jpg"}
-            alt={movie?.title}
+            alt={movie?.title || "movie"}
           />
           <div className="w-[100%] p-[10px]">
             <h4 className=" w-[100%] font-medium text-[#f21f30] uppercase ">
-              {movie?.title}
+              {movie?.title || "N/A"}
             </h4>
             <p className="mt-[10px]">
               <span className="capitalize">
@@ -61,7 +60,7 @@ const Upcoming = () => {
             </p>
             <div className="w-[100%] flex items-center justify-center mt-[10px] gap-[10px] xl:w-[200px] xl:ml-auto">
               <button
-                className="w-[150px] flex bg-[#f21f30] border-[1px] text-white border-[#f21f30] hover:bg-[#0c0c0c] hover:text-[#f21f30]"
+                className="w-[150px] flex bg-[#f21f30] border-[1px] text-white border-[#f21f30] hover:bg-transparent hover:text-[#f21f30]"
                 onClick={() => handleDetailsCardClick(movie?._id)}
               >
                 MORE

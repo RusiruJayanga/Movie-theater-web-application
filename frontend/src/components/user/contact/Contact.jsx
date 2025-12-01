@@ -94,7 +94,7 @@ const Contact = () => {
               </p>
             </div>
             <button
-              className="w-[150px] mx-auto mt-[10px] flex bg-[#f21f30] border-[1px] border-[#f21f30] hover:bg-[#0c0c0c] hover:text-[#f21f30]"
+              className="w-[150px] mx-auto mt-[10px] flex bg-[#f21f30] border-[1px] border-[#f21f30] hover:bg-transparent hover:text-[#f21f30]"
               type="submit"
               disabled={isSubmitting}
             >

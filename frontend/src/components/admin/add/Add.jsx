@@ -28,7 +28,7 @@ const addMovieValidationSchema = Yup.object({
     .url("enter a valid URL")
     .required("trailer URL is required"),
   plot: Yup.string()
-    .max(500, "plot must be at most 500 characters")
+    .max(1000, "plot must be at most 500 characters")
     .required("plot is required"),
   mainImage: Yup.mixed().required("main image is required"),
   galleryImages: Yup.mixed()
@@ -393,7 +393,7 @@ const Add = () => {
               <Field
                 className="input w-[100%] h-[100px] rounded-[20px] pl-[15px] p-[10px]"
                 name="plot"
-                maxLength={500}
+                maxLength={1000}
                 required
               ></Field>
               <label
@@ -460,7 +460,7 @@ const Add = () => {
               </p>
             </div>
             <button
-              className="w-[150px] mx-auto mt-[10px] flex bg-[#f21f30] font-medium border-[1px] border-[#f21f30] hover:bg-[#242124] hover:text-[#f21f30]"
+              className="w-[150px] mx-auto mt-[10px] flex bg-[#f21f30] text-white border-[1px] border-[#f21f30] hover:bg-transparent hover:text-[#f21f30]"
               type="submit"
               disabled={isSubmitting || isAdding}
             >

@@ -4,11 +4,9 @@ import Loading from "../../../hooks/common/Loading";
 //error
 import Error from "../../../hooks/common/Error";
 //animation
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 //slick slider
 import Slick_slider from "../../../components/user/slider/Slick_slider";
-//now showing
-import Now_showing from "../../../components/user/now_showing/Now_showing";
 //upcoming
 import Upcoming from "../../../components/user/upcoming/Upcoming";
 //about
@@ -19,7 +17,7 @@ import Contact from "../../../components/user/contact/Contact";
 import { useMovies } from "../../../hooks/common/Movie";
 
 const Home = () => {
-  //movies
+  //fetch movies function
   const { data: movies, isLoading, isError } = useMovies();
 
   //loading
@@ -97,10 +95,7 @@ const Home = () => {
 
       {/* upcoming card section */}
       <section className="w-[90%] text-white font-light mx-auto cursor-default xl:mt-[-11vh] xl:z-20 xl:relative ">
-        <h3 className="xl:hidden">
-          UPCOMING MOVIES <i className="bi bi-chevron-right"></i>
-        </h3>
-        <h2 className="hidden xl:block">
+        <h2>
           UPCOMING MOVIES <i className="bi bi-chevron-right"></i>
         </h2>
       </section>

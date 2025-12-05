@@ -1,6 +1,8 @@
 import React from "react";
+//loading
+import Loading from "../../../hooks/common/Loading";
 //animation
-import { motion, AnimatePresence, m } from "framer-motion";
+import { motion } from "framer-motion";
 //validation
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -15,21 +17,30 @@ const updateMovieValidationSchema = Yup.object({
 });
 
 const Upcoming = () => {
-  //movies function
-  const { data: movies } = useMovies();
+  //fetch movies function
+  const { data: movies, isLoading, isError } = useMovies();
+  //filter movies
+  const upcoming = movies?.filter((movie) => movie.status === "upComing");
+
   //update movie function
   const { mutate: updateMovie } = useUpdateMovie();
-  //delete movie function
-  const { mutate: deleteMovie, isPending: isDeleting } = useDeleteMovie();
 
+  //delete movie function
+  const { mutate: deleteMovie } = useDeleteMovie();
   const handleDelete = (id, name) => {
     if (window.confirm(`Are you sure you want to delete ${name}?`)) {
       deleteMovie(id);
     }
   };
 
-  //filter movies
-  const upcoming = movies?.filter((movie) => movie.status === "upComing");
+  //loading
+  if (isLoading) {
+    return <Loading />;
+  }
+  //error
+  if (isError) {
+    return <p className="font-extralight text-[#bdbdbd]">no data to show</p>;
+  }
 
   return (
     <section className="w-[100%] grid gap-[20px] xl:[grid-template-columns:repeat(auto-fit,_580px)] ">
@@ -44,17 +55,19 @@ const Upcoming = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex w-[100%] items-start justify-start p-[10px] font-extralight rounded-[20px] bg-[#1a1a1a] hover:scale-102 transition duration-300 ease-out "
+          className="flex w-[100%] items-start justify-start p-[10px] font-light rounded-[20px] bg-[#1a1a1a] text-[#bdbdbd] hover:scale-102 transition duration-300 ease-out "
           key={movie?._id}
         >
           <img
             className="w-[100px] h-[150px] object-cover rounded-[5px]"
             src={movie?.poster || "default_movie.jpg"}
-            alt={movie?.title}
+            alt={movie?.title || "movie"}
           />
           <div className="flex flex-col ml-[20px]">
-            <h5 className="w-[100%] font-light uppercase ">{movie?.title}</h5>
-            <p className=" mt-[10px] opacity-[0.8]">
+            <h4 className="w-[100%] font-medium text-white uppercase">
+              {movie?.title || "N/A"}
+            </h4>
+            <p className="mt-[5px]">
               Release Date - {formatDate(movie?.releaseDate)}
             </p>
             <Formik
@@ -93,8 +106,8 @@ const Upcoming = () => {
                     </p>
                   </div>
                   <button
+                    className="flex w-[150px] border-[1px] border-white text-white hover:bg-white hover:text-black"
                     type="submit"
-                    className="flex w-[150px] border-[1px] border-white hover:bg-white hover:text-black"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "PROCESSING..." : "UPDATE"}
@@ -103,10 +116,7 @@ const Upcoming = () => {
               )}
             </Formik>
           </div>
-          <div
-            className="flex ml-auto items-center justify-center"
-            disabled={isDeleting}
-          >
+          <div className="flex ml-auto items-center justify-center">
             <h5
               className="w-[30px] h-[30px] flex items-center justify-center cursor-pointer hover:text-[#f21f30] transition-colors duration-300 ease-out "
               onClick={() => handleDelete(movie?._id, movie?.title)}
@@ -118,7 +128,7 @@ const Upcoming = () => {
       ))}
       {/* repeat */}
       {upcoming?.length === 0 && (
-        <p className="font-extralight opacity-[0.8] ">no data to show</p>
+        <p className="font-extralight text-[#bdbdbd]">no data to show</p>
       )}
     </section>
   );

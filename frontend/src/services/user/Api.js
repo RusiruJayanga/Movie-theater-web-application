@@ -1,6 +1,7 @@
 import axios from "axios";
 
 //token api call
+//--
 const API = axios.create({ baseURL: "http://localhost:5000/api/user/" });
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
@@ -11,6 +12,7 @@ API.interceptors.request.use((req) => {
 });
 
 //signup api call
+//--
 export const signup = async (userData) => {
   const response = await axios.post(
     `http://localhost:5000/api/auth/signup`,
@@ -20,6 +22,7 @@ export const signup = async (userData) => {
 };
 
 //login api call
+//--
 export const login = async (userData) => {
   const response = await axios.post(
     `http://localhost:5000/api/auth/login`,
@@ -28,7 +31,8 @@ export const login = async (userData) => {
   return response.data;
 };
 
-//contact api call
+//add contact api call
+//--
 export const contact = async (userData) => {
   const response = await axios.post(
     `http://localhost:5000/api/user/contact`,
@@ -37,14 +41,15 @@ export const contact = async (userData) => {
   return response.data;
 };
 
-//account api call
-//fetch
+//fetch account api call
+//--
 export const fetchUserProfile = async () => {
   const { data } = await API.get("http://localhost:5000/api/user/profile");
   return data;
 };
 
-//movie details api call
+//fetch movie details api call
+//--
 export const movieDetails = async (movieId) => {
   const { data } = await axios.get(
     `http://localhost:5000/api/movies/details/${movieId}`
@@ -52,7 +57,8 @@ export const movieDetails = async (movieId) => {
   return data;
 };
 
-//movie ratings api call
+//fetch movie ratings api call
+//--
 export const getMovieWithRatings = async (movieId) => {
   const { data } = await axios.get(
     `http://localhost:5000/api/movies/rating/${movieId}`
@@ -60,7 +66,8 @@ export const getMovieWithRatings = async (movieId) => {
   return data;
 };
 
-//interest api call
+//add interest api call
+//--
 export const addUserInterests = async (interests) => {
   const { data } = await API.post(
     "http://localhost:5000/api/user/interestadd",
@@ -68,7 +75,7 @@ export const addUserInterests = async (interests) => {
   );
   return data;
 };
-//fetch
+//fetch interest api call
 export const getUserInterests = async () => {
   const { data } = await API.get(
     `http://localhost:5000/api/user/interestfetch`
@@ -76,7 +83,15 @@ export const getUserInterests = async () => {
   return data;
 };
 
-//showtime api call
+//fetch showtimes api call
+//--
+export const getShowTime = async () => {
+  const { data } = await axios.get(
+    `http://localhost:5000/api/movies/showtimefetch`
+  );
+  return data;
+};
+//fetch showtime details api call
 export const showTimeDetails = async (movieId) => {
   const { data } = await axios.get(
     `http://localhost:5000/api/movies/showtimedetails/${movieId}`
@@ -84,7 +99,8 @@ export const showTimeDetails = async (movieId) => {
   return data;
 };
 
-//booking api call
+//add booking api call
+//--
 export const addBooking = async (bookingDetails) => {
   const { data } = await API.post(
     "http://localhost:5000/api/user/bookingadd",
@@ -92,7 +108,9 @@ export const addBooking = async (bookingDetails) => {
   );
   return data;
 };
-//fetch
+
+//fetch ticket api call
+//--
 export const getUserTickets = async () => {
   const { data } = await API.get(`http://localhost:5000/api/user/ticketfetch`);
   return data;

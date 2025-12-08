@@ -8,10 +8,17 @@ export const fetchUserProfile = async () => {
   );
   return data;
 };
-//users delete api call
-export const deleteUsersProfile = async (userId) => {
-  const { data } = await axios.delete(
-    `http://localhost:5000/api/users/profiledelete/${userId}`
+//ban user api call
+export const banUsersProfile = async (userId) => {
+  const { data } = await axios.put(
+    `http://localhost:5000/api/users/profileban/${userId}`
+  );
+  return data;
+};
+//active user api call
+export const activeUsersProfile = async (userId) => {
+  const { data } = await axios.put(
+    `http://localhost:5000/api/users/profileactivate/${userId}`
   );
   return data;
 };

@@ -15,18 +15,14 @@ import { useContact } from "../../../hooks/admin/Contact";
 import { useUsers } from "../../../hooks/admin/User";
 
 const Home = () => {
+  //get tocken
   const tocken = localStorage.getItem("admin");
 
-  //components
+  //component toggle
   const [component, setComponent] = useState("dashbord");
 
-  //movie function
+  //fetch movies function
   const { data: movies } = useMovies();
-  //contact function
-  const { data: contacts } = useContact();
-  //user function
-  const { data: users } = useUsers();
-
   //filter movies
   const nowShowing = movies?.filter(
     (movie) =>
@@ -38,8 +34,111 @@ const Home = () => {
       movie.status === "nowShowing" && new Date(movie.closeDate) < new Date()
   );
 
+  //fetch contacts function
+  const { data: contacts } = useContact();
+  //fetch users function
+  const { data: users } = useUsers();
+
   return (
     <div>
+      {/* responsive menu */}
+      {tocken ? (
+        <div className="w-[100%] p-[10px] grid [grid-template-columns:repeat(auto-fit,_150px)] gap-[5px] justify-center font-light text-white sm:hidden">
+          <h5
+            className={`${
+              component === "dashbord"
+                ? "bg-[#303030] text-white"
+                : "bg-[#1a1a1a] text-[#bdbdbd]"
+            } w-[150px] h-[40px] flex justify-center border-[1px] border-[#bdbdbd]/50 rounded-[5px] items-center cursor-pointer`}
+            onClick={() => setComponent("dashbord")}
+          >
+            Home
+          </h5>
+          <h5
+            className={`${
+              component === "now"
+                ? "bg-[#303030] text-white"
+                : "bg-[#1a1a1a] text-[#bdbdbd]"
+            } w-[150px] h-[40px] flex justify-center border-[1px] border-[#bdbdbd]/50 rounded-[5px] items-center cursor-pointer`}
+            onClick={() => setComponent("now")}
+          >
+            Now Showing
+          </h5>
+          <h5
+            className={`${
+              component === "upcoming"
+                ? "bg-[#303030] text-white"
+                : "bg-[#1a1a1a] text-[#bdbdbd]"
+            } w-[150px] h-[40px] flex justify-center border-[1px] border-[#bdbdbd]/50 rounded-[5px] items-center cursor-pointer`}
+            onClick={() => setComponent("upcoming")}
+          >
+            Upcoming
+          </h5>
+          <h5
+            className={`${
+              component === "history"
+                ? "bg-[#303030] text-white"
+                : "bg-[#1a1a1a] text-[#bdbdbd]"
+            } w-[150px] h-[40px] flex justify-center border-[1px] border-[#bdbdbd]/50 rounded-[5px] items-center cursor-pointer`}
+            onClick={() => setComponent("history")}
+          >
+            History
+          </h5>
+          <h5
+            className={`${
+              component === "add"
+                ? "bg-[#303030] text-white"
+                : "bg-[#1a1a1a] text-[#bdbdbd]"
+            } w-[150px] h-[40px] flex justify-center border-[1px] border-[#bdbdbd]/50 rounded-[5px] items-center cursor-pointer`}
+            onClick={() => setComponent("add")}
+          >
+            Add Movies
+          </h5>
+          <h5
+            className={`${
+              component === "session"
+                ? "bg-[#303030] text-white"
+                : "bg-[#1a1a1a] text-[#bdbdbd]"
+            } w-[150px] h-[40px] flex justify-center border-[1px] border-[#bdbdbd]/50 rounded-[5px] items-center cursor-pointer`}
+            onClick={() => setComponent("session")}
+          >
+            Sessions
+          </h5>
+          <h5
+            className={`${
+              component === "booking"
+                ? "bg-[#303030] text-white"
+                : "bg-[#1a1a1a] text-[#bdbdbd]"
+            } w-[150px] h-[40px] flex justify-center border-[1px] border-[#bdbdbd]/50 rounded-[5px] items-center cursor-pointer`}
+            onClick={() => setComponent("booking")}
+          >
+            Bookings
+          </h5>
+          <h5
+            className={`${
+              component === "contact"
+                ? "bg-[#303030] text-white"
+                : "bg-[#1a1a1a] text-[#bdbdbd]"
+            } w-[150px] h-[40px] flex justify-center border-[1px] border-[#bdbdbd]/50 rounded-[5px] items-center cursor-pointer`}
+            onClick={() => setComponent("contact")}
+          >
+            Contact
+          </h5>
+          <h5
+            className={`${
+              component === "user"
+                ? "bg-[#303030] text-white"
+                : "bg-[#1a1a1a] text-[#bdbdbd]"
+            } w-[150px] h-[40px] flex justify-center border-[1px] border-[#bdbdbd]/50 rounded-[5px] items-center cursor-pointer`}
+            onClick={() => setComponent("user")}
+          >
+            Users
+          </h5>
+        </div>
+      ) : (
+        <p className="font-extralight text-[#bdbdbd]">no token</p>
+      )}
+
       {tocken ? (
         <div className="font-light text-[#bdbdbd] cursor-default flex flex-2 ">
           <div className="hidden md:block h-dvh w-[280px] bg-[#1a1a1a] sticky top-[100px] left-0 ">
@@ -222,7 +321,6 @@ const Home = () => {
               </h5>
             </div>
           </div>
-
           <div className="flex-1 p-[20px] md:p-[30px] font-light">
             {component === "dashbord" ? (
               <Dashboard />

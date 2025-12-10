@@ -2,29 +2,28 @@ import React from "react";
 //loading
 import Loading from "../../../hooks/common/Loading";
 //animation
-import { motion, AnimatePresence, m } from "framer-motion";
+import { motion } from "framer-motion";
 //hooks
 import { useMovies } from "../../../hooks/common/Movie";
 import { formatDuration, formatDate } from "../../../hooks/common/Format";
 import { useDeleteMovie } from "../../../hooks/admin/Movie";
 
 const Now_showing = () => {
-  //movies
+  //fetch movies function
   const { data: movies, isLoading, isError } = useMovies();
-  //delete movie function
-  const { mutate: deleteMovie } = useDeleteMovie();
-
-  const handleDelete = (id, name) => {
-    if (window.confirm(`Are you sure you want to delete ${name}?`)) {
-      deleteMovie(id);
-    }
-  };
-
   //filter movies
   const nowShowing = movies?.filter(
     (movie) =>
       movie.status === "nowShowing" && new Date(movie.closeDate) >= new Date()
   );
+
+  //delete movie function
+  const { mutate: deleteMovie } = useDeleteMovie();
+  const handleDelete = (id, name) => {
+    if (window.confirm(`Are you sure you want to delete ${name}?`)) {
+      deleteMovie(id);
+    }
+  };
 
   //loading
   if (isLoading) {
@@ -54,19 +53,19 @@ const Now_showing = () => {
           <img
             className="w-[100px] h-[150px] object-cover rounded-[5px]"
             src={movie?.poster || "default_movie.jpg"}
-            alt={movie?.title}
+            alt={movie?.title || "movie"}
           />
           <div className="flex flex-col ml-[20px]">
             <h4 className="w-[100%] font-medium text-white uppercase">
-              {movie?.title}
+              {movie?.title || "N/A"}
             </h4>
             <p className="capitalize mt-[5px]">
-              {formatDuration(movie?.runtime)}
+              {formatDuration(movie?.runtime) || "N/A"}
             </p>
-            <p>Released Date - {formatDate(movie?.releaseDate)}</p>
-            <p>Close Date - {formatDate(movie?.closeDate)}</p>
+            <p>Released Date - {formatDate(movie?.releaseDate) || "N/A"}</p>
+            <p>Close Date - {formatDate(movie?.closeDate) || "N/A"}</p>
             <p className="mt-[5px] text-[#f21f30] font-bold">
-              {movie?.ratingCategory}
+              {movie?.ratingCategory || "N/A"}
             </p>
           </div>
           <div className="flex ml-auto items-center justify-center">

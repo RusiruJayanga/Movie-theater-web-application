@@ -66,7 +66,7 @@ const Add = () => {
         initialValues={{
           title: "",
           status: "",
-          closeDate: "",
+          closeDate: Date.now(),
           studio: "",
           showDate1: "",
           showDate2: "",

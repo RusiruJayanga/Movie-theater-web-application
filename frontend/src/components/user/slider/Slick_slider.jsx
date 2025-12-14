@@ -93,7 +93,7 @@ const Slick_slider = () => {
             <div className="px-2" key={movie?._id}>
               <div className="w-auto rounded-[10px]">
                 <img
-                  className="w-full h-full object-cover rounded-[5px] xl:opacity-[0.88] hover:opacity-[1] transition duration-300 ease-out"
+                  className="w-full h-[447.5px] object-cover rounded-[5px] xl:opacity-[0.88] hover:opacity-[1] transition duration-300 ease-out"
                   src={movie?.poster || "default_movie.jpg"}
                   alt={movie?.title || "movie"}
                 />
